@@ -1,0 +1,17 @@
+name: Deno CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        deno: [1.0.0]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Deno
+        uses: denolib/setup-deno@master
+        with:
+          deno-version: ${{ matrix.deno }}
+      - run: deno run ./test/deno.ts

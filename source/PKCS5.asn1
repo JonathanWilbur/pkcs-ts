@@ -1,0 +1,54 @@
+-- PKCS #5 v2.1 ASN.1 Module
+-- Revised October 27, 2012
+-- This module has been checked for conformance with the
+-- ASN.1 standard by the OSS ASN.1 Tools
+
+PKCS5v2-1 {
+    iso(1) member-body(2) us(840) rsadsi(113549) pkcs(1) pkcs-5(5)
+    modules(16) pkcs5v2-1(2)
+}
+
+DEFINITIONS EXPLICIT TAGS ::=
+
+BEGIN
+
+-- ========================
+-- Basic object identifiers
+-- ========================
+
+nistAlgorithms OBJECT IDENTIFIER ::= {joint-iso-itu-t(2) country(16)
+                                        us(840) organization(1)
+                                        gov(101) csor(3) 4}
+oiw    OBJECT IDENTIFIER ::= {iso(1) identified-organization(3) 14}
+rsadsi OBJECT IDENTIFIER ::= {iso(1) member-body(2) us(840) 113549}
+pkcs   OBJECT IDENTIFIER ::= {rsadsi 1}
+pkcs-5 OBJECT IDENTIFIER ::= {pkcs 5}
+
+-- =======================
+-- Basic types and classes
+-- =======================
+
+AlgorithmIdentifier { ALGORITHM-IDENTIFIER:InfoObjectSet } ::=
+    SEQUENCE {
+    algorithm ALGORITHM-IDENTIFIER.&id({InfoObjectSet}),
+    parameters ALGORITHM-IDENTIFIER.&Type({InfoObjectSet}
+    {@algorithm}) OPTIONAL
+}
+
+ALGORITHM-IDENTIFIER ::= TYPE-IDENTIFIER
+
+-- ======
+-- PBKDF2
+-- ======
+PBKDF2Algorithms ALGORITHM-IDENTIFIER ::= {
+    {PBKDF2-params IDENTIFIED BY id-PBKDF2},
+    ...
+}
+
+id-PBKDF2 OBJECT IDENTIFIER ::= {pkcs-5 12}
+
+algid-hmacWithSHA1 AlgorithmIdentifier {{PBKDF2-PRFs}} ::=
+    {algorithm id-hmacWithSHA1, parameters NULL : NULL}
+
+
+END
