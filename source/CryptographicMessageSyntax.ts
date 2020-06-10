@@ -10,41 +10,25 @@
 import * as asn1 from "asn1-ts";
 import {
     AlgorithmIdentifier,
-    AttributeCertificate,
     Certificate,
     CertificateList,
     CertificateSerialNumber,
     _decode_AlgorithmIdentifier,
-    _decode_AttributeCertificate,
     _decode_Certificate,
     _decode_CertificateList,
     _decode_CertificateSerialNumber,
     _encode_AlgorithmIdentifier,
-    _encode_AttributeCertificate,
     _encode_Certificate,
     _encode_CertificateList,
     _encode_CertificateSerialNumber,
-} from "./AuthenticationFramework";
-import { Name, _decode_Name, _encode_Name } from "./InformationFramework";
+} from "x500-ts/dist/node/AuthenticationFramework";
+import {
+    AttributeCertificate,
+    _decode_AttributeCertificate,
+    _encode_AttributeCertificate,
+} from "x500-ts/dist/node/AttributeCertificateDefinitions";
+import { Name, _decode_Name, _encode_Name } from "x500-ts/dist/node/InformationFramework";
 import * as __utils from "./__utils";
-export {
-    AlgorithmIdentifier,
-    AttributeCertificate,
-    Certificate,
-    CertificateList,
-    CertificateSerialNumber,
-    _decode_AlgorithmIdentifier,
-    _decode_AttributeCertificate,
-    _decode_Certificate,
-    _decode_CertificateList,
-    _decode_CertificateSerialNumber,
-    _encode_AlgorithmIdentifier,
-    _encode_AttributeCertificate,
-    _encode_Certificate,
-    _encode_CertificateList,
-    _encode_CertificateSerialNumber,
-} from "./AuthenticationFramework";
-export { Name, _decode_Name, _encode_Name } from "./InformationFramework";
 
 export class ContentInfo {
     constructor(

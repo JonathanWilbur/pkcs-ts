@@ -618,7 +618,7 @@ export class ECParameters {
         readonly curve: Curve,
         readonly base: ECPoint,
         readonly order: asn1.INTEGER,
-        readonly cofactor: NTEGER | undefined,
+        readonly cofactor: asn1.INTEGER | undefined,
         readonly _unrecognizedExtensionsList: asn1.ASN1Element[] = []
     ) {}
 }
@@ -672,7 +672,7 @@ export const _decode_ECParameters = function (
     let curve!: Curve;
     let base!: ECPoint;
     let order!: asn1.INTEGER;
-    let cofactor: asn1.OPTIONAL<NTEGER>;
+    let cofactor: asn1.OPTIONAL<asn1.INTEGER>;
     let _unrecognizedExtensionsList: asn1.ASN1Element[] = [];
     /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
     /* START_OF_CALLBACKS_MAP */
@@ -693,7 +693,7 @@ export const _decode_ECParameters = function (
             order = __utils._decodeInteger(_el);
         },
         cofactor: (_el: asn1.ASN1Element): void => {
-            cofactor = _decode_NTEGER(_el);
+            cofactor = __utils._decodeInteger(_el);
         },
     };
     /* END_OF_CALLBACKS_MAP */
@@ -741,7 +741,7 @@ export const _encode_ECParameters = function (
                     ),
                     /* IF_ABSENT  */ value.cofactor === undefined
                         ? undefined
-                        : _encode_NTEGER(value.cofactor, __utils.BER),
+                        : __utils._encodeInteger(value.cofactor, __utils.BER),
                 ],
                 value._unrecognizedExtensionsList
                     ? value._unrecognizedExtensionsList

@@ -8,28 +8,17 @@
     Produced by Jonathan M. Wilbur's <jonathan@wilbur.space> ASN.1 Compiler.
 */
 import * as asn1 from "asn1-ts";
-import { AlgorithmIdentifier } from "./AlgorithmInformation-2009";
+import {
+    AlgorithmIdentifier,
+    _decode_AlgorithmIdentifier,
+    _encode_AlgorithmIdentifier,
+} from "x500-ts/dist/node/AuthenticationFramework";
 import {
     Attribute,
     _decode_Attribute,
     _encode_Attribute,
-} from "./CryptographicMessageSyntax-2009";
+} from "x500-ts/dist/node/InformationFramework";
 import * as __utils from "./__utils";
-export {
-    ALGORITHM,
-    AlgorithmIdentifier,
-    CONTENT_ENCRYPTION,
-    PUBLIC_KEY,
-    _get_decoder_for_AlgorithmIdentifier,
-    _get_encoder_for_AlgorithmIdentifier,
-} from "./AlgorithmInformation-2009";
-export {
-    Attribute,
-    CONTENT_TYPE,
-    _decode_Attribute,
-    _encode_Attribute,
-} from "./CryptographicMessageSyntax-2009";
-export { ATTRIBUTE } from "./PKIX-CommonTypes-2009";
 
 // TODO: ObjectSetAssignment: ContentSet
 

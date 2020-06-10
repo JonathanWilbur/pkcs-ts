@@ -15,24 +15,15 @@ import {
     _decode_Time,
     _encode_Extensions,
     _encode_Time,
-} from "./AuthenticationFramework";
+} from "x500-ts/dist/node/AuthenticationFramework";
 import {
     DirectoryString,
     _decode_DirectoryString,
     _encode_DirectoryString,
-} from "./SelectedAttributeTypes";
-import { ub_name } from "./UpperBounds";
-import { id_at } from "./UsefulDefinitions";
+} from "x500-ts/dist/node/SelectedAttributeTypes";
+import { ub_name } from "x500-ts/dist/node/UpperBounds";
+import { id_at } from "x500-ts/dist/node/UsefulDefinitions";
 import * as __utils from "./__utils";
-export {
-    ALGORITHM,
-    Extensions,
-    Time,
-    _decode_Extensions,
-    _decode_Time,
-    _encode_Extensions,
-    _encode_Time,
-} from "./AuthenticationFramework";
 export {
     ContentInfo,
     SignerInfo,
@@ -41,16 +32,6 @@ export {
     _encode_ContentInfo,
     _encode_SignerInfo,
 } from "./CryptographicMessageSyntax";
-export {
-    ATTRIBUTE,
-    Attribute,
-    MATCHING_RULE,
-    objectIdentifierMatch,
-    OBJECT_CLASS,
-    top,
-    _decode_Attribute,
-    _encode_Attribute,
-} from "./InformationFramework";
 export { PFX, _decode_PFX, _encode_PFX } from "./PKCS-12";
 export {
     PKCS15Token,
@@ -62,25 +43,6 @@ export {
     _decode_EncryptedPrivateKeyInfo,
     _encode_EncryptedPrivateKeyInfo,
 } from "./PKCS-8";
-export {
-    caseExactMatch,
-    caseIgnoreMatch,
-    DirectoryString,
-    generalizedTimeMatch,
-    integerMatch,
-    octetStringMatch,
-    serialNumber,
-    _decode_DirectoryString,
-    _encode_DirectoryString,
-} from "./SelectedAttributeTypes";
-export { ub_name } from "./UpperBounds";
-export {
-    authenticationFramework,
-    id_at,
-    informationFramework,
-    selectedAttributeTypes,
-    upperBounds,
-} from "./UsefulDefinitions";
 
 export const pkcs_9_ub_pkcs9String: asn1.INTEGER = 255;
 

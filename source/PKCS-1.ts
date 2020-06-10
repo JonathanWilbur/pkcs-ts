@@ -9,7 +9,6 @@
 */
 import * as asn1 from "asn1-ts";
 import * as __utils from "./__utils";
-export { id_sha256, id_sha384, id_sha512 } from "./NIST-SHA2";
 
 export const pkcs_1: asn1.OBJECT_IDENTIFIER = new asn1.ObjectIdentifier([
     /* iso */ 1,

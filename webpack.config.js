@@ -6,8 +6,8 @@ module.exports = {
     ],
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: ".min.js",
-        library: "",
+        filename: "pkcs.min.js",
+        library: "pkcs",
         libraryTarget: "var",
     },
     // mode: "development",

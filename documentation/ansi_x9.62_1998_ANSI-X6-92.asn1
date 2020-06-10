@@ -71,7 +71,7 @@ ECParameters ::= SEQUENCE { -- Elliptic curve parameters
     curve           Curve,
     base            ECPoint, -- Base point G
     order           INTEGER, -- Order n of the base point
-    cofactor        NTEGER OPTIONAL, -- The integer h = #E(Fq)/n
+    cofactor        INTEGER OPTIONAL, -- The integer h = #E(Fq)/n
     ...
 }
 

@@ -10,19 +10,16 @@
 import * as asn1 from "asn1-ts";
 import {
     AlgorithmIdentifier,
-    AttributeCertificate,
     Certificate,
     CertificateList,
     CertificateSerialNumber,
     HASH,
     SIGNED,
     _decode_AlgorithmIdentifier,
-    _decode_AttributeCertificate,
     _decode_Certificate,
     _decode_CertificateList,
     _decode_CertificateSerialNumber,
     _encode_AlgorithmIdentifier,
-    _encode_AttributeCertificate,
     _encode_Certificate,
     _encode_CertificateList,
     _encode_CertificateSerialNumber,
@@ -30,7 +27,12 @@ import {
     _get_decoder_for_SIGNED,
     _get_encoder_for_HASH,
     _get_encoder_for_SIGNED,
-} from "./AuthenticationFramework";
+} from "x500-ts/dist/node/AuthenticationFramework";
+import {
+    AttributeCertificate,
+    _decode_AttributeCertificate,
+    _encode_AttributeCertificate,
+} from "x500-ts/dist/node/AttributeCertificateDefinitions";
 import {
     Attribute,
     Name,
@@ -38,40 +40,9 @@ import {
     _decode_Name,
     _encode_Attribute,
     _encode_Name,
-} from "./InformationFramework";
+} from "x500-ts/dist/node/InformationFramework";
 import * as __utils from "./__utils";
 import { iso } from "./__utils";
-export {
-    AlgorithmIdentifier,
-    AttributeCertificate,
-    Certificate,
-    CertificateList,
-    CertificateSerialNumber,
-    HASH,
-    SIGNED,
-    _decode_AlgorithmIdentifier,
-    _decode_AttributeCertificate,
-    _decode_Certificate,
-    _decode_CertificateList,
-    _decode_CertificateSerialNumber,
-    _encode_AlgorithmIdentifier,
-    _encode_AttributeCertificate,
-    _encode_Certificate,
-    _encode_CertificateList,
-    _encode_CertificateSerialNumber,
-    _get_decoder_for_HASH,
-    _get_decoder_for_SIGNED,
-    _get_encoder_for_HASH,
-    _get_encoder_for_SIGNED,
-} from "./AuthenticationFramework";
-export {
-    Attribute,
-    Name,
-    _decode_Attribute,
-    _decode_Name,
-    _encode_Attribute,
-    _encode_Name,
-} from "./InformationFramework";
 
 // TODO: ObjectSetAssignment: PKCS7ContentTable
 
@@ -446,46 +417,44 @@ export const _get_encoder_for_ENCRYPTED = function <ToBeEnciphered>(
     return __utils._encodeOctetString;
 };
 
-export type Digest = HASH<
-    { content: asn1.ASN1Element } | { authenticated_attributes: Attributes }
->; // DefinedType
-export const _decode_Digest = _get_decoder_for_HASH<
-    { content: asn1.ASN1Element } | { authenticated_attributes: Attributes }
->(
-    __utils._decode_inextensible_choice<HASH>({
-        "CONTEXT 1": [
-            "content",
-            __utils._decode_implicit<asn1.ASN1Element>(
-                () => __utils._decodeAny
-            ),
-        ],
-        "CONTEXT 0": [
-            "authenticated_attributes",
-            __utils._decode_explicit<Attributes>(() => _decode_Attributes),
-        ],
-    })
+export type Digest_actual_parameter_1 =
+    { content: asn1.ASN1Element }
+    | { authenticated_attributes: Attributes };
+export const _decode_Digest_actual_parameter_1 = __utils._decode_inextensible_choice<Digest_actual_parameter_1>({
+    "CONTEXT 1": [
+        "content",
+        __utils._decode_implicit<asn1.ASN1Element>(
+            () => __utils._decodeAny
+        ),
+    ],
+    "CONTEXT 0": [
+        "authenticated_attributes",
+        __utils._decode_explicit<Attributes>(() => _decode_Attributes),
+    ],
+});
+
+export const _encode_Digest_actual_parameter_1 = __utils._encode_choice<Digest_actual_parameter_1>(
+    {
+        content: __utils._encode_implicit(
+            asn1.ASN1TagClass.context,
+            1,
+            () => (_el: asn1.ASN1Element) => _el,
+            __utils.BER
+        ),
+        authenticated_attributes: __utils._encode_explicit(
+            asn1.ASN1TagClass.context,
+            0,
+            () => _encode_Attributes,
+            __utils.BER
+        ),
+    },
+    __utils.BER
 );
-export const _encode_Digest = _get_encoder_for_HASH<
-    { content: asn1.ASN1Element } | { authenticated_attributes: Attributes }
->(
-    __utils._encode_choice<HASH>(
-        {
-            content: __utils._encode_implicit(
-                asn1.ASN1TagClass.context,
-                1,
-                () => __utils._encodeAny,
-                __utils.BER
-            ),
-            authenticated_attributes: __utils._encode_explicit(
-                asn1.ASN1TagClass.context,
-                0,
-                () => _encode_Attributes,
-                __utils.BER
-            ),
-        },
-        __utils.BER
-    )
-);
+
+
+export type Digest = HASH<Digest_actual_parameter_1>; // DefinedType
+export const _decode_Digest = _get_decoder_for_HASH<Digest_actual_parameter_1>(_decode_Digest_actual_parameter_1);
+export const _encode_Digest = _get_encoder_for_HASH<Digest_actual_parameter_1>(_encode_Digest_actual_parameter_1);
 
 export class DigestInfo {
     constructor(
@@ -551,7 +520,7 @@ export const _encode_DigestInfo = function (
     );
 };
 
-export type EncryptedDigest = ENCRYPTED<DigestInfo>; // DefinedType
+export type EncryptedDigest = ENCRYPTED; // DefinedType
 export const _decode_EncryptedDigest = _get_decoder_for_ENCRYPTED<DigestInfo>(
     _decode_DigestInfo
 );
@@ -1914,7 +1883,7 @@ export class EncryptedContentInfo {
     constructor(
         readonly contentType: asn1.OBJECT_IDENTIFIER,
         readonly contentEncryptionAlgorithm: ContentEncryptionAlgorithmIdentifier,
-        readonly encryptedContent: ENCRYPTED<asn1.ASN1Element> | undefined
+        readonly encryptedContent: ENCRYPTED | undefined
     ) {}
 }
 export const _root_component_type_list_1_spec_for_EncryptedContentInfo: __utils.ComponentSpec[] = [
@@ -1949,7 +1918,7 @@ export const _decode_EncryptedContentInfo = function (
     /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
     let contentType!: asn1.OBJECT_IDENTIFIER;
     let contentEncryptionAlgorithm!: ContentEncryptionAlgorithmIdentifier;
-    let encryptedContent: asn1.OPTIONAL<ENCRYPTED<asn1.ASN1Element>>;
+    let encryptedContent: asn1.OPTIONAL<ENCRYPTED>;
     /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
     /* START_OF_CALLBACKS_MAP */
     const callbacks: __utils.DecodingMap = {
@@ -1963,7 +1932,7 @@ export const _decode_EncryptedContentInfo = function (
         },
         encryptedContent: (_el: asn1.ASN1Element): void => {
             encryptedContent = __utils._decode_implicit<
-                ENCRYPTED<asn1.ASN1Element>
+                ENCRYPTED
             >(() =>
                 _get_decoder_for_ENCRYPTED<asn1.ASN1Element>(__utils._decodeAny)
             )(_el);
@@ -2770,7 +2739,7 @@ export const _encode_AuthenticatedData = function (
 };
 
 export const id_pkcs: asn1.OBJECT_IDENTIFIER = new asn1.ObjectIdentifier(
-    [member_body, /* usa */ 840, /* rsadsi */ 113549, /* pkcs */ 1],
+    [2, /* usa */ 840, /* rsadsi */ 113549, /* pkcs */ 1],
     iso
 );
 

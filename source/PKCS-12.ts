@@ -25,7 +25,6 @@ import {
     _encode_PrivateKeyInfo,
 } from "./PKCS-8";
 import * as __utils from "./__utils";
-export { ATTRIBUTE } from "./InformationFramework";
 export {
     ContentInfo,
     DigestInfo,
@@ -45,11 +44,8 @@ export {
 export {
     certTypes,
     crlTypes,
-    friendlyName,
-    localKeyId,
     pkcs_9,
 } from "./PKCS-9";
-export { informationFramework } from "./UsefulDefinitions";
 
 export const rsadsi: asn1.OBJECT_IDENTIFIER = new asn1.ObjectIdentifier([
     /* iso */ 1,

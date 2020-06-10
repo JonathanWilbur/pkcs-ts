@@ -25,19 +25,21 @@ import {
     _encode_Parameters,
 } from "./ANSI-X9-62";
 import {
-    AttributeCertificate,
     Certificate,
     CertificateSerialNumber,
     SubjectPublicKeyInfo,
-    _decode_AttributeCertificate,
     _decode_Certificate,
     _decode_CertificateSerialNumber,
     _decode_SubjectPublicKeyInfo,
-    _encode_AttributeCertificate,
     _encode_Certificate,
     _encode_CertificateSerialNumber,
     _encode_SubjectPublicKeyInfo,
-} from "./AuthenticationFramework";
+} from "x500-ts/dist/node/AuthenticationFramework";
+import {
+    AttributeCertificate,
+    _decode_AttributeCertificate,
+    _encode_AttributeCertificate,
+} from "x500-ts/dist/node/AttributeCertificateDefinitions";
 import {
     GeneralNames,
     KeyUsage,
@@ -45,7 +47,7 @@ import {
     _decode_KeyUsage,
     _encode_GeneralNames,
     _encode_KeyUsage,
-} from "./CertificateExtensions";
+} from "x500-ts/dist/node/CertificateExtensions";
 import {
     OriginatorInfo,
     RecipientInfo,
@@ -65,7 +67,7 @@ import {
     _decode_Name,
     _encode_Attribute,
     _encode_Name,
-} from "./InformationFramework";
+} from "x500-ts/dist/node/InformationFramework";
 import {
     RSAPublicKey,
     _decode_RSAPublicKey,
@@ -80,7 +82,7 @@ import {
     OOBCertHash,
     _decode_OOBCertHash,
     _encode_OOBCertHash,
-} from "./PKIXCMP";
+} from "./PKIXCMP-2009";
 import * as __utils from "./__utils";
 export {
     DiffieHellmanPublicNumber,
@@ -98,28 +100,6 @@ export {
     _encode_ECPoint,
     _encode_Parameters,
 } from "./ANSI-X9-62";
-export {
-    AttributeCertificate,
-    Certificate,
-    CertificateSerialNumber,
-    SubjectPublicKeyInfo,
-    _decode_AttributeCertificate,
-    _decode_Certificate,
-    _decode_CertificateSerialNumber,
-    _decode_SubjectPublicKeyInfo,
-    _encode_AttributeCertificate,
-    _encode_Certificate,
-    _encode_CertificateSerialNumber,
-    _encode_SubjectPublicKeyInfo,
-} from "./AuthenticationFramework";
-export {
-    GeneralNames,
-    KeyUsage,
-    _decode_GeneralNames,
-    _decode_KeyUsage,
-    _encode_GeneralNames,
-    _encode_KeyUsage,
-} from "./CertificateExtensions";
 export {
     des_ede3_cbc,
     hMAC_SHA1,
@@ -143,37 +123,17 @@ export {
     _decode_Name,
     _encode_Attribute,
     _encode_Name,
-} from "./InformationFramework";
+} from "x500-ts/dist/node/InformationFramework";
 export {
     RSAPublicKey,
     _decode_RSAPublicKey,
     _encode_RSAPublicKey,
 } from "./PKCS-1";
 export {
-    AlgorithmIdentifier,
-    ALGORITHM_IDENTIFIER,
-    id_hmacWithSHA1,
-    PBKDF2Algorithms,
-    SupportingAlgorithms,
-    _decode_AlgorithmIdentifier,
-    _decode_ALGORITHM_IDENTIFIER,
-    _decode_PBKDF2Algorithms,
-    _decode_SupportingAlgorithms,
-    _encode_AlgorithmIdentifier,
-    _encode_ALGORITHM_IDENTIFIER,
-    _encode_PBKDF2Algorithms,
-    _encode_SupportingAlgorithms,
-} from "./PKCS-5";
-export {
     OOBCertHash,
     _decode_OOBCertHash,
     _encode_OOBCertHash,
-} from "./PKIXCMP";
-export {
-    authenticationFramework,
-    certificateExtensions,
-    informationFramework,
-} from "./UsefulDefinitions";
+} from "./PKIXCMP-2009";
 
 export const pkcs15_ub_reference: asn1.INTEGER = 255;
 

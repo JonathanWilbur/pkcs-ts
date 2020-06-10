@@ -9,7 +9,7 @@
             "url": "https://github.com/JonathanWilbur"
         }
     ],
-    "description": "",
+    "description": "PKCS #1 through #15 - Private and Public Keys, Certificates, and More",
     "devDependencies": {
         "@babel/core": "^7.10.2",
         "@babel/preset-env": "^7.10.2",
@@ -39,10 +39,17 @@
     "files": [
         "dist/node/**/*"
     ],
-    "keywords": [],
+    "keywords": [
+        "PKCS",
+        "PKCS7",
+        "PKCS12",
+        "PFX",
+        "Crypto",
+        "Key"
+    ],
     "license": "MIT",
     "main": "./dist/node/index.js",
-    "name": "",
+    "name": "pkcs-ts",
     "scripts": {
         "benchmark": "node ./test/benchmark.js",
         "breaking-update": "npx ncu -u && npm install",
@@ -55,9 +62,9 @@
         "test": "npx jest --ci --reporters=default --reporters=jest-junit --coverage"
     },
     "types": "./dist/node/index.d.ts",
-    "version": "0.1.0",
+    "version": "1.0.0-beta",
     "dependencies": {
         "asn1-ts": "^3.3.0",
-        "x500-ts": "^0.7.0"
+        "x500-ts": "^0.8.1"
     }
 }

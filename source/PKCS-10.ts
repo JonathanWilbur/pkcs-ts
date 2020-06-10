@@ -8,19 +8,8 @@
     Produced by Jonathan M. Wilbur's <jonathan@wilbur.space> ASN.1 Compiler.
 */
 import * as asn1 from "asn1-ts";
-import { Name, _decode_Name, _encode_Name } from "./InformationFramework";
+import { Name, _decode_Name, _encode_Name } from "x500-ts/dist/node/InformationFramework";
 import * as __utils from "./__utils";
-export { ALGORITHM } from "./AuthenticationFramework";
-export {
-    ATTRIBUTE,
-    Name,
-    _decode_Name,
-    _encode_Name,
-} from "./InformationFramework";
-export {
-    authenticationFramework,
-    informationFramework,
-} from "./UsefulDefinitions";
 
 // TODO: ObjectSetAssignment: PKInfoAlgorithms
 
