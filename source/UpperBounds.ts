@@ -1,4 +1,3 @@
-
 /*
     BEGIN_MODULE UpperBounds
     OID: joint-iso-itu-t.ds.module.upperBounds.3
@@ -9,16 +8,6 @@
     Produced by Jonathan M. Wilbur's <jonathan@wilbur.space> ASN.1 Compiler.
 */
 import * as asn1 from "asn1-ts";
-import * as __utils from "./__utils";
-import {
-    itu_t,
-    itu_r,
-    ccitt,
-    iso,
-    joint_iso_itu_t,
-    joint_iso_ccitt,
-} from "./__utils";
-
 
 export const ub_answerback: asn1.INTEGER = 8;
 

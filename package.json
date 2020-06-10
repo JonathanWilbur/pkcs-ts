@@ -24,6 +24,8 @@
         "jest": "^26.0.1",
         "jest-junit": "^10.0.0",
         "npm-check-updates": "^7.0.0",
+        "prettier": "^2.0.5",
+        "prettier-plugin-organize-imports": "^1.0.4",
         "sloc": "^0.2.1",
         "ts-loader": "^7.0.5",
         "typescript": "^3.9.5",
