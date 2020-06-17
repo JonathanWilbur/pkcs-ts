@@ -34,12 +34,12 @@ export const characteristic_two_field: asn1.OBJECT_IDENTIFIER = new asn1.ObjectI
     id_fieldType
 );
 
-export type Prime_p = asn1.INTEGER;
+export type Prime_p = asn1.OCTET_STRING;
 let _cached_decoder_for_Prime_p: __utils.ASN1Decoder<Prime_p> | null = null;
 let _cached_encoder_for_Prime_p: __utils.ASN1Encoder<Prime_p> | null = null;
 export function _decode_Prime_p(el: asn1.ASN1Element) {
     if (!_cached_decoder_for_Prime_p) {
-        _cached_decoder_for_Prime_p = __utils._decodeInteger;
+        _cached_decoder_for_Prime_p = __utils._decodeBigInt;
     }
     return _cached_decoder_for_Prime_p(el);
 }
@@ -48,14 +48,14 @@ export function _encode_Prime_p(
     elGetter: __utils.ASN1Encoder<Prime_p>
 ) {
     if (!_cached_encoder_for_Prime_p) {
-        _cached_encoder_for_Prime_p = __utils._encodeInteger;
+        _cached_encoder_for_Prime_p = __utils._encodeBigInt;
     }
     return _cached_encoder_for_Prime_p(value, elGetter);
 }
 
 export class Characteristic_two {
     constructor(
-        readonly m: asn1.INTEGER,
+        readonly m: asn1.OCTET_STRING,
         readonly basis: asn1.OBJECT_IDENTIFIER,
         readonly parameters: asn1.ASN1Element
     ) {}
@@ -108,10 +108,10 @@ export function _decode_Characteristic_two(el: asn1.ASN1Element) {
             sequence[0].name = "m";
             sequence[1].name = "basis";
             sequence[2].name = "parameters";
-            let m!: asn1.INTEGER;
+            let m!: asn1.OCTET_STRING;
             let basis!: asn1.OBJECT_IDENTIFIER;
             let parameters!: asn1.ASN1Element;
-            m = __utils._decodeInteger(sequence[0]);
+            m = __utils._decodeBigInt(sequence[0]);
             basis = __utils._decodeObjectIdentifier(sequence[1]);
             parameters = __utils._decodeAny(sequence[2]);
             // TODO: Validate values.
@@ -132,7 +132,7 @@ export function _encode_Characteristic_two(
             return __utils._encodeSequence(
                 ([] as (asn1.ASN1Element | undefined)[])
                     .concat([
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.m,
                             __utils.BER
                         ),
@@ -157,12 +157,12 @@ export function _encode_Characteristic_two(
 
 // TODO: ObjectSetAssignment: BasisTypes
 
-export type Trinomial = asn1.INTEGER;
+export type Trinomial = asn1.OCTET_STRING;
 let _cached_decoder_for_Trinomial: __utils.ASN1Decoder<Trinomial> | null = null;
 let _cached_encoder_for_Trinomial: __utils.ASN1Encoder<Trinomial> | null = null;
 export function _decode_Trinomial(el: asn1.ASN1Element) {
     if (!_cached_decoder_for_Trinomial) {
-        _cached_decoder_for_Trinomial = __utils._decodeInteger;
+        _cached_decoder_for_Trinomial = __utils._decodeBigInt;
     }
     return _cached_decoder_for_Trinomial(el);
 }
@@ -171,16 +171,16 @@ export function _encode_Trinomial(
     elGetter: __utils.ASN1Encoder<Trinomial>
 ) {
     if (!_cached_encoder_for_Trinomial) {
-        _cached_encoder_for_Trinomial = __utils._encodeInteger;
+        _cached_encoder_for_Trinomial = __utils._encodeBigInt;
     }
     return _cached_encoder_for_Trinomial(value, elGetter);
 }
 
 export class Pentanomial {
     constructor(
-        readonly k1: asn1.INTEGER,
-        readonly k2: asn1.INTEGER,
-        readonly k3: asn1.INTEGER
+        readonly k1: asn1.OCTET_STRING,
+        readonly k2: asn1.OCTET_STRING,
+        readonly k3: asn1.OCTET_STRING
     ) {}
 }
 export const _root_component_type_list_1_spec_for_Pentanomial: __utils.ComponentSpec[] = [
@@ -231,12 +231,12 @@ export function _decode_Pentanomial(el: asn1.ASN1Element) {
             sequence[0].name = "k1";
             sequence[1].name = "k2";
             sequence[2].name = "k3";
-            let k1!: asn1.INTEGER;
-            let k2!: asn1.INTEGER;
-            let k3!: asn1.INTEGER;
-            k1 = __utils._decodeInteger(sequence[0]);
-            k2 = __utils._decodeInteger(sequence[1]);
-            k3 = __utils._decodeInteger(sequence[2]);
+            let k1!: asn1.OCTET_STRING;
+            let k2!: asn1.OCTET_STRING;
+            let k3!: asn1.OCTET_STRING;
+            k1 = __utils._decodeBigInt(sequence[0]);
+            k2 = __utils._decodeBigInt(sequence[1]);
+            k3 = __utils._decodeBigInt(sequence[2]);
             // TODO: Validate values.
             return new Pentanomial(k1, k2, k3);
         };
@@ -255,15 +255,15 @@ export function _encode_Pentanomial(
             return __utils._encodeSequence(
                 ([] as (asn1.ASN1Element | undefined)[])
                     .concat([
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.k1,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.k2,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.k3,
                             __utils.BER
                         ),
@@ -301,7 +301,7 @@ export const ppBasis: asn1.OBJECT_IDENTIFIER = new asn1.ObjectIdentifier(
 );
 
 export class ECDSA_Sig_Value {
-    constructor(readonly r: asn1.INTEGER, readonly s: asn1.INTEGER) {}
+    constructor(readonly r: asn1.OCTET_STRING, readonly s: asn1.OCTET_STRING) {}
 }
 export const _root_component_type_list_1_spec_for_ECDSA_Sig_Value: __utils.ComponentSpec[] = [
     new __utils.ComponentSpec(
@@ -343,10 +343,10 @@ export function _decode_ECDSA_Sig_Value(el: asn1.ASN1Element) {
             // TODO: Validate tags.
             sequence[0].name = "r";
             sequence[1].name = "s";
-            let r!: asn1.INTEGER;
-            let s!: asn1.INTEGER;
-            r = __utils._decodeInteger(sequence[0]);
-            s = __utils._decodeInteger(sequence[1]);
+            let r!: asn1.OCTET_STRING;
+            let s!: asn1.OCTET_STRING;
+            r = __utils._decodeBigInt(sequence[0]);
+            s = __utils._decodeBigInt(sequence[1]);
             // TODO: Validate values.
             return new ECDSA_Sig_Value(r, s);
         };
@@ -365,11 +365,11 @@ export function _encode_ECDSA_Sig_Value(
             return __utils._encodeSequence(
                 ([] as (asn1.ASN1Element | undefined)[])
                     .concat([
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.r,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.s,
                             __utils.BER
                         ),
@@ -585,7 +585,7 @@ export const id_ecPublicKey: asn1.OBJECT_IDENTIFIER = new asn1.ObjectIdentifier(
 );
 
 export type ECParameters_version = asn1.INTEGER;
-export const ECParameters_version_ecpVerl: ECParameters_version = 1; /* LONG_NAMED_INTEGER_VALUE */
+export const ECParameters_version_ecpVerl: ECParameters_version = 1; /* LONG_NAMED_OCTET_STRING_VALUE */
 let _cached_decoder_for_ECParameters_version: __utils.ASN1Decoder<
     ECParameters_version
 > | null = null;
@@ -841,8 +841,8 @@ export class ECParameters {
         readonly fieldID: FieldID,
         readonly curve: Curve,
         readonly base: ECPoint,
-        readonly order: asn1.INTEGER,
-        readonly cofactor: asn1.OPTIONAL<asn1.INTEGER>,
+        readonly order: asn1.OCTET_STRING,
+        readonly cofactor: asn1.OPTIONAL<asn1.OCTET_STRING>,
         readonly _unrecognizedExtensionsList: asn1.ASN1Element[] = []
     ) {}
 }
@@ -908,8 +908,8 @@ export function _decode_ECParameters(el: asn1.ASN1Element) {
             let fieldID!: FieldID;
             let curve!: Curve;
             let base!: ECPoint;
-            let order!: asn1.INTEGER;
-            let cofactor: asn1.OPTIONAL<asn1.INTEGER>;
+            let order!: asn1.OCTET_STRING;
+            let cofactor: asn1.OPTIONAL<asn1.OCTET_STRING>;
             let _unrecognizedExtensionsList: asn1.ASN1Element[] = [];
             /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
             /* START_OF_CALLBACKS_MAP */
@@ -927,10 +927,10 @@ export function _decode_ECParameters(el: asn1.ASN1Element) {
                     base = _decode_ECPoint(_el);
                 },
                 order: (_el: asn1.ASN1Element): void => {
-                    order = __utils._decodeInteger(_el);
+                    order = __utils._decodeBigInt(_el);
                 },
                 cofactor: (_el: asn1.ASN1Element): void => {
-                    cofactor = __utils._decodeInteger(_el);
+                    cofactor = __utils._decodeBigInt(_el);
                 },
             };
             /* END_OF_CALLBACKS_MAP */
@@ -986,13 +986,13 @@ export function _encode_ECParameters(
                                 value.base,
                                 __utils.BER
                             ),
-                            /* REQUIRED   */ __utils._encodeInteger(
+                            /* REQUIRED   */ __utils._encodeBigInt(
                                 value.order,
                                 __utils.BER
                             ),
                             /* IF_ABSENT  */ value.cofactor === undefined
                                 ? undefined
-                                : __utils._encodeInteger(
+                                : __utils._encodeBigInt(
                                       value.cofactor,
                                       __utils.BER
                                   ),

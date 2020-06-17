@@ -121,7 +121,7 @@ export function _encode_FiniteFields(
 export class ValidationParms {
     constructor(
         readonly seed: asn1.BIT_STRING,
-        readonly pGenCounter: asn1.INTEGER
+        readonly pGenCounter: asn1.OCTET_STRING
     ) {}
 }
 export const _root_component_type_list_1_spec_for_ValidationParms: __utils.ComponentSpec[] = [
@@ -165,9 +165,9 @@ export function _decode_ValidationParms(el: asn1.ASN1Element) {
             sequence[0].name = "seed";
             sequence[1].name = "pGenCounter";
             let seed!: asn1.BIT_STRING;
-            let pGenCounter!: asn1.INTEGER;
+            let pGenCounter!: asn1.OCTET_STRING;
             seed = __utils._decodeBitString(sequence[0]);
-            pGenCounter = __utils._decodeInteger(sequence[1]);
+            pGenCounter = __utils._decodeBigInt(sequence[1]);
             // TODO: Validate values.
             return new ValidationParms(seed, pGenCounter);
         };
@@ -190,7 +190,7 @@ export function _encode_ValidationParms(
                             value.seed,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.pGenCounter,
                             __utils.BER
                         ),
@@ -207,10 +207,10 @@ export function _encode_ValidationParms(
 
 export class DomainParameters {
     constructor(
-        readonly p: asn1.INTEGER,
-        readonly g: asn1.INTEGER,
-        readonly q: asn1.INTEGER,
-        readonly j: asn1.OPTIONAL<asn1.INTEGER>,
+        readonly p: asn1.OCTET_STRING,
+        readonly g: asn1.OCTET_STRING,
+        readonly q: asn1.OCTET_STRING,
+        readonly j: asn1.OPTIONAL<asn1.OCTET_STRING>,
         readonly validationParms: asn1.OPTIONAL<ValidationParms>
     ) {}
 }
@@ -265,25 +265,25 @@ export function _decode_DomainParameters(el: asn1.ASN1Element) {
             el: asn1.ASN1Element
         ): DomainParameters {
             /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-            let p!: asn1.INTEGER;
-            let g!: asn1.INTEGER;
-            let q!: asn1.INTEGER;
-            let j: asn1.OPTIONAL<asn1.INTEGER>;
+            let p!: asn1.OCTET_STRING;
+            let g!: asn1.OCTET_STRING;
+            let q!: asn1.OCTET_STRING;
+            let j: asn1.OPTIONAL<asn1.OCTET_STRING>;
             let validationParms: asn1.OPTIONAL<ValidationParms>;
             /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
             /* START_OF_CALLBACKS_MAP */
             const callbacks: __utils.DecodingMap = {
                 p: (_el: asn1.ASN1Element): void => {
-                    p = __utils._decodeInteger(_el);
+                    p = __utils._decodeBigInt(_el);
                 },
                 g: (_el: asn1.ASN1Element): void => {
-                    g = __utils._decodeInteger(_el);
+                    g = __utils._decodeBigInt(_el);
                 },
                 q: (_el: asn1.ASN1Element): void => {
-                    q = __utils._decodeInteger(_el);
+                    q = __utils._decodeBigInt(_el);
                 },
                 j: (_el: asn1.ASN1Element): void => {
-                    j = __utils._decodeInteger(_el);
+                    j = __utils._decodeBigInt(_el);
                 },
                 validationParms: (_el: asn1.ASN1Element): void => {
                     validationParms = _decode_ValidationParms(_el);
@@ -321,21 +321,21 @@ export function _encode_DomainParameters(
             return __utils._encodeSequence(
                 ([] as (asn1.ASN1Element | undefined)[])
                     .concat([
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.p,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.g,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.q,
                             __utils.BER
                         ),
                         /* IF_ABSENT  */ value.j === undefined
                             ? undefined
-                            : __utils._encodeInteger(value.j, __utils.BER),
+                            : __utils._encodeBigInt(value.j, __utils.BER),
                         /* IF_ABSENT  */ value.validationParms === undefined
                             ? undefined
                             : _encode_ValidationParms(
@@ -539,7 +539,7 @@ export function _encode_SubjectPublicKeyInfo(
 
 // TODO: ObjectSetAssignment: DHPublicNumbers
 
-export type DiffieHellmanPublicNumber = asn1.INTEGER;
+export type DiffieHellmanPublicNumber = asn1.OCTET_STRING;
 let _cached_decoder_for_DiffieHellmanPublicNumber: __utils.ASN1Decoder<
     DiffieHellmanPublicNumber
 > | null = null;
@@ -548,7 +548,7 @@ let _cached_encoder_for_DiffieHellmanPublicNumber: __utils.ASN1Encoder<
 > | null = null;
 export function _decode_DiffieHellmanPublicNumber(el: asn1.ASN1Element) {
     if (!_cached_decoder_for_DiffieHellmanPublicNumber) {
-        _cached_decoder_for_DiffieHellmanPublicNumber = __utils._decodeInteger;
+        _cached_decoder_for_DiffieHellmanPublicNumber = __utils._decodeBigInt;
     }
     return _cached_decoder_for_DiffieHellmanPublicNumber(el);
 }
@@ -557,7 +557,7 @@ export function _encode_DiffieHellmanPublicNumber(
     elGetter: __utils.ASN1Encoder<DiffieHellmanPublicNumber>
 ) {
     if (!_cached_encoder_for_DiffieHellmanPublicNumber) {
-        _cached_encoder_for_DiffieHellmanPublicNumber = __utils._encodeInteger;
+        _cached_encoder_for_DiffieHellmanPublicNumber = __utils._encodeBigInt;
     }
     return _cached_encoder_for_DiffieHellmanPublicNumber(value, elGetter);
 }
@@ -1006,13 +1006,13 @@ export function _encode_Counter(
     return _cached_encoder_for_Counter(value, elGetter);
 }
 
-export type TripleDES = asn1.INTEGER[]; // SequenceOfType
+export type TripleDES = asn1.OCTET_STRING[]; // SequenceOfType
 let _cached_decoder_for_TripleDES: __utils.ASN1Decoder<TripleDES> | null = null;
 let _cached_encoder_for_TripleDES: __utils.ASN1Encoder<TripleDES> | null = null;
 export function _decode_TripleDES(el: asn1.ASN1Element) {
     if (!_cached_decoder_for_TripleDES) {
-        _cached_decoder_for_TripleDES = __utils._decodeSequenceOf<asn1.INTEGER>(
-            () => __utils._decodeInteger
+        _cached_decoder_for_TripleDES = __utils._decodeSequenceOf<asn1.OCTET_STRING>(
+            () => __utils._decodeBigInt
         );
     }
     return _cached_decoder_for_TripleDES(el);
@@ -1022,8 +1022,8 @@ export function _encode_TripleDES(
     elGetter: __utils.ASN1Encoder<TripleDES>
 ) {
     if (!_cached_encoder_for_TripleDES) {
-        _cached_encoder_for_TripleDES = __utils._encodeSequenceOf<asn1.INTEGER>(
-            () => __utils._encodeInteger,
+        _cached_encoder_for_TripleDES = __utils._encodeSequenceOf<asn1.OCTET_STRING>(
+            () => __utils._encodeBigInt,
             __utils.BER
         );
     }

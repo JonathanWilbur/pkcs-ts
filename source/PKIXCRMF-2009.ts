@@ -43,7 +43,7 @@ export const _encode_CertId = function (
         ([] as (asn1.ASN1Element | undefined)[])
             .concat([
                 _encode_GeneralName(value.issuer, __utils.BER),
-                __utils._encodeOctetString(value.serialNumber, __utils.BER),
+                __utils._encodeBigInt(value.serialNumber, __utils.BER),
             ])
             .filter(
                 (c: asn1.ASN1Element | undefined): boolean => !!c
@@ -62,7 +62,7 @@ export const _decode_CertId = function (el: asn1.ASN1Element): CertId {
         },
         serialNumber: (_el: asn1.ASN1Element): void => {
             serialNumber = __utils._decode_implicit<asn1.OCTET_STRING>(
-                () => __utils._decodeOctetString
+                () => __utils._decodeBigInt
             )(_el);
         },
     };

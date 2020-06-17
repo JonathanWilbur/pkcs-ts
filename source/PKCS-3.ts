@@ -26,9 +26,9 @@ export const dhKeyAgreement: asn1.OBJECT_IDENTIFIER = new asn1.ObjectIdentifier(
 
 export class DHParameter {
     constructor(
-        readonly prime: asn1.INTEGER,
-        readonly base: asn1.INTEGER,
-        readonly privateValueLength: asn1.OPTIONAL<asn1.INTEGER>
+        readonly prime: asn1.OCTET_STRING,
+        readonly base: asn1.OCTET_STRING,
+        readonly privateValueLength: asn1.OPTIONAL<asn1.OCTET_STRING>
     ) {}
 }
 export const _root_component_type_list_1_spec_for_DHParameter: __utils.ComponentSpec[] = [
@@ -68,20 +68,20 @@ export function _decode_DHParameter(el: asn1.ASN1Element) {
             el: asn1.ASN1Element
         ): DHParameter {
             /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-            let prime!: asn1.INTEGER;
-            let base!: asn1.INTEGER;
-            let privateValueLength: asn1.OPTIONAL<asn1.INTEGER>;
+            let prime!: asn1.OCTET_STRING;
+            let base!: asn1.OCTET_STRING;
+            let privateValueLength: asn1.OPTIONAL<asn1.OCTET_STRING>;
             /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
             /* START_OF_CALLBACKS_MAP */
             const callbacks: __utils.DecodingMap = {
                 prime: (_el: asn1.ASN1Element): void => {
-                    prime = __utils._decodeInteger(_el);
+                    prime = __utils._decodeBigInt(_el);
                 },
                 base: (_el: asn1.ASN1Element): void => {
-                    base = __utils._decodeInteger(_el);
+                    base = __utils._decodeBigInt(_el);
                 },
                 privateValueLength: (_el: asn1.ASN1Element): void => {
-                    privateValueLength = __utils._decodeInteger(_el);
+                    privateValueLength = __utils._decodeBigInt(_el);
                 },
             };
             /* END_OF_CALLBACKS_MAP */
@@ -114,17 +114,17 @@ export function _encode_DHParameter(
             return __utils._encodeSequence(
                 ([] as (asn1.ASN1Element | undefined)[])
                     .concat([
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.prime,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.base,
                             __utils.BER
                         ),
                         /* IF_ABSENT  */ value.privateValueLength === undefined
                             ? undefined
-                            : __utils._encodeInteger(
+                            : __utils._encodeBigInt(
                                   value.privateValueLength,
                                   __utils.BER
                               ),

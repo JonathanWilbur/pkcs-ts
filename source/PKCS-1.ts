@@ -84,8 +84,8 @@ export const id_md5: asn1.OBJECT_IDENTIFIER = new asn1.ObjectIdentifier([
 
 export class RSAPublicKey {
     constructor(
-        readonly modulus: asn1.INTEGER,
-        readonly publicExponent: asn1.INTEGER
+        readonly modulus: asn1.OCTET_STRING,
+        readonly publicExponent: asn1.OCTET_STRING
     ) {}
 }
 export const _root_component_type_list_1_spec_for_RSAPublicKey: __utils.ComponentSpec[] = [
@@ -128,10 +128,10 @@ export function _decode_RSAPublicKey(el: asn1.ASN1Element) {
             // TODO: Validate tags.
             sequence[0].name = "modulus";
             sequence[1].name = "publicExponent";
-            let modulus!: asn1.INTEGER;
-            let publicExponent!: asn1.INTEGER;
-            modulus = __utils._decodeInteger(sequence[0]);
-            publicExponent = __utils._decodeInteger(sequence[1]);
+            let modulus!: asn1.OCTET_STRING;
+            let publicExponent!: asn1.OCTET_STRING;
+            modulus = __utils._decodeBigInt(sequence[0]);
+            publicExponent = __utils._decodeBigInt(sequence[1]);
             // TODO: Validate values.
             return new RSAPublicKey(modulus, publicExponent);
         };
@@ -150,11 +150,11 @@ export function _encode_RSAPublicKey(
             return __utils._encodeSequence(
                 ([] as (asn1.ASN1Element | undefined)[])
                     .concat([
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.modulus,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.publicExponent,
                             __utils.BER
                         ),
@@ -192,9 +192,9 @@ export function _encode_Version(
 
 export class OtherPrimeInfo {
     constructor(
-        readonly prime: asn1.INTEGER,
-        readonly exponent: asn1.INTEGER,
-        readonly coefficient: asn1.INTEGER
+        readonly prime: asn1.OCTET_STRING,
+        readonly exponent: asn1.OCTET_STRING,
+        readonly coefficient: asn1.OCTET_STRING
     ) {}
 }
 export const _root_component_type_list_1_spec_for_OtherPrimeInfo: __utils.ComponentSpec[] = [
@@ -245,12 +245,12 @@ export function _decode_OtherPrimeInfo(el: asn1.ASN1Element) {
             sequence[0].name = "prime";
             sequence[1].name = "exponent";
             sequence[2].name = "coefficient";
-            let prime!: asn1.INTEGER;
-            let exponent!: asn1.INTEGER;
-            let coefficient!: asn1.INTEGER;
-            prime = __utils._decodeInteger(sequence[0]);
-            exponent = __utils._decodeInteger(sequence[1]);
-            coefficient = __utils._decodeInteger(sequence[2]);
+            let prime!: asn1.OCTET_STRING;
+            let exponent!: asn1.OCTET_STRING;
+            let coefficient!: asn1.OCTET_STRING;
+            prime = __utils._decodeBigInt(sequence[0]);
+            exponent = __utils._decodeBigInt(sequence[1]);
+            coefficient = __utils._decodeBigInt(sequence[2]);
             // TODO: Validate values.
             return new OtherPrimeInfo(prime, exponent, coefficient);
         };
@@ -269,15 +269,15 @@ export function _encode_OtherPrimeInfo(
             return __utils._encodeSequence(
                 ([] as (asn1.ASN1Element | undefined)[])
                     .concat([
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.prime,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.exponent,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.coefficient,
                             __utils.BER
                         ),
@@ -322,14 +322,14 @@ export function _encode_OtherPrimeInfos(
 export class RSAPrivateKey {
     constructor(
         readonly version: Version,
-        readonly modulus: asn1.INTEGER,
-        readonly publicExponent: asn1.INTEGER,
-        readonly privateExponent: asn1.INTEGER,
-        readonly prime1: asn1.INTEGER,
-        readonly prime2: asn1.INTEGER,
-        readonly exponent1: asn1.INTEGER,
-        readonly exponent2: asn1.INTEGER,
-        readonly coefficient: asn1.INTEGER,
+        readonly modulus: asn1.OCTET_STRING,
+        readonly publicExponent: asn1.OCTET_STRING,
+        readonly privateExponent: asn1.OCTET_STRING,
+        readonly prime1: asn1.OCTET_STRING,
+        readonly prime2: asn1.OCTET_STRING,
+        readonly exponent1: asn1.OCTET_STRING,
+        readonly exponent2: asn1.OCTET_STRING,
+        readonly coefficient: asn1.OCTET_STRING,
         readonly otherPrimeInfos: asn1.OPTIONAL<OtherPrimeInfos>
     ) {}
 }
@@ -420,14 +420,14 @@ export function _decode_RSAPrivateKey(el: asn1.ASN1Element) {
         ): RSAPrivateKey {
             /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
             let version!: Version;
-            let modulus!: asn1.INTEGER;
-            let publicExponent!: asn1.INTEGER;
-            let privateExponent!: asn1.INTEGER;
-            let prime1!: asn1.INTEGER;
-            let prime2!: asn1.INTEGER;
-            let exponent1!: asn1.INTEGER;
-            let exponent2!: asn1.INTEGER;
-            let coefficient!: asn1.INTEGER;
+            let modulus!: asn1.OCTET_STRING;
+            let publicExponent!: asn1.OCTET_STRING;
+            let privateExponent!: asn1.OCTET_STRING;
+            let prime1!: asn1.OCTET_STRING;
+            let prime2!: asn1.OCTET_STRING;
+            let exponent1!: asn1.OCTET_STRING;
+            let exponent2!: asn1.OCTET_STRING;
+            let coefficient!: asn1.OCTET_STRING;
             let otherPrimeInfos: asn1.OPTIONAL<OtherPrimeInfos>;
             /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
             /* START_OF_CALLBACKS_MAP */
@@ -436,28 +436,28 @@ export function _decode_RSAPrivateKey(el: asn1.ASN1Element) {
                     version = _decode_Version(_el);
                 },
                 modulus: (_el: asn1.ASN1Element): void => {
-                    modulus = __utils._decodeInteger(_el);
+                    modulus = __utils._decodeBigInt(_el);
                 },
                 publicExponent: (_el: asn1.ASN1Element): void => {
-                    publicExponent = __utils._decodeInteger(_el);
+                    publicExponent = __utils._decodeBigInt(_el);
                 },
                 privateExponent: (_el: asn1.ASN1Element): void => {
-                    privateExponent = __utils._decodeInteger(_el);
+                    privateExponent = __utils._decodeBigInt(_el);
                 },
                 prime1: (_el: asn1.ASN1Element): void => {
-                    prime1 = __utils._decodeInteger(_el);
+                    prime1 = __utils._decodeBigInt(_el);
                 },
                 prime2: (_el: asn1.ASN1Element): void => {
-                    prime2 = __utils._decodeInteger(_el);
+                    prime2 = __utils._decodeBigInt(_el);
                 },
                 exponent1: (_el: asn1.ASN1Element): void => {
-                    exponent1 = __utils._decodeInteger(_el);
+                    exponent1 = __utils._decodeBigInt(_el);
                 },
                 exponent2: (_el: asn1.ASN1Element): void => {
-                    exponent2 = __utils._decodeInteger(_el);
+                    exponent2 = __utils._decodeBigInt(_el);
                 },
                 coefficient: (_el: asn1.ASN1Element): void => {
-                    coefficient = __utils._decodeInteger(_el);
+                    coefficient = __utils._decodeBigInt(_el);
                 },
                 otherPrimeInfos: (_el: asn1.ASN1Element): void => {
                     otherPrimeInfos = _decode_OtherPrimeInfos(_el);
@@ -504,35 +504,35 @@ export function _encode_RSAPrivateKey(
                             value.version,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.modulus,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.publicExponent,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.privateExponent,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.prime1,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.prime2,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.exponent1,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.exponent2,
                             __utils.BER
                         ),
-                        /* REQUIRED   */ __utils._encodeInteger(
+                        /* REQUIRED   */ __utils._encodeBigInt(
                             value.coefficient,
                             __utils.BER
                         ),

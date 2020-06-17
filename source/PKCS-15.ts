@@ -3392,14 +3392,14 @@ export function _get_encoder_for_ObjectValue<Type>(
 
 export class RSAPrivateKeyObject {
     constructor(
-        readonly modulus: asn1.OPTIONAL<asn1.INTEGER>,
-        readonly publicExponent: asn1.OPTIONAL<asn1.INTEGER>,
-        readonly privateExponent: asn1.OPTIONAL<asn1.INTEGER>,
-        readonly prime1: asn1.OPTIONAL<asn1.INTEGER>,
-        readonly prime2: asn1.OPTIONAL<asn1.INTEGER>,
-        readonly exponent1: asn1.OPTIONAL<asn1.INTEGER>,
-        readonly exponent2: asn1.OPTIONAL<asn1.INTEGER>,
-        readonly coefficient: asn1.OPTIONAL<asn1.INTEGER>
+        readonly modulus: asn1.OPTIONAL<asn1.OCTET_STRING>,
+        readonly publicExponent: asn1.OPTIONAL<asn1.OCTET_STRING>,
+        readonly privateExponent: asn1.OPTIONAL<asn1.OCTET_STRING>,
+        readonly prime1: asn1.OPTIONAL<asn1.OCTET_STRING>,
+        readonly prime2: asn1.OPTIONAL<asn1.OCTET_STRING>,
+        readonly exponent1: asn1.OPTIONAL<asn1.OCTET_STRING>,
+        readonly exponent2: asn1.OPTIONAL<asn1.OCTET_STRING>,
+        readonly coefficient: asn1.OPTIONAL<asn1.OCTET_STRING>
     ) {}
 }
 export const _root_component_type_list_1_spec_for_RSAPrivateKeyObject: __utils.ComponentSpec[] = [
@@ -3474,55 +3474,55 @@ export function _decode_RSAPrivateKeyObject(el: asn1.ASN1Element) {
             el: asn1.ASN1Element
         ): RSAPrivateKeyObject {
             /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-            let modulus: asn1.OPTIONAL<asn1.INTEGER>;
-            let publicExponent: asn1.OPTIONAL<asn1.INTEGER>;
-            let privateExponent: asn1.OPTIONAL<asn1.INTEGER>;
-            let prime1: asn1.OPTIONAL<asn1.INTEGER>;
-            let prime2: asn1.OPTIONAL<asn1.INTEGER>;
-            let exponent1: asn1.OPTIONAL<asn1.INTEGER>;
-            let exponent2: asn1.OPTIONAL<asn1.INTEGER>;
-            let coefficient: asn1.OPTIONAL<asn1.INTEGER>;
+            let modulus: asn1.OPTIONAL<asn1.OCTET_STRING>;
+            let publicExponent: asn1.OPTIONAL<asn1.OCTET_STRING>;
+            let privateExponent: asn1.OPTIONAL<asn1.OCTET_STRING>;
+            let prime1: asn1.OPTIONAL<asn1.OCTET_STRING>;
+            let prime2: asn1.OPTIONAL<asn1.OCTET_STRING>;
+            let exponent1: asn1.OPTIONAL<asn1.OCTET_STRING>;
+            let exponent2: asn1.OPTIONAL<asn1.OCTET_STRING>;
+            let coefficient: asn1.OPTIONAL<asn1.OCTET_STRING>;
             /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
             /* START_OF_CALLBACKS_MAP */
             const callbacks: __utils.DecodingMap = {
                 modulus: (_el: asn1.ASN1Element): void => {
-                    modulus = __utils._decode_implicit<asn1.INTEGER>(
-                        () => __utils._decodeInteger
+                    modulus = __utils._decode_implicit<asn1.OCTET_STRING>(
+                        () => __utils._decodeBigInt
                     )(_el);
                 },
                 publicExponent: (_el: asn1.ASN1Element): void => {
-                    publicExponent = __utils._decode_implicit<asn1.INTEGER>(
-                        () => __utils._decodeInteger
+                    publicExponent = __utils._decode_implicit<asn1.OCTET_STRING>(
+                        () => __utils._decodeBigInt
                     )(_el);
                 },
                 privateExponent: (_el: asn1.ASN1Element): void => {
-                    privateExponent = __utils._decode_implicit<asn1.INTEGER>(
-                        () => __utils._decodeInteger
+                    privateExponent = __utils._decode_implicit<asn1.OCTET_STRING>(
+                        () => __utils._decodeBigInt
                     )(_el);
                 },
                 prime1: (_el: asn1.ASN1Element): void => {
-                    prime1 = __utils._decode_implicit<asn1.INTEGER>(
-                        () => __utils._decodeInteger
+                    prime1 = __utils._decode_implicit<asn1.OCTET_STRING>(
+                        () => __utils._decodeBigInt
                     )(_el);
                 },
                 prime2: (_el: asn1.ASN1Element): void => {
-                    prime2 = __utils._decode_implicit<asn1.INTEGER>(
-                        () => __utils._decodeInteger
+                    prime2 = __utils._decode_implicit<asn1.OCTET_STRING>(
+                        () => __utils._decodeBigInt
                     )(_el);
                 },
                 exponent1: (_el: asn1.ASN1Element): void => {
-                    exponent1 = __utils._decode_implicit<asn1.INTEGER>(
-                        () => __utils._decodeInteger
+                    exponent1 = __utils._decode_implicit<asn1.OCTET_STRING>(
+                        () => __utils._decodeBigInt
                     )(_el);
                 },
                 exponent2: (_el: asn1.ASN1Element): void => {
-                    exponent2 = __utils._decode_implicit<asn1.INTEGER>(
-                        () => __utils._decodeInteger
+                    exponent2 = __utils._decode_implicit<asn1.OCTET_STRING>(
+                        () => __utils._decodeBigInt
                     )(_el);
                 },
                 coefficient: (_el: asn1.ASN1Element): void => {
-                    coefficient = __utils._decode_implicit<asn1.INTEGER>(
-                        () => __utils._decodeInteger
+                    coefficient = __utils._decode_implicit<asn1.OCTET_STRING>(
+                        () => __utils._decodeBigInt
                     )(_el);
                 },
             };
@@ -3566,7 +3566,7 @@ export function _encode_RSAPrivateKeyObject(
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   0,
-                                  () => __utils._encodeInteger,
+                                  () => __utils._encodeBigInt,
                                   __utils.BER
                               )(value.modulus, __utils.BER),
                         /* IF_ABSENT  */ value.publicExponent === undefined
@@ -3574,7 +3574,7 @@ export function _encode_RSAPrivateKeyObject(
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   1,
-                                  () => __utils._encodeInteger,
+                                  () => __utils._encodeBigInt,
                                   __utils.BER
                               )(value.publicExponent, __utils.BER),
                         /* IF_ABSENT  */ value.privateExponent === undefined
@@ -3582,7 +3582,7 @@ export function _encode_RSAPrivateKeyObject(
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   2,
-                                  () => __utils._encodeInteger,
+                                  () => __utils._encodeBigInt,
                                   __utils.BER
                               )(value.privateExponent, __utils.BER),
                         /* IF_ABSENT  */ value.prime1 === undefined
@@ -3590,7 +3590,7 @@ export function _encode_RSAPrivateKeyObject(
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   3,
-                                  () => __utils._encodeInteger,
+                                  () => __utils._encodeBigInt,
                                   __utils.BER
                               )(value.prime1, __utils.BER),
                         /* IF_ABSENT  */ value.prime2 === undefined
@@ -3598,7 +3598,7 @@ export function _encode_RSAPrivateKeyObject(
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   4,
-                                  () => __utils._encodeInteger,
+                                  () => __utils._encodeBigInt,
                                   __utils.BER
                               )(value.prime2, __utils.BER),
                         /* IF_ABSENT  */ value.exponent1 === undefined
@@ -3606,7 +3606,7 @@ export function _encode_RSAPrivateKeyObject(
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   5,
-                                  () => __utils._encodeInteger,
+                                  () => __utils._encodeBigInt,
                                   __utils.BER
                               )(value.exponent1, __utils.BER),
                         /* IF_ABSENT  */ value.exponent2 === undefined
@@ -3614,7 +3614,7 @@ export function _encode_RSAPrivateKeyObject(
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   6,
-                                  () => __utils._encodeInteger,
+                                  () => __utils._encodeBigInt,
                                   __utils.BER
                               )(value.exponent2, __utils.BER),
                         /* IF_ABSENT  */ value.coefficient === undefined
@@ -3622,7 +3622,7 @@ export function _encode_RSAPrivateKeyObject(
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   7,
-                                  () => __utils._encodeInteger,
+                                  () => __utils._encodeBigInt,
                                   __utils.BER
                               )(value.coefficient, __utils.BER),
                     ])
@@ -3929,7 +3929,7 @@ export function _encode_PrivateRSAKeyAttributes(
     return _cached_encoder_for_PrivateRSAKeyAttributes(value, elGetter);
 }
 
-export type ECPrivateKey = asn1.INTEGER;
+export type ECPrivateKey = asn1.OCTET_STRING;
 let _cached_decoder_for_ECPrivateKey: __utils.ASN1Decoder<
     ECPrivateKey
 > | null = null;
@@ -3938,7 +3938,7 @@ let _cached_encoder_for_ECPrivateKey: __utils.ASN1Encoder<
 > | null = null;
 export function _decode_ECPrivateKey(el: asn1.ASN1Element) {
     if (!_cached_decoder_for_ECPrivateKey) {
-        _cached_decoder_for_ECPrivateKey = __utils._decodeInteger;
+        _cached_decoder_for_ECPrivateKey = __utils._decodeBigInt;
     }
     return _cached_decoder_for_ECPrivateKey(el);
 }
@@ -3947,7 +3947,7 @@ export function _encode_ECPrivateKey(
     elGetter: __utils.ASN1Encoder<ECPrivateKey>
 ) {
     if (!_cached_encoder_for_ECPrivateKey) {
-        _cached_encoder_for_ECPrivateKey = __utils._encodeInteger;
+        _cached_encoder_for_ECPrivateKey = __utils._encodeBigInt;
     }
     return _cached_encoder_for_ECPrivateKey(value, elGetter);
 }
@@ -4075,7 +4075,7 @@ export function _encode_PrivateECKeyAttributes(
     return _cached_encoder_for_PrivateECKeyAttributes(value, elGetter);
 }
 
-export type DHPrivateKey = asn1.INTEGER;
+export type DHPrivateKey = asn1.OCTET_STRING;
 let _cached_decoder_for_DHPrivateKey: __utils.ASN1Decoder<
     DHPrivateKey
 > | null = null;
@@ -4084,7 +4084,7 @@ let _cached_encoder_for_DHPrivateKey: __utils.ASN1Encoder<
 > | null = null;
 export function _decode_DHPrivateKey(el: asn1.ASN1Element) {
     if (!_cached_decoder_for_DHPrivateKey) {
-        _cached_decoder_for_DHPrivateKey = __utils._decodeInteger;
+        _cached_decoder_for_DHPrivateKey = __utils._decodeBigInt;
     }
     return _cached_decoder_for_DHPrivateKey(el);
 }
@@ -4093,7 +4093,7 @@ export function _encode_DHPrivateKey(
     elGetter: __utils.ASN1Encoder<DHPrivateKey>
 ) {
     if (!_cached_encoder_for_DHPrivateKey) {
-        _cached_encoder_for_DHPrivateKey = __utils._encodeInteger;
+        _cached_encoder_for_DHPrivateKey = __utils._encodeBigInt;
     }
     return _cached_encoder_for_DHPrivateKey(value, elGetter);
 }
@@ -4221,7 +4221,7 @@ export function _encode_PrivateDHKeyAttributes(
     return _cached_encoder_for_PrivateDHKeyAttributes(value, elGetter);
 }
 
-export type DSAPrivateKey = asn1.INTEGER;
+export type DSAPrivateKey = asn1.OCTET_STRING;
 let _cached_decoder_for_DSAPrivateKey: __utils.ASN1Decoder<
     DSAPrivateKey
 > | null = null;
@@ -4230,7 +4230,7 @@ let _cached_encoder_for_DSAPrivateKey: __utils.ASN1Encoder<
 > | null = null;
 export function _decode_DSAPrivateKey(el: asn1.ASN1Element) {
     if (!_cached_decoder_for_DSAPrivateKey) {
-        _cached_decoder_for_DSAPrivateKey = __utils._decodeInteger;
+        _cached_decoder_for_DSAPrivateKey = __utils._decodeBigInt;
     }
     return _cached_decoder_for_DSAPrivateKey(el);
 }
@@ -4239,7 +4239,7 @@ export function _encode_DSAPrivateKey(
     elGetter: __utils.ASN1Encoder<DSAPrivateKey>
 ) {
     if (!_cached_encoder_for_DSAPrivateKey) {
-        _cached_encoder_for_DSAPrivateKey = __utils._encodeInteger;
+        _cached_encoder_for_DSAPrivateKey = __utils._encodeBigInt;
     }
     return _cached_encoder_for_DSAPrivateKey(value, elGetter);
 }
@@ -4367,7 +4367,7 @@ export function _encode_PrivateDSAKeyAttributes(
     return _cached_encoder_for_PrivateDSAKeyAttributes(value, elGetter);
 }
 
-export type KEAPrivateKey = asn1.INTEGER;
+export type KEAPrivateKey = asn1.OCTET_STRING;
 let _cached_decoder_for_KEAPrivateKey: __utils.ASN1Decoder<
     KEAPrivateKey
 > | null = null;
@@ -4376,7 +4376,7 @@ let _cached_encoder_for_KEAPrivateKey: __utils.ASN1Encoder<
 > | null = null;
 export function _decode_KEAPrivateKey(el: asn1.ASN1Element) {
     if (!_cached_decoder_for_KEAPrivateKey) {
-        _cached_decoder_for_KEAPrivateKey = __utils._decodeInteger;
+        _cached_decoder_for_KEAPrivateKey = __utils._decodeBigInt;
     }
     return _cached_decoder_for_KEAPrivateKey(el);
 }
@@ -4385,7 +4385,7 @@ export function _encode_KEAPrivateKey(
     elGetter: __utils.ASN1Encoder<KEAPrivateKey>
 ) {
     if (!_cached_encoder_for_KEAPrivateKey) {
-        _cached_encoder_for_KEAPrivateKey = __utils._encodeInteger;
+        _cached_encoder_for_KEAPrivateKey = __utils._encodeBigInt;
     }
     return _cached_encoder_for_KEAPrivateKey(value, elGetter);
 }
@@ -5432,7 +5432,7 @@ export function _encode_PublicDHKeyAttributes(
 }
 
 export type DSAPublicKeyChoice =
-    | { raw: asn1.INTEGER } /* CHOICE_ALT_ROOT */
+    | { raw: asn1.OCTET_STRING } /* CHOICE_ALT_ROOT */
     | { spki: SubjectPublicKeyInfo } /* CHOICE_ALT_ROOT */
     | asn1.ASN1Element /* CHOICE_ALT_UNRECOGNIZED_EXT */;
 let _cached_decoder_for_DSAPublicKeyChoice: __utils.ASN1Decoder<
@@ -5446,7 +5446,7 @@ export function _decode_DSAPublicKeyChoice(el: asn1.ASN1Element) {
         _cached_decoder_for_DSAPublicKeyChoice = __utils._decode_extensible_choice<
             DSAPublicKeyChoice
         >({
-            "UNIVERSAL 2": ["raw", __utils._decodeInteger],
+            "UNIVERSAL 2": ["raw", __utils._decodeBigInt],
             "UNIVERSAL 16": ["spki", _decode_SubjectPublicKeyInfo],
         });
     }
@@ -5461,7 +5461,7 @@ export function _encode_DSAPublicKeyChoice(
             DSAPublicKeyChoice
         >(
             {
-                raw: __utils._encodeInteger,
+                raw: __utils._encodeBigInt,
                 spki: _encode_SubjectPublicKeyInfo,
             },
             __utils.BER
@@ -5597,7 +5597,7 @@ export function _encode_PublicDSAKeyAttributes(
 }
 
 export type KEAPublicKeyChoice =
-    | { raw: asn1.INTEGER } /* CHOICE_ALT_ROOT */
+    | { raw: asn1.OCTET_STRING } /* CHOICE_ALT_ROOT */
     | { spki: SubjectPublicKeyInfo } /* CHOICE_ALT_ROOT */
     | asn1.ASN1Element /* CHOICE_ALT_UNRECOGNIZED_EXT */;
 let _cached_decoder_for_KEAPublicKeyChoice: __utils.ASN1Decoder<
@@ -5611,7 +5611,7 @@ export function _decode_KEAPublicKeyChoice(el: asn1.ASN1Element) {
         _cached_decoder_for_KEAPublicKeyChoice = __utils._decode_extensible_choice<
             KEAPublicKeyChoice
         >({
-            "UNIVERSAL 2": ["raw", __utils._decodeInteger],
+            "UNIVERSAL 2": ["raw", __utils._decodeBigInt],
             "UNIVERSAL 16": ["spki", _decode_SubjectPublicKeyInfo],
         });
     }
@@ -5626,7 +5626,7 @@ export function _encode_KEAPublicKeyChoice(
             KEAPublicKeyChoice
         >(
             {
-                raw: __utils._encodeInteger,
+                raw: __utils._encodeBigInt,
                 spki: _encode_SubjectPublicKeyInfo,
             },
             __utils.BER
