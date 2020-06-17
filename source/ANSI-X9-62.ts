@@ -35,8 +35,23 @@ export const characteristic_two_field: asn1.OBJECT_IDENTIFIER = new asn1.ObjectI
 );
 
 export type Prime_p = asn1.INTEGER;
-export const _decode_Prime_p = __utils._decodeInteger;
-export const _encode_Prime_p = __utils._encodeInteger;
+let _cached_decoder_for_Prime_p: __utils.ASN1Decoder<Prime_p> | null = null;
+let _cached_encoder_for_Prime_p: __utils.ASN1Encoder<Prime_p> | null = null;
+export function _decode_Prime_p(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_Prime_p) {
+        _cached_decoder_for_Prime_p = __utils._decodeInteger;
+    }
+    return _cached_decoder_for_Prime_p(el);
+}
+export function _encode_Prime_p(
+    value: Prime_p,
+    elGetter: __utils.ASN1Encoder<Prime_p>
+) {
+    if (!_cached_encoder_for_Prime_p) {
+        _cached_encoder_for_Prime_p = __utils._encodeInteger;
+    }
+    return _cached_encoder_for_Prime_p(value, elGetter);
+}
 
 export class Characteristic_two {
     constructor(
@@ -70,60 +85,96 @@ export const _root_component_type_list_1_spec_for_Characteristic_two: __utils.Co
 ];
 export const _root_component_type_list_2_spec_for_Characteristic_two: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_Characteristic_two: __utils.ComponentSpec[] = [];
-
-export const _decode_Characteristic_two = function (
-    el: asn1.ASN1Element
-): Characteristic_two {
-    const sequence: asn1.ASN1Element[] = el.sequence;
-    if (sequence.length < 3) {
-        throw new asn1.ASN1ConstructionError(
-            "Characteristic-two contained only " +
-                sequence.length.toString() +
-                " elements."
-        );
+let _cached_decoder_for_Characteristic_two: __utils.ASN1Decoder<
+    Characteristic_two
+> | null = null;
+let _cached_encoder_for_Characteristic_two: __utils.ASN1Encoder<
+    Characteristic_two
+> | null = null;
+export function _decode_Characteristic_two(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_Characteristic_two) {
+        _cached_decoder_for_Characteristic_two = function (
+            el: asn1.ASN1Element
+        ): Characteristic_two {
+            const sequence: asn1.ASN1Element[] = el.sequence;
+            if (sequence.length < 3) {
+                throw new asn1.ASN1ConstructionError(
+                    "Characteristic-two contained only " +
+                        sequence.length.toString() +
+                        " elements."
+                );
+            }
+            // TODO: Validate tags.
+            sequence[0].name = "m";
+            sequence[1].name = "basis";
+            sequence[2].name = "parameters";
+            let m!: asn1.INTEGER;
+            let basis!: asn1.OBJECT_IDENTIFIER;
+            let parameters!: asn1.ASN1Element;
+            m = __utils._decodeInteger(sequence[0]);
+            basis = __utils._decodeObjectIdentifier(sequence[1]);
+            parameters = __utils._decodeAny(sequence[2]);
+            // TODO: Validate values.
+            return new Characteristic_two(m, basis, parameters);
+        };
     }
-    // TODO: Validate tags.
-    sequence[0].name = "m";
-    sequence[1].name = "basis";
-    sequence[2].name = "parameters";
-    let m!: asn1.INTEGER;
-    let basis!: asn1.OBJECT_IDENTIFIER;
-    let parameters!: asn1.ASN1Element;
-    m = __utils._decodeInteger(sequence[0]);
-    basis = __utils._decodeObjectIdentifier(sequence[1]);
-    parameters = __utils._decodeAny(sequence[2]);
-    // TODO: Validate values.
-    return new Characteristic_two(m, basis, parameters);
-};
-export const _encode_Characteristic_two = function (
+    return _cached_decoder_for_Characteristic_two(el);
+}
+export function _encode_Characteristic_two(
     value: Characteristic_two,
     elGetter: __utils.ASN1Encoder<Characteristic_two>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat([
-                /* REQUIRED   */ __utils._encodeInteger(value.m, __utils.BER),
-                /* REQUIRED   */ __utils._encodeObjectIdentifier(
-                    value.basis,
-                    __utils.BER
-                ),
-                /* REQUIRED   */ __utils._encodeAny(
-                    value.parameters,
-                    __utils.BER
-                ),
-            ])
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_Characteristic_two) {
+        _cached_encoder_for_Characteristic_two = function (
+            value: Characteristic_two,
+            elGetter: __utils.ASN1Encoder<Characteristic_two>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat([
+                        /* REQUIRED   */ __utils._encodeInteger(
+                            value.m,
+                            __utils.BER
+                        ),
+                        /* REQUIRED   */ __utils._encodeObjectIdentifier(
+                            value.basis,
+                            __utils.BER
+                        ),
+                        /* REQUIRED   */ __utils._encodeAny(
+                            value.parameters,
+                            __utils.BER
+                        ),
+                    ])
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_Characteristic_two(value, elGetter);
+}
 
 // TODO: ObjectSetAssignment: BasisTypes
 
 export type Trinomial = asn1.INTEGER;
-export const _decode_Trinomial = __utils._decodeInteger;
-export const _encode_Trinomial = __utils._encodeInteger;
+let _cached_decoder_for_Trinomial: __utils.ASN1Decoder<Trinomial> | null = null;
+let _cached_encoder_for_Trinomial: __utils.ASN1Encoder<Trinomial> | null = null;
+export function _decode_Trinomial(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_Trinomial) {
+        _cached_decoder_for_Trinomial = __utils._decodeInteger;
+    }
+    return _cached_decoder_for_Trinomial(el);
+}
+export function _encode_Trinomial(
+    value: Trinomial,
+    elGetter: __utils.ASN1Encoder<Trinomial>
+) {
+    if (!_cached_encoder_for_Trinomial) {
+        _cached_encoder_for_Trinomial = __utils._encodeInteger;
+    }
+    return _cached_encoder_for_Trinomial(value, elGetter);
+}
 
 export class Pentanomial {
     constructor(
@@ -157,48 +208,75 @@ export const _root_component_type_list_1_spec_for_Pentanomial: __utils.Component
 ];
 export const _root_component_type_list_2_spec_for_Pentanomial: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_Pentanomial: __utils.ComponentSpec[] = [];
-
-export const _decode_Pentanomial = function (
-    el: asn1.ASN1Element
-): Pentanomial {
-    const sequence: asn1.ASN1Element[] = el.sequence;
-    if (sequence.length < 3) {
-        throw new asn1.ASN1ConstructionError(
-            "Pentanomial contained only " +
-                sequence.length.toString() +
-                " elements."
-        );
+let _cached_decoder_for_Pentanomial: __utils.ASN1Decoder<
+    Pentanomial
+> | null = null;
+let _cached_encoder_for_Pentanomial: __utils.ASN1Encoder<
+    Pentanomial
+> | null = null;
+export function _decode_Pentanomial(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_Pentanomial) {
+        _cached_decoder_for_Pentanomial = function (
+            el: asn1.ASN1Element
+        ): Pentanomial {
+            const sequence: asn1.ASN1Element[] = el.sequence;
+            if (sequence.length < 3) {
+                throw new asn1.ASN1ConstructionError(
+                    "Pentanomial contained only " +
+                        sequence.length.toString() +
+                        " elements."
+                );
+            }
+            // TODO: Validate tags.
+            sequence[0].name = "k1";
+            sequence[1].name = "k2";
+            sequence[2].name = "k3";
+            let k1!: asn1.INTEGER;
+            let k2!: asn1.INTEGER;
+            let k3!: asn1.INTEGER;
+            k1 = __utils._decodeInteger(sequence[0]);
+            k2 = __utils._decodeInteger(sequence[1]);
+            k3 = __utils._decodeInteger(sequence[2]);
+            // TODO: Validate values.
+            return new Pentanomial(k1, k2, k3);
+        };
     }
-    // TODO: Validate tags.
-    sequence[0].name = "k1";
-    sequence[1].name = "k2";
-    sequence[2].name = "k3";
-    let k1!: asn1.INTEGER;
-    let k2!: asn1.INTEGER;
-    let k3!: asn1.INTEGER;
-    k1 = __utils._decodeInteger(sequence[0]);
-    k2 = __utils._decodeInteger(sequence[1]);
-    k3 = __utils._decodeInteger(sequence[2]);
-    // TODO: Validate values.
-    return new Pentanomial(k1, k2, k3);
-};
-export const _encode_Pentanomial = function (
+    return _cached_decoder_for_Pentanomial(el);
+}
+export function _encode_Pentanomial(
     value: Pentanomial,
     elGetter: __utils.ASN1Encoder<Pentanomial>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat([
-                /* REQUIRED   */ __utils._encodeInteger(value.k1, __utils.BER),
-                /* REQUIRED   */ __utils._encodeInteger(value.k2, __utils.BER),
-                /* REQUIRED   */ __utils._encodeInteger(value.k3, __utils.BER),
-            ])
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_Pentanomial) {
+        _cached_encoder_for_Pentanomial = function (
+            value: Pentanomial,
+            elGetter: __utils.ASN1Encoder<Pentanomial>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat([
+                        /* REQUIRED   */ __utils._encodeInteger(
+                            value.k1,
+                            __utils.BER
+                        ),
+                        /* REQUIRED   */ __utils._encodeInteger(
+                            value.k2,
+                            __utils.BER
+                        ),
+                        /* REQUIRED   */ __utils._encodeInteger(
+                            value.k3,
+                            __utils.BER
+                        ),
+                    ])
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_Pentanomial(value, elGetter);
+}
 
 // TODO: ObjectClassAssignment: CHARACTERISTIC-TWO
 
@@ -243,44 +321,68 @@ export const _root_component_type_list_1_spec_for_ECDSA_Sig_Value: __utils.Compo
 ];
 export const _root_component_type_list_2_spec_for_ECDSA_Sig_Value: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_ECDSA_Sig_Value: __utils.ComponentSpec[] = [];
-
-export const _decode_ECDSA_Sig_Value = function (
-    el: asn1.ASN1Element
-): ECDSA_Sig_Value {
-    const sequence: asn1.ASN1Element[] = el.sequence;
-    if (sequence.length < 2) {
-        throw new asn1.ASN1ConstructionError(
-            "ECDSA-Sig-Value contained only " +
-                sequence.length.toString() +
-                " elements."
-        );
+let _cached_decoder_for_ECDSA_Sig_Value: __utils.ASN1Decoder<
+    ECDSA_Sig_Value
+> | null = null;
+let _cached_encoder_for_ECDSA_Sig_Value: __utils.ASN1Encoder<
+    ECDSA_Sig_Value
+> | null = null;
+export function _decode_ECDSA_Sig_Value(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_ECDSA_Sig_Value) {
+        _cached_decoder_for_ECDSA_Sig_Value = function (
+            el: asn1.ASN1Element
+        ): ECDSA_Sig_Value {
+            const sequence: asn1.ASN1Element[] = el.sequence;
+            if (sequence.length < 2) {
+                throw new asn1.ASN1ConstructionError(
+                    "ECDSA-Sig-Value contained only " +
+                        sequence.length.toString() +
+                        " elements."
+                );
+            }
+            // TODO: Validate tags.
+            sequence[0].name = "r";
+            sequence[1].name = "s";
+            let r!: asn1.INTEGER;
+            let s!: asn1.INTEGER;
+            r = __utils._decodeInteger(sequence[0]);
+            s = __utils._decodeInteger(sequence[1]);
+            // TODO: Validate values.
+            return new ECDSA_Sig_Value(r, s);
+        };
     }
-    // TODO: Validate tags.
-    sequence[0].name = "r";
-    sequence[1].name = "s";
-    let r!: asn1.INTEGER;
-    let s!: asn1.INTEGER;
-    r = __utils._decodeInteger(sequence[0]);
-    s = __utils._decodeInteger(sequence[1]);
-    // TODO: Validate values.
-    return new ECDSA_Sig_Value(r, s);
-};
-export const _encode_ECDSA_Sig_Value = function (
+    return _cached_decoder_for_ECDSA_Sig_Value(el);
+}
+export function _encode_ECDSA_Sig_Value(
     value: ECDSA_Sig_Value,
     elGetter: __utils.ASN1Encoder<ECDSA_Sig_Value>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat([
-                /* REQUIRED   */ __utils._encodeInteger(value.r, __utils.BER),
-                /* REQUIRED   */ __utils._encodeInteger(value.s, __utils.BER),
-            ])
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_ECDSA_Sig_Value) {
+        _cached_encoder_for_ECDSA_Sig_Value = function (
+            value: ECDSA_Sig_Value,
+            elGetter: __utils.ASN1Encoder<ECDSA_Sig_Value>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat([
+                        /* REQUIRED   */ __utils._encodeInteger(
+                            value.r,
+                            __utils.BER
+                        ),
+                        /* REQUIRED   */ __utils._encodeInteger(
+                            value.s,
+                            __utils.BER
+                        ),
+                    ])
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_ECDSA_Sig_Value(value, elGetter);
+}
 
 export const id_ecSigType: asn1.OBJECT_IDENTIFIER = new asn1.ObjectIdentifier(
     [/* signatures */ 4],
@@ -318,50 +420,68 @@ export const _root_component_type_list_1_spec_for_Algorithmldentifier: __utils.C
 ];
 export const _root_component_type_list_2_spec_for_Algorithmldentifier: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_Algorithmldentifier: __utils.ComponentSpec[] = [];
-
-export const _decode_Algorithmldentifier = function (
-    el: asn1.ASN1Element
-): Algorithmldentifier {
-    const sequence: asn1.ASN1Element[] = el.sequence;
-    if (sequence.length < 2) {
-        throw new asn1.ASN1ConstructionError(
-            "Algorithmldentifier contained only " +
-                sequence.length.toString() +
-                " elements."
-        );
+let _cached_decoder_for_Algorithmldentifier: __utils.ASN1Decoder<
+    Algorithmldentifier
+> | null = null;
+let _cached_encoder_for_Algorithmldentifier: __utils.ASN1Encoder<
+    Algorithmldentifier
+> | null = null;
+export function _decode_Algorithmldentifier(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_Algorithmldentifier) {
+        _cached_decoder_for_Algorithmldentifier = function (
+            el: asn1.ASN1Element
+        ): Algorithmldentifier {
+            const sequence: asn1.ASN1Element[] = el.sequence;
+            if (sequence.length < 2) {
+                throw new asn1.ASN1ConstructionError(
+                    "Algorithmldentifier contained only " +
+                        sequence.length.toString() +
+                        " elements."
+                );
+            }
+            // TODO: Validate tags.
+            sequence[0].name = "algorithm";
+            sequence[1].name = "parameters";
+            let algorithm!: asn1.OBJECT_IDENTIFIER;
+            let parameters!: asn1.ASN1Element;
+            algorithm = __utils._decodeObjectIdentifier(sequence[0]);
+            parameters = __utils._decodeAny(sequence[1]);
+            // TODO: Validate values.
+            return new Algorithmldentifier(algorithm, parameters);
+        };
     }
-    // TODO: Validate tags.
-    sequence[0].name = "algorithm";
-    sequence[1].name = "parameters";
-    let algorithm!: asn1.OBJECT_IDENTIFIER;
-    let parameters!: asn1.ASN1Element;
-    algorithm = __utils._decodeObjectIdentifier(sequence[0]);
-    parameters = __utils._decodeAny(sequence[1]);
-    // TODO: Validate values.
-    return new Algorithmldentifier(algorithm, parameters);
-};
-export const _encode_Algorithmldentifier = function (
+    return _cached_decoder_for_Algorithmldentifier(el);
+}
+export function _encode_Algorithmldentifier(
     value: Algorithmldentifier,
     elGetter: __utils.ASN1Encoder<Algorithmldentifier>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat([
-                /* REQUIRED   */ __utils._encodeObjectIdentifier(
-                    value.algorithm,
-                    __utils.BER
-                ),
-                /* REQUIRED   */ __utils._encodeAny(
-                    value.parameters,
-                    __utils.BER
-                ),
-            ])
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_Algorithmldentifier) {
+        _cached_encoder_for_Algorithmldentifier = function (
+            value: Algorithmldentifier,
+            elGetter: __utils.ASN1Encoder<Algorithmldentifier>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat([
+                        /* REQUIRED   */ __utils._encodeObjectIdentifier(
+                            value.algorithm,
+                            __utils.BER
+                        ),
+                        /* REQUIRED   */ __utils._encodeAny(
+                            value.parameters,
+                            __utils.BER
+                        ),
+                    ])
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_Algorithmldentifier(value, elGetter);
+}
 
 export class SubjectPublicKeylnfo {
     constructor(
@@ -387,50 +507,68 @@ export const _root_component_type_list_1_spec_for_SubjectPublicKeylnfo: __utils.
 ];
 export const _root_component_type_list_2_spec_for_SubjectPublicKeylnfo: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_SubjectPublicKeylnfo: __utils.ComponentSpec[] = [];
-
-export const _decode_SubjectPublicKeylnfo = function (
-    el: asn1.ASN1Element
-): SubjectPublicKeylnfo {
-    const sequence: asn1.ASN1Element[] = el.sequence;
-    if (sequence.length < 2) {
-        throw new asn1.ASN1ConstructionError(
-            "SubjectPublicKeylnfo contained only " +
-                sequence.length.toString() +
-                " elements."
-        );
+let _cached_decoder_for_SubjectPublicKeylnfo: __utils.ASN1Decoder<
+    SubjectPublicKeylnfo
+> | null = null;
+let _cached_encoder_for_SubjectPublicKeylnfo: __utils.ASN1Encoder<
+    SubjectPublicKeylnfo
+> | null = null;
+export function _decode_SubjectPublicKeylnfo(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_SubjectPublicKeylnfo) {
+        _cached_decoder_for_SubjectPublicKeylnfo = function (
+            el: asn1.ASN1Element
+        ): SubjectPublicKeylnfo {
+            const sequence: asn1.ASN1Element[] = el.sequence;
+            if (sequence.length < 2) {
+                throw new asn1.ASN1ConstructionError(
+                    "SubjectPublicKeylnfo contained only " +
+                        sequence.length.toString() +
+                        " elements."
+                );
+            }
+            // TODO: Validate tags.
+            sequence[0].name = "algorithm";
+            sequence[1].name = "subjectPublicKey";
+            let algorithm!: Algorithmldentifier;
+            let subjectPublicKey!: asn1.BIT_STRING;
+            algorithm = _decode_Algorithmldentifier(sequence[0]);
+            subjectPublicKey = __utils._decodeBitString(sequence[1]);
+            // TODO: Validate values.
+            return new SubjectPublicKeylnfo(algorithm, subjectPublicKey);
+        };
     }
-    // TODO: Validate tags.
-    sequence[0].name = "algorithm";
-    sequence[1].name = "subjectPublicKey";
-    let algorithm!: Algorithmldentifier;
-    let subjectPublicKey!: asn1.BIT_STRING;
-    algorithm = _decode_Algorithmldentifier(sequence[0]);
-    subjectPublicKey = __utils._decodeBitString(sequence[1]);
-    // TODO: Validate values.
-    return new SubjectPublicKeylnfo(algorithm, subjectPublicKey);
-};
-export const _encode_SubjectPublicKeylnfo = function (
+    return _cached_decoder_for_SubjectPublicKeylnfo(el);
+}
+export function _encode_SubjectPublicKeylnfo(
     value: SubjectPublicKeylnfo,
     elGetter: __utils.ASN1Encoder<SubjectPublicKeylnfo>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat([
-                /* REQUIRED   */ _encode_Algorithmldentifier(
-                    value.algorithm,
-                    __utils.BER
-                ),
-                /* REQUIRED   */ __utils._encodeBitString(
-                    value.subjectPublicKey,
-                    __utils.BER
-                ),
-            ])
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_SubjectPublicKeylnfo) {
+        _cached_encoder_for_SubjectPublicKeylnfo = function (
+            value: SubjectPublicKeylnfo,
+            elGetter: __utils.ASN1Encoder<SubjectPublicKeylnfo>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat([
+                        /* REQUIRED   */ _encode_Algorithmldentifier(
+                            value.algorithm,
+                            __utils.BER
+                        ),
+                        /* REQUIRED   */ __utils._encodeBitString(
+                            value.subjectPublicKey,
+                            __utils.BER
+                        ),
+                    ])
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_SubjectPublicKeylnfo(value, elGetter);
+}
 
 // TODO: ObjectSetAssignment: ECPKAlgorithms
 
@@ -448,9 +586,27 @@ export const id_ecPublicKey: asn1.OBJECT_IDENTIFIER = new asn1.ObjectIdentifier(
 
 export type ECParameters_version = asn1.INTEGER;
 export const ECParameters_version_ecpVerl: ECParameters_version = 1; /* LONG_NAMED_INTEGER_VALUE */
-export const ecpVerl: ECParameters_version = ECParameters_version_ecpVerl; /* SHORT_NAMED_INTEGER_VALUE */
-export const _decode_ECParameters_version = __utils._decodeInteger;
-export const _encode_ECParameters_version = __utils._encodeInteger;
+let _cached_decoder_for_ECParameters_version: __utils.ASN1Decoder<
+    ECParameters_version
+> | null = null;
+let _cached_encoder_for_ECParameters_version: __utils.ASN1Encoder<
+    ECParameters_version
+> | null = null;
+export function _decode_ECParameters_version(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_ECParameters_version) {
+        _cached_decoder_for_ECParameters_version = __utils._decodeInteger;
+    }
+    return _cached_decoder_for_ECParameters_version(el);
+}
+export function _encode_ECParameters_version(
+    value: ECParameters_version,
+    elGetter: __utils.ASN1Encoder<ECParameters_version>
+) {
+    if (!_cached_encoder_for_ECParameters_version) {
+        _cached_encoder_for_ECParameters_version = __utils._encodeInteger;
+    }
+    return _cached_encoder_for_ECParameters_version(value, elGetter);
+}
 
 // TODO: ObjectClassAssignment: FIELD-ID
 
@@ -478,58 +634,91 @@ export const _root_component_type_list_1_spec_for_FieldID: __utils.ComponentSpec
 ];
 export const _root_component_type_list_2_spec_for_FieldID: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_FieldID: __utils.ComponentSpec[] = [];
-
-export const _decode_FieldID = function (el: asn1.ASN1Element): FieldID {
-    const sequence: asn1.ASN1Element[] = el.sequence;
-    if (sequence.length < 2) {
-        throw new asn1.ASN1ConstructionError(
-            "FieldID contained only " +
-                sequence.length.toString() +
-                " elements."
-        );
+let _cached_decoder_for_FieldID: __utils.ASN1Decoder<FieldID> | null = null;
+let _cached_encoder_for_FieldID: __utils.ASN1Encoder<FieldID> | null = null;
+export function _decode_FieldID(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_FieldID) {
+        _cached_decoder_for_FieldID = function (el: asn1.ASN1Element): FieldID {
+            const sequence: asn1.ASN1Element[] = el.sequence;
+            if (sequence.length < 2) {
+                throw new asn1.ASN1ConstructionError(
+                    "FieldID contained only " +
+                        sequence.length.toString() +
+                        " elements."
+                );
+            }
+            // TODO: Validate tags.
+            sequence[0].name = "fieldType";
+            sequence[1].name = "parameters";
+            let fieldType!: asn1.OBJECT_IDENTIFIER;
+            let parameters!: asn1.ASN1Element;
+            fieldType = __utils._decodeObjectIdentifier(sequence[0]);
+            parameters = __utils._decodeAny(sequence[1]);
+            // TODO: Validate values.
+            return new FieldID(fieldType, parameters);
+        };
     }
-    // TODO: Validate tags.
-    sequence[0].name = "fieldType";
-    sequence[1].name = "parameters";
-    let fieldType!: asn1.OBJECT_IDENTIFIER;
-    let parameters!: asn1.ASN1Element;
-    fieldType = __utils._decodeObjectIdentifier(sequence[0]);
-    parameters = __utils._decodeAny(sequence[1]);
-    // TODO: Validate values.
-    return new FieldID(fieldType, parameters);
-};
-export const _encode_FieldID = function (
+    return _cached_decoder_for_FieldID(el);
+}
+export function _encode_FieldID(
     value: FieldID,
     elGetter: __utils.ASN1Encoder<FieldID>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat([
-                /* REQUIRED   */ __utils._encodeObjectIdentifier(
-                    value.fieldType,
-                    __utils.BER
-                ),
-                /* REQUIRED   */ __utils._encodeAny(
-                    value.parameters,
-                    __utils.BER
-                ),
-            ])
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_FieldID) {
+        _cached_encoder_for_FieldID = function (
+            value: FieldID,
+            elGetter: __utils.ASN1Encoder<FieldID>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat([
+                        /* REQUIRED   */ __utils._encodeObjectIdentifier(
+                            value.fieldType,
+                            __utils.BER
+                        ),
+                        /* REQUIRED   */ __utils._encodeAny(
+                            value.parameters,
+                            __utils.BER
+                        ),
+                    ])
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_FieldID(value, elGetter);
+}
 
 export type FieldElement = asn1.OCTET_STRING; // OctetStringType
-export const _decode_FieldElement = __utils._decodeOctetString;
-export const _encode_FieldElement = __utils._encodeOctetString;
+let _cached_decoder_for_FieldElement: __utils.ASN1Decoder<
+    FieldElement
+> | null = null;
+let _cached_encoder_for_FieldElement: __utils.ASN1Encoder<
+    FieldElement
+> | null = null;
+export function _decode_FieldElement(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_FieldElement) {
+        _cached_decoder_for_FieldElement = __utils._decodeOctetString;
+    }
+    return _cached_decoder_for_FieldElement(el);
+}
+export function _encode_FieldElement(
+    value: FieldElement,
+    elGetter: __utils.ASN1Encoder<FieldElement>
+) {
+    if (!_cached_encoder_for_FieldElement) {
+        _cached_encoder_for_FieldElement = __utils._encodeOctetString;
+    }
+    return _cached_encoder_for_FieldElement(value, elGetter);
+}
 
 export class Curve {
     constructor(
         readonly a: FieldElement,
         readonly b: FieldElement,
-        readonly seed: asn1.BIT_STRING | undefined
+        readonly seed: asn1.OPTIONAL<asn1.BIT_STRING>
     ) {}
 }
 export const _root_component_type_list_1_spec_for_Curve: __utils.ComponentSpec[] = [
@@ -557,59 +746,94 @@ export const _root_component_type_list_1_spec_for_Curve: __utils.ComponentSpec[]
 ];
 export const _root_component_type_list_2_spec_for_Curve: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_Curve: __utils.ComponentSpec[] = [];
-
-export const _decode_Curve = function (el: asn1.ASN1Element): Curve {
-    /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-    let a!: FieldElement;
-    let b!: FieldElement;
-    let seed: asn1.OPTIONAL<asn1.BIT_STRING>;
-    /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-    /* START_OF_CALLBACKS_MAP */
-    const callbacks: __utils.DecodingMap = {
-        a: (_el: asn1.ASN1Element): void => {
-            a = _decode_FieldElement(_el);
-        },
-        b: (_el: asn1.ASN1Element): void => {
-            b = _decode_FieldElement(_el);
-        },
-        seed: (_el: asn1.ASN1Element): void => {
-            seed = __utils._decodeBitString(_el);
-        },
-    };
-    /* END_OF_CALLBACKS_MAP */
-    __utils._parse_sequence(
-        el,
-        callbacks,
-        _root_component_type_list_1_spec_for_Curve,
-        _extension_additions_list_spec_for_Curve,
-        _root_component_type_list_2_spec_for_Curve,
-        undefined
-    );
-    return new Curve /* SEQUENCE_CONSTRUCTOR_CALL */(a, b, seed);
-};
-export const _encode_Curve = function (
+let _cached_decoder_for_Curve: __utils.ASN1Decoder<Curve> | null = null;
+let _cached_encoder_for_Curve: __utils.ASN1Encoder<Curve> | null = null;
+export function _decode_Curve(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_Curve) {
+        _cached_decoder_for_Curve = function (el: asn1.ASN1Element): Curve {
+            /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
+            let a!: FieldElement;
+            let b!: FieldElement;
+            let seed: asn1.OPTIONAL<asn1.BIT_STRING>;
+            /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
+            /* START_OF_CALLBACKS_MAP */
+            const callbacks: __utils.DecodingMap = {
+                a: (_el: asn1.ASN1Element): void => {
+                    a = _decode_FieldElement(_el);
+                },
+                b: (_el: asn1.ASN1Element): void => {
+                    b = _decode_FieldElement(_el);
+                },
+                seed: (_el: asn1.ASN1Element): void => {
+                    seed = __utils._decodeBitString(_el);
+                },
+            };
+            /* END_OF_CALLBACKS_MAP */
+            __utils._parse_sequence(
+                el,
+                callbacks,
+                _root_component_type_list_1_spec_for_Curve,
+                _extension_additions_list_spec_for_Curve,
+                _root_component_type_list_2_spec_for_Curve,
+                undefined
+            );
+            return new Curve /* SEQUENCE_CONSTRUCTOR_CALL */(a, b, seed);
+        };
+    }
+    return _cached_decoder_for_Curve(el);
+}
+export function _encode_Curve(
     value: Curve,
     elGetter: __utils.ASN1Encoder<Curve>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat([
-                /* REQUIRED   */ _encode_FieldElement(value.a, __utils.BER),
-                /* REQUIRED   */ _encode_FieldElement(value.b, __utils.BER),
-                /* IF_ABSENT  */ value.seed === undefined
-                    ? undefined
-                    : __utils._encodeBitString(value.seed, __utils.BER),
-            ])
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_Curve) {
+        _cached_encoder_for_Curve = function (
+            value: Curve,
+            elGetter: __utils.ASN1Encoder<Curve>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat([
+                        /* REQUIRED   */ _encode_FieldElement(
+                            value.a,
+                            __utils.BER
+                        ),
+                        /* REQUIRED   */ _encode_FieldElement(
+                            value.b,
+                            __utils.BER
+                        ),
+                        /* IF_ABSENT  */ value.seed === undefined
+                            ? undefined
+                            : __utils._encodeBitString(value.seed, __utils.BER),
+                    ])
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_Curve(value, elGetter);
+}
 
 export type ECPoint = asn1.OCTET_STRING; // OctetStringType
-export const _decode_ECPoint = __utils._decodeOctetString;
-export const _encode_ECPoint = __utils._encodeOctetString;
+let _cached_decoder_for_ECPoint: __utils.ASN1Decoder<ECPoint> | null = null;
+let _cached_encoder_for_ECPoint: __utils.ASN1Encoder<ECPoint> | null = null;
+export function _decode_ECPoint(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_ECPoint) {
+        _cached_decoder_for_ECPoint = __utils._decodeOctetString;
+    }
+    return _cached_decoder_for_ECPoint(el);
+}
+export function _encode_ECPoint(
+    value: ECPoint,
+    elGetter: __utils.ASN1Encoder<ECPoint>
+) {
+    if (!_cached_encoder_for_ECPoint) {
+        _cached_encoder_for_ECPoint = __utils._encodeOctetString;
+    }
+    return _cached_encoder_for_ECPoint(value, elGetter);
+}
 
 export class ECParameters {
     constructor(
@@ -618,7 +842,7 @@ export class ECParameters {
         readonly curve: Curve,
         readonly base: ECPoint,
         readonly order: asn1.INTEGER,
-        readonly cofactor: asn1.INTEGER | undefined,
+        readonly cofactor: asn1.OPTIONAL<asn1.INTEGER>,
         readonly _unrecognizedExtensionsList: asn1.ASN1Element[] = []
     ) {}
 }
@@ -658,121 +882,173 @@ export const _root_component_type_list_1_spec_for_ECParameters: __utils.Componen
         undefined,
         undefined
     ),
-    /* FIXME: cofactor COULD_NOT_RESOLVE_TYPE_DEF */
+    new __utils.ComponentSpec(
+        "cofactor",
+        true,
+        __utils.hasTag(asn1.ASN1TagClass.universal, 2),
+        undefined,
+        undefined
+    ),
 ];
 export const _root_component_type_list_2_spec_for_ECParameters: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_ECParameters: __utils.ComponentSpec[] = [];
-
-export const _decode_ECParameters = function (
-    el: asn1.ASN1Element
-): ECParameters {
-    /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-    let version!: ECParameters_version;
-    let fieldID!: FieldID;
-    let curve!: Curve;
-    let base!: ECPoint;
-    let order!: asn1.INTEGER;
-    let cofactor: asn1.OPTIONAL<asn1.INTEGER>;
-    let _unrecognizedExtensionsList: asn1.ASN1Element[] = [];
-    /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-    /* START_OF_CALLBACKS_MAP */
-    const callbacks: __utils.DecodingMap = {
-        version: (_el: asn1.ASN1Element): void => {
-            version = _decode_ECParameters_version(_el);
-        },
-        fieldID: (_el: asn1.ASN1Element): void => {
-            fieldID = _decode_FieldID(_el);
-        },
-        curve: (_el: asn1.ASN1Element): void => {
-            curve = _decode_Curve(_el);
-        },
-        base: (_el: asn1.ASN1Element): void => {
-            base = _decode_ECPoint(_el);
-        },
-        order: (_el: asn1.ASN1Element): void => {
-            order = __utils._decodeInteger(_el);
-        },
-        cofactor: (_el: asn1.ASN1Element): void => {
-            cofactor = __utils._decodeInteger(_el);
-        },
-    };
-    /* END_OF_CALLBACKS_MAP */
-    __utils._parse_sequence(
-        el,
-        callbacks,
-        _root_component_type_list_1_spec_for_ECParameters,
-        _extension_additions_list_spec_for_ECParameters,
-        _root_component_type_list_2_spec_for_ECParameters,
-        (ext: asn1.ASN1Element): void => {
-            _unrecognizedExtensionsList.push(ext);
-        }
-    );
-    return new ECParameters /* SEQUENCE_CONSTRUCTOR_CALL */(
-        version,
-        fieldID,
-        curve,
-        base,
-        order,
-        cofactor,
-        _unrecognizedExtensionsList
-    );
-};
-export const _encode_ECParameters = function (
+let _cached_decoder_for_ECParameters: __utils.ASN1Decoder<
+    ECParameters
+> | null = null;
+let _cached_encoder_for_ECParameters: __utils.ASN1Encoder<
+    ECParameters
+> | null = null;
+export function _decode_ECParameters(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_ECParameters) {
+        _cached_decoder_for_ECParameters = function (
+            el: asn1.ASN1Element
+        ): ECParameters {
+            /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
+            let version!: ECParameters_version;
+            let fieldID!: FieldID;
+            let curve!: Curve;
+            let base!: ECPoint;
+            let order!: asn1.INTEGER;
+            let cofactor: asn1.OPTIONAL<asn1.INTEGER>;
+            let _unrecognizedExtensionsList: asn1.ASN1Element[] = [];
+            /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
+            /* START_OF_CALLBACKS_MAP */
+            const callbacks: __utils.DecodingMap = {
+                version: (_el: asn1.ASN1Element): void => {
+                    version = _decode_ECParameters_version(_el);
+                },
+                fieldID: (_el: asn1.ASN1Element): void => {
+                    fieldID = _decode_FieldID(_el);
+                },
+                curve: (_el: asn1.ASN1Element): void => {
+                    curve = _decode_Curve(_el);
+                },
+                base: (_el: asn1.ASN1Element): void => {
+                    base = _decode_ECPoint(_el);
+                },
+                order: (_el: asn1.ASN1Element): void => {
+                    order = __utils._decodeInteger(_el);
+                },
+                cofactor: (_el: asn1.ASN1Element): void => {
+                    cofactor = __utils._decodeInteger(_el);
+                },
+            };
+            /* END_OF_CALLBACKS_MAP */
+            __utils._parse_sequence(
+                el,
+                callbacks,
+                _root_component_type_list_1_spec_for_ECParameters,
+                _extension_additions_list_spec_for_ECParameters,
+                _root_component_type_list_2_spec_for_ECParameters,
+                (ext: asn1.ASN1Element): void => {
+                    _unrecognizedExtensionsList.push(ext);
+                }
+            );
+            return new ECParameters /* SEQUENCE_CONSTRUCTOR_CALL */(
+                version,
+                fieldID,
+                curve,
+                base,
+                order,
+                cofactor,
+                _unrecognizedExtensionsList
+            );
+        };
+    }
+    return _cached_decoder_for_ECParameters(el);
+}
+export function _encode_ECParameters(
     value: ECParameters,
     elGetter: __utils.ASN1Encoder<ECParameters>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat(
-                [
-                    /* REQUIRED   */ _encode_ECParameters_version(
-                        value.version,
-                        __utils.BER
-                    ),
-                    /* REQUIRED   */ _encode_FieldID(
-                        value.fieldID,
-                        __utils.BER
-                    ),
-                    /* REQUIRED   */ _encode_Curve(value.curve, __utils.BER),
-                    /* REQUIRED   */ _encode_ECPoint(value.base, __utils.BER),
-                    /* REQUIRED   */ __utils._encodeInteger(
-                        value.order,
-                        __utils.BER
-                    ),
-                    /* IF_ABSENT  */ value.cofactor === undefined
-                        ? undefined
-                        : __utils._encodeInteger(value.cofactor, __utils.BER),
-                ],
-                value._unrecognizedExtensionsList
-                    ? value._unrecognizedExtensionsList
-                    : []
-            )
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_ECParameters) {
+        _cached_encoder_for_ECParameters = function (
+            value: ECParameters,
+            elGetter: __utils.ASN1Encoder<ECParameters>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat(
+                        [
+                            /* REQUIRED   */ _encode_ECParameters_version(
+                                value.version,
+                                __utils.BER
+                            ),
+                            /* REQUIRED   */ _encode_FieldID(
+                                value.fieldID,
+                                __utils.BER
+                            ),
+                            /* REQUIRED   */ _encode_Curve(
+                                value.curve,
+                                __utils.BER
+                            ),
+                            /* REQUIRED   */ _encode_ECPoint(
+                                value.base,
+                                __utils.BER
+                            ),
+                            /* REQUIRED   */ __utils._encodeInteger(
+                                value.order,
+                                __utils.BER
+                            ),
+                            /* IF_ABSENT  */ value.cofactor === undefined
+                                ? undefined
+                                : __utils._encodeInteger(
+                                      value.cofactor,
+                                      __utils.BER
+                                  ),
+                        ],
+                        value._unrecognizedExtensionsList
+                            ? value._unrecognizedExtensionsList
+                            : []
+                    )
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_ECParameters(value, elGetter);
+}
 
 export type Parameters =
-    | { ecParameters: ECParameters }
-    | { namedCurve: asn1.OBJECT_IDENTIFIER }
-    | { implicitlyCA: asn1.NULL };
-export const _decode_Parameters = __utils._decode_inextensible_choice<
+    | { ecParameters: ECParameters } /* CHOICE_ALT_ROOT */
+    | { namedCurve: asn1.OBJECT_IDENTIFIER } /* CHOICE_ALT_ROOT */
+    | { implicitlyCA: asn1.NULL } /* CHOICE_ALT_ROOT */;
+let _cached_decoder_for_Parameters: __utils.ASN1Decoder<
     Parameters
->({
-    "UNIVERSAL 16": ["ecParameters", _decode_ECParameters],
-    "UNIVERSAL 6": ["namedCurve", __utils._decodeObjectIdentifier],
-    "UNIVERSAL 5": ["implicitlyCA", __utils._decodeNull],
-});
-export const _encode_Parameters = __utils._encode_choice<Parameters>(
-    {
-        ecParameters: _encode_ECParameters,
-        namedCurve: __utils._encodeObjectIdentifier,
-        implicitlyCA: __utils._encodeNull,
-    },
-    __utils.BER
-);
+> | null = null;
+let _cached_encoder_for_Parameters: __utils.ASN1Encoder<
+    Parameters
+> | null = null;
+export function _decode_Parameters(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_Parameters) {
+        _cached_decoder_for_Parameters = __utils._decode_inextensible_choice<
+            Parameters
+        >({
+            "UNIVERSAL 16": ["ecParameters", _decode_ECParameters],
+            "UNIVERSAL 6": ["namedCurve", __utils._decodeObjectIdentifier],
+            "UNIVERSAL 5": ["implicitlyCA", __utils._decodeNull],
+        });
+    }
+    return _cached_decoder_for_Parameters(el);
+}
+export function _encode_Parameters(
+    value: Parameters,
+    elGetter: __utils.ASN1Encoder<Parameters>
+) {
+    if (!_cached_encoder_for_Parameters) {
+        _cached_encoder_for_Parameters = __utils._encode_choice<Parameters>(
+            {
+                ecParameters: _encode_ECParameters,
+                namedCurve: __utils._encodeObjectIdentifier,
+                implicitlyCA: __utils._encodeNull,
+            },
+            __utils.BER
+        );
+    }
+    return _cached_encoder_for_Parameters(value, elGetter);
+}
 
 // TODO: ObjectSetAssignment: CurveNames
 

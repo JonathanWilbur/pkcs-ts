@@ -24,25 +24,6 @@ import {
 import { ub_name } from "x500-ts/dist/node/UpperBounds";
 import { id_at } from "x500-ts/dist/node/UsefulDefinitions";
 import * as __utils from "./__utils";
-export {
-    ContentInfo,
-    SignerInfo,
-    _decode_ContentInfo,
-    _decode_SignerInfo,
-    _encode_ContentInfo,
-    _encode_SignerInfo,
-} from "./CryptographicMessageSyntax";
-export { PFX, _decode_PFX, _encode_PFX } from "./PKCS-12";
-export {
-    PKCS15Token,
-    _decode_PKCS15Token,
-    _encode_PKCS15Token,
-} from "./PKCS-15";
-export {
-    EncryptedPrivateKeyInfo,
-    _decode_EncryptedPrivateKeyInfo,
-    _encode_EncryptedPrivateKeyInfo,
-} from "./PKCS-8";
 
 export const pkcs_9_ub_pkcs9String: asn1.INTEGER = 255;
 
@@ -284,25 +265,44 @@ export const id_at_pseudonym: asn1.OBJECT_IDENTIFIER = new asn1.ObjectIdentifier
 );
 
 export type PKCS9String =
-    | { ia5String: asn1.IA5String }
-    | { directoryString: DirectoryString };
-export const _decode_PKCS9String = __utils._decode_inextensible_choice<
+    | { ia5String: asn1.IA5String } /* CHOICE_ALT_ROOT */
+    | { directoryString: DirectoryString } /* CHOICE_ALT_ROOT */;
+let _cached_decoder_for_PKCS9String: __utils.ASN1Decoder<
     PKCS9String
->({
-    "UNIVERSAL 22": ["ia5String", __utils._decodeIA5String],
-    "UNIVERSAL 12": ["directoryString", _decode_DirectoryString],
-    "UNIVERSAL 19": ["directoryString", _decode_DirectoryString],
-    "UNIVERSAL 20": ["directoryString", _decode_DirectoryString],
-    "UNIVERSAL 28": ["directoryString", _decode_DirectoryString],
-    "UNIVERSAL 30": ["directoryString", _decode_DirectoryString],
-});
-export const _encode_PKCS9String = __utils._encode_choice<PKCS9String>(
-    {
-        ia5String: __utils._encodeIA5String,
-        directoryString: _encode_DirectoryString,
-    },
-    __utils.BER
-);
+> | null = null;
+let _cached_encoder_for_PKCS9String: __utils.ASN1Encoder<
+    PKCS9String
+> | null = null;
+export function _decode_PKCS9String(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_PKCS9String) {
+        _cached_decoder_for_PKCS9String = __utils._decode_inextensible_choice<
+            PKCS9String
+        >({
+            "UNIVERSAL 22": ["ia5String", __utils._decodeIA5String],
+            "UNIVERSAL 20": ["directoryString", _decode_DirectoryString],
+            "UNIVERSAL 19": ["directoryString", _decode_DirectoryString],
+            "UNIVERSAL 28": ["directoryString", _decode_DirectoryString],
+            "UNIVERSAL 30": ["directoryString", _decode_DirectoryString],
+            "UNIVERSAL 12": ["directoryString", _decode_DirectoryString],
+        });
+    }
+    return _cached_decoder_for_PKCS9String(el);
+}
+export function _encode_PKCS9String(
+    value: PKCS9String,
+    elGetter: __utils.ASN1Encoder<PKCS9String>
+) {
+    if (!_cached_encoder_for_PKCS9String) {
+        _cached_encoder_for_PKCS9String = __utils._encode_choice<PKCS9String>(
+            {
+                ia5String: __utils._encodeIA5String,
+                directoryString: _encode_DirectoryString,
+            },
+            __utils.BER
+        );
+    }
+    return _cached_encoder_for_PKCS9String(value, elGetter);
+}
 
 // TODO: ObjectAssignment: pkcsEntity
 
@@ -341,32 +341,127 @@ export const _encode_PKCS9String = __utils._encode_choice<PKCS9String>(
 // TODO: ObjectAssignment: contentType
 
 export type ContentType = asn1.OBJECT_IDENTIFIER; // ObjectIdentifierType
-export const _decode_ContentType = __utils._decodeObjectIdentifier;
-export const _encode_ContentType = __utils._encodeObjectIdentifier;
+let _cached_decoder_for_ContentType: __utils.ASN1Decoder<
+    ContentType
+> | null = null;
+let _cached_encoder_for_ContentType: __utils.ASN1Encoder<
+    ContentType
+> | null = null;
+export function _decode_ContentType(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_ContentType) {
+        _cached_decoder_for_ContentType = __utils._decodeObjectIdentifier;
+    }
+    return _cached_decoder_for_ContentType(el);
+}
+export function _encode_ContentType(
+    value: ContentType,
+    elGetter: __utils.ASN1Encoder<ContentType>
+) {
+    if (!_cached_encoder_for_ContentType) {
+        _cached_encoder_for_ContentType = __utils._encodeObjectIdentifier;
+    }
+    return _cached_encoder_for_ContentType(value, elGetter);
+}
 
 // TODO: ObjectAssignment: messageDigest
 
 export type MessageDigest = asn1.OCTET_STRING; // OctetStringType
-export const _decode_MessageDigest = __utils._decodeOctetString;
-export const _encode_MessageDigest = __utils._encodeOctetString;
+let _cached_decoder_for_MessageDigest: __utils.ASN1Decoder<
+    MessageDigest
+> | null = null;
+let _cached_encoder_for_MessageDigest: __utils.ASN1Encoder<
+    MessageDigest
+> | null = null;
+export function _decode_MessageDigest(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_MessageDigest) {
+        _cached_decoder_for_MessageDigest = __utils._decodeOctetString;
+    }
+    return _cached_decoder_for_MessageDigest(el);
+}
+export function _encode_MessageDigest(
+    value: MessageDigest,
+    elGetter: __utils.ASN1Encoder<MessageDigest>
+) {
+    if (!_cached_encoder_for_MessageDigest) {
+        _cached_encoder_for_MessageDigest = __utils._encodeOctetString;
+    }
+    return _cached_encoder_for_MessageDigest(value, elGetter);
+}
 
 // TODO: ObjectAssignment: signingTime
 
 export type SigningTime = Time; // DefinedType
-export const _decode_SigningTime = _decode_Time;
-export const _encode_SigningTime = _encode_Time;
+let _cached_decoder_for_SigningTime: __utils.ASN1Decoder<
+    SigningTime
+> | null = null;
+let _cached_encoder_for_SigningTime: __utils.ASN1Encoder<
+    SigningTime
+> | null = null;
+export function _decode_SigningTime(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_SigningTime) {
+        _cached_decoder_for_SigningTime = _decode_Time;
+    }
+    return _cached_decoder_for_SigningTime(el);
+}
+export function _encode_SigningTime(
+    value: SigningTime,
+    elGetter: __utils.ASN1Encoder<SigningTime>
+) {
+    if (!_cached_encoder_for_SigningTime) {
+        _cached_encoder_for_SigningTime = _encode_Time;
+    }
+    return _cached_encoder_for_SigningTime(value, elGetter);
+}
 
 // TODO: ObjectAssignment: randomNonce
 
 export type RandomNonce = asn1.OCTET_STRING; // OctetStringType
-export const _decode_RandomNonce = __utils._decodeOctetString;
-export const _encode_RandomNonce = __utils._encodeOctetString;
+let _cached_decoder_for_RandomNonce: __utils.ASN1Decoder<
+    RandomNonce
+> | null = null;
+let _cached_encoder_for_RandomNonce: __utils.ASN1Encoder<
+    RandomNonce
+> | null = null;
+export function _decode_RandomNonce(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_RandomNonce) {
+        _cached_decoder_for_RandomNonce = __utils._decodeOctetString;
+    }
+    return _cached_decoder_for_RandomNonce(el);
+}
+export function _encode_RandomNonce(
+    value: RandomNonce,
+    elGetter: __utils.ASN1Encoder<RandomNonce>
+) {
+    if (!_cached_encoder_for_RandomNonce) {
+        _cached_encoder_for_RandomNonce = __utils._encodeOctetString;
+    }
+    return _cached_encoder_for_RandomNonce(value, elGetter);
+}
 
 // TODO: ObjectAssignment: sequenceNumber
 
 export type SequenceNumber = asn1.INTEGER;
-export const _decode_SequenceNumber = __utils._decodeInteger;
-export const _encode_SequenceNumber = __utils._encodeInteger;
+let _cached_decoder_for_SequenceNumber: __utils.ASN1Decoder<
+    SequenceNumber
+> | null = null;
+let _cached_encoder_for_SequenceNumber: __utils.ASN1Encoder<
+    SequenceNumber
+> | null = null;
+export function _decode_SequenceNumber(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_SequenceNumber) {
+        _cached_decoder_for_SequenceNumber = __utils._decodeInteger;
+    }
+    return _cached_decoder_for_SequenceNumber(el);
+}
+export function _encode_SequenceNumber(
+    value: SequenceNumber,
+    elGetter: __utils.ASN1Encoder<SequenceNumber>
+) {
+    if (!_cached_encoder_for_SequenceNumber) {
+        _cached_encoder_for_SequenceNumber = __utils._encodeInteger;
+    }
+    return _cached_encoder_for_SequenceNumber(value, elGetter);
+}
 
 // TODO: ObjectAssignment: counterSignature
 
@@ -375,8 +470,27 @@ export const _encode_SequenceNumber = __utils._encodeInteger;
 // TODO: ObjectAssignment: extensionRequest
 
 export type ExtensionRequest = Extensions; // DefinedType
-export const _decode_ExtensionRequest = _decode_Extensions;
-export const _encode_ExtensionRequest = _encode_Extensions;
+let _cached_decoder_for_ExtensionRequest: __utils.ASN1Decoder<
+    ExtensionRequest
+> | null = null;
+let _cached_encoder_for_ExtensionRequest: __utils.ASN1Encoder<
+    ExtensionRequest
+> | null = null;
+export function _decode_ExtensionRequest(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_ExtensionRequest) {
+        _cached_decoder_for_ExtensionRequest = _decode_Extensions;
+    }
+    return _cached_decoder_for_ExtensionRequest(el);
+}
+export function _encode_ExtensionRequest(
+    value: ExtensionRequest,
+    elGetter: __utils.ASN1Encoder<ExtensionRequest>
+) {
+    if (!_cached_encoder_for_ExtensionRequest) {
+        _cached_encoder_for_ExtensionRequest = _encode_Extensions;
+    }
+    return _cached_encoder_for_ExtensionRequest(value, elGetter);
+}
 
 // TODO: ObjectAssignment: extendedCertificateAttributes
 
@@ -412,58 +526,95 @@ export const _root_component_type_list_1_spec_for_SMIMECapability: __utils.Compo
 ];
 export const _root_component_type_list_2_spec_for_SMIMECapability: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_SMIMECapability: __utils.ComponentSpec[] = [];
-
-export const _decode_SMIMECapability = function (
-    el: asn1.ASN1Element
-): SMIMECapability {
-    const sequence: asn1.ASN1Element[] = el.sequence;
-    if (sequence.length < 2) {
-        throw new asn1.ASN1ConstructionError(
-            "SMIMECapability contained only " +
-                sequence.length.toString() +
-                " elements."
-        );
+let _cached_decoder_for_SMIMECapability: __utils.ASN1Decoder<
+    SMIMECapability
+> | null = null;
+let _cached_encoder_for_SMIMECapability: __utils.ASN1Encoder<
+    SMIMECapability
+> | null = null;
+export function _decode_SMIMECapability(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_SMIMECapability) {
+        _cached_decoder_for_SMIMECapability = function (
+            el: asn1.ASN1Element
+        ): SMIMECapability {
+            const sequence: asn1.ASN1Element[] = el.sequence;
+            if (sequence.length < 2) {
+                throw new asn1.ASN1ConstructionError(
+                    "SMIMECapability contained only " +
+                        sequence.length.toString() +
+                        " elements."
+                );
+            }
+            // TODO: Validate tags.
+            sequence[0].name = "algorithm";
+            sequence[1].name = "parameters";
+            let algorithm!: asn1.OBJECT_IDENTIFIER;
+            let parameters!: asn1.ASN1Element;
+            algorithm = __utils._decodeObjectIdentifier(sequence[0]);
+            parameters = __utils._decodeAny(sequence[1]);
+            // TODO: Validate values.
+            return new SMIMECapability(algorithm, parameters);
+        };
     }
-    // TODO: Validate tags.
-    sequence[0].name = "algorithm";
-    sequence[1].name = "parameters";
-    let algorithm!: asn1.OBJECT_IDENTIFIER;
-    let parameters!: asn1.ASN1Element;
-    algorithm = __utils._decodeObjectIdentifier(sequence[0]);
-    parameters = __utils._decodeAny(sequence[1]);
-    // TODO: Validate values.
-    return new SMIMECapability(algorithm, parameters);
-};
-export const _encode_SMIMECapability = function (
+    return _cached_decoder_for_SMIMECapability(el);
+}
+export function _encode_SMIMECapability(
     value: SMIMECapability,
     elGetter: __utils.ASN1Encoder<SMIMECapability>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat([
-                /* REQUIRED   */ __utils._encodeObjectIdentifier(
-                    value.algorithm,
-                    __utils.BER
-                ),
-                /* REQUIRED   */ __utils._encodeAny(
-                    value.parameters,
-                    __utils.BER
-                ),
-            ])
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_SMIMECapability) {
+        _cached_encoder_for_SMIMECapability = function (
+            value: SMIMECapability,
+            elGetter: __utils.ASN1Encoder<SMIMECapability>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat([
+                        /* REQUIRED   */ __utils._encodeObjectIdentifier(
+                            value.algorithm,
+                            __utils.BER
+                        ),
+                        /* REQUIRED   */ __utils._encodeAny(
+                            value.parameters,
+                            __utils.BER
+                        ),
+                    ])
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_SMIMECapability(value, elGetter);
+}
 
 export type SMIMECapabilities = SMIMECapability[]; // SequenceOfType
-export const _decode_SMIMECapabilities = __utils._decodeSequenceOf<
-    SMIMECapability
->(() => _decode_SMIMECapability);
-export const _encode_SMIMECapabilities = __utils._encodeSequenceOf<
-    SMIMECapability
->(() => _encode_SMIMECapability, __utils.BER);
+let _cached_decoder_for_SMIMECapabilities: __utils.ASN1Decoder<
+    SMIMECapabilities
+> | null = null;
+let _cached_encoder_for_SMIMECapabilities: __utils.ASN1Encoder<
+    SMIMECapabilities
+> | null = null;
+export function _decode_SMIMECapabilities(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_SMIMECapabilities) {
+        _cached_decoder_for_SMIMECapabilities = __utils._decodeSequenceOf<
+            SMIMECapability
+        >(() => _decode_SMIMECapability);
+    }
+    return _cached_decoder_for_SMIMECapabilities(el);
+}
+export function _encode_SMIMECapabilities(
+    value: SMIMECapabilities,
+    elGetter: __utils.ASN1Encoder<SMIMECapabilities>
+) {
+    if (!_cached_encoder_for_SMIMECapabilities) {
+        _cached_encoder_for_SMIMECapabilities = __utils._encodeSequenceOf<
+            SMIMECapability
+        >(() => _encode_SMIMECapability, __utils.BER);
+    }
+    return _cached_encoder_for_SMIMECapabilities(value, elGetter);
+}
 
 // TODO: ObjectSetAssignment: SMIMEv3Algorithms
 

@@ -10,35 +10,30 @@
 */
 import * as asn1 from "asn1-ts";
 import * as __utils from "./__utils";
+
 import {
     AlgorithmIdentifier,
     _decode_AlgorithmIdentifier,
     _encode_AlgorithmIdentifier
 } from "x500-ts/dist/node/AuthenticationFramework";
-export {
-    GeneralName,
-    KeyIdentifier,
-    _decode_GeneralName,
-    _encode_GeneralName,
-    _decode_KeyIdentifier,
-    _encode_KeyIdentifier
-} from "x500-ts/dist/node/CertificateExtensions";
+
 import {
     CertId,
-    _encode_CertId,
     _decode_CertId,
+    _encode_CertId,
 } from "./PKIXCRMF-2009";
 
 export class OOBCertHash {
     constructor (
-        readonly hashAlg: AlgorithmIdentifier | undefined,
-        readonly certId: CertId | undefined,
+        readonly hashAlg: asn1.OPTIONAL<AlgorithmIdentifier>,
+        readonly certId: asn1.OPTIONAL<CertId>,
         readonly hashVal: asn1.BIT_STRING
     ) {}
+
 }
 export const _root_component_type_list_1_spec_for_OOBCertHash: __utils.ComponentSpec[] = [
     new __utils.ComponentSpec("hashAlg", true, __utils.hasTag(asn1.ASN1TagClass.context, 0), undefined, undefined),
-    new __utils.ComponentSpec("certId", true, __utils.hasTag(asn1.ASN1TagClass.context, 1), undefined, undefined),
+    new __utils.ComponentSpec("certId", true, __utils.hasTag(asn1.ASN1TagClass.universal, 16), undefined, undefined),
     new __utils.ComponentSpec("hashVal", false, __utils.hasTag(asn1.ASN1TagClass.universal, 3), undefined, undefined)
 ];
 export const _root_component_type_list_2_spec_for_OOBCertHash: __utils.ComponentSpec[] = [
@@ -47,8 +42,10 @@ export const _root_component_type_list_2_spec_for_OOBCertHash: __utils.Component
 export const _extension_additions_list_spec_for_OOBCertHash: __utils.ComponentSpec[] = [
 
 ];
-
-export const _decode_OOBCertHash = function (el: asn1.ASN1Element): OOBCertHash {
+let _cached_decoder_for_OOBCertHash: __utils.ASN1Decoder<OOBCertHash> | null = null;
+let _cached_encoder_for_OOBCertHash: __utils.ASN1Encoder<OOBCertHash> | null = null;
+export function _decode_OOBCertHash (el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_OOBCertHash) { _cached_decoder_for_OOBCertHash = function (el: asn1.ASN1Element): OOBCertHash {
     /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
     let hashAlg: asn1.OPTIONAL<AlgorithmIdentifier>;
     let certId: asn1.OPTIONAL<CertId>;
@@ -72,8 +69,11 @@ export const _decode_OOBCertHash = function (el: asn1.ASN1Element): OOBCertHash 
         certId,
         hashVal
     );
-};
-export const _encode_OOBCertHash = function (value: OOBCertHash, elGetter: __utils.ASN1Encoder<OOBCertHash>): asn1.ASN1Element {
+}; }
+    return _cached_decoder_for_OOBCertHash(el);
+}
+export function _encode_OOBCertHash (value: OOBCertHash, elGetter: __utils.ASN1Encoder<OOBCertHash>) {
+    if (!_cached_encoder_for_OOBCertHash) { _cached_encoder_for_OOBCertHash = function (value: OOBCertHash, elGetter: __utils.ASN1Encoder<OOBCertHash>): asn1.ASN1Element {
     return __utils._encodeSequence(([] as (asn1.ASN1Element | undefined)[]).concat(
         [
             /* IF_ABSENT  */ ((value.hashAlg === undefined) ? undefined : __utils._encode_explicit(asn1.ASN1TagClass.context, 0, () => _encode_AlgorithmIdentifier, __utils.BER)(value.hashAlg, __utils.BER)),
@@ -81,6 +81,8 @@ export const _encode_OOBCertHash = function (value: OOBCertHash, elGetter: __uti
             /* REQUIRED   */ __utils._encodeBitString(value.hashVal, __utils.BER)
         ],
     ).filter((c: (asn1.ASN1Element | undefined)): boolean => (!!c)) as asn1.ASN1Element[], __utils.BER);
-};
+}; }
+    return _cached_encoder_for_OOBCertHash(value, elGetter);
+}
 
 /* END_MODULE PKIXCMP-2009 */

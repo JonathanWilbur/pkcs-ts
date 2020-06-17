@@ -36,52 +36,85 @@ export const _root_component_type_list_1_spec_for_FieldID: __utils.ComponentSpec
 ];
 export const _root_component_type_list_2_spec_for_FieldID: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_FieldID: __utils.ComponentSpec[] = [];
-
-export const _decode_FieldID = function (el: asn1.ASN1Element): FieldID {
-    const sequence: asn1.ASN1Element[] = el.sequence;
-    if (sequence.length < 2) {
-        throw new asn1.ASN1ConstructionError(
-            "FieldID contained only " +
-                sequence.length.toString() +
-                " elements."
-        );
+let _cached_decoder_for_FieldID: __utils.ASN1Decoder<FieldID> | null = null;
+let _cached_encoder_for_FieldID: __utils.ASN1Encoder<FieldID> | null = null;
+export function _decode_FieldID(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_FieldID) {
+        _cached_decoder_for_FieldID = function (el: asn1.ASN1Element): FieldID {
+            const sequence: asn1.ASN1Element[] = el.sequence;
+            if (sequence.length < 2) {
+                throw new asn1.ASN1ConstructionError(
+                    "FieldID contained only " +
+                        sequence.length.toString() +
+                        " elements."
+                );
+            }
+            // TODO: Validate tags.
+            sequence[0].name = "fieldType";
+            sequence[1].name = "parameters";
+            let fieldType!: asn1.OBJECT_IDENTIFIER;
+            let parameters!: asn1.ASN1Element;
+            fieldType = __utils._decodeObjectIdentifier(sequence[0]);
+            parameters = __utils._decodeAny(sequence[1]);
+            // TODO: Validate values.
+            return new FieldID(fieldType, parameters);
+        };
     }
-    // TODO: Validate tags.
-    sequence[0].name = "fieldType";
-    sequence[1].name = "parameters";
-    let fieldType!: asn1.OBJECT_IDENTIFIER;
-    let parameters!: asn1.ASN1Element;
-    fieldType = __utils._decodeObjectIdentifier(sequence[0]);
-    parameters = __utils._decodeAny(sequence[1]);
-    // TODO: Validate values.
-    return new FieldID(fieldType, parameters);
-};
-export const _encode_FieldID = function (
+    return _cached_decoder_for_FieldID(el);
+}
+export function _encode_FieldID(
     value: FieldID,
     elGetter: __utils.ASN1Encoder<FieldID>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat([
-                /* REQUIRED   */ __utils._encodeObjectIdentifier(
-                    value.fieldType,
-                    __utils.BER
-                ),
-                /* REQUIRED   */ __utils._encodeAny(
-                    value.parameters,
-                    __utils.BER
-                ),
-            ])
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_FieldID) {
+        _cached_encoder_for_FieldID = function (
+            value: FieldID,
+            elGetter: __utils.ASN1Encoder<FieldID>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat([
+                        /* REQUIRED   */ __utils._encodeObjectIdentifier(
+                            value.fieldType,
+                            __utils.BER
+                        ),
+                        /* REQUIRED   */ __utils._encodeAny(
+                            value.parameters,
+                            __utils.BER
+                        ),
+                    ])
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_FieldID(value, elGetter);
+}
 
 export type FiniteFields = FieldID; // DefinedType
-export const _decode_FiniteFields = _decode_FieldID;
-export const _encode_FiniteFields = _encode_FieldID;
+let _cached_decoder_for_FiniteFields: __utils.ASN1Decoder<
+    FiniteFields
+> | null = null;
+let _cached_encoder_for_FiniteFields: __utils.ASN1Encoder<
+    FiniteFields
+> | null = null;
+export function _decode_FiniteFields(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_FiniteFields) {
+        _cached_decoder_for_FiniteFields = _decode_FieldID;
+    }
+    return _cached_decoder_for_FiniteFields(el);
+}
+export function _encode_FiniteFields(
+    value: FiniteFields,
+    elGetter: __utils.ASN1Encoder<FiniteFields>
+) {
+    if (!_cached_encoder_for_FiniteFields) {
+        _cached_encoder_for_FiniteFields = _encode_FieldID;
+    }
+    return _cached_encoder_for_FiniteFields(value, elGetter);
+}
 
 // TODO: ObjectSetAssignment: FieldTypes
 
@@ -109,58 +142,76 @@ export const _root_component_type_list_1_spec_for_ValidationParms: __utils.Compo
 ];
 export const _root_component_type_list_2_spec_for_ValidationParms: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_ValidationParms: __utils.ComponentSpec[] = [];
-
-export const _decode_ValidationParms = function (
-    el: asn1.ASN1Element
-): ValidationParms {
-    const sequence: asn1.ASN1Element[] = el.sequence;
-    if (sequence.length < 2) {
-        throw new asn1.ASN1ConstructionError(
-            "ValidationParms contained only " +
-                sequence.length.toString() +
-                " elements."
-        );
+let _cached_decoder_for_ValidationParms: __utils.ASN1Decoder<
+    ValidationParms
+> | null = null;
+let _cached_encoder_for_ValidationParms: __utils.ASN1Encoder<
+    ValidationParms
+> | null = null;
+export function _decode_ValidationParms(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_ValidationParms) {
+        _cached_decoder_for_ValidationParms = function (
+            el: asn1.ASN1Element
+        ): ValidationParms {
+            const sequence: asn1.ASN1Element[] = el.sequence;
+            if (sequence.length < 2) {
+                throw new asn1.ASN1ConstructionError(
+                    "ValidationParms contained only " +
+                        sequence.length.toString() +
+                        " elements."
+                );
+            }
+            // TODO: Validate tags.
+            sequence[0].name = "seed";
+            sequence[1].name = "pGenCounter";
+            let seed!: asn1.BIT_STRING;
+            let pGenCounter!: asn1.INTEGER;
+            seed = __utils._decodeBitString(sequence[0]);
+            pGenCounter = __utils._decodeInteger(sequence[1]);
+            // TODO: Validate values.
+            return new ValidationParms(seed, pGenCounter);
+        };
     }
-    // TODO: Validate tags.
-    sequence[0].name = "seed";
-    sequence[1].name = "pGenCounter";
-    let seed!: asn1.BIT_STRING;
-    let pGenCounter!: asn1.INTEGER;
-    seed = __utils._decodeBitString(sequence[0]);
-    pGenCounter = __utils._decodeInteger(sequence[1]);
-    // TODO: Validate values.
-    return new ValidationParms(seed, pGenCounter);
-};
-export const _encode_ValidationParms = function (
+    return _cached_decoder_for_ValidationParms(el);
+}
+export function _encode_ValidationParms(
     value: ValidationParms,
     elGetter: __utils.ASN1Encoder<ValidationParms>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat([
-                /* REQUIRED   */ __utils._encodeBitString(
-                    value.seed,
-                    __utils.BER
-                ),
-                /* REQUIRED   */ __utils._encodeInteger(
-                    value.pGenCounter,
-                    __utils.BER
-                ),
-            ])
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_ValidationParms) {
+        _cached_encoder_for_ValidationParms = function (
+            value: ValidationParms,
+            elGetter: __utils.ASN1Encoder<ValidationParms>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat([
+                        /* REQUIRED   */ __utils._encodeBitString(
+                            value.seed,
+                            __utils.BER
+                        ),
+                        /* REQUIRED   */ __utils._encodeInteger(
+                            value.pGenCounter,
+                            __utils.BER
+                        ),
+                    ])
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_ValidationParms(value, elGetter);
+}
 
 export class DomainParameters {
     constructor(
         readonly p: asn1.INTEGER,
         readonly g: asn1.INTEGER,
         readonly q: asn1.INTEGER,
-        readonly j: asn1.INTEGER | undefined,
-        readonly validationParms: ValidationParms | undefined
+        readonly j: asn1.OPTIONAL<asn1.INTEGER>,
+        readonly validationParms: asn1.OPTIONAL<ValidationParms>
     ) {}
 }
 export const _root_component_type_list_1_spec_for_DomainParameters: __utils.ComponentSpec[] = [
@@ -202,85 +253,112 @@ export const _root_component_type_list_1_spec_for_DomainParameters: __utils.Comp
 ];
 export const _root_component_type_list_2_spec_for_DomainParameters: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_DomainParameters: __utils.ComponentSpec[] = [];
-
-export const _decode_DomainParameters = function (
-    el: asn1.ASN1Element
-): DomainParameters {
-    /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-    let p!: asn1.INTEGER;
-    let g!: asn1.INTEGER;
-    let q!: asn1.INTEGER;
-    let j: asn1.OPTIONAL<asn1.INTEGER>;
-    let validationParms: asn1.OPTIONAL<ValidationParms>;
-    /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-    /* START_OF_CALLBACKS_MAP */
-    const callbacks: __utils.DecodingMap = {
-        p: (_el: asn1.ASN1Element): void => {
-            p = __utils._decodeInteger(_el);
-        },
-        g: (_el: asn1.ASN1Element): void => {
-            g = __utils._decodeInteger(_el);
-        },
-        q: (_el: asn1.ASN1Element): void => {
-            q = __utils._decodeInteger(_el);
-        },
-        j: (_el: asn1.ASN1Element): void => {
-            j = __utils._decodeInteger(_el);
-        },
-        validationParms: (_el: asn1.ASN1Element): void => {
-            validationParms = _decode_ValidationParms(_el);
-        },
-    };
-    /* END_OF_CALLBACKS_MAP */
-    __utils._parse_sequence(
-        el,
-        callbacks,
-        _root_component_type_list_1_spec_for_DomainParameters,
-        _extension_additions_list_spec_for_DomainParameters,
-        _root_component_type_list_2_spec_for_DomainParameters,
-        undefined
-    );
-    return new DomainParameters /* SEQUENCE_CONSTRUCTOR_CALL */(
-        p,
-        g,
-        q,
-        j,
-        validationParms
-    );
-};
-export const _encode_DomainParameters = function (
+let _cached_decoder_for_DomainParameters: __utils.ASN1Decoder<
+    DomainParameters
+> | null = null;
+let _cached_encoder_for_DomainParameters: __utils.ASN1Encoder<
+    DomainParameters
+> | null = null;
+export function _decode_DomainParameters(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_DomainParameters) {
+        _cached_decoder_for_DomainParameters = function (
+            el: asn1.ASN1Element
+        ): DomainParameters {
+            /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
+            let p!: asn1.INTEGER;
+            let g!: asn1.INTEGER;
+            let q!: asn1.INTEGER;
+            let j: asn1.OPTIONAL<asn1.INTEGER>;
+            let validationParms: asn1.OPTIONAL<ValidationParms>;
+            /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
+            /* START_OF_CALLBACKS_MAP */
+            const callbacks: __utils.DecodingMap = {
+                p: (_el: asn1.ASN1Element): void => {
+                    p = __utils._decodeInteger(_el);
+                },
+                g: (_el: asn1.ASN1Element): void => {
+                    g = __utils._decodeInteger(_el);
+                },
+                q: (_el: asn1.ASN1Element): void => {
+                    q = __utils._decodeInteger(_el);
+                },
+                j: (_el: asn1.ASN1Element): void => {
+                    j = __utils._decodeInteger(_el);
+                },
+                validationParms: (_el: asn1.ASN1Element): void => {
+                    validationParms = _decode_ValidationParms(_el);
+                },
+            };
+            /* END_OF_CALLBACKS_MAP */
+            __utils._parse_sequence(
+                el,
+                callbacks,
+                _root_component_type_list_1_spec_for_DomainParameters,
+                _extension_additions_list_spec_for_DomainParameters,
+                _root_component_type_list_2_spec_for_DomainParameters,
+                undefined
+            );
+            return new DomainParameters /* SEQUENCE_CONSTRUCTOR_CALL */(
+                p,
+                g,
+                q,
+                j,
+                validationParms
+            );
+        };
+    }
+    return _cached_decoder_for_DomainParameters(el);
+}
+export function _encode_DomainParameters(
     value: DomainParameters,
     elGetter: __utils.ASN1Encoder<DomainParameters>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat([
-                /* REQUIRED   */ __utils._encodeInteger(value.p, __utils.BER),
-                /* REQUIRED   */ __utils._encodeInteger(value.g, __utils.BER),
-                /* REQUIRED   */ __utils._encodeInteger(value.q, __utils.BER),
-                /* IF_ABSENT  */ value.j === undefined
-                    ? undefined
-                    : __utils._encodeInteger(value.j, __utils.BER),
-                /* IF_ABSENT  */ value.validationParms === undefined
-                    ? undefined
-                    : _encode_ValidationParms(
-                          value.validationParms,
-                          __utils.BER
-                      ),
-            ])
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_DomainParameters) {
+        _cached_encoder_for_DomainParameters = function (
+            value: DomainParameters,
+            elGetter: __utils.ASN1Encoder<DomainParameters>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat([
+                        /* REQUIRED   */ __utils._encodeInteger(
+                            value.p,
+                            __utils.BER
+                        ),
+                        /* REQUIRED   */ __utils._encodeInteger(
+                            value.g,
+                            __utils.BER
+                        ),
+                        /* REQUIRED   */ __utils._encodeInteger(
+                            value.q,
+                            __utils.BER
+                        ),
+                        /* IF_ABSENT  */ value.j === undefined
+                            ? undefined
+                            : __utils._encodeInteger(value.j, __utils.BER),
+                        /* IF_ABSENT  */ value.validationParms === undefined
+                            ? undefined
+                            : _encode_ValidationParms(
+                                  value.validationParms,
+                                  __utils.BER
+                              ),
+                    ])
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_DomainParameters(value, elGetter);
+}
 
 // TODO: ObjectClassAssignment: ALGORITHM-ID
 
 export class AlgorithmIdentifier {
     constructor(
         readonly algorithm: asn1.OBJECT_IDENTIFIER,
-        readonly parameters: asn1.ASN1Element | undefined
+        readonly parameters: asn1.OPTIONAL<asn1.ASN1Element>
     ) {}
 }
 export const _root_component_type_list_1_spec_for_AlgorithmIdentifier: __utils.ComponentSpec[] = [
@@ -301,58 +379,76 @@ export const _root_component_type_list_1_spec_for_AlgorithmIdentifier: __utils.C
 ];
 export const _root_component_type_list_2_spec_for_AlgorithmIdentifier: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_AlgorithmIdentifier: __utils.ComponentSpec[] = [];
-
-export const _decode_AlgorithmIdentifier = function (
-    el: asn1.ASN1Element
-): AlgorithmIdentifier {
-    /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-    let algorithm!: asn1.OBJECT_IDENTIFIER;
-    let parameters: asn1.OPTIONAL<asn1.ASN1Element>;
-    /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-    /* START_OF_CALLBACKS_MAP */
-    const callbacks: __utils.DecodingMap = {
-        algorithm: (_el: asn1.ASN1Element): void => {
-            algorithm = __utils._decodeObjectIdentifier(_el);
-        },
-        parameters: (_el: asn1.ASN1Element): void => {
-            parameters = __utils._decodeAny(_el);
-        },
-    };
-    /* END_OF_CALLBACKS_MAP */
-    __utils._parse_sequence(
-        el,
-        callbacks,
-        _root_component_type_list_1_spec_for_AlgorithmIdentifier,
-        _extension_additions_list_spec_for_AlgorithmIdentifier,
-        _root_component_type_list_2_spec_for_AlgorithmIdentifier,
-        undefined
-    );
-    return new AlgorithmIdentifier /* SEQUENCE_CONSTRUCTOR_CALL */(
-        algorithm,
-        parameters
-    );
-};
-export const _encode_AlgorithmIdentifier = function (
+let _cached_decoder_for_AlgorithmIdentifier: __utils.ASN1Decoder<
+    AlgorithmIdentifier
+> | null = null;
+let _cached_encoder_for_AlgorithmIdentifier: __utils.ASN1Encoder<
+    AlgorithmIdentifier
+> | null = null;
+export function _decode_AlgorithmIdentifier(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_AlgorithmIdentifier) {
+        _cached_decoder_for_AlgorithmIdentifier = function (
+            el: asn1.ASN1Element
+        ): AlgorithmIdentifier {
+            /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
+            let algorithm!: asn1.OBJECT_IDENTIFIER;
+            let parameters: asn1.OPTIONAL<asn1.ASN1Element>;
+            /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
+            /* START_OF_CALLBACKS_MAP */
+            const callbacks: __utils.DecodingMap = {
+                algorithm: (_el: asn1.ASN1Element): void => {
+                    algorithm = __utils._decodeObjectIdentifier(_el);
+                },
+                parameters: (_el: asn1.ASN1Element): void => {
+                    parameters = __utils._decodeAny(_el);
+                },
+            };
+            /* END_OF_CALLBACKS_MAP */
+            __utils._parse_sequence(
+                el,
+                callbacks,
+                _root_component_type_list_1_spec_for_AlgorithmIdentifier,
+                _extension_additions_list_spec_for_AlgorithmIdentifier,
+                _root_component_type_list_2_spec_for_AlgorithmIdentifier,
+                undefined
+            );
+            return new AlgorithmIdentifier /* SEQUENCE_CONSTRUCTOR_CALL */(
+                algorithm,
+                parameters
+            );
+        };
+    }
+    return _cached_decoder_for_AlgorithmIdentifier(el);
+}
+export function _encode_AlgorithmIdentifier(
     value: AlgorithmIdentifier,
     elGetter: __utils.ASN1Encoder<AlgorithmIdentifier>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat([
-                /* REQUIRED   */ __utils._encodeObjectIdentifier(
-                    value.algorithm,
-                    __utils.BER
-                ),
-                /* IF_ABSENT  */ value.parameters === undefined
-                    ? undefined
-                    : __utils._encodeAny(value.parameters, __utils.BER),
-            ])
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_AlgorithmIdentifier) {
+        _cached_encoder_for_AlgorithmIdentifier = function (
+            value: AlgorithmIdentifier,
+            elGetter: __utils.ASN1Encoder<AlgorithmIdentifier>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat([
+                        /* REQUIRED   */ __utils._encodeObjectIdentifier(
+                            value.algorithm,
+                            __utils.BER
+                        ),
+                        /* IF_ABSENT  */ value.parameters === undefined
+                            ? undefined
+                            : __utils._encodeAny(value.parameters, __utils.BER),
+                    ])
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_AlgorithmIdentifier(value, elGetter);
+}
 
 export class SubjectPublicKeyInfo {
     constructor(
@@ -378,65 +474,123 @@ export const _root_component_type_list_1_spec_for_SubjectPublicKeyInfo: __utils.
 ];
 export const _root_component_type_list_2_spec_for_SubjectPublicKeyInfo: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_SubjectPublicKeyInfo: __utils.ComponentSpec[] = [];
-
-export const _decode_SubjectPublicKeyInfo = function (
-    el: asn1.ASN1Element
-): SubjectPublicKeyInfo {
-    const sequence: asn1.ASN1Element[] = el.sequence;
-    if (sequence.length < 2) {
-        throw new asn1.ASN1ConstructionError(
-            "SubjectPublicKeyInfo contained only " +
-                sequence.length.toString() +
-                " elements."
-        );
+let _cached_decoder_for_SubjectPublicKeyInfo: __utils.ASN1Decoder<
+    SubjectPublicKeyInfo
+> | null = null;
+let _cached_encoder_for_SubjectPublicKeyInfo: __utils.ASN1Encoder<
+    SubjectPublicKeyInfo
+> | null = null;
+export function _decode_SubjectPublicKeyInfo(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_SubjectPublicKeyInfo) {
+        _cached_decoder_for_SubjectPublicKeyInfo = function (
+            el: asn1.ASN1Element
+        ): SubjectPublicKeyInfo {
+            const sequence: asn1.ASN1Element[] = el.sequence;
+            if (sequence.length < 2) {
+                throw new asn1.ASN1ConstructionError(
+                    "SubjectPublicKeyInfo contained only " +
+                        sequence.length.toString() +
+                        " elements."
+                );
+            }
+            // TODO: Validate tags.
+            sequence[0].name = "algorithm";
+            sequence[1].name = "subjectPublicKey";
+            let algorithm!: AlgorithmIdentifier;
+            let subjectPublicKey!: asn1.BIT_STRING;
+            algorithm = _decode_AlgorithmIdentifier(sequence[0]);
+            subjectPublicKey = __utils._decodeBitString(sequence[1]);
+            // TODO: Validate values.
+            return new SubjectPublicKeyInfo(algorithm, subjectPublicKey);
+        };
     }
-    // TODO: Validate tags.
-    sequence[0].name = "algorithm";
-    sequence[1].name = "subjectPublicKey";
-    let algorithm!: AlgorithmIdentifier;
-    let subjectPublicKey!: asn1.BIT_STRING;
-    algorithm = _decode_AlgorithmIdentifier(sequence[0]);
-    subjectPublicKey = __utils._decodeBitString(sequence[1]);
-    // TODO: Validate values.
-    return new SubjectPublicKeyInfo(algorithm, subjectPublicKey);
-};
-export const _encode_SubjectPublicKeyInfo = function (
+    return _cached_decoder_for_SubjectPublicKeyInfo(el);
+}
+export function _encode_SubjectPublicKeyInfo(
     value: SubjectPublicKeyInfo,
     elGetter: __utils.ASN1Encoder<SubjectPublicKeyInfo>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat([
-                /* REQUIRED   */ _encode_AlgorithmIdentifier(
-                    value.algorithm,
-                    __utils.BER
-                ),
-                /* REQUIRED   */ __utils._encodeBitString(
-                    value.subjectPublicKey,
-                    __utils.BER
-                ),
-            ])
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_SubjectPublicKeyInfo) {
+        _cached_encoder_for_SubjectPublicKeyInfo = function (
+            value: SubjectPublicKeyInfo,
+            elGetter: __utils.ASN1Encoder<SubjectPublicKeyInfo>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat([
+                        /* REQUIRED   */ _encode_AlgorithmIdentifier(
+                            value.algorithm,
+                            __utils.BER
+                        ),
+                        /* REQUIRED   */ __utils._encodeBitString(
+                            value.subjectPublicKey,
+                            __utils.BER
+                        ),
+                    ])
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_SubjectPublicKeyInfo(value, elGetter);
+}
 
 // TODO: ObjectSetAssignment: DHPublicNumbers
 
 export type DiffieHellmanPublicNumber = asn1.INTEGER;
-export const _decode_DiffieHellmanPublicNumber = __utils._decodeInteger;
-export const _encode_DiffieHellmanPublicNumber = __utils._encodeInteger;
+let _cached_decoder_for_DiffieHellmanPublicNumber: __utils.ASN1Decoder<
+    DiffieHellmanPublicNumber
+> | null = null;
+let _cached_encoder_for_DiffieHellmanPublicNumber: __utils.ASN1Encoder<
+    DiffieHellmanPublicNumber
+> | null = null;
+export function _decode_DiffieHellmanPublicNumber(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_DiffieHellmanPublicNumber) {
+        _cached_decoder_for_DiffieHellmanPublicNumber = __utils._decodeInteger;
+    }
+    return _cached_decoder_for_DiffieHellmanPublicNumber(el);
+}
+export function _encode_DiffieHellmanPublicNumber(
+    value: DiffieHellmanPublicNumber,
+    elGetter: __utils.ASN1Encoder<DiffieHellmanPublicNumber>
+) {
+    if (!_cached_encoder_for_DiffieHellmanPublicNumber) {
+        _cached_encoder_for_DiffieHellmanPublicNumber = __utils._encodeInteger;
+    }
+    return _cached_encoder_for_DiffieHellmanPublicNumber(value, elGetter);
+}
 
 export type KeyDerivationMethod = asn1.OBJECT_IDENTIFIER; // ObjectIdentifierType
-export const _decode_KeyDerivationMethod = __utils._decodeObjectIdentifier;
-export const _encode_KeyDerivationMethod = __utils._encodeObjectIdentifier;
+let _cached_decoder_for_KeyDerivationMethod: __utils.ASN1Decoder<
+    KeyDerivationMethod
+> | null = null;
+let _cached_encoder_for_KeyDerivationMethod: __utils.ASN1Encoder<
+    KeyDerivationMethod
+> | null = null;
+export function _decode_KeyDerivationMethod(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_KeyDerivationMethod) {
+        _cached_decoder_for_KeyDerivationMethod =
+            __utils._decodeObjectIdentifier;
+    }
+    return _cached_decoder_for_KeyDerivationMethod(el);
+}
+export function _encode_KeyDerivationMethod(
+    value: KeyDerivationMethod,
+    elGetter: __utils.ASN1Encoder<KeyDerivationMethod>
+) {
+    if (!_cached_encoder_for_KeyDerivationMethod) {
+        _cached_encoder_for_KeyDerivationMethod =
+            __utils._encodeObjectIdentifier;
+    }
+    return _cached_encoder_for_KeyDerivationMethod(value, elGetter);
+}
 
 export class SchemeIdentifier {
     constructor(
         readonly scheme: asn1.OBJECT_IDENTIFIER,
-        readonly parameters: asn1.ASN1Element | undefined
+        readonly parameters: asn1.OPTIONAL<asn1.ASN1Element>
     ) {}
 }
 export const _root_component_type_list_1_spec_for_SchemeIdentifier: __utils.ComponentSpec[] = [
@@ -457,62 +611,95 @@ export const _root_component_type_list_1_spec_for_SchemeIdentifier: __utils.Comp
 ];
 export const _root_component_type_list_2_spec_for_SchemeIdentifier: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_SchemeIdentifier: __utils.ComponentSpec[] = [];
-
-export const _decode_SchemeIdentifier = function (
-    el: asn1.ASN1Element
-): SchemeIdentifier {
-    /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-    let scheme!: asn1.OBJECT_IDENTIFIER;
-    let parameters: asn1.OPTIONAL<asn1.ASN1Element>;
-    /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-    /* START_OF_CALLBACKS_MAP */
-    const callbacks: __utils.DecodingMap = {
-        scheme: (_el: asn1.ASN1Element): void => {
-            scheme = __utils._decodeObjectIdentifier(_el);
-        },
-        parameters: (_el: asn1.ASN1Element): void => {
-            parameters = __utils._decodeAny(_el);
-        },
-    };
-    /* END_OF_CALLBACKS_MAP */
-    __utils._parse_sequence(
-        el,
-        callbacks,
-        _root_component_type_list_1_spec_for_SchemeIdentifier,
-        _extension_additions_list_spec_for_SchemeIdentifier,
-        _root_component_type_list_2_spec_for_SchemeIdentifier,
-        undefined
-    );
-    return new SchemeIdentifier /* SEQUENCE_CONSTRUCTOR_CALL */(
-        scheme,
-        parameters
-    );
-};
-export const _encode_SchemeIdentifier = function (
+let _cached_decoder_for_SchemeIdentifier: __utils.ASN1Decoder<
+    SchemeIdentifier
+> | null = null;
+let _cached_encoder_for_SchemeIdentifier: __utils.ASN1Encoder<
+    SchemeIdentifier
+> | null = null;
+export function _decode_SchemeIdentifier(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_SchemeIdentifier) {
+        _cached_decoder_for_SchemeIdentifier = function (
+            el: asn1.ASN1Element
+        ): SchemeIdentifier {
+            /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
+            let scheme!: asn1.OBJECT_IDENTIFIER;
+            let parameters: asn1.OPTIONAL<asn1.ASN1Element>;
+            /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
+            /* START_OF_CALLBACKS_MAP */
+            const callbacks: __utils.DecodingMap = {
+                scheme: (_el: asn1.ASN1Element): void => {
+                    scheme = __utils._decodeObjectIdentifier(_el);
+                },
+                parameters: (_el: asn1.ASN1Element): void => {
+                    parameters = __utils._decodeAny(_el);
+                },
+            };
+            /* END_OF_CALLBACKS_MAP */
+            __utils._parse_sequence(
+                el,
+                callbacks,
+                _root_component_type_list_1_spec_for_SchemeIdentifier,
+                _extension_additions_list_spec_for_SchemeIdentifier,
+                _root_component_type_list_2_spec_for_SchemeIdentifier,
+                undefined
+            );
+            return new SchemeIdentifier /* SEQUENCE_CONSTRUCTOR_CALL */(
+                scheme,
+                parameters
+            );
+        };
+    }
+    return _cached_decoder_for_SchemeIdentifier(el);
+}
+export function _encode_SchemeIdentifier(
     value: SchemeIdentifier,
     elGetter: __utils.ASN1Encoder<SchemeIdentifier>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat([
-                /* REQUIRED   */ __utils._encodeObjectIdentifier(
-                    value.scheme,
-                    __utils.BER
-                ),
-                /* IF_ABSENT  */ value.parameters === undefined
-                    ? undefined
-                    : __utils._encodeAny(value.parameters, __utils.BER),
-            ])
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_SchemeIdentifier) {
+        _cached_encoder_for_SchemeIdentifier = function (
+            value: SchemeIdentifier,
+            elGetter: __utils.ASN1Encoder<SchemeIdentifier>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat([
+                        /* REQUIRED   */ __utils._encodeObjectIdentifier(
+                            value.scheme,
+                            __utils.BER
+                        ),
+                        /* IF_ABSENT  */ value.parameters === undefined
+                            ? undefined
+                            : __utils._encodeAny(value.parameters, __utils.BER),
+                    ])
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_SchemeIdentifier(value, elGetter);
+}
 
 export type SchemeOID = asn1.OBJECT_IDENTIFIER; // ObjectClassFieldType
-export const _decode_SchemeOID = __utils._decodeObjectIdentifier;
-export const _encode_SchemeOID = __utils._encodeObjectIdentifier;
+let _cached_decoder_for_SchemeOID: __utils.ASN1Decoder<SchemeOID> | null = null;
+let _cached_encoder_for_SchemeOID: __utils.ASN1Encoder<SchemeOID> | null = null;
+export function _decode_SchemeOID(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_SchemeOID) {
+        _cached_decoder_for_SchemeOID = __utils._decodeObjectIdentifier;
+    }
+    return _cached_decoder_for_SchemeOID(el);
+}
+export function _encode_SchemeOID(
+    value: SchemeOID,
+    elGetter: __utils.ASN1Encoder<SchemeOID>
+) {
+    if (!_cached_encoder_for_SchemeOID) {
+        _cached_encoder_for_SchemeOID = __utils._encodeObjectIdentifier;
+    }
+    return _cached_encoder_for_SchemeOID(value, elGetter);
+}
 
 export type SchemeNumber = asn1.ENUMERATED;
 export const SchemeNumber_dhStatic_sha1: SchemeNumber = 0; /* LONG_NAMED_ENUMERATED_VALUE */
@@ -523,52 +710,121 @@ export const SchemeNumber_dhHybrid2_sha1: SchemeNumber = 4; /* LONG_NAMED_ENUMER
 export const SchemeNumber_dhHybridOneFlow_sha1: SchemeNumber = 5; /* LONG_NAMED_ENUMERATED_VALUE */
 export const SchemeNumber_mqv2_sha1: SchemeNumber = 6; /* LONG_NAMED_ENUMERATED_VALUE */
 export const SchemeNumber_mqv1_sha1: SchemeNumber = 7; /* LONG_NAMED_ENUMERATED_VALUE */
-export const _decode_SchemeNumber = __utils._decodeEnumerated;
-export const _encode_SchemeNumber = __utils._encodeEnumerated;
+let _cached_decoder_for_SchemeNumber: __utils.ASN1Decoder<
+    SchemeNumber
+> | null = null;
+let _cached_encoder_for_SchemeNumber: __utils.ASN1Encoder<
+    SchemeNumber
+> | null = null;
+export function _decode_SchemeNumber(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_SchemeNumber) {
+        _cached_decoder_for_SchemeNumber = __utils._decodeEnumerated;
+    }
+    return _cached_decoder_for_SchemeNumber(el);
+}
+export function _encode_SchemeNumber(
+    value: SchemeNumber,
+    elGetter: __utils.ASN1Encoder<SchemeNumber>
+) {
+    if (!_cached_encoder_for_SchemeNumber) {
+        _cached_encoder_for_SchemeNumber = __utils._encodeEnumerated;
+    }
+    return _cached_encoder_for_SchemeNumber(value, elGetter);
+}
 
 export type SchemeSyntax =
-    | { schemeId: SchemeIdentifier }
-    | { oid: SchemeOID }
-    | { number_: SchemeNumber };
-export const _decode_SchemeSyntax = __utils._decode_inextensible_choice<
+    | { schemeId: SchemeIdentifier } /* CHOICE_ALT_ROOT */
+    | { oid: SchemeOID } /* CHOICE_ALT_ROOT */
+    | { number_: SchemeNumber } /* CHOICE_ALT_ROOT */;
+let _cached_decoder_for_SchemeSyntax: __utils.ASN1Decoder<
     SchemeSyntax
->({
-    "UNIVERSAL 16": ["schemeId", _decode_SchemeIdentifier],
-    "UNIVERSAL 6": ["oid", _decode_SchemeOID],
-    "UNIVERSAL 10": ["number_", _decode_SchemeNumber],
-});
-export const _encode_SchemeSyntax = __utils._encode_choice<SchemeSyntax>(
-    {
-        schemeId: _encode_SchemeIdentifier,
-        oid: _encode_SchemeOID,
-        number_: _encode_SchemeNumber,
-    },
-    __utils.BER
-);
+> | null = null;
+let _cached_encoder_for_SchemeSyntax: __utils.ASN1Encoder<
+    SchemeSyntax
+> | null = null;
+export function _decode_SchemeSyntax(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_SchemeSyntax) {
+        _cached_decoder_for_SchemeSyntax = __utils._decode_inextensible_choice<
+            SchemeSyntax
+        >({
+            "UNIVERSAL 16": ["schemeId", _decode_SchemeIdentifier],
+            "UNIVERSAL 6": ["oid", _decode_SchemeOID],
+            "UNIVERSAL 10": ["number_", _decode_SchemeNumber],
+        });
+    }
+    return _cached_decoder_for_SchemeSyntax(el);
+}
+export function _encode_SchemeSyntax(
+    value: SchemeSyntax,
+    elGetter: __utils.ASN1Encoder<SchemeSyntax>
+) {
+    if (!_cached_encoder_for_SchemeSyntax) {
+        _cached_encoder_for_SchemeSyntax = __utils._encode_choice<SchemeSyntax>(
+            {
+                schemeId: _encode_SchemeIdentifier,
+                oid: _encode_SchemeOID,
+                number_: _encode_SchemeNumber,
+            },
+            __utils.BER
+        );
+    }
+    return _cached_encoder_for_SchemeSyntax(value, elGetter);
+}
 
 // TODO: ObjectSetAssignment: Schemes
 
 // TODO: ObjectClassAssignment: KEY-AGREEMENT
 
 export type SchemeParameters = AlgorithmIdentifier; // DefinedType
-export const _decode_SchemeParameters = _decode_AlgorithmIdentifier;
-export const _encode_SchemeParameters = _encode_AlgorithmIdentifier;
+let _cached_decoder_for_SchemeParameters: __utils.ASN1Decoder<
+    SchemeParameters
+> | null = null;
+let _cached_encoder_for_SchemeParameters: __utils.ASN1Encoder<
+    SchemeParameters
+> | null = null;
+export function _decode_SchemeParameters(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_SchemeParameters) {
+        _cached_decoder_for_SchemeParameters = _decode_AlgorithmIdentifier;
+    }
+    return _cached_decoder_for_SchemeParameters(el);
+}
+export function _encode_SchemeParameters(
+    value: SchemeParameters,
+    elGetter: __utils.ASN1Encoder<SchemeParameters>
+) {
+    if (!_cached_encoder_for_SchemeParameters) {
+        _cached_encoder_for_SchemeParameters = _encode_AlgorithmIdentifier;
+    }
+    return _cached_encoder_for_SchemeParameters(value, elGetter);
+}
 
 // TODO: ObjectSetAssignment: KeyDerivationAlgorithm
 
 export type HMAC = asn1.OCTET_STRING; // OctetStringType
-export const _decode_HMAC = __utils._decodeOctetString;
-export const _encode_HMAC = __utils._encodeOctetString;
+let _cached_decoder_for_HMAC: __utils.ASN1Decoder<HMAC> | null = null;
+let _cached_encoder_for_HMAC: __utils.ASN1Encoder<HMAC> | null = null;
+export function _decode_HMAC(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_HMAC) {
+        _cached_decoder_for_HMAC = __utils._decodeOctetString;
+    }
+    return _cached_decoder_for_HMAC(el);
+}
+export function _encode_HMAC(value: HMAC, elGetter: __utils.ASN1Encoder<HMAC>) {
+    if (!_cached_encoder_for_HMAC) {
+        _cached_encoder_for_HMAC = __utils._encodeOctetString;
+    }
+    return _cached_encoder_for_HMAC(value, elGetter);
+}
 
 // TODO: ObjectSetAssignment: NamedSchemes
 
 export class OtherInfo {
     constructor(
         readonly keyInfo: AlgorithmIdentifier,
-        readonly partyUInfo: asn1.OCTET_STRING | undefined,
-        readonly partyVInfo: asn1.OCTET_STRING | undefined,
-        readonly suppPubInfo: asn1.OCTET_STRING | undefined,
-        readonly suppPrivInfo: asn1.OCTET_STRING | undefined
+        readonly partyUInfo: asn1.OPTIONAL<asn1.OCTET_STRING>,
+        readonly partyVInfo: asn1.OPTIONAL<asn1.OCTET_STRING>,
+        readonly suppPubInfo: asn1.OPTIONAL<asn1.OCTET_STRING>,
+        readonly suppPrivInfo: asn1.OPTIONAL<asn1.OCTET_STRING>
     ) {}
 }
 export const _root_component_type_list_1_spec_for_OtherInfo: __utils.ComponentSpec[] = [
@@ -610,123 +866,169 @@ export const _root_component_type_list_1_spec_for_OtherInfo: __utils.ComponentSp
 ];
 export const _root_component_type_list_2_spec_for_OtherInfo: __utils.ComponentSpec[] = [];
 export const _extension_additions_list_spec_for_OtherInfo: __utils.ComponentSpec[] = [];
-
-export const _decode_OtherInfo = function (el: asn1.ASN1Element): OtherInfo {
-    /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-    let keyInfo!: AlgorithmIdentifier;
-    let partyUInfo: asn1.OPTIONAL<asn1.OCTET_STRING>;
-    let partyVInfo: asn1.OPTIONAL<asn1.OCTET_STRING>;
-    let suppPubInfo: asn1.OPTIONAL<asn1.OCTET_STRING>;
-    let suppPrivInfo: asn1.OPTIONAL<asn1.OCTET_STRING>;
-    /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-    /* START_OF_CALLBACKS_MAP */
-    const callbacks: __utils.DecodingMap = {
-        keyInfo: (_el: asn1.ASN1Element): void => {
-            keyInfo = _decode_AlgorithmIdentifier(_el);
-        },
-        partyUInfo: (_el: asn1.ASN1Element): void => {
-            partyUInfo = __utils._decode_explicit<asn1.OCTET_STRING>(
-                () => __utils._decodeOctetString
-            )(_el);
-        },
-        partyVInfo: (_el: asn1.ASN1Element): void => {
-            partyVInfo = __utils._decode_explicit<asn1.OCTET_STRING>(
-                () => __utils._decodeOctetString
-            )(_el);
-        },
-        suppPubInfo: (_el: asn1.ASN1Element): void => {
-            suppPubInfo = __utils._decode_explicit<asn1.OCTET_STRING>(
-                () => __utils._decodeOctetString
-            )(_el);
-        },
-        suppPrivInfo: (_el: asn1.ASN1Element): void => {
-            suppPrivInfo = __utils._decode_explicit<asn1.OCTET_STRING>(
-                () => __utils._decodeOctetString
-            )(_el);
-        },
-    };
-    /* END_OF_CALLBACKS_MAP */
-    __utils._parse_sequence(
-        el,
-        callbacks,
-        _root_component_type_list_1_spec_for_OtherInfo,
-        _extension_additions_list_spec_for_OtherInfo,
-        _root_component_type_list_2_spec_for_OtherInfo,
-        undefined
-    );
-    return new OtherInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-        keyInfo,
-        partyUInfo,
-        partyVInfo,
-        suppPubInfo,
-        suppPrivInfo
-    );
-};
-export const _encode_OtherInfo = function (
+let _cached_decoder_for_OtherInfo: __utils.ASN1Decoder<OtherInfo> | null = null;
+let _cached_encoder_for_OtherInfo: __utils.ASN1Encoder<OtherInfo> | null = null;
+export function _decode_OtherInfo(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_OtherInfo) {
+        _cached_decoder_for_OtherInfo = function (
+            el: asn1.ASN1Element
+        ): OtherInfo {
+            /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
+            let keyInfo!: AlgorithmIdentifier;
+            let partyUInfo: asn1.OPTIONAL<asn1.OCTET_STRING>;
+            let partyVInfo: asn1.OPTIONAL<asn1.OCTET_STRING>;
+            let suppPubInfo: asn1.OPTIONAL<asn1.OCTET_STRING>;
+            let suppPrivInfo: asn1.OPTIONAL<asn1.OCTET_STRING>;
+            /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
+            /* START_OF_CALLBACKS_MAP */
+            const callbacks: __utils.DecodingMap = {
+                keyInfo: (_el: asn1.ASN1Element): void => {
+                    keyInfo = _decode_AlgorithmIdentifier(_el);
+                },
+                partyUInfo: (_el: asn1.ASN1Element): void => {
+                    partyUInfo = __utils._decode_explicit<asn1.OCTET_STRING>(
+                        () => __utils._decodeOctetString
+                    )(_el);
+                },
+                partyVInfo: (_el: asn1.ASN1Element): void => {
+                    partyVInfo = __utils._decode_explicit<asn1.OCTET_STRING>(
+                        () => __utils._decodeOctetString
+                    )(_el);
+                },
+                suppPubInfo: (_el: asn1.ASN1Element): void => {
+                    suppPubInfo = __utils._decode_explicit<asn1.OCTET_STRING>(
+                        () => __utils._decodeOctetString
+                    )(_el);
+                },
+                suppPrivInfo: (_el: asn1.ASN1Element): void => {
+                    suppPrivInfo = __utils._decode_explicit<asn1.OCTET_STRING>(
+                        () => __utils._decodeOctetString
+                    )(_el);
+                },
+            };
+            /* END_OF_CALLBACKS_MAP */
+            __utils._parse_sequence(
+                el,
+                callbacks,
+                _root_component_type_list_1_spec_for_OtherInfo,
+                _extension_additions_list_spec_for_OtherInfo,
+                _root_component_type_list_2_spec_for_OtherInfo,
+                undefined
+            );
+            return new OtherInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
+                keyInfo,
+                partyUInfo,
+                partyVInfo,
+                suppPubInfo,
+                suppPrivInfo
+            );
+        };
+    }
+    return _cached_decoder_for_OtherInfo(el);
+}
+export function _encode_OtherInfo(
     value: OtherInfo,
     elGetter: __utils.ASN1Encoder<OtherInfo>
-): asn1.ASN1Element {
-    return __utils._encodeSequence(
-        ([] as (asn1.ASN1Element | undefined)[])
-            .concat([
-                /* REQUIRED   */ _encode_AlgorithmIdentifier(
-                    value.keyInfo,
-                    __utils.BER
-                ),
-                /* IF_ABSENT  */ value.partyUInfo === undefined
-                    ? undefined
-                    : __utils._encode_explicit(
-                          asn1.ASN1TagClass.context,
-                          0,
-                          () => __utils._encodeOctetString,
-                          __utils.BER
-                      )(value.partyUInfo, __utils.BER),
-                /* IF_ABSENT  */ value.partyVInfo === undefined
-                    ? undefined
-                    : __utils._encode_explicit(
-                          asn1.ASN1TagClass.context,
-                          1,
-                          () => __utils._encodeOctetString,
-                          __utils.BER
-                      )(value.partyVInfo, __utils.BER),
-                /* IF_ABSENT  */ value.suppPubInfo === undefined
-                    ? undefined
-                    : __utils._encode_explicit(
-                          asn1.ASN1TagClass.context,
-                          2,
-                          () => __utils._encodeOctetString,
-                          __utils.BER
-                      )(value.suppPubInfo, __utils.BER),
-                /* IF_ABSENT  */ value.suppPrivInfo === undefined
-                    ? undefined
-                    : __utils._encode_explicit(
-                          asn1.ASN1TagClass.context,
-                          3,
-                          () => __utils._encodeOctetString,
-                          __utils.BER
-                      )(value.suppPrivInfo, __utils.BER),
-            ])
-            .filter(
-                (c: asn1.ASN1Element | undefined): boolean => !!c
-            ) as asn1.ASN1Element[],
-        __utils.BER
-    );
-};
+) {
+    if (!_cached_encoder_for_OtherInfo) {
+        _cached_encoder_for_OtherInfo = function (
+            value: OtherInfo,
+            elGetter: __utils.ASN1Encoder<OtherInfo>
+        ): asn1.ASN1Element {
+            return __utils._encodeSequence(
+                ([] as (asn1.ASN1Element | undefined)[])
+                    .concat([
+                        /* REQUIRED   */ _encode_AlgorithmIdentifier(
+                            value.keyInfo,
+                            __utils.BER
+                        ),
+                        /* IF_ABSENT  */ value.partyUInfo === undefined
+                            ? undefined
+                            : __utils._encode_explicit(
+                                  asn1.ASN1TagClass.context,
+                                  0,
+                                  () => __utils._encodeOctetString,
+                                  __utils.BER
+                              )(value.partyUInfo, __utils.BER),
+                        /* IF_ABSENT  */ value.partyVInfo === undefined
+                            ? undefined
+                            : __utils._encode_explicit(
+                                  asn1.ASN1TagClass.context,
+                                  1,
+                                  () => __utils._encodeOctetString,
+                                  __utils.BER
+                              )(value.partyVInfo, __utils.BER),
+                        /* IF_ABSENT  */ value.suppPubInfo === undefined
+                            ? undefined
+                            : __utils._encode_explicit(
+                                  asn1.ASN1TagClass.context,
+                                  2,
+                                  () => __utils._encodeOctetString,
+                                  __utils.BER
+                              )(value.suppPubInfo, __utils.BER),
+                        /* IF_ABSENT  */ value.suppPrivInfo === undefined
+                            ? undefined
+                            : __utils._encode_explicit(
+                                  asn1.ASN1TagClass.context,
+                                  3,
+                                  () => __utils._encodeOctetString,
+                                  __utils.BER
+                              )(value.suppPrivInfo, __utils.BER),
+                    ])
+                    .filter(
+                        (c: asn1.ASN1Element | undefined): boolean => !!c
+                    ) as asn1.ASN1Element[],
+                __utils.BER
+            );
+        };
+    }
+    return _cached_encoder_for_OtherInfo(value, elGetter);
+}
 
 // TODO: ObjectSetAssignment: KeySpecificAlgorithms
 
 export type Counter = asn1.OCTET_STRING; // OctetStringType
-export const _decode_Counter = __utils._decodeOctetString;
-export const _encode_Counter = __utils._encodeOctetString;
+let _cached_decoder_for_Counter: __utils.ASN1Decoder<Counter> | null = null;
+let _cached_encoder_for_Counter: __utils.ASN1Encoder<Counter> | null = null;
+export function _decode_Counter(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_Counter) {
+        _cached_decoder_for_Counter = __utils._decodeOctetString;
+    }
+    return _cached_decoder_for_Counter(el);
+}
+export function _encode_Counter(
+    value: Counter,
+    elGetter: __utils.ASN1Encoder<Counter>
+) {
+    if (!_cached_encoder_for_Counter) {
+        _cached_encoder_for_Counter = __utils._encodeOctetString;
+    }
+    return _cached_encoder_for_Counter(value, elGetter);
+}
 
 export type TripleDES = asn1.INTEGER[]; // SequenceOfType
-export const _decode_TripleDES = __utils._decodeSequenceOf<asn1.INTEGER>(
-    () => __utils._decodeInteger
-);
-export const _encode_TripleDES = __utils._encodeSequenceOf<asn1.INTEGER>(
-    () => __utils._encodeInteger,
-    __utils.BER
-);
+let _cached_decoder_for_TripleDES: __utils.ASN1Decoder<TripleDES> | null = null;
+let _cached_encoder_for_TripleDES: __utils.ASN1Encoder<TripleDES> | null = null;
+export function _decode_TripleDES(el: asn1.ASN1Element) {
+    if (!_cached_decoder_for_TripleDES) {
+        _cached_decoder_for_TripleDES = __utils._decodeSequenceOf<asn1.INTEGER>(
+            () => __utils._decodeInteger
+        );
+    }
+    return _cached_decoder_for_TripleDES(el);
+}
+export function _encode_TripleDES(
+    value: TripleDES,
+    elGetter: __utils.ASN1Encoder<TripleDES>
+) {
+    if (!_cached_encoder_for_TripleDES) {
+        _cached_encoder_for_TripleDES = __utils._encodeSequenceOf<asn1.INTEGER>(
+            () => __utils._encodeInteger,
+            __utils.BER
+        );
+    }
+    return _cached_encoder_for_TripleDES(value, elGetter);
+}
 
 export const oneKey: asn1.INTEGER = 1;
 
