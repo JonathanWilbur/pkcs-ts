@@ -133,7 +133,7 @@ export function _encode_DigestAlgorithmIdentifiers(
     if (!_cached_encoder_for_DigestAlgorithmIdentifiers) {
         _cached_encoder_for_DigestAlgorithmIdentifiers = __utils._encodeSetOf<
             DigestAlgorithmIdentifier
-        >(() => _encode_DigestAlgorithmIdentifier, __utils.BER);
+        >(() => _encode_DigestAlgorithmIdentifier, __utils.DER);
     }
     return _cached_encoder_for_DigestAlgorithmIdentifiers(value, elGetter);
 }
@@ -210,19 +210,19 @@ export function _encode_ContentInfo(
                     .concat([
                         /* REQUIRED   */ __utils._encodeObjectIdentifier(
                             value.content_type,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encode_implicit(
                             asn1.ASN1TagClass.context,
                             0,
                             () => __utils._encodeAny,
-                            __utils.BER
-                        )(value.pkcs7_content, __utils.BER),
+                            __utils.DER
+                        )(value.pkcs7_content, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -251,7 +251,7 @@ export function _encode_Attributes(
     if (!_cached_encoder_for_Attributes) {
         _cached_encoder_for_Attributes = __utils._encodeSetOf<Attribute>(
             () => _encode_Attribute,
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_Attributes(value, elGetter);
@@ -342,21 +342,21 @@ export function _encode_ExtendedCertificateInfo(
                     .concat([
                         /* REQUIRED   */ _encode_Version(
                             value.version,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_Certificate(
                             value.certificate,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_Attributes(
                             value.attributes,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -436,16 +436,16 @@ export function _encode_CertificateChoice(
                     asn1.ASN1TagClass.context,
                     0,
                     () => _encode_ExtendedCertificate,
-                    __utils.BER
+                    __utils.DER
                 ),
                 attributeCertificate: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
                     1,
                     () => _encode_AttributeCertificate,
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_CertificateChoice(value, elGetter);
@@ -473,7 +473,7 @@ export function _encode_CertificateSet(
     if (!_cached_encoder_for_CertificateSet) {
         _cached_encoder_for_CertificateSet = __utils._encodeSetOf<
             CertificateChoice
-        >(() => _encode_CertificateChoice, __utils.BER);
+        >(() => _encode_CertificateChoice, __utils.DER);
     }
     return _cached_encoder_for_CertificateSet(value, elGetter);
 }
@@ -500,7 +500,7 @@ export function _encode_CertificateRevocationLists(
     if (!_cached_encoder_for_CertificateRevocationLists) {
         _cached_encoder_for_CertificateRevocationLists = __utils._encodeSetOf<
             CertificateList
-        >(() => _encode_CertificateList, __utils.BER);
+        >(() => _encode_CertificateList, __utils.DER);
     }
     return _cached_encoder_for_CertificateRevocationLists(value, elGetter);
 }
@@ -575,17 +575,17 @@ export function _encode_IssuerAndSerialNumber(
                     .concat([
                         /* REQUIRED   */ _encode_Name(
                             value.issuer,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_CertificateSerialNumber(
                             value.serialNumber,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -657,10 +657,10 @@ export function _encode_SignerIdentifier(
                     asn1.ASN1TagClass.context,
                     2,
                     () => _encode_SubjectKeyIdentifier,
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_SignerIdentifier(value, elGetter);
@@ -744,16 +744,16 @@ export function _encode_Digest(
                         asn1.ASN1TagClass.context,
                         1,
                         () => __utils._encodeAny,
-                        __utils.BER
+                        __utils.DER
                     ),
                     authenticated_attributes: __utils._encode_explicit(
                         asn1.ASN1TagClass.context,
                         0,
                         () => _encode_Attributes,
-                        __utils.BER
+                        __utils.DER
                     ),
                 },
-                __utils.BER
+                __utils.DER
             )
         );
     }
@@ -830,17 +830,17 @@ export function _encode_DigestInfo(
                     .concat([
                         /* REQUIRED   */ _encode_DigestAlgorithmIdentifier(
                             value.digestAlgorithm,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_Digest(
                             value.digest,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -1024,15 +1024,15 @@ export function _encode_SignerInfo(
                     .concat([
                         /* REQUIRED   */ _encode_Version(
                             value.version,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_SignerIdentifier(
                             value.signerIdentifier,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_DigestAlgorithmIdentifier(
                             value.digestAlgorithm,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.authenticatedAttributes ===
                         undefined
@@ -1041,15 +1041,15 @@ export function _encode_SignerInfo(
                                   asn1.ASN1TagClass.context,
                                   0,
                                   () => _encode_Attributes,
-                                  __utils.BER
-                              )(value.authenticatedAttributes, __utils.BER),
+                                  __utils.DER
+                              )(value.authenticatedAttributes, __utils.DER),
                         /* REQUIRED   */ _encode_DigestEncryptionAlgorithmIdentifier(
                             value.digestEncryptionAlgorithm,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_EncryptedDigest(
                             value.encryptedDigest,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.unauthenticatedAttributes ===
                         undefined
@@ -1058,13 +1058,13 @@ export function _encode_SignerInfo(
                                   asn1.ASN1TagClass.context,
                                   1,
                                   () => _encode_Attributes,
-                                  __utils.BER
-                              )(value.unauthenticatedAttributes, __utils.BER),
+                                  __utils.DER
+                              )(value.unauthenticatedAttributes, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -1093,7 +1093,7 @@ export function _encode_SignerInfos(
     if (!_cached_encoder_for_SignerInfos) {
         _cached_encoder_for_SignerInfos = __utils._encodeSetOf<SignerInfo>(
             () => _encode_SignerInfo,
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_SignerInfos(value, elGetter);
@@ -1234,15 +1234,15 @@ export function _encode_SignedData(
                     .concat([
                         /* REQUIRED   */ _encode_Version(
                             value.version,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_DigestAlgorithmIdentifiers(
                             value.digestAlgorithms,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_ContentInfo(
                             value.contentInfo,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.certificates === undefined
                             ? undefined
@@ -1250,25 +1250,25 @@ export function _encode_SignedData(
                                   asn1.ASN1TagClass.context,
                                   0,
                                   () => _encode_CertificateSet,
-                                  __utils.BER
-                              )(value.certificates, __utils.BER),
+                                  __utils.DER
+                              )(value.certificates, __utils.DER),
                         /* IF_ABSENT  */ value.crls === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   1,
                                   () => _encode_CertificateRevocationLists,
-                                  __utils.BER
-                              )(value.crls, __utils.BER),
+                                  __utils.DER
+                              )(value.crls, __utils.DER),
                         /* REQUIRED   */ _encode_SignerInfos(
                             value.signerInfos,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -1364,21 +1364,21 @@ export function _encode_OriginatorInfo(
                                   asn1.ASN1TagClass.context,
                                   0,
                                   () => _encode_CertificateSet,
-                                  __utils.BER
-                              )(value.certificates, __utils.BER),
+                                  __utils.DER
+                              )(value.certificates, __utils.DER),
                         /* IF_ABSENT  */ value.crls === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   1,
                                   () => _encode_CertificateRevocationLists,
-                                  __utils.BER
-                              )(value.crls, __utils.BER),
+                                  __utils.DER
+                              )(value.crls, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -1427,10 +1427,10 @@ export function _encode_RecipientIdentifier(
                     asn1.ASN1TagClass.context,
                     0,
                     () => _encode_SubjectKeyIdentifier,
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_RecipientIdentifier(value, elGetter);
@@ -1584,25 +1584,25 @@ export function _encode_KeyTransportRecipientInfo(
                     .concat([
                         /* REQUIRED   */ _encode_Version(
                             value.version,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_RecipientIdentifier(
                             value.recipientIdentifier,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_KeyEncryptionAlgorithmIdentifier(
                             value.keyEncryptionAlgorithm,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_EncryptedKey(
                             value.encryptedKey,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -1679,17 +1679,17 @@ export function _encode_OriginatorPublicKey(
                     .concat([
                         /* REQUIRED   */ _encode_AlgorithmIdentifier(
                             value.algorithm,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeBitString(
                             value.publicKey,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -1745,16 +1745,16 @@ export function _encode_OriginatorIdentifierOrKey(
                     asn1.ASN1TagClass.context,
                     0,
                     () => _encode_SubjectKeyIdentifier,
-                    __utils.BER
+                    __utils.DER
                 ),
                 originatorPublicKey: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
                     1,
                     () => _encode_OriginatorPublicKey,
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_OriginatorIdentifierOrKey(value, elGetter);
@@ -1841,19 +1841,19 @@ export function _encode_OtherKeyAttribute(
                     .concat([
                         /* REQUIRED   */ __utils._encodeObjectIdentifier(
                             value.keyAttributeIdentifier,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.keyAttribute === undefined
                             ? undefined
                             : __utils._encodeAny(
                                   value.keyAttribute,
-                                  __utils.BER
+                                  __utils.DER
                               ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -1952,25 +1952,25 @@ export function _encode_RecipientKeyIdentifier(
                     .concat([
                         /* REQUIRED   */ _encode_SubjectKeyIdentifier(
                             value.subjectKeyIdentifier,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.date === undefined
                             ? undefined
                             : __utils._encodeGeneralizedTime(
                                   value.date,
-                                  __utils.BER
+                                  __utils.DER
                               ),
                         /* IF_ABSENT  */ value.otherKeyAttribute === undefined
                             ? undefined
                             : _encode_OtherKeyAttribute(
                                   value.otherKeyAttribute,
-                                  __utils.BER
+                                  __utils.DER
                               ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -2019,10 +2019,10 @@ export function _encode_KeyAgreementRecipientIdentifier(
                     asn1.ASN1TagClass.context,
                     0,
                     () => _encode_RecipientKeyIdentifier,
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_KeyAgreementRecipientIdentifier(value, elGetter);
@@ -2100,17 +2100,17 @@ export function _encode_RecipientEncryptedKey(
                     .concat([
                         /* REQUIRED   */ _encode_KeyAgreementRecipientIdentifier(
                             value.recipientIdentifier,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_EncryptedKey(
                             value.encryptedKey,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -2139,7 +2139,7 @@ export function _encode_RecipientEncryptedKeys(
     if (!_cached_encoder_for_RecipientEncryptedKeys) {
         _cached_encoder_for_RecipientEncryptedKeys = __utils._encodeSequenceOf<
             RecipientEncryptedKey
-        >(() => _encode_RecipientEncryptedKey, __utils.BER);
+        >(() => _encode_RecipientEncryptedKey, __utils.DER);
     }
     return _cached_encoder_for_RecipientEncryptedKeys(value, elGetter);
 }
@@ -2270,35 +2270,35 @@ export function _encode_KeyAgreementRecipientInfo(
                     .concat([
                         /* REQUIRED   */ _encode_Version(
                             value.version,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encode_implicit(
                             asn1.ASN1TagClass.context,
                             0,
                             () => _encode_OriginatorIdentifierOrKey,
-                            __utils.BER
-                        )(value.originator, __utils.BER),
+                            __utils.DER
+                        )(value.originator, __utils.DER),
                         /* IF_ABSENT  */ value.userKeyingMaterial === undefined
                             ? undefined
                             : __utils._encode_explicit(
                                   asn1.ASN1TagClass.context,
                                   1,
                                   () => __utils._encodeOctetString,
-                                  __utils.BER
-                              )(value.userKeyingMaterial, __utils.BER),
+                                  __utils.DER
+                              )(value.userKeyingMaterial, __utils.DER),
                         /* REQUIRED   */ _encode_KeyEncryptionAlgorithmIdentifier(
                             value.keyEncryptionAlgorithm,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_RecipientEncryptedKeys(
                             value.recipientEncryptedKeys,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -2397,25 +2397,25 @@ export function _encode_KeyEncryptionKeyIdentifier(
                     .concat([
                         /* REQUIRED   */ __utils._encodeOctetString(
                             value.keyIdentifier,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.date === undefined
                             ? undefined
                             : __utils._encodeGeneralizedTime(
                                   value.date,
-                                  __utils.BER
+                                  __utils.DER
                               ),
                         /* IF_ABSENT  */ value.otherKeyAttribute === undefined
                             ? undefined
                             : _encode_OtherKeyAttribute(
                                   value.otherKeyAttribute,
-                                  __utils.BER
+                                  __utils.DER
                               ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -2523,25 +2523,25 @@ export function _encode_KeyEncryptionKeyRecipientInfo(
                     .concat([
                         /* REQUIRED   */ _encode_Version(
                             value.version,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_KeyEncryptionKeyIdentifier(
                             value.keyEncryptionKeyIdentifier,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_KeyEncryptionAlgorithmIdentifier(
                             value.keyEncryptionAlgorithm,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_EncryptedKey(
                             value.encryptedKey,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -2603,16 +2603,16 @@ export function _encode_RecipientInfo(
                     asn1.ASN1TagClass.context,
                     1,
                     () => _encode_KeyAgreementRecipientInfo,
-                    __utils.BER
+                    __utils.DER
                 ),
                 keyEncryptionKeyRecipientInfo: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
                     2,
                     () => _encode_KeyEncryptionKeyRecipientInfo,
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_RecipientInfo(value, elGetter);
@@ -2640,7 +2640,7 @@ export function _encode_RecipientInfos(
     if (!_cached_encoder_for_RecipientInfos) {
         _cached_encoder_for_RecipientInfos = __utils._encodeSetOf<
             RecipientInfo
-        >(() => _encode_RecipientInfo, __utils.BER);
+        >(() => _encode_RecipientInfo, __utils.DER);
     }
     return _cached_encoder_for_RecipientInfos(value, elGetter);
 }
@@ -2773,11 +2773,11 @@ export function _encode_EncryptedContentInfo(
                     .concat([
                         /* REQUIRED   */ __utils._encodeObjectIdentifier(
                             value.contentType,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_ContentEncryptionAlgorithmIdentifier(
                             value.contentEncryptionAlgorithm,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.encryptedContent === undefined
                             ? undefined
@@ -2788,13 +2788,13 @@ export function _encode_EncryptedContentInfo(
                                       _get_encoder_for_ENCRYPTED<
                                           asn1.ASN1Element
                                       >(__utils._encodeAny),
-                                  __utils.BER
-                              )(value.encryptedContent, __utils.BER),
+                                  __utils.DER
+                              )(value.encryptedContent, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -2923,7 +2923,7 @@ export function _encode_EnvelopedData(
                     .concat([
                         /* REQUIRED   */ _encode_Version(
                             value.version,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.originatorInfo === undefined
                             ? undefined
@@ -2931,15 +2931,15 @@ export function _encode_EnvelopedData(
                                   asn1.ASN1TagClass.context,
                                   0,
                                   () => _encode_OriginatorInfo,
-                                  __utils.BER
-                              )(value.originatorInfo, __utils.BER),
+                                  __utils.DER
+                              )(value.originatorInfo, __utils.DER),
                         /* REQUIRED   */ _encode_RecipientInfos(
                             value.recipientInfos,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_EncryptedContentInfo(
                             value.encryptedContentInfo,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.unprotectedAttributes ===
                         undefined
@@ -2948,13 +2948,13 @@ export function _encode_EnvelopedData(
                                   asn1.ASN1TagClass.context,
                                   1,
                                   () => _encode_Attributes,
-                                  __utils.BER
-                              )(value.unprotectedAttributes, __utils.BER),
+                                  __utils.DER
+                              )(value.unprotectedAttributes, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -3119,21 +3119,21 @@ export function _encode_SignedAndEnvelopedData(
                     .concat([
                         /* REQUIRED   */ _encode_Version(
                             value.version,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeSetOf<
                             KeyTransportRecipientInfo
-                        >(() => _encode_KeyTransportRecipientInfo, __utils.BER)(
+                        >(() => _encode_KeyTransportRecipientInfo, __utils.DER)(
                             value.recipientInfos,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_DigestAlgorithmIdentifiers(
                             value.digestAlgorithms,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_EncryptedContentInfo(
                             value.encryptedContentInfo,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.certificates === undefined
                             ? undefined
@@ -3141,25 +3141,25 @@ export function _encode_SignedAndEnvelopedData(
                                   asn1.ASN1TagClass.context,
                                   0,
                                   () => _encode_CertificateSet,
-                                  __utils.BER
-                              )(value.certificates, __utils.BER),
+                                  __utils.DER
+                              )(value.certificates, __utils.DER),
                         /* IF_ABSENT  */ value.crls === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   1,
                                   () => _encode_CertificateRevocationLists,
-                                  __utils.BER
-                              )(value.crls, __utils.BER),
+                                  __utils.DER
+                              )(value.crls, __utils.DER),
                         /* REQUIRED   */ __utils._encodeSetOf<SignerInfo>(
                             () => _encode_SignerInfo,
-                            __utils.BER
-                        )(value.signerInfos, __utils.BER),
+                            __utils.DER
+                        )(value.signerInfos, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -3267,24 +3267,24 @@ export function _encode_DigestedData(
                     .concat([
                         /* REQUIRED   */ _encode_Version(
                             value.version,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_DigestAlgorithmIdentifier(
                             value.digestAlgorithm,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_ContentInfo(
                             value.contentInfo,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _get_encoder_for_HASH<
                             asn1.ASN1Element
-                        >(__utils._encodeAny)(value.digest, __utils.BER),
+                        >(__utils._encodeAny)(value.digest, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -3387,11 +3387,11 @@ export function _encode_EncryptedData(
                     .concat([
                         /* REQUIRED   */ _encode_Version(
                             value.version,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_EncryptedContentInfo(
                             value.encryptedContentInfo,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.unprotectedAttributes ===
                         undefined
@@ -3400,13 +3400,13 @@ export function _encode_EncryptedData(
                                   asn1.ASN1TagClass.context,
                                   1,
                                   () => _encode_Attributes,
-                                  __utils.BER
-                              )(value.unprotectedAttributes, __utils.BER),
+                                  __utils.DER
+                              )(value.unprotectedAttributes, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -3650,7 +3650,7 @@ export function _encode_AuthenticatedData(
                     .concat([
                         /* REQUIRED   */ _encode_Version(
                             value.version,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.originatorInfo === undefined
                             ? undefined
@@ -3658,15 +3658,15 @@ export function _encode_AuthenticatedData(
                                   asn1.ASN1TagClass.context,
                                   0,
                                   () => _encode_OriginatorInfo,
-                                  __utils.BER
-                              )(value.originatorInfo, __utils.BER),
+                                  __utils.DER
+                              )(value.originatorInfo, __utils.DER),
                         /* REQUIRED   */ _encode_RecipientInfos(
                             value.recipientInfos,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_MessageAuthenticationCodeAlgorithmIdentifier(
                             value.macAlgorithm,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.digestAlgorithm === undefined
                             ? undefined
@@ -3674,11 +3674,11 @@ export function _encode_AuthenticatedData(
                                   asn1.ASN1TagClass.context,
                                   1,
                                   () => _encode_DigestAlgorithmIdentifier,
-                                  __utils.BER
-                              )(value.digestAlgorithm, __utils.BER),
+                                  __utils.DER
+                              )(value.digestAlgorithm, __utils.DER),
                         /* REQUIRED   */ _encode_ContentInfo(
                             value.contentInfo,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.authenticatedAttributes ===
                         undefined
@@ -3687,11 +3687,11 @@ export function _encode_AuthenticatedData(
                                   asn1.ASN1TagClass.context,
                                   2,
                                   () => _encode_Attributes,
-                                  __utils.BER
-                              )(value.authenticatedAttributes, __utils.BER),
+                                  __utils.DER
+                              )(value.authenticatedAttributes, __utils.DER),
                         /* REQUIRED   */ _encode_MessageAuthenticationCode(
                             value.messageAuthenticationCode,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.unauthenticatedAttributes ===
                         undefined
@@ -3700,13 +3700,13 @@ export function _encode_AuthenticatedData(
                                   asn1.ASN1TagClass.context,
                                   3,
                                   () => _encode_Attributes,
-                                  __utils.BER
-                              )(value.unauthenticatedAttributes, __utils.BER),
+                                  __utils.DER
+                              )(value.unauthenticatedAttributes, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }

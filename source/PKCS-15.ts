@@ -330,11 +330,11 @@ export function _encode_SecurityEnvironmentInfo(
                         [
                             /* REQUIRED   */ __utils._encodeInteger(
                                 value.se,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* REQUIRED   */ __utils._encodeObjectIdentifier(
                                 value.owner,
-                                __utils.BER
+                                __utils.DER
                             ),
                         ],
                         value._unrecognizedExtensionsList
@@ -344,7 +344,7 @@ export function _encode_SecurityEnvironmentInfo(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -513,61 +513,61 @@ export function _encode_RecordInfo(
                                   asn1.ASN1TagClass.context,
                                   0,
                                   () => __utils._encodeInteger,
-                                  __utils.BER
-                              )(value.oDFRecordLength, __utils.BER),
+                                  __utils.DER
+                              )(value.oDFRecordLength, __utils.DER),
                         /* IF_ABSENT  */ value.prKDFRecordLength === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   1,
                                   () => __utils._encodeInteger,
-                                  __utils.BER
-                              )(value.prKDFRecordLength, __utils.BER),
+                                  __utils.DER
+                              )(value.prKDFRecordLength, __utils.DER),
                         /* IF_ABSENT  */ value.puKDFRecordLength === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   2,
                                   () => __utils._encodeInteger,
-                                  __utils.BER
-                              )(value.puKDFRecordLength, __utils.BER),
+                                  __utils.DER
+                              )(value.puKDFRecordLength, __utils.DER),
                         /* IF_ABSENT  */ value.sKDFRecordLength === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   3,
                                   () => __utils._encodeInteger,
-                                  __utils.BER
-                              )(value.sKDFRecordLength, __utils.BER),
+                                  __utils.DER
+                              )(value.sKDFRecordLength, __utils.DER),
                         /* IF_ABSENT  */ value.cDFRecordLength === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   4,
                                   () => __utils._encodeInteger,
-                                  __utils.BER
-                              )(value.cDFRecordLength, __utils.BER),
+                                  __utils.DER
+                              )(value.cDFRecordLength, __utils.DER),
                         /* IF_ABSENT  */ value.dODFRecordLength === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   5,
                                   () => __utils._encodeInteger,
-                                  __utils.BER
-                              )(value.dODFRecordLength, __utils.BER),
+                                  __utils.DER
+                              )(value.dODFRecordLength, __utils.DER),
                         /* IF_ABSENT  */ value.aODFRecordLength === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   6,
                                   () => __utils._encodeInteger,
-                                  __utils.BER
-                              )(value.aODFRecordLength, __utils.BER),
+                                  __utils.DER
+                              )(value.aODFRecordLength, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -724,34 +724,34 @@ export function _encode_AlgorithmInfo(
                     .concat([
                         /* REQUIRED   */ _encode_Reference(
                             value.reference,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeInteger(
                             value.algorithm,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeAny(
                             value.parameters,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeAny(
                             value.supportedOperations,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.algId === undefined
                             ? undefined
                             : __utils._encodeObjectIdentifier(
                                   value.algId,
-                                  __utils.BER
+                                  __utils.DER
                               ),
                         /* IF_ABSENT  */ value.algRef === undefined
                             ? undefined
-                            : _encode_Reference(value.algRef, __utils.BER),
+                            : _encode_Reference(value.algRef, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -843,24 +843,24 @@ export function _encode_Path(value: Path, elGetter: __utils.ASN1Encoder<Path>) {
                     .concat([
                         /* REQUIRED   */ __utils._encodeOctetString(
                             value.path,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.index === undefined
                             ? undefined
-                            : __utils._encodeInteger(value.index, __utils.BER),
+                            : __utils._encodeInteger(value.index, __utils.DER),
                         /* IF_ABSENT  */ value.length === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   0,
                                   () => __utils._encodeInteger,
-                                  __utils.BER
-                              )(value.length, __utils.BER),
+                                  __utils.DER
+                              )(value.length, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -966,17 +966,17 @@ export function _encode_DigestInfoWithDefault(
                             ? undefined
                             : _encode_AlgorithmIdentifier(
                                   value.digestAlg,
-                                  __utils.BER
+                                  __utils.DER
                               ),
                         /* REQUIRED   */ __utils._encodeOctetString(
                             value.digest,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -1053,17 +1053,17 @@ export function _encode_URL_urlWithDigest(
                     .concat([
                         /* REQUIRED   */ __utils._encodeIA5String(
                             value.url,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_DigestInfoWithDefault(
                             value.digest,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -1098,10 +1098,10 @@ export function _encode_URL(value: URL, elGetter: __utils.ASN1Encoder<URL>) {
                     asn1.ASN1TagClass.context,
                     3,
                     () => _encode_URL_urlWithDigest,
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_URL(value, elGetter);
@@ -1127,7 +1127,7 @@ export function _get_encoder_for_ReferencedValue<Type>(
             path: _encode_Path,
             url: _encode_URL,
         },
-        __utils.BER
+        __utils.DER
     );
 }
 
@@ -1183,7 +1183,7 @@ export function _encode_LastUpdate(
                     asn1.GeneralizedTime
                 >(__utils._encodeGeneralizedTime),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_LastUpdate(value, elGetter);
@@ -1419,17 +1419,17 @@ export function _encode_TokenInfo(
                         [
                             /* REQUIRED   */ _encode_TokenInfo_version(
                                 value.version,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* REQUIRED   */ __utils._encodeOctetString(
                                 value.serialNumber,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* IF_ABSENT  */ value.manufacturerID === undefined
                                 ? undefined
                                 : _encode_Label(
                                       value.manufacturerID,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.label === undefined
                                 ? undefined
@@ -1437,11 +1437,11 @@ export function _encode_TokenInfo(
                                       asn1.ASN1TagClass.context,
                                       0,
                                       () => _encode_Label,
-                                      __utils.BER
-                                  )(value.label, __utils.BER),
+                                      __utils.DER
+                                  )(value.label, __utils.DER),
                             /* REQUIRED   */ _encode_TokenFlags(
                                 value.tokenflags,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* IF_ABSENT  */ value.seInfo === undefined
                                 ? undefined
@@ -1449,16 +1449,16 @@ export function _encode_TokenInfo(
                                       SecurityEnvironmentInfo
                                   >(
                                       () => _encode_SecurityEnvironmentInfo,
-                                      __utils.BER
-                                  )(value.seInfo, __utils.BER),
+                                      __utils.DER
+                                  )(value.seInfo, __utils.DER),
                             /* IF_ABSENT  */ value.recordInfo === undefined
                                 ? undefined
                                 : __utils._encode_implicit(
                                       asn1.ASN1TagClass.context,
                                       1,
                                       () => _encode_RecordInfo,
-                                      __utils.BER
-                                  )(value.recordInfo, __utils.BER),
+                                      __utils.DER
+                                  )(value.recordInfo, __utils.DER),
                             /* IF_ABSENT  */ value.supportedAlgorithms ===
                             undefined
                                 ? undefined
@@ -1470,10 +1470,10 @@ export function _encode_TokenInfo(
                                               AlgorithmInfo
                                           >(
                                               () => _encode_AlgorithmInfo,
-                                              __utils.BER
+                                              __utils.DER
                                           ),
-                                      __utils.BER
-                                  )(value.supportedAlgorithms, __utils.BER),
+                                      __utils.DER
+                                  )(value.supportedAlgorithms, __utils.DER),
                         ],
                         [
                             /* IF_ABSENT  */ value.issuerId === undefined
@@ -1482,30 +1482,30 @@ export function _encode_TokenInfo(
                                       asn1.ASN1TagClass.context,
                                       3,
                                       () => _encode_Label,
-                                      __utils.BER
-                                  )(value.issuerId, __utils.BER),
+                                      __utils.DER
+                                  )(value.issuerId, __utils.DER),
                             /* IF_ABSENT  */ value.holderId === undefined
                                 ? undefined
                                 : __utils._encode_implicit(
                                       asn1.ASN1TagClass.context,
                                       4,
                                       () => _encode_Label,
-                                      __utils.BER
-                                  )(value.holderId, __utils.BER),
+                                      __utils.DER
+                                  )(value.holderId, __utils.DER),
                             /* IF_ABSENT  */ value.lastUpdate === undefined
                                 ? undefined
                                 : __utils._encode_implicit(
                                       asn1.ASN1TagClass.context,
                                       5,
                                       () => _encode_LastUpdate,
-                                      __utils.BER
-                                  )(value.lastUpdate, __utils.BER),
+                                      __utils.DER
+                                  )(value.lastUpdate, __utils.DER),
                             /* IF_ABSENT  */ value.preferredLanguage ===
                             undefined
                                 ? undefined
                                 : __utils._encodePrintableString(
                                       value.preferredLanguage,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                         ],
                         value._unrecognizedExtensionsList
@@ -1515,7 +1515,7 @@ export function _encode_TokenInfo(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -1687,10 +1687,10 @@ export function _encode_PasswordInfo(
                         [
                             /* IF_ABSENT  */ value.hint === undefined
                                 ? undefined
-                                : _encode_Label(value.hint, __utils.BER),
+                                : _encode_Label(value.hint, __utils.DER),
                             /* REQUIRED   */ _encode_AlgorithmIdentifier(
                                 value.algId,
-                                __utils.BER
+                                __utils.DER
                             ),
                         ],
                         value._unrecognizedExtensionsList
@@ -1700,7 +1700,7 @@ export function _encode_PasswordInfo(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -1748,10 +1748,10 @@ export function _encode_KeyManagementInfo_Item_keyInfo(
                     asn1.ASN1TagClass.context,
                     0,
                     () => _encode_PasswordInfo,
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_KeyManagementInfo_Item_keyInfo(value, elGetter);
@@ -1827,17 +1827,17 @@ export function _encode_KeyManagementInfo_Item(
                     .concat([
                         /* REQUIRED   */ _encode_Identifier(
                             value.keyId,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_KeyManagementInfo_Item_keyInfo(
                             value.keyInfo,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -1866,7 +1866,7 @@ export function _encode_KeyManagementInfo(
     if (!_cached_encoder_for_KeyManagementInfo) {
         _cached_encoder_for_KeyManagementInfo = __utils._encodeSequenceOf<
             KeyManagementInfo_Item
-        >(() => _encode_KeyManagementInfo_Item, __utils.BER);
+        >(() => _encode_KeyManagementInfo_Item, __utils.DER);
     }
     return _cached_encoder_for_KeyManagementInfo(value, elGetter);
 }
@@ -1982,11 +1982,11 @@ export function _get_encoder_for_EncryptedContentInfo<Type>(
                 .concat([
                     /* REQUIRED   */ __utils._encodeObjectIdentifier(
                         value.contentType,
-                        __utils.BER
+                        __utils.DER
                     ),
                     /* REQUIRED   */ _encode_AlgorithmIdentifier(
                         value.contentEncryptionAlgorithm,
-                        __utils.BER
+                        __utils.DER
                     ),
                     /* IF_ABSENT  */ value.encryptedContent === undefined
                         ? undefined
@@ -1994,13 +1994,13 @@ export function _get_encoder_for_EncryptedContentInfo<Type>(
                               asn1.ASN1TagClass.context,
                               0,
                               () => __utils._encodeOctetString,
-                              __utils.BER
-                          )(value.encryptedContent, __utils.BER),
+                              __utils.DER
+                          )(value.encryptedContent, __utils.DER),
                 ])
                 .filter(
                     (c: asn1.ASN1Element | undefined): boolean => !!c
                 ) as asn1.ASN1Element[],
-            __utils.BER
+            __utils.DER
         );
     };
 }
@@ -2118,7 +2118,7 @@ export function _get_encoder_for_EnvelopedData<Type>(
                 .concat([
                     /* REQUIRED   */ _encode_EnvelopedData_version(
                         value.version,
-                        __utils.BER
+                        __utils.DER
                     ),
                     /* IF_ABSENT  */ value.originatorInfo === undefined
                         ? undefined
@@ -2126,15 +2126,15 @@ export function _get_encoder_for_EnvelopedData<Type>(
                               asn1.ASN1TagClass.context,
                               0,
                               () => _encode_OriginatorInfo,
-                              __utils.BER
-                          )(value.originatorInfo, __utils.BER),
+                              __utils.DER
+                          )(value.originatorInfo, __utils.DER),
                     /* REQUIRED   */ _encode_RecipientInfos(
                         value.recipientInfos,
-                        __utils.BER
+                        __utils.DER
                     ),
                     /* REQUIRED   */ _get_encoder_for_EncryptedContentInfo<
                         Type
-                    >(_encode_Type)(value.encryptedContentInfo, __utils.BER),
+                    >(_encode_Type)(value.encryptedContentInfo, __utils.DER),
                     /* IF_ABSENT  */ value.unprotectedAttrs === undefined
                         ? undefined
                         : __utils._encode_implicit(
@@ -2143,15 +2143,15 @@ export function _get_encoder_for_EnvelopedData<Type>(
                               () =>
                                   __utils._encodeSetOf<Attribute>(
                                       () => _encode_Attribute,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
-                              __utils.BER
-                          )(value.unprotectedAttrs, __utils.BER),
+                              __utils.DER
+                          )(value.unprotectedAttrs, __utils.DER),
                 ])
                 .filter(
                     (c: asn1.ASN1Element | undefined): boolean => !!c
                 ) as asn1.ASN1Element[],
-            __utils.BER
+            __utils.DER
         );
     };
 }
@@ -2213,9 +2213,9 @@ export function _get_encoder_for_PathOrObjects<ObjectType>(
                 () =>
                     __utils._encodeSequenceOf<ObjectType>(
                         () => _encode_ObjectType,
-                        __utils.BER
+                        __utils.DER
                     ),
-                __utils.BER
+                __utils.DER
             ),
             indirect_protected: __utils._encode_implicit(
                 asn1.ASN1TagClass.context,
@@ -2227,11 +2227,11 @@ export function _get_encoder_for_PathOrObjects<ObjectType>(
                         _get_encoder_for_EnvelopedData<ObjectType[]>(
                             __utils._encodeSequenceOf<ObjectType>(
                                 () => _encode_ObjectType,
-                                __utils.BER
+                                __utils.DER
                             )
                         )
                     ),
-                __utils.BER
+                __utils.DER
             ),
             direct_protected: __utils._encode_implicit(
                 asn1.ASN1TagClass.context,
@@ -2240,13 +2240,13 @@ export function _get_encoder_for_PathOrObjects<ObjectType>(
                     _get_encoder_for_EnvelopedData<ObjectType[]>(
                         __utils._encodeSequenceOf<ObjectType>(
                             () => _encode_ObjectType,
-                            __utils.BER
+                            __utils.DER
                         )
                     ),
-                __utils.BER
+                __utils.DER
             ),
         },
-        __utils.BER
+        __utils.DER
     );
 }
 
@@ -2360,7 +2360,7 @@ export function _encode_SecurityCondition(
                     asn1.ASN1TagClass.context,
                     0,
                     () => _encode_SecurityCondition,
-                    __utils.BER
+                    __utils.DER
                 ),
                 and: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -2368,9 +2368,9 @@ export function _encode_SecurityCondition(
                     () =>
                         __utils._encodeSequenceOf<SecurityCondition>(
                             () => _encode_SecurityCondition,
-                            __utils.BER
+                            __utils.DER
                         ),
-                    __utils.BER
+                    __utils.DER
                 ),
                 or: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -2378,12 +2378,12 @@ export function _encode_SecurityCondition(
                     () =>
                         __utils._encodeSequenceOf<SecurityCondition>(
                             () => _encode_SecurityCondition,
-                            __utils.BER
+                            __utils.DER
                         ),
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_SecurityCondition(value, elGetter);
@@ -2465,11 +2465,11 @@ export function _encode_AccessControlRule(
                         [
                             /* REQUIRED   */ _encode_AccessMode(
                                 value.accessMode,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* REQUIRED   */ _encode_SecurityCondition(
                                 value.securityCondition,
-                                __utils.BER
+                                __utils.DER
                             ),
                         ],
                         value._unrecognizedExtensionsList
@@ -2479,7 +2479,7 @@ export function _encode_AccessControlRule(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -2613,31 +2613,31 @@ export function _encode_CommonObjectAttributes(
                         [
                             /* IF_ABSENT  */ value.label === undefined
                                 ? undefined
-                                : _encode_Label(value.label, __utils.BER),
+                                : _encode_Label(value.label, __utils.DER),
                             /* IF_ABSENT  */ value.flags === undefined
                                 ? undefined
                                 : _encode_CommonObjectFlags(
                                       value.flags,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.authId === undefined
                                 ? undefined
-                                : _encode_Identifier(value.authId, __utils.BER),
+                                : _encode_Identifier(value.authId, __utils.DER),
                         ],
                         [
                             /* IF_ABSENT  */ value.userConsent === undefined
                                 ? undefined
                                 : __utils._encodeInteger(
                                       value.userConsent,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.accessControlRules ===
                             undefined
                                 ? undefined
                                 : __utils._encodeSequenceOf<AccessControlRule>(
                                       () => _encode_AccessControlRule,
-                                      __utils.BER
-                                  )(value.accessControlRules, __utils.BER),
+                                      __utils.DER
+                                  )(value.accessControlRules, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -2646,7 +2646,7 @@ export function _encode_CommonObjectAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -2771,11 +2771,11 @@ export function _get_encoder_for_PKCS15Object<
                 .concat([
                     /* REQUIRED   */ _encode_CommonObjectAttributes(
                         value.commonObjectAttributes,
-                        __utils.BER
+                        __utils.DER
                     ),
                     /* REQUIRED   */ _encode_ClassAttributes(
                         value.classAttributes,
-                        __utils.BER
+                        __utils.DER
                     ),
                     /* IF_ABSENT  */ value.subClassAttributes === undefined
                         ? undefined
@@ -2783,19 +2783,19 @@ export function _get_encoder_for_PKCS15Object<
                               asn1.ASN1TagClass.context,
                               0,
                               () => _encode_SubClassAttributes,
-                              __utils.BER
-                          )(value.subClassAttributes, __utils.BER),
+                              __utils.DER
+                          )(value.subClassAttributes, __utils.DER),
                     /* REQUIRED   */ __utils._encode_implicit(
                         asn1.ASN1TagClass.context,
                         1,
                         () => _encode_TypeAttributes,
-                        __utils.BER
-                    )(value.typeAttributes, __utils.BER),
+                        __utils.DER
+                    )(value.typeAttributes, __utils.DER),
                 ])
                 .filter(
                     (c: asn1.ASN1Element | undefined): boolean => !!c
                 ) as asn1.ASN1Element[],
-            __utils.BER
+            __utils.DER
         );
     };
 }
@@ -3017,11 +3017,11 @@ export function _encode_CommonKeyAttributes(
                         [
                             /* REQUIRED   */ _encode_Identifier(
                                 value.iD,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* REQUIRED   */ _encode_KeyUsageFlags(
                                 value.usage,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* IF_DEFAULT */ value.native === undefined ||
                             __utils.deepEq(
@@ -3031,25 +3031,25 @@ export function _encode_CommonKeyAttributes(
                                 ? undefined
                                 : __utils._encodeBoolean(
                                       value.native,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.accessFlags === undefined
                                 ? undefined
                                 : _encode_KeyAccessFlags(
                                       value.accessFlags,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.keyReference === undefined
                                 ? undefined
                                 : _encode_Reference(
                                       value.keyReference,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.startDate === undefined
                                 ? undefined
                                 : __utils._encodeGeneralizedTime(
                                       value.startDate,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.endDate === undefined
                                 ? undefined
@@ -3057,8 +3057,8 @@ export function _encode_CommonKeyAttributes(
                                       asn1.ASN1TagClass.context,
                                       0,
                                       () => __utils._encodeGeneralizedTime,
-                                      __utils.BER
-                                  )(value.endDate, __utils.BER),
+                                      __utils.DER
+                                  )(value.endDate, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -3067,7 +3067,7 @@ export function _encode_CommonKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -3144,17 +3144,17 @@ export function _encode_CredentialIdentifier(
                     .concat([
                         /* REQUIRED   */ __utils._encodeInteger(
                             value.idType,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeAny(
                             value.idValue,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -3252,7 +3252,7 @@ export function _encode_CommonPrivateKeyAttributes(
                         [
                             /* IF_ABSENT  */ value.subjectName === undefined
                                 ? undefined
-                                : _encode_Name(value.subjectName, __utils.BER),
+                                : _encode_Name(value.subjectName, __utils.DER),
                             /* IF_ABSENT  */ value.keyIdentifiers === undefined
                                 ? undefined
                                 : __utils._encode_implicit(
@@ -3264,10 +3264,10 @@ export function _encode_CommonPrivateKeyAttributes(
                                           >(
                                               () =>
                                                   _encode_CredentialIdentifier,
-                                              __utils.BER
+                                              __utils.DER
                                           ),
-                                      __utils.BER
-                                  )(value.keyIdentifiers, __utils.BER),
+                                      __utils.DER
+                                  )(value.keyIdentifiers, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -3276,7 +3276,7 @@ export function _encode_CommonPrivateKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -3368,7 +3368,7 @@ export function _get_encoder_for_ObjectValue<Type>(
                 asn1.ASN1TagClass.context,
                 0,
                 () => _encode_Type,
-                __utils.BER
+                __utils.DER
             ),
             indirect_protected: __utils._encode_implicit(
                 asn1.ASN1TagClass.context,
@@ -3377,16 +3377,16 @@ export function _get_encoder_for_ObjectValue<Type>(
                     _get_encoder_for_ReferencedValue<EnvelopedData<Type>>(
                         _get_encoder_for_EnvelopedData<Type>(_encode_Type)
                     ),
-                __utils.BER
+                __utils.DER
             ),
             direct_protected: __utils._encode_implicit(
                 asn1.ASN1TagClass.context,
                 2,
                 () => _get_encoder_for_EnvelopedData<Type>(_encode_Type),
-                __utils.BER
+                __utils.DER
             ),
         },
-        __utils.BER
+        __utils.DER
     );
 }
 
@@ -3567,69 +3567,69 @@ export function _encode_RSAPrivateKeyObject(
                                   asn1.ASN1TagClass.context,
                                   0,
                                   () => __utils._encodeBigInt,
-                                  __utils.BER
-                              )(value.modulus, __utils.BER),
+                                  __utils.DER
+                              )(value.modulus, __utils.DER),
                         /* IF_ABSENT  */ value.publicExponent === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   1,
                                   () => __utils._encodeBigInt,
-                                  __utils.BER
-                              )(value.publicExponent, __utils.BER),
+                                  __utils.DER
+                              )(value.publicExponent, __utils.DER),
                         /* IF_ABSENT  */ value.privateExponent === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   2,
                                   () => __utils._encodeBigInt,
-                                  __utils.BER
-                              )(value.privateExponent, __utils.BER),
+                                  __utils.DER
+                              )(value.privateExponent, __utils.DER),
                         /* IF_ABSENT  */ value.prime1 === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   3,
                                   () => __utils._encodeBigInt,
-                                  __utils.BER
-                              )(value.prime1, __utils.BER),
+                                  __utils.DER
+                              )(value.prime1, __utils.DER),
                         /* IF_ABSENT  */ value.prime2 === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   4,
                                   () => __utils._encodeBigInt,
-                                  __utils.BER
-                              )(value.prime2, __utils.BER),
+                                  __utils.DER
+                              )(value.prime2, __utils.DER),
                         /* IF_ABSENT  */ value.exponent1 === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   5,
                                   () => __utils._encodeBigInt,
-                                  __utils.BER
-                              )(value.exponent1, __utils.BER),
+                                  __utils.DER
+                              )(value.exponent1, __utils.DER),
                         /* IF_ABSENT  */ value.exponent2 === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   6,
                                   () => __utils._encodeBigInt,
-                                  __utils.BER
-                              )(value.exponent2, __utils.BER),
+                                  __utils.DER
+                              )(value.exponent2, __utils.DER),
                         /* IF_ABSENT  */ value.coefficient === undefined
                             ? undefined
                             : __utils._encode_implicit(
                                   asn1.ASN1TagClass.context,
                                   7,
                                   () => __utils._encodeBigInt,
-                                  __utils.BER
-                              )(value.coefficient, __utils.BER),
+                                  __utils.DER
+                              )(value.coefficient, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -3716,19 +3716,19 @@ export function _get_encoder_for_KeyInfo_paramsAndOps<
                 .concat([
                     /* REQUIRED   */ _encode_ParameterType(
                         value.parameters,
-                        __utils.BER
+                        __utils.DER
                     ),
                     /* IF_ABSENT  */ value.supportedOperations === undefined
                         ? undefined
                         : _encode_OperationsType(
                               value.supportedOperations,
-                              __utils.BER
+                              __utils.DER
                           ),
                 ])
                 .filter(
                     (c: asn1.ASN1Element | undefined): boolean => !!c
                 ) as asn1.ASN1Element[],
-            __utils.BER
+            __utils.DER
         );
     };
 }
@@ -3762,7 +3762,7 @@ export function _get_encoder_for_KeyInfo<ParameterType, OperationsType>(
                 _encode_OperationsType,
             ),
         },
-        __utils.BER
+        __utils.DER
     );
 }
 
@@ -3899,11 +3899,11 @@ export function _encode_PrivateRSAKeyAttributes(
                                 RSAPrivateKeyObject
                             >(_encode_RSAPrivateKeyObject)(
                                 value.value,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* REQUIRED   */ __utils._encodeInteger(
                                 value.modulusLength,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* IF_ABSENT  */ value.keyInfo === undefined
                                 ? undefined
@@ -3913,7 +3913,7 @@ export function _encode_PrivateRSAKeyAttributes(
                                   >(
                                       __utils._encodeNull,
                                       _encode_PublicKeyOperations
-                                  )(value.keyInfo, __utils.BER),
+                                  )(value.keyInfo, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -3922,7 +3922,7 @@ export function _encode_PrivateRSAKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -4050,7 +4050,7 @@ export function _encode_PrivateECKeyAttributes(
                         [
                             /* REQUIRED   */ _get_encoder_for_ObjectValue<
                                 ECPrivateKey
-                            >(_encode_ECPrivateKey)(value.value, __utils.BER),
+                            >(_encode_ECPrivateKey)(value.value, __utils.DER),
                             /* IF_ABSENT  */ value.keyInfo === undefined
                                 ? undefined
                                 : _get_encoder_for_KeyInfo<
@@ -4059,7 +4059,7 @@ export function _encode_PrivateECKeyAttributes(
                                   >(
                                       _encode_Parameters,
                                       _encode_PublicKeyOperations
-                                  )(value.keyInfo, __utils.BER),
+                                  )(value.keyInfo, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -4068,7 +4068,7 @@ export function _encode_PrivateECKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -4196,7 +4196,7 @@ export function _encode_PrivateDHKeyAttributes(
                         [
                             /* REQUIRED   */ _get_encoder_for_ObjectValue<
                                 DHPrivateKey
-                            >(_encode_DHPrivateKey)(value.value, __utils.BER),
+                            >(_encode_DHPrivateKey)(value.value, __utils.DER),
                             /* IF_ABSENT  */ value.keyInfo === undefined
                                 ? undefined
                                 : _get_encoder_for_KeyInfo<
@@ -4205,7 +4205,7 @@ export function _encode_PrivateDHKeyAttributes(
                                   >(
                                       _encode_DomainParameters,
                                       _encode_PublicKeyOperations
-                                  )(value.keyInfo, __utils.BER),
+                                  )(value.keyInfo, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -4214,7 +4214,7 @@ export function _encode_PrivateDHKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -4342,7 +4342,7 @@ export function _encode_PrivateDSAKeyAttributes(
                         [
                             /* REQUIRED   */ _get_encoder_for_ObjectValue<
                                 DSAPrivateKey
-                            >(_encode_DSAPrivateKey)(value.value, __utils.BER),
+                            >(_encode_DSAPrivateKey)(value.value, __utils.DER),
                             /* IF_ABSENT  */ value.keyInfo === undefined
                                 ? undefined
                                 : _get_encoder_for_KeyInfo<
@@ -4351,7 +4351,7 @@ export function _encode_PrivateDSAKeyAttributes(
                                   >(
                                       _encode_DomainParameters,
                                       _encode_PublicKeyOperations
-                                  )(value.keyInfo, __utils.BER),
+                                  )(value.keyInfo, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -4360,7 +4360,7 @@ export function _encode_PrivateDSAKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -4488,7 +4488,7 @@ export function _encode_PrivateKEAKeyAttributes(
                         [
                             /* REQUIRED   */ _get_encoder_for_ObjectValue<
                                 KEAPrivateKey
-                            >(_encode_KEAPrivateKey)(value.value, __utils.BER),
+                            >(_encode_KEAPrivateKey)(value.value, __utils.DER),
                             /* IF_ABSENT  */ value.keyInfo === undefined
                                 ? undefined
                                 : _get_encoder_for_KeyInfo<
@@ -4497,7 +4497,7 @@ export function _encode_PrivateKEAKeyAttributes(
                                   >(
                                       _encode_DomainParameters,
                                       _encode_PublicKeyOperations
-                                  )(value.keyInfo, __utils.BER),
+                                  )(value.keyInfo, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -4506,7 +4506,7 @@ export function _encode_PrivateKEAKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -4610,7 +4610,7 @@ export function _encode_PrivateKeyType(
                         _get_encoder_for_PrivateKeyObject<
                             PrivateECKeyAttributes
                         >(_encode_PrivateECKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 privateDHKey: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -4619,7 +4619,7 @@ export function _encode_PrivateKeyType(
                         _get_encoder_for_PrivateKeyObject<
                             PrivateDHKeyAttributes
                         >(_encode_PrivateDHKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 privateDSAKey: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -4628,7 +4628,7 @@ export function _encode_PrivateKeyType(
                         _get_encoder_for_PrivateKeyObject<
                             PrivateDSAKeyAttributes
                         >(_encode_PrivateDSAKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 privateKEAKey: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -4637,10 +4637,10 @@ export function _encode_PrivateKeyType(
                         _get_encoder_for_PrivateKeyObject<
                             PrivateKEAKeyAttributes
                         >(_encode_PrivateKEAKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_PrivateKeyType(value, elGetter);
@@ -4748,18 +4748,18 @@ export function _encode_Usage(
                     .concat([
                         /* IF_ABSENT  */ value.keyUsage === undefined
                             ? undefined
-                            : _encode_KeyUsage(value.keyUsage, __utils.BER),
+                            : _encode_KeyUsage(value.keyUsage, __utils.DER),
                         /* IF_ABSENT  */ value.extKeyUsage === undefined
                             ? undefined
                             : __utils._encodeSequenceOf<asn1.OBJECT_IDENTIFIER>(
                                   () => __utils._encodeObjectIdentifier,
-                                  __utils.BER
-                              )(value.extKeyUsage, __utils.BER),
+                                  __utils.DER
+                              )(value.extKeyUsage, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -4854,7 +4854,7 @@ export function _encode_CommonPublicKeyAttributes(
                         [
                             /* IF_ABSENT  */ value.subjectName === undefined
                                 ? undefined
-                                : _encode_Name(value.subjectName, __utils.BER),
+                                : _encode_Name(value.subjectName, __utils.DER),
                         ],
                         [
                             /* IF_ABSENT  */ value.trustedUsage === undefined
@@ -4863,8 +4863,8 @@ export function _encode_CommonPublicKeyAttributes(
                                       asn1.ASN1TagClass.context,
                                       0,
                                       () => _encode_Usage,
-                                      __utils.BER
-                                  )(value.trustedUsage, __utils.BER),
+                                      __utils.DER
+                                  )(value.trustedUsage, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -4873,7 +4873,7 @@ export function _encode_CommonPublicKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -4952,10 +4952,10 @@ export function _encode_RSAPublicKeyChoice(
                     asn1.ASN1TagClass.context,
                     1,
                     () => _encode_SubjectPublicKeyInfo,
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_RSAPublicKeyChoice(value, elGetter);
@@ -5071,11 +5071,11 @@ export function _encode_PublicRSAKeyAttributes(
                                 RSAPublicKeyChoice
                             >(_encode_RSAPublicKeyChoice)(
                                 value.value,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* REQUIRED   */ __utils._encodeInteger(
                                 value.modulusLength,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* IF_ABSENT  */ value.keyInfo === undefined
                                 ? undefined
@@ -5085,7 +5085,7 @@ export function _encode_PublicRSAKeyAttributes(
                                   >(
                                       __utils._encodeNull,
                                       _encode_PublicKeyOperations
-                                  )(value.keyInfo, __utils.BER),
+                                  )(value.keyInfo, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -5094,7 +5094,7 @@ export function _encode_PublicRSAKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -5134,7 +5134,7 @@ export function _encode_ECPublicKeyChoice(
                 raw: _encode_ECPoint,
                 spki: _encode_SubjectPublicKeyInfo,
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_ECPublicKeyChoice(value, elGetter);
@@ -5240,7 +5240,7 @@ export function _encode_PublicECKeyAttributes(
                                 ECPublicKeyChoice
                             >(_encode_ECPublicKeyChoice)(
                                 value.value,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* IF_ABSENT  */ value.keyInfo === undefined
                                 ? undefined
@@ -5250,7 +5250,7 @@ export function _encode_PublicECKeyAttributes(
                                   >(
                                       _encode_Parameters,
                                       _encode_PublicKeyOperations
-                                  )(value.keyInfo, __utils.BER),
+                                  )(value.keyInfo, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -5259,7 +5259,7 @@ export function _encode_PublicECKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -5299,7 +5299,7 @@ export function _encode_DHPublicKeyChoice(
                 raw: _encode_DiffieHellmanPublicNumber,
                 spki: _encode_SubjectPublicKeyInfo,
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_DHPublicKeyChoice(value, elGetter);
@@ -5405,7 +5405,7 @@ export function _encode_PublicDHKeyAttributes(
                                 DHPublicKeyChoice
                             >(_encode_DHPublicKeyChoice)(
                                 value.value,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* IF_ABSENT  */ value.keyInfo === undefined
                                 ? undefined
@@ -5415,7 +5415,7 @@ export function _encode_PublicDHKeyAttributes(
                                   >(
                                       _encode_DomainParameters,
                                       _encode_PublicKeyOperations
-                                  )(value.keyInfo, __utils.BER),
+                                  )(value.keyInfo, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -5424,7 +5424,7 @@ export function _encode_PublicDHKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -5464,7 +5464,7 @@ export function _encode_DSAPublicKeyChoice(
                 raw: __utils._encodeBigInt,
                 spki: _encode_SubjectPublicKeyInfo,
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_DSAPublicKeyChoice(value, elGetter);
@@ -5570,7 +5570,7 @@ export function _encode_PublicDSAKeyAttributes(
                                 DSAPublicKeyChoice
                             >(_encode_DSAPublicKeyChoice)(
                                 value.value,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* IF_ABSENT  */ value.keyInfo === undefined
                                 ? undefined
@@ -5580,7 +5580,7 @@ export function _encode_PublicDSAKeyAttributes(
                                   >(
                                       _encode_DomainParameters,
                                       _encode_PublicKeyOperations
-                                  )(value.keyInfo, __utils.BER),
+                                  )(value.keyInfo, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -5589,7 +5589,7 @@ export function _encode_PublicDSAKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -5629,7 +5629,7 @@ export function _encode_KEAPublicKeyChoice(
                 raw: __utils._encodeBigInt,
                 spki: _encode_SubjectPublicKeyInfo,
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_KEAPublicKeyChoice(value, elGetter);
@@ -5735,7 +5735,7 @@ export function _encode_PublicKEAKeyAttributes(
                                 KEAPublicKeyChoice
                             >(_encode_KEAPublicKeyChoice)(
                                 value.value,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* IF_ABSENT  */ value.keyInfo === undefined
                                 ? undefined
@@ -5745,7 +5745,7 @@ export function _encode_PublicKEAKeyAttributes(
                                   >(
                                       _encode_DomainParameters,
                                       _encode_PublicKeyOperations
-                                  )(value.keyInfo, __utils.BER),
+                                  )(value.keyInfo, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -5754,7 +5754,7 @@ export function _encode_PublicKEAKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -5858,7 +5858,7 @@ export function _encode_PublicKeyType(
                         _get_encoder_for_PublicKeyObject<PublicECKeyAttributes>(
                             _encode_PublicECKeyAttributes
                         ),
-                    __utils.BER
+                    __utils.DER
                 ),
                 publicDHKey: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -5867,7 +5867,7 @@ export function _encode_PublicKeyType(
                         _get_encoder_for_PublicKeyObject<PublicDHKeyAttributes>(
                             _encode_PublicDHKeyAttributes
                         ),
-                    __utils.BER
+                    __utils.DER
                 ),
                 publicDSAKey: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -5876,7 +5876,7 @@ export function _encode_PublicKeyType(
                         _get_encoder_for_PublicKeyObject<
                             PublicDSAKeyAttributes
                         >(_encode_PublicDSAKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 publicKEAKey: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -5885,10 +5885,10 @@ export function _encode_PublicKeyType(
                         _get_encoder_for_PublicKeyObject<
                             PublicKEAKeyAttributes
                         >(_encode_PublicKEAKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_PublicKeyType(value, elGetter);
@@ -5995,7 +5995,7 @@ export function _encode_CommonSecretKeyAttributes(
                                 ? undefined
                                 : __utils._encodeInteger(
                                       value.keyLen,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                         ],
                         value._unrecognizedExtensionsList
@@ -6005,7 +6005,7 @@ export function _encode_CommonSecretKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -6109,7 +6109,7 @@ export function _encode_GenericSecretKeyAttributes(
                                 asn1.OCTET_STRING
                             >(__utils._encodeOctetString)(
                                 value.value,
-                                __utils.BER
+                                __utils.DER
                             ),
                         ],
                         value._unrecognizedExtensionsList
@@ -6119,7 +6119,7 @@ export function _encode_GenericSecretKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -6194,19 +6194,19 @@ export function _encode_OtherKey(
                     .concat([
                         /* REQUIRED   */ __utils._encodeObjectIdentifier(
                             value.keyType,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _get_encoder_for_SecretKeyObject<
                             GenericSecretKeyAttributes
                         >(_encode_GenericSecretKeyAttributes)(
                             value.keyAttr,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -6445,7 +6445,7 @@ export function _encode_SecretKeyType(
                         _get_encoder_for_SecretKeyObject<
                             GenericSecretKeyAttributes
                         >(_encode_GenericSecretKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 rc4key: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -6454,7 +6454,7 @@ export function _encode_SecretKeyType(
                         _get_encoder_for_SecretKeyObject<
                             GenericSecretKeyAttributes
                         >(_encode_GenericSecretKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 desKey: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -6463,7 +6463,7 @@ export function _encode_SecretKeyType(
                         _get_encoder_for_SecretKeyObject<
                             GenericSecretKeyAttributes
                         >(_encode_GenericSecretKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 des2Key: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -6472,7 +6472,7 @@ export function _encode_SecretKeyType(
                         _get_encoder_for_SecretKeyObject<
                             GenericSecretKeyAttributes
                         >(_encode_GenericSecretKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 des3Key: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -6481,7 +6481,7 @@ export function _encode_SecretKeyType(
                         _get_encoder_for_SecretKeyObject<
                             GenericSecretKeyAttributes
                         >(_encode_GenericSecretKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 castKey: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -6490,7 +6490,7 @@ export function _encode_SecretKeyType(
                         _get_encoder_for_SecretKeyObject<
                             GenericSecretKeyAttributes
                         >(_encode_GenericSecretKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 cast3Key: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -6499,7 +6499,7 @@ export function _encode_SecretKeyType(
                         _get_encoder_for_SecretKeyObject<
                             GenericSecretKeyAttributes
                         >(_encode_GenericSecretKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 cast128Key: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -6508,7 +6508,7 @@ export function _encode_SecretKeyType(
                         _get_encoder_for_SecretKeyObject<
                             GenericSecretKeyAttributes
                         >(_encode_GenericSecretKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 rc5Key: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -6517,7 +6517,7 @@ export function _encode_SecretKeyType(
                         _get_encoder_for_SecretKeyObject<
                             GenericSecretKeyAttributes
                         >(_encode_GenericSecretKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 ideaKey: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -6526,7 +6526,7 @@ export function _encode_SecretKeyType(
                         _get_encoder_for_SecretKeyObject<
                             GenericSecretKeyAttributes
                         >(_encode_GenericSecretKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 skipjackKey: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -6535,7 +6535,7 @@ export function _encode_SecretKeyType(
                         _get_encoder_for_SecretKeyObject<
                             GenericSecretKeyAttributes
                         >(_encode_GenericSecretKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 batonKey: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -6544,7 +6544,7 @@ export function _encode_SecretKeyType(
                         _get_encoder_for_SecretKeyObject<
                             GenericSecretKeyAttributes
                         >(_encode_GenericSecretKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 juniperKey: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -6553,7 +6553,7 @@ export function _encode_SecretKeyType(
                         _get_encoder_for_SecretKeyObject<
                             GenericSecretKeyAttributes
                         >(_encode_GenericSecretKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 rc6Key: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -6562,16 +6562,16 @@ export function _encode_SecretKeyType(
                         _get_encoder_for_SecretKeyObject<
                             GenericSecretKeyAttributes
                         >(_encode_GenericSecretKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 otherKey: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
                     14,
                     () => _encode_OtherKey,
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_SecretKeyType(value, elGetter);
@@ -6769,7 +6769,7 @@ export function _encode_CommonCertificateAttributes(
                         [
                             /* REQUIRED   */ _encode_Identifier(
                                 value.iD,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* IF_DEFAULT */ value.authority === undefined ||
                             __utils.deepEq(
@@ -6779,13 +6779,13 @@ export function _encode_CommonCertificateAttributes(
                                 ? undefined
                                 : __utils._encodeBoolean(
                                       value.authority,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.identifier === undefined
                                 ? undefined
                                 : _encode_CredentialIdentifier(
                                       value.identifier,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.certHash === undefined
                                 ? undefined
@@ -6793,8 +6793,8 @@ export function _encode_CommonCertificateAttributes(
                                       asn1.ASN1TagClass.context,
                                       0,
                                       () => _encode_OOBCertHash,
-                                      __utils.BER
-                                  )(value.certHash, __utils.BER),
+                                      __utils.DER
+                                  )(value.certHash, __utils.DER),
                         ],
                         [
                             /* IF_ABSENT  */ value.trustedUsage === undefined
@@ -6803,8 +6803,8 @@ export function _encode_CommonCertificateAttributes(
                                       asn1.ASN1TagClass.context,
                                       1,
                                       () => _encode_Usage,
-                                      __utils.BER
-                                  )(value.trustedUsage, __utils.BER),
+                                      __utils.DER
+                                  )(value.trustedUsage, __utils.DER),
                             /* IF_ABSENT  */ value.identifiers === undefined
                                 ? undefined
                                 : __utils._encode_implicit(
@@ -6816,10 +6816,10 @@ export function _encode_CommonCertificateAttributes(
                                           >(
                                               () =>
                                                   _encode_CredentialIdentifier,
-                                              __utils.BER
+                                              __utils.DER
                                           ),
-                                      __utils.BER
-                                  )(value.identifiers, __utils.BER),
+                                      __utils.DER
+                                  )(value.identifiers, __utils.DER),
                             /* IF_DEFAULT */ value.implicitTrust ===
                                 undefined ||
                             __utils.deepEq(
@@ -6831,8 +6831,8 @@ export function _encode_CommonCertificateAttributes(
                                       asn1.ASN1TagClass.context,
                                       3,
                                       () => __utils._encodeBoolean,
-                                      __utils.BER
-                                  )(value.implicitTrust, __utils.BER),
+                                      __utils.DER
+                                  )(value.implicitTrust, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -6841,7 +6841,7 @@ export function _encode_CommonCertificateAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -6995,23 +6995,23 @@ export function _encode_X509CertificateAttributes(
                         [
                             /* REQUIRED   */ _get_encoder_for_ObjectValue<
                                 Certificate
-                            >(_encode_Certificate)(value.value, __utils.BER),
+                            >(_encode_Certificate)(value.value, __utils.DER),
                             /* IF_ABSENT  */ value.subject === undefined
                                 ? undefined
-                                : _encode_Name(value.subject, __utils.BER),
+                                : _encode_Name(value.subject, __utils.DER),
                             /* IF_ABSENT  */ value.issuer === undefined
                                 ? undefined
                                 : __utils._encode_implicit(
                                       asn1.ASN1TagClass.context,
                                       0,
                                       () => _encode_Name,
-                                      __utils.BER
-                                  )(value.issuer, __utils.BER),
+                                      __utils.DER
+                                  )(value.issuer, __utils.DER),
                             /* IF_ABSENT  */ value.serialNumber === undefined
                                 ? undefined
                                 : _encode_CertificateSerialNumber(
                                       value.serialNumber,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                         ],
                         value._unrecognizedExtensionsList
@@ -7021,7 +7021,7 @@ export function _encode_X509CertificateAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -7151,19 +7151,19 @@ export function _encode_X509AttributeCertificateAttributes(
                                 AttributeCertificate
                             >(_encode_AttributeCertificate)(
                                 value.value,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* IF_ABSENT  */ value.issuer === undefined
                                 ? undefined
                                 : _encode_GeneralNames(
                                       value.issuer,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.serialNumber === undefined
                                 ? undefined
                                 : _encode_CertificateSerialNumber(
                                       value.serialNumber,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.attrTypes === undefined
                                 ? undefined
@@ -7176,10 +7176,10 @@ export function _encode_X509AttributeCertificateAttributes(
                                           >(
                                               () =>
                                                   __utils._encodeObjectIdentifier,
-                                              __utils.BER
+                                              __utils.DER
                                           ),
-                                      __utils.BER
-                                  )(value.attrTypes, __utils.BER),
+                                      __utils.DER
+                                  )(value.attrTypes, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -7188,7 +7188,7 @@ export function _encode_X509AttributeCertificateAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -7261,7 +7261,7 @@ export function _encode_SPKICertificateAttributes(
                         [
                             /* REQUIRED   */ _get_encoder_for_ObjectValue<
                                 asn1.ASN1Element
-                            >(__utils._encodeAny)(value.value, __utils.BER),
+                            >(__utils._encodeAny)(value.value, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -7270,7 +7270,7 @@ export function _encode_SPKICertificateAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -7340,7 +7340,7 @@ export function _encode_PGPCertificateAttributes(
                         [
                             /* REQUIRED   */ _get_encoder_for_ObjectValue<
                                 asn1.ASN1Element
-                            >(__utils._encodeAny)(value.value, __utils.BER),
+                            >(__utils._encodeAny)(value.value, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -7349,7 +7349,7 @@ export function _encode_PGPCertificateAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -7419,7 +7419,7 @@ export function _encode_WTLSCertificateAttributes(
                         [
                             /* REQUIRED   */ _get_encoder_for_ObjectValue<
                                 asn1.ASN1Element
-                            >(__utils._encodeAny)(value.value, __utils.BER),
+                            >(__utils._encodeAny)(value.value, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -7428,7 +7428,7 @@ export function _encode_WTLSCertificateAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -7498,7 +7498,7 @@ export function _encode_X9_68CertificateAttributes(
                         [
                             /* REQUIRED   */ _get_encoder_for_ObjectValue<
                                 asn1.ASN1Element
-                            >(__utils._encodeAny)(value.value, __utils.BER),
+                            >(__utils._encodeAny)(value.value, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -7507,7 +7507,7 @@ export function _encode_X9_68CertificateAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -7577,7 +7577,7 @@ export function _encode_CVCertificateAttributes(
                         [
                             /* REQUIRED   */ _get_encoder_for_ObjectValue<
                                 asn1.ASN1Element
-                            >(__utils._encodeAny)(value.value, __utils.BER),
+                            >(__utils._encodeAny)(value.value, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -7586,7 +7586,7 @@ export function _encode_CVCertificateAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -7718,7 +7718,7 @@ export function _encode_CertificateType(
                         _get_encoder_for_CertificateObject<
                             X509AttributeCertificateAttributes
                         >(_encode_X509AttributeCertificateAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 spkiCertificate: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -7727,7 +7727,7 @@ export function _encode_CertificateType(
                         _get_encoder_for_CertificateObject<
                             SPKICertificateAttributes
                         >(_encode_SPKICertificateAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 pgpCertificate: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -7736,7 +7736,7 @@ export function _encode_CertificateType(
                         _get_encoder_for_CertificateObject<
                             PGPCertificateAttributes
                         >(_encode_PGPCertificateAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 wtlsCertificate: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -7745,7 +7745,7 @@ export function _encode_CertificateType(
                         _get_encoder_for_CertificateObject<
                             WTLSCertificateAttributes
                         >(_encode_WTLSCertificateAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 x9_68Certificate: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -7754,7 +7754,7 @@ export function _encode_CertificateType(
                         _get_encoder_for_CertificateObject<
                             X9_68CertificateAttributes
                         >(_encode_X9_68CertificateAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 cvCertificate: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -7763,10 +7763,10 @@ export function _encode_CertificateType(
                         _get_encoder_for_CertificateObject<
                             CVCertificateAttributes
                         >(_encode_CVCertificateAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_CertificateType(value, elGetter);
@@ -7886,13 +7886,13 @@ export function _encode_CommonDataObjectAttributes(
                                 ? undefined
                                 : _encode_Label(
                                       value.applicationName,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.applicationOID === undefined
                                 ? undefined
                                 : __utils._encodeObjectIdentifier(
                                       value.applicationOID,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                         ],
                         value._unrecognizedExtensionsList
@@ -7902,7 +7902,7 @@ export function _encode_CommonDataObjectAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -8057,16 +8057,16 @@ export function _encode_OidDO(
                     .concat([
                         /* REQUIRED   */ __utils._encodeObjectIdentifier(
                             value.id,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _get_encoder_for_ObjectValue<
                             asn1.ASN1Element
-                        >(__utils._encodeAny)(value.value, __utils.BER),
+                        >(__utils._encodeAny)(value.value, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -8122,16 +8122,16 @@ export function _encode_DataType(
                         _get_encoder_for_DataObject<ExternalIDO>(
                             _encode_ExternalIDO
                         ),
-                    __utils.BER
+                    __utils.DER
                 ),
                 oidDO: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
                     1,
                     () => _get_encoder_for_DataObject<OidDO>(_encode_OidDO),
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_DataType(value, elGetter);
@@ -8230,7 +8230,7 @@ export function _encode_CommonAuthenticationObjectAttributes(
                         [
                             /* REQUIRED   */ _encode_Identifier(
                                 value.authId,
-                                __utils.BER
+                                __utils.DER
                             ),
                         ],
                         value._unrecognizedExtensionsList
@@ -8240,7 +8240,7 @@ export function _encode_CommonAuthenticationObjectAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -8519,25 +8519,25 @@ export function _encode_PinAttributes(
                         [
                             /* REQUIRED   */ _encode_PinFlags(
                                 value.pinFlags,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* REQUIRED   */ _encode_PinType(
                                 value.pinType,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* REQUIRED   */ __utils._encodeInteger(
                                 value.minLength,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* REQUIRED   */ __utils._encodeInteger(
                                 value.storedLength,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* IF_ABSENT  */ value.maxLength === undefined
                                 ? undefined
                                 : __utils._encodeInteger(
                                       value.maxLength,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_DEFAULT */ value.pinReference === undefined ||
                             __utils.deepEq(
@@ -8549,23 +8549,23 @@ export function _encode_PinAttributes(
                                       asn1.ASN1TagClass.context,
                                       0,
                                       () => _encode_Reference,
-                                      __utils.BER
-                                  )(value.pinReference, __utils.BER),
+                                      __utils.DER
+                                  )(value.pinReference, __utils.DER),
                             /* IF_ABSENT  */ value.padChar === undefined
                                 ? undefined
                                 : __utils._encodeOctetString(
                                       value.padChar,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.lastPinChange === undefined
                                 ? undefined
                                 : __utils._encodeGeneralizedTime(
                                       value.lastPinChange,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.path === undefined
                                 ? undefined
-                                : _encode_Path(value.path, __utils.BER),
+                                : _encode_Path(value.path, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -8574,7 +8574,7 @@ export function _encode_PinAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -8752,11 +8752,11 @@ export function _encode_FingerPrint(
                         [
                             /* REQUIRED   */ _encode_FingerPrint_hand(
                                 value.hand,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* REQUIRED   */ _encode_FingerPrint_finger(
                                 value.finger,
-                                __utils.BER
+                                __utils.DER
                             ),
                         ],
                         value._unrecognizedExtensionsList
@@ -8766,7 +8766,7 @@ export function _encode_FingerPrint(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -8860,7 +8860,7 @@ export function _encode_IrisScan(
                         [
                             /* REQUIRED   */ _encode_IrisScan_eye(
                                 value.eye,
-                                __utils.BER
+                                __utils.DER
                             ),
                         ],
                         value._unrecognizedExtensionsList
@@ -8870,7 +8870,7 @@ export function _encode_IrisScan(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -8915,10 +8915,10 @@ export function _encode_BiometricType(
                     asn1.ASN1TagClass.context,
                     0,
                     () => _encode_IrisScan,
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_BiometricType(value, elGetter);
@@ -9065,15 +9065,15 @@ export function _encode_BiometricAttributes(
                         [
                             /* REQUIRED   */ _encode_BiometricFlags(
                                 value.bioFlags,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* REQUIRED   */ __utils._encodeObjectIdentifier(
                                 value.templateId,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* REQUIRED   */ _encode_BiometricType(
                                 value.bioType,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* IF_DEFAULT */ value.bioReference === undefined ||
                             __utils.deepEq(
@@ -9083,17 +9083,17 @@ export function _encode_BiometricAttributes(
                                 ? undefined
                                 : _encode_Reference(
                                       value.bioReference,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.lastChange === undefined
                                 ? undefined
                                 : __utils._encodeGeneralizedTime(
                                       value.lastChange,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* IF_ABSENT  */ value.path === undefined
                                 ? undefined
-                                : _encode_Path(value.path, __utils.BER),
+                                : _encode_Path(value.path, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -9102,7 +9102,7 @@ export function _encode_BiometricAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -9204,11 +9204,11 @@ export function _encode_AuthKeyAttributes(
                                 ? undefined
                                 : __utils._encodeBoolean(
                                       value.derivedKey,
-                                      __utils.BER
+                                      __utils.DER
                                   ),
                             /* REQUIRED   */ _encode_Identifier(
                                 value.authKeyId,
-                                __utils.BER
+                                __utils.DER
                             ),
                         ],
                         value._unrecognizedExtensionsList
@@ -9218,7 +9218,7 @@ export function _encode_AuthKeyAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -9291,7 +9291,7 @@ export function _encode_CertBasedAuthenticationAttributes(
                         [
                             /* REQUIRED   */ __utils._encodeOctetString(
                                 value.cha,
-                                __utils.BER
+                                __utils.DER
                             ),
                         ],
                         value._unrecognizedExtensionsList
@@ -9301,7 +9301,7 @@ export function _encode_CertBasedAuthenticationAttributes(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -9353,10 +9353,10 @@ export function _encode_ExternalAuthObjectAttributes(
                     asn1.ASN1TagClass.context,
                     0,
                     () => _encode_CertBasedAuthenticationAttributes,
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_ExternalAuthObjectAttributes(value, elGetter);
@@ -9442,7 +9442,7 @@ export function _encode_AuthenticationType(
                         _get_encoder_for_AuthenticationObject<
                             BiometricAttributes
                         >(_encode_BiometricAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 authKey: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -9451,7 +9451,7 @@ export function _encode_AuthenticationType(
                         _get_encoder_for_AuthenticationObject<
                             AuthKeyAttributes
                         >(_encode_AuthKeyAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
                 external: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
@@ -9460,10 +9460,10 @@ export function _encode_AuthenticationType(
                         _get_encoder_for_AuthenticationObject<
                             ExternalAuthObjectAttributes
                         >(_encode_ExternalAuthObjectAttributes),
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_AuthenticationType(value, elGetter);
@@ -9583,58 +9583,58 @@ export function _encode_PKCS15Objects(
                     asn1.ASN1TagClass.context,
                     0,
                     () => _encode_PrivateKeys,
-                    __utils.BER
+                    __utils.DER
                 ),
                 publicKeys: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
                     1,
                     () => _encode_PublicKeys,
-                    __utils.BER
+                    __utils.DER
                 ),
                 trustedPublicKeys: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
                     2,
                     () => _encode_PublicKeys,
-                    __utils.BER
+                    __utils.DER
                 ),
                 secretKeys: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
                     3,
                     () => _encode_SecretKeys,
-                    __utils.BER
+                    __utils.DER
                 ),
                 certificates: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
                     4,
                     () => _encode_Certificates,
-                    __utils.BER
+                    __utils.DER
                 ),
                 trustedCertificates: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
                     5,
                     () => _encode_Certificates,
-                    __utils.BER
+                    __utils.DER
                 ),
                 usefulCertificates: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
                     6,
                     () => _encode_Certificates,
-                    __utils.BER
+                    __utils.DER
                 ),
                 dataObjects: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
                     7,
                     () => _encode_DataObjects,
-                    __utils.BER
+                    __utils.DER
                 ),
                 authObjects: __utils._encode_implicit(
                     asn1.ASN1TagClass.context,
                     8,
                     () => _encode_AuthObjects,
-                    __utils.BER
+                    __utils.DER
                 ),
             },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_PKCS15Objects(value, elGetter);
@@ -9736,7 +9736,7 @@ export function _encode_PKCS15Token(
                     .concat([
                         /* REQUIRED   */ _encode_PKCS15Token_version(
                             value.version,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.keyManagementInfo === undefined
                             ? undefined
@@ -9744,19 +9744,19 @@ export function _encode_PKCS15Token(
                                   asn1.ASN1TagClass.context,
                                   0,
                                   () => _encode_KeyManagementInfo,
-                                  __utils.BER
-                              )(value.keyManagementInfo, __utils.BER),
+                                  __utils.DER
+                              )(value.keyManagementInfo, __utils.DER),
                         /* REQUIRED   */ __utils._encodeSequenceOf<
                             PKCS15Objects
-                        >(() => _encode_PKCS15Objects, __utils.BER)(
+                        >(() => _encode_PKCS15Objects, __utils.DER)(
                             value.pkcs15Objects,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -9879,27 +9879,27 @@ export function _encode_DDO(value: DDO, elGetter: __utils.ASN1Encoder<DDO>) {
                         [
                             /* REQUIRED   */ __utils._encodeObjectIdentifier(
                                 value.oid,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* IF_ABSENT  */ value.odfPath === undefined
                                 ? undefined
-                                : _encode_Path(value.odfPath, __utils.BER),
+                                : _encode_Path(value.odfPath, __utils.DER),
                             /* IF_ABSENT  */ value.tokenInfoPath === undefined
                                 ? undefined
                                 : __utils._encode_implicit(
                                       asn1.ASN1TagClass.context,
                                       0,
                                       () => _encode_Path,
-                                      __utils.BER
-                                  )(value.tokenInfoPath, __utils.BER),
+                                      __utils.DER
+                                  )(value.tokenInfoPath, __utils.DER),
                             /* IF_ABSENT  */ value.unusedPath === undefined
                                 ? undefined
                                 : __utils._encode_implicit(
                                       asn1.ASN1TagClass.context,
                                       1,
                                       () => _encode_Path,
-                                      __utils.BER
-                                  )(value.unusedPath, __utils.BER),
+                                      __utils.DER
+                                  )(value.unusedPath, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -9908,7 +9908,7 @@ export function _encode_DDO(value: DDO, elGetter: __utils.ASN1Encoder<DDO>) {
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -10031,39 +10031,39 @@ export function _encode_DIRRecord(
                                     asn1.ASN1TagClass.application,
                                     15,
                                     () => __utils._encodeOctetString,
-                                    __utils.BER
-                                )(value.aid, __utils.BER),
+                                    __utils.DER
+                                )(value.aid, __utils.DER),
                                 /* IF_ABSENT  */ value.label === undefined
                                     ? undefined
                                     : __utils._encode_implicit(
                                           asn1.ASN1TagClass.application,
                                           16,
                                           () => __utils._encodeUTF8String,
-                                          __utils.BER
-                                      )(value.label, __utils.BER),
+                                          __utils.DER
+                                      )(value.label, __utils.DER),
                                 /* REQUIRED   */ __utils._encode_implicit(
                                     asn1.ASN1TagClass.application,
                                     17,
                                     () => __utils._encodeOctetString,
-                                    __utils.BER
-                                )(value.path, __utils.BER),
+                                    __utils.DER
+                                )(value.path, __utils.DER),
                                 /* IF_ABSENT  */ value.ddo === undefined
                                     ? undefined
                                     : __utils._encode_implicit(
                                           asn1.ASN1TagClass.application,
                                           19,
                                           () => _encode_DDO,
-                                          __utils.BER
-                                      )(value.ddo, __utils.BER),
+                                          __utils.DER
+                                      )(value.ddo, __utils.DER),
                             ])
                             .filter(
                                 (c: asn1.ASN1Element | undefined): boolean =>
                                     !!c
                             ) as asn1.ASN1Element[],
-                        __utils.BER
+                        __utils.DER
                     );
                 },
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_DIRRecord(value, elGetter);
@@ -10170,11 +10170,11 @@ export function _encode_UnusedSpace(
                         [
                             /* REQUIRED   */ _encode_Path(
                                 value.path,
-                                __utils.BER
+                                __utils.DER
                             ),
                             /* IF_ABSENT  */ value.authId === undefined
                                 ? undefined
-                                : _encode_Identifier(value.authId, __utils.BER),
+                                : _encode_Identifier(value.authId, __utils.DER),
                         ],
                         [
                             /* IF_ABSENT  */ value.accessControlRules ===
@@ -10182,8 +10182,8 @@ export function _encode_UnusedSpace(
                                 ? undefined
                                 : __utils._encodeSequenceOf<AccessControlRule>(
                                       () => _encode_AccessControlRule,
-                                      __utils.BER
-                                  )(value.accessControlRules, __utils.BER),
+                                      __utils.DER
+                                  )(value.accessControlRules, __utils.DER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList
@@ -10192,7 +10192,7 @@ export function _encode_UnusedSpace(
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }

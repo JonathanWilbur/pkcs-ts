@@ -76,11 +76,11 @@ export function _encode_OOBCertHash (value: OOBCertHash, elGetter: __utils.ASN1E
     if (!_cached_encoder_for_OOBCertHash) { _cached_encoder_for_OOBCertHash = function (value: OOBCertHash, elGetter: __utils.ASN1Encoder<OOBCertHash>): asn1.ASN1Element {
     return __utils._encodeSequence(([] as (asn1.ASN1Element | undefined)[]).concat(
         [
-            /* IF_ABSENT  */ ((value.hashAlg === undefined) ? undefined : __utils._encode_explicit(asn1.ASN1TagClass.context, 0, () => _encode_AlgorithmIdentifier, __utils.BER)(value.hashAlg, __utils.BER)),
-            /* IF_ABSENT  */ ((value.certId === undefined) ? undefined : __utils._encode_explicit(asn1.ASN1TagClass.context, 1, () => _encode_CertId, __utils.BER)(value.certId, __utils.BER)),
-            /* REQUIRED   */ __utils._encodeBitString(value.hashVal, __utils.BER)
+            /* IF_ABSENT  */ ((value.hashAlg === undefined) ? undefined : __utils._encode_explicit(asn1.ASN1TagClass.context, 0, () => _encode_AlgorithmIdentifier, __utils.DER)(value.hashAlg, __utils.DER)),
+            /* IF_ABSENT  */ ((value.certId === undefined) ? undefined : __utils._encode_explicit(asn1.ASN1TagClass.context, 1, () => _encode_CertId, __utils.DER)(value.certId, __utils.DER)),
+            /* REQUIRED   */ __utils._encodeBitString(value.hashVal, __utils.DER)
         ],
-    ).filter((c: (asn1.ASN1Element | undefined)): boolean => (!!c)) as asn1.ASN1Element[], __utils.BER);
+    ).filter((c: (asn1.ASN1Element | undefined)): boolean => (!!c)) as asn1.ASN1Element[], __utils.DER);
 }; }
     return _cached_encoder_for_OOBCertHash(value, elGetter);
 }

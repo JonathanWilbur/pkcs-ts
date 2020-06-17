@@ -218,11 +218,11 @@ export function _encode_MacData(
                     .concat([
                         /* REQUIRED   */ _encode_DigestInfo(
                             value.mac,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeOctetString(
                             value.macSalt,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_DEFAULT */ value.iterations === undefined ||
                         __utils.deepEq(
@@ -232,13 +232,13 @@ export function _encode_MacData(
                             ? undefined
                             : __utils._encodeInteger(
                                   value.iterations,
-                                  __utils.BER
+                                  __utils.DER
                               ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -328,20 +328,20 @@ export function _encode_PFX(value: PFX, elGetter: __utils.ASN1Encoder<PFX>) {
                     .concat([
                         /* REQUIRED   */ _encode_PFX_version(
                             value.version,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ _encode_ContentInfo(
                             value.authSafe,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.macData === undefined
                             ? undefined
-                            : _encode_MacData(value.macData, __utils.BER),
+                            : _encode_MacData(value.macData, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -370,7 +370,7 @@ export function _encode_AuthenticatedSafe(
     if (!_cached_encoder_for_AuthenticatedSafe) {
         _cached_encoder_for_AuthenticatedSafe = __utils._encodeSequenceOf<
             ContentInfo
-        >(() => _encode_ContentInfo, __utils.BER);
+        >(() => _encode_ContentInfo, __utils.DER);
     }
     return _cached_encoder_for_AuthenticatedSafe(value, elGetter);
 }
@@ -447,17 +447,17 @@ export function _encode_PKCS12Attribute(
                     .concat([
                         /* REQUIRED   */ __utils._encodeObjectIdentifier(
                             value.attrId,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeSetOf<asn1.ASN1Element>(
                             () => __utils._encodeAny,
-                            __utils.BER
-                        )(value.attrValues, __utils.BER),
+                            __utils.DER
+                        )(value.attrValues, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -554,25 +554,25 @@ export function _encode_SafeBag(
                     .concat([
                         /* REQUIRED   */ __utils._encodeObjectIdentifier(
                             value.bagId,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encode_explicit(
                             asn1.ASN1TagClass.context,
                             0,
                             () => __utils._encodeAny,
-                            __utils.BER
-                        )(value.bagValue, __utils.BER),
+                            __utils.DER
+                        )(value.bagValue, __utils.DER),
                         /* IF_ABSENT  */ value.bagAttributes === undefined
                             ? undefined
                             : __utils._encodeSetOf<PKCS12Attribute>(
                                   () => _encode_PKCS12Attribute,
-                                  __utils.BER
-                              )(value.bagAttributes, __utils.BER),
+                                  __utils.DER
+                              )(value.bagAttributes, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -601,7 +601,7 @@ export function _encode_SafeContents(
     if (!_cached_encoder_for_SafeContents) {
         _cached_encoder_for_SafeContents = __utils._encodeSequenceOf<SafeBag>(
             () => _encode_SafeBag,
-            __utils.BER
+            __utils.DER
         );
     }
     return _cached_encoder_for_SafeContents(value, elGetter);
@@ -731,19 +731,19 @@ export function _encode_CertBag(
                     .concat([
                         /* REQUIRED   */ __utils._encodeObjectIdentifier(
                             value.certId,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encode_explicit(
                             asn1.ASN1TagClass.context,
                             0,
                             () => __utils._encodeAny,
-                            __utils.BER
-                        )(value.certValue, __utils.BER),
+                            __utils.DER
+                        )(value.certValue, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -822,19 +822,19 @@ export function _encode_CRLBag(
                     .concat([
                         /* REQUIRED   */ __utils._encodeObjectIdentifier(
                             value.crlId,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encode_explicit(
                             asn1.ASN1TagClass.context,
                             0,
                             () => __utils._encodeAny,
-                            __utils.BER
-                        )(value.crltValue, __utils.BER),
+                            __utils.DER
+                        )(value.crltValue, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -913,19 +913,19 @@ export function _encode_SecretBag(
                     .concat([
                         /* REQUIRED   */ __utils._encodeObjectIdentifier(
                             value.secretTypeId,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encode_explicit(
                             asn1.ASN1TagClass.context,
                             0,
                             () => __utils._encodeAny,
-                            __utils.BER
-                        )(value.secretValue, __utils.BER),
+                            __utils.DER
+                        )(value.secretValue, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }

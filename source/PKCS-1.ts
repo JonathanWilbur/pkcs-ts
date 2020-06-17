@@ -152,17 +152,17 @@ export function _encode_RSAPublicKey(
                     .concat([
                         /* REQUIRED   */ __utils._encodeBigInt(
                             value.modulus,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeBigInt(
                             value.publicExponent,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -271,21 +271,21 @@ export function _encode_OtherPrimeInfo(
                     .concat([
                         /* REQUIRED   */ __utils._encodeBigInt(
                             value.prime,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeBigInt(
                             value.exponent,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeBigInt(
                             value.coefficient,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -314,7 +314,7 @@ export function _encode_OtherPrimeInfos(
     if (!_cached_encoder_for_OtherPrimeInfos) {
         _cached_encoder_for_OtherPrimeInfos = __utils._encodeSequenceOf<
             OtherPrimeInfo
-        >(() => _encode_OtherPrimeInfo, __utils.BER);
+        >(() => _encode_OtherPrimeInfo, __utils.DER);
     }
     return _cached_encoder_for_OtherPrimeInfos(value, elGetter);
 }
@@ -502,51 +502,51 @@ export function _encode_RSAPrivateKey(
                     .concat([
                         /* REQUIRED   */ _encode_Version(
                             value.version,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeBigInt(
                             value.modulus,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeBigInt(
                             value.publicExponent,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeBigInt(
                             value.privateExponent,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeBigInt(
                             value.prime1,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeBigInt(
                             value.prime2,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeBigInt(
                             value.exponent1,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeBigInt(
                             value.exponent2,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeBigInt(
                             value.coefficient,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.otherPrimeInfos === undefined
                             ? undefined
                             : _encode_OtherPrimeInfos(
                                   value.otherPrimeInfos,
-                                  __utils.BER
+                                  __utils.DER
                               ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -634,16 +634,16 @@ export function _encode_AlgorithmIdentifier(
                     .concat([
                         /* REQUIRED   */ __utils._encodeObjectIdentifier(
                             value.algorithm,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* IF_ABSENT  */ value.parameters === undefined
                             ? undefined
-                            : __utils._encodeAny(value.parameters, __utils.BER),
+                            : __utils._encodeAny(value.parameters, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -952,8 +952,8 @@ export function _encode_RSAES_OAEP_params(
                                   asn1.ASN1TagClass.context,
                                   0,
                                   () => _encode_HashAlgorithm,
-                                  __utils.BER
-                              )(value.hashAlgorithm, __utils.BER),
+                                  __utils.DER
+                              )(value.hashAlgorithm, __utils.DER),
                         /* IF_DEFAULT */ value.maskGenAlgorithm === undefined ||
                         __utils.deepEq(
                             value.maskGenAlgorithm,
@@ -964,8 +964,8 @@ export function _encode_RSAES_OAEP_params(
                                   asn1.ASN1TagClass.context,
                                   1,
                                   () => _encode_MaskGenAlgorithm,
-                                  __utils.BER
-                              )(value.maskGenAlgorithm, __utils.BER),
+                                  __utils.DER
+                              )(value.maskGenAlgorithm, __utils.DER),
                         /* IF_DEFAULT */ value.pSourceAlgorithm === undefined ||
                         __utils.deepEq(
                             value.pSourceAlgorithm,
@@ -976,13 +976,13 @@ export function _encode_RSAES_OAEP_params(
                                   asn1.ASN1TagClass.context,
                                   2,
                                   () => _encode_PSourceAlgorithm,
-                                  __utils.BER
-                              )(value.pSourceAlgorithm, __utils.BER),
+                                  __utils.DER
+                              )(value.pSourceAlgorithm, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -1180,8 +1180,8 @@ export function _encode_RSASSA_PSS_params(
                                   asn1.ASN1TagClass.context,
                                   0,
                                   () => _encode_HashAlgorithm,
-                                  __utils.BER
-                              )(value.hashAlgorithm, __utils.BER),
+                                  __utils.DER
+                              )(value.hashAlgorithm, __utils.DER),
                         /* IF_DEFAULT */ value.maskGenAlgorithm === undefined ||
                         __utils.deepEq(
                             value.maskGenAlgorithm,
@@ -1192,8 +1192,8 @@ export function _encode_RSASSA_PSS_params(
                                   asn1.ASN1TagClass.context,
                                   1,
                                   () => _encode_MaskGenAlgorithm,
-                                  __utils.BER
-                              )(value.maskGenAlgorithm, __utils.BER),
+                                  __utils.DER
+                              )(value.maskGenAlgorithm, __utils.DER),
                         /* IF_DEFAULT */ value.saltLength === undefined ||
                         __utils.deepEq(
                             value.saltLength,
@@ -1204,8 +1204,8 @@ export function _encode_RSASSA_PSS_params(
                                   asn1.ASN1TagClass.context,
                                   2,
                                   () => __utils._encodeInteger,
-                                  __utils.BER
-                              )(value.saltLength, __utils.BER),
+                                  __utils.DER
+                              )(value.saltLength, __utils.DER),
                         /* IF_DEFAULT */ value.trailerField === undefined ||
                         __utils.deepEq(
                             value.trailerField,
@@ -1216,13 +1216,13 @@ export function _encode_RSASSA_PSS_params(
                                   asn1.ASN1TagClass.context,
                                   3,
                                   () => _encode_TrailerField,
-                                  __utils.BER
-                              )(value.trailerField, __utils.BER),
+                                  __utils.DER
+                              )(value.trailerField, __utils.DER),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
@@ -1324,17 +1324,17 @@ export function _encode_DigestInfo(
                     .concat([
                         /* REQUIRED   */ _encode_DigestAlgorithm(
                             value.digestAlgorithm,
-                            __utils.BER
+                            __utils.DER
                         ),
                         /* REQUIRED   */ __utils._encodeOctetString(
                             value.digest,
-                            __utils.BER
+                            __utils.DER
                         ),
                     ])
                     .filter(
                         (c: asn1.ASN1Element | undefined): boolean => !!c
                     ) as asn1.ASN1Element[],
-                __utils.BER
+                __utils.DER
             );
         };
     }
