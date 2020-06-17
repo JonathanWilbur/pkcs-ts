@@ -93,8 +93,8 @@ export function _decode_DHParameter(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_DHParameter,
                 undefined
             );
-            return new DHParameter /* SEQUENCE_CONSTRUCTOR_CALL */(
-                prime,
+            return new DHParameter(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ prime,
                 base,
                 privateValueLength
             );

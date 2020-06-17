@@ -472,8 +472,8 @@ export function _decode_RSAPrivateKey(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_RSAPrivateKey,
                 undefined
             );
-            return new RSAPrivateKey /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new RSAPrivateKey(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 modulus,
                 publicExponent,
                 privateExponent,
@@ -612,8 +612,8 @@ export function _decode_AlgorithmIdentifier(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_AlgorithmIdentifier,
                 undefined
             );
-            return new AlgorithmIdentifier /* SEQUENCE_CONSTRUCTOR_CALL */(
-                algorithm,
+            return new AlgorithmIdentifier(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ algorithm,
                 parameters
             );
         };
@@ -739,8 +739,8 @@ const sha1: HashAlgorithm = new AlgorithmIdentifier(
         asn1.ASN1TagClass.universal,
         asn1.ASN1Construction.primitive,
         asn1.ASN1UniversalType.nill,
-        null,
-    ),
+        null
+    )
 );
 
 export type MaskGenAlgorithm = AlgorithmIdentifier; // DefinedType
@@ -773,7 +773,7 @@ export const id_mgf1: asn1.OBJECT_IDENTIFIER = new asn1.ObjectIdentifier(
 
 const mgf1SHA1: MaskGenAlgorithm = new AlgorithmIdentifier(
     id_mgf1,
-    _encode_AlgorithmIdentifier(sha1, __utils.DER),
+    _encode_AlgorithmIdentifier(sha1, __utils.DER)
 );
 
 export type PSourceAlgorithm = AlgorithmIdentifier; // DefinedType
@@ -831,7 +831,7 @@ export const emptyString: EncodingParameters = new Uint8Array(0);
 
 const pSpecifiedEmpty: PSourceAlgorithm = new AlgorithmIdentifier(
     id_pSpecified,
-    __utils._encodeOctetString(new Uint8Array(0), __utils.DER),
+    __utils._encodeOctetString(new Uint8Array(0), __utils.DER)
 );
 
 export class RSAES_OAEP_params {
@@ -921,8 +921,8 @@ export function _decode_RSAES_OAEP_params(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_RSAES_OAEP_params,
                 undefined
             );
-            return new RSAES_OAEP_params /* SEQUENCE_CONSTRUCTOR_CALL */(
-                hashAlgorithm,
+            return new RSAES_OAEP_params(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ hashAlgorithm,
                 maskGenAlgorithm,
                 pSourceAlgorithm
             );
@@ -991,13 +991,11 @@ export function _encode_RSAES_OAEP_params(
 
 export const rSAES_OAEP_Default_Identifier: RSAES_AlgorithmIdentifier = new AlgorithmIdentifier(
     id_RSAES_OAEP,
-    _encode_RSAES_OAEP_params(new RSAES_OAEP_params(
-        sha1,
-        mgf1SHA1,
-        pSpecifiedEmpty,
-    ), __utils.DER),
+    _encode_RSAES_OAEP_params(
+        new RSAES_OAEP_params(sha1, mgf1SHA1, pSpecifiedEmpty),
+        __utils.DER
+    )
 );
-
 
 export type RSASSA_AlgorithmIdentifier = AlgorithmIdentifier; // DefinedType
 let _cached_decoder_for_RSASSA_AlgorithmIdentifier: __utils.ASN1Decoder<
@@ -1156,8 +1154,8 @@ export function _decode_RSASSA_PSS_params(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_RSASSA_PSS_params,
                 undefined
             );
-            return new RSASSA_PSS_params /* SEQUENCE_CONSTRUCTOR_CALL */(
-                hashAlgorithm,
+            return new RSASSA_PSS_params(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ hashAlgorithm,
                 maskGenAlgorithm,
                 saltLength,
                 trailerField
@@ -1239,12 +1237,10 @@ export function _encode_RSASSA_PSS_params(
 
 export const rSASSA_PSS_Default_Identifier: RSASSA_AlgorithmIdentifier = new AlgorithmIdentifier(
     id_RSASSA_PSS,
-    _encode_RSASSA_PSS_params(new RSASSA_PSS_params(
-        sha1,
-        mgf1SHA1,
-        20,
-        TrailerField_trailerFieldBC,
-    ), __utils.DER),
+    _encode_RSASSA_PSS_params(
+        new RSASSA_PSS_params(sha1, mgf1SHA1, 20, TrailerField_trailerFieldBC),
+        __utils.DER
+    )
 );
 
 export type DigestAlgorithm = AlgorithmIdentifier; // DefinedType

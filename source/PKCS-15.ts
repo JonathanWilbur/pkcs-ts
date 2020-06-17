@@ -9,6 +9,38 @@
 */
 import * as asn1 from "asn1-ts";
 import {
+    AttributeCertificate,
+    _decode_AttributeCertificate,
+    _encode_AttributeCertificate,
+} from "x500-ts/dist/node/AttributeCertificateDefinitions";
+import {
+    Certificate,
+    CertificateSerialNumber,
+    SubjectPublicKeyInfo,
+    _decode_Certificate,
+    _decode_CertificateSerialNumber,
+    _decode_SubjectPublicKeyInfo,
+    _encode_Certificate,
+    _encode_CertificateSerialNumber,
+    _encode_SubjectPublicKeyInfo,
+} from "x500-ts/dist/node/AuthenticationFramework";
+import {
+    GeneralNames,
+    KeyUsage,
+    _decode_GeneralNames,
+    _decode_KeyUsage,
+    _encode_GeneralNames,
+    _encode_KeyUsage,
+} from "x500-ts/dist/node/CertificateExtensions";
+import {
+    Attribute,
+    Name,
+    _decode_Attribute,
+    _decode_Name,
+    _encode_Attribute,
+    _encode_Name,
+} from "x500-ts/dist/node/InformationFramework";
+import {
     DiffieHellmanPublicNumber,
     DomainParameters,
     _decode_DiffieHellmanPublicNumber,
@@ -25,34 +57,10 @@ import {
     _encode_Parameters,
 } from "./ANSI-X9-62";
 import {
-    Certificate,
-    CertificateSerialNumber,
-    SubjectPublicKeyInfo,
-    _decode_Certificate,
-    _decode_CertificateSerialNumber,
-    _decode_SubjectPublicKeyInfo,
-    _encode_Certificate,
-    _encode_CertificateSerialNumber,
-    _encode_SubjectPublicKeyInfo,
-} from "x500-ts/dist/node/AuthenticationFramework";
-import {
-    AttributeCertificate,
-    _decode_AttributeCertificate,
-    _encode_AttributeCertificate,
-} from "x500-ts/dist/node/AttributeCertificateDefinitions";
-import {
-    GeneralNames,
-    KeyUsage,
-    _decode_GeneralNames,
-    _decode_KeyUsage,
-    _encode_GeneralNames,
-    _encode_KeyUsage,
-} from "x500-ts/dist/node/CertificateExtensions";
-import {
-    sha_1,
     OriginatorInfo,
     RecipientInfo,
     RecipientInfos,
+    sha_1,
     _decode_OriginatorInfo,
     _decode_RecipientInfo,
     _decode_RecipientInfos,
@@ -60,14 +68,6 @@ import {
     _encode_RecipientInfo,
     _encode_RecipientInfos,
 } from "./CryptographicMessageSyntax";
-import {
-    Attribute,
-    Name,
-    _decode_Attribute,
-    _decode_Name,
-    _encode_Attribute,
-    _encode_Name,
-} from "x500-ts/dist/node/InformationFramework";
 import {
     RSAPublicKey,
     _decode_RSAPublicKey,
@@ -482,8 +482,8 @@ export function _decode_RecordInfo(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_RecordInfo,
                 undefined
             );
-            return new RecordInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                oDFRecordLength,
+            return new RecordInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ oDFRecordLength,
                 prKDFRecordLength,
                 puKDFRecordLength,
                 sKDFRecordLength,
@@ -698,8 +698,8 @@ export function _decode_AlgorithmInfo(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_AlgorithmInfo,
                 undefined
             );
-            return new AlgorithmInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                reference,
+            return new AlgorithmInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ reference,
                 algorithm,
                 parameters,
                 supportedOperations,
@@ -823,8 +823,8 @@ export function _decode_Path(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_Path,
                 undefined
             );
-            return new Path /* SEQUENCE_CONSTRUCTOR_CALL */(
-                path,
+            return new Path(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ path,
                 index,
                 length
             );
@@ -873,8 +873,8 @@ const alg_id_sha1: AlgorithmIdentifier = new AlgorithmIdentifier(
         asn1.ASN1TagClass.universal,
         asn1.ASN1Construction.primitive,
         asn1.ASN1UniversalType.nill,
-        null,
-    ),
+        null
+    )
 );
 
 export class DigestInfoWithDefault {
@@ -938,8 +938,8 @@ export function _decode_DigestInfoWithDefault(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_DigestInfoWithDefault,
                 undefined
             );
-            return new DigestInfoWithDefault /* SEQUENCE_CONSTRUCTOR_CALL */(
-                digestAlg,
+            return new DigestInfoWithDefault(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ digestAlg,
                 digest
             );
         };
@@ -1385,8 +1385,8 @@ export function _decode_TokenInfo(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new TokenInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new TokenInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 serialNumber,
                 manufacturerID,
                 label,
@@ -1663,8 +1663,8 @@ export function _decode_PasswordInfo(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PasswordInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                hint,
+            return new PasswordInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ hint,
                 algId,
                 _unrecognizedExtensionsList
             );
@@ -1963,8 +1963,8 @@ export function _get_decoder_for_EncryptedContentInfo<Type>(
             _root_component_type_list_2_spec_for_EncryptedContentInfo,
             undefined
         );
-        return new EncryptedContentInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-            contentType,
+        return new EncryptedContentInfo(
+            /* SEQUENCE_CONSTRUCTOR_CALL */ contentType,
             contentEncryptionAlgorithm,
             encryptedContent
         );
@@ -2097,8 +2097,8 @@ export function _get_decoder_for_EnvelopedData<Type>(
             _root_component_type_list_2_spec_for_EnvelopedData,
             undefined
         );
-        return new EnvelopedData /* SEQUENCE_CONSTRUCTOR_CALL */(
-            version,
+        return new EnvelopedData(
+            /* SEQUENCE_CONSTRUCTOR_CALL */ version,
             originatorInfo,
             recipientInfos,
             encryptedContentInfo,
@@ -2586,8 +2586,8 @@ export function _decode_CommonObjectAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new CommonObjectAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                label,
+            return new CommonObjectAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ label,
                 flags,
                 authId,
                 userConsent,
@@ -2739,8 +2739,8 @@ export function _get_decoder_for_PKCS15Object<
             _root_component_type_list_2_spec_for_PKCS15Object,
             undefined
         );
-        return new PKCS15Object /* SEQUENCE_CONSTRUCTOR_CALL */(
-            commonObjectAttributes,
+        return new PKCS15Object(
+            /* SEQUENCE_CONSTRUCTOR_CALL */ commonObjectAttributes,
             classAttributes,
             subClassAttributes,
             typeAttributes
@@ -2988,8 +2988,8 @@ export function _decode_CommonKeyAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new CommonKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                iD,
+            return new CommonKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ iD,
                 usage,
                 native,
                 accessFlags,
@@ -3228,8 +3228,8 @@ export function _decode_CommonPrivateKeyAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new CommonPrivateKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                subjectName,
+            return new CommonPrivateKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ subjectName,
                 keyIdentifiers,
                 _unrecognizedExtensionsList
             );
@@ -3491,14 +3491,14 @@ export function _decode_RSAPrivateKeyObject(el: asn1.ASN1Element) {
                     )(_el);
                 },
                 publicExponent: (_el: asn1.ASN1Element): void => {
-                    publicExponent = __utils._decode_implicit<asn1.OCTET_STRING>(
-                        () => __utils._decodeBigInt
-                    )(_el);
+                    publicExponent = __utils._decode_implicit<
+                        asn1.OCTET_STRING
+                    >(() => __utils._decodeBigInt)(_el);
                 },
                 privateExponent: (_el: asn1.ASN1Element): void => {
-                    privateExponent = __utils._decode_implicit<asn1.OCTET_STRING>(
-                        () => __utils._decodeBigInt
-                    )(_el);
+                    privateExponent = __utils._decode_implicit<
+                        asn1.OCTET_STRING
+                    >(() => __utils._decodeBigInt)(_el);
                 },
                 prime1: (_el: asn1.ASN1Element): void => {
                     prime1 = __utils._decode_implicit<asn1.OCTET_STRING>(
@@ -3535,8 +3535,8 @@ export function _decode_RSAPrivateKeyObject(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_RSAPrivateKeyObject,
                 undefined
             );
-            return new RSAPrivateKeyObject /* SEQUENCE_CONSTRUCTOR_CALL */(
-                modulus,
+            return new RSAPrivateKeyObject(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ modulus,
                 publicExponent,
                 privateExponent,
                 prime1,
@@ -3692,8 +3692,8 @@ export function _get_decoder_for_KeyInfo_paramsAndOps<
             _root_component_type_list_2_spec_for_KeyInfo_paramsAndOps,
             undefined
         );
-        return new KeyInfo_paramsAndOps /* SEQUENCE_CONSTRUCTOR_CALL */(
-            parameters,
+        return new KeyInfo_paramsAndOps(
+            /* SEQUENCE_CONSTRUCTOR_CALL */ parameters,
             supportedOperations
         );
     };
@@ -3735,7 +3735,9 @@ export function _get_encoder_for_KeyInfo_paramsAndOps<
 
 export type KeyInfo<ParameterType, OperationsType> =
     | { reference: Reference } /* CHOICE_ALT_ROOT */
-    | { paramsAndOps: KeyInfo_paramsAndOps<ParameterType, OperationsType> } /* CHOICE_ALT_ROOT */;
+    | {
+          paramsAndOps: KeyInfo_paramsAndOps<ParameterType, OperationsType>;
+      } /* CHOICE_ALT_ROOT */;
 export function _get_decoder_for_KeyInfo<ParameterType, OperationsType>(
     _decode_ParameterType: __utils.ASN1Decoder<ParameterType>,
     _decode_OperationsType: __utils.ASN1Decoder<OperationsType>
@@ -3744,10 +3746,13 @@ export function _get_decoder_for_KeyInfo<ParameterType, OperationsType>(
         KeyInfo<ParameterType, OperationsType>
     >({
         "UNIVERSAL 2": ["reference", _decode_Reference],
-        "UNIVERSAL 16": ["paramsAndOps", _get_decoder_for_KeyInfo_paramsAndOps<ParameterType, OperationsType>(
-            _decode_ParameterType,
-            _decode_OperationsType,
-        )],
+        "UNIVERSAL 16": [
+            "paramsAndOps",
+            _get_decoder_for_KeyInfo_paramsAndOps<
+                ParameterType,
+                OperationsType
+            >(_decode_ParameterType, _decode_OperationsType),
+        ],
     });
 }
 export function _get_encoder_for_KeyInfo<ParameterType, OperationsType>(
@@ -3757,10 +3762,10 @@ export function _get_encoder_for_KeyInfo<ParameterType, OperationsType>(
     return __utils._encode_choice<KeyInfo<ParameterType, OperationsType>>(
         {
             reference: _encode_Reference,
-            paramsAndOps: _get_encoder_for_KeyInfo_paramsAndOps<ParameterType, OperationsType>(
-                _encode_ParameterType,
-                _encode_OperationsType,
-            ),
+            paramsAndOps: _get_encoder_for_KeyInfo_paramsAndOps<
+                ParameterType,
+                OperationsType
+            >(_encode_ParameterType, _encode_OperationsType),
         },
         __utils.DER
     );
@@ -3872,8 +3877,8 @@ export function _decode_PrivateRSAKeyAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PrivateRSAKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new PrivateRSAKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 modulusLength,
                 keyInfo,
                 _unrecognizedExtensionsList
@@ -4026,8 +4031,8 @@ export function _decode_PrivateECKeyAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PrivateECKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new PrivateECKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 keyInfo,
                 _unrecognizedExtensionsList
             );
@@ -4172,8 +4177,8 @@ export function _decode_PrivateDHKeyAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PrivateDHKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new PrivateDHKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 keyInfo,
                 _unrecognizedExtensionsList
             );
@@ -4318,8 +4323,8 @@ export function _decode_PrivateDSAKeyAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PrivateDSAKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new PrivateDSAKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 keyInfo,
                 _unrecognizedExtensionsList
             );
@@ -4464,8 +4469,8 @@ export function _decode_PrivateKEAKeyAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PrivateKEAKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new PrivateKEAKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 keyInfo,
                 _unrecognizedExtensionsList
             );
@@ -4683,7 +4688,10 @@ export const _root_component_type_list_1_spec_for_Usage: __utils.ComponentSpec[]
     new __utils.ComponentSpec(
         "keyUsage",
         true,
-        __utils.hasTag(asn1.ASN1TagClass.universal, asn1.ASN1UniversalType.bitString),
+        __utils.hasTag(
+            asn1.ASN1TagClass.universal,
+            asn1.ASN1UniversalType.bitString
+        ),
         undefined,
         undefined
     ),
@@ -4726,8 +4734,8 @@ export function _decode_Usage(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_Usage,
                 undefined
             );
-            return new Usage /* SEQUENCE_CONSTRUCTOR_CALL */(
-                keyUsage,
+            return new Usage(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ keyUsage,
                 extKeyUsage
             );
         };
@@ -4830,8 +4838,8 @@ export function _decode_CommonPublicKeyAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new CommonPublicKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                subjectName,
+            return new CommonPublicKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ subjectName,
                 trustedUsage,
                 _unrecognizedExtensionsList
             );
@@ -5044,8 +5052,8 @@ export function _decode_PublicRSAKeyAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PublicRSAKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new PublicRSAKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 modulusLength,
                 keyInfo,
                 _unrecognizedExtensionsList
@@ -5214,8 +5222,8 @@ export function _decode_PublicECKeyAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PublicECKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new PublicECKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 keyInfo,
                 _unrecognizedExtensionsList
             );
@@ -5379,8 +5387,8 @@ export function _decode_PublicDHKeyAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PublicDHKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new PublicDHKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 keyInfo,
                 _unrecognizedExtensionsList
             );
@@ -5544,8 +5552,8 @@ export function _decode_PublicDSAKeyAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PublicDSAKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new PublicDSAKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 keyInfo,
                 _unrecognizedExtensionsList
             );
@@ -5709,8 +5717,8 @@ export function _decode_PublicKEAKeyAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PublicKEAKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new PublicKEAKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 keyInfo,
                 _unrecognizedExtensionsList
             );
@@ -5970,8 +5978,8 @@ export function _decode_CommonSecretKeyAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new CommonSecretKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                keyLen,
+            return new CommonSecretKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ keyLen,
                 _unrecognizedExtensionsList
             );
         };
@@ -6740,8 +6748,8 @@ export function _decode_CommonCertificateAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new CommonCertificateAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                iD,
+            return new CommonCertificateAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ iD,
                 authority,
                 identifier,
                 certHash,
@@ -6969,8 +6977,8 @@ export function _decode_X509CertificateAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new X509CertificateAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new X509CertificateAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 subject,
                 issuer,
                 serialNumber,
@@ -7123,8 +7131,8 @@ export function _decode_X509AttributeCertificateAttributes(
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new X509AttributeCertificateAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new X509AttributeCertificateAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 issuer,
                 serialNumber,
                 attrTypes,
@@ -7860,8 +7868,8 @@ export function _decode_CommonDataObjectAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new CommonDataObjectAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                applicationName,
+            return new CommonDataObjectAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ applicationName,
                 applicationOID,
                 _unrecognizedExtensionsList
             );
@@ -8488,8 +8496,8 @@ export function _decode_PinAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PinAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                pinFlags,
+            return new PinAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ pinFlags,
                 pinType,
                 minLength,
                 storedLength,
@@ -9037,8 +9045,8 @@ export function _decode_BiometricAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new BiometricAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                bioFlags,
+            return new BiometricAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ bioFlags,
                 templateId,
                 bioType,
                 bioReference,
@@ -9174,8 +9182,8 @@ export function _decode_AuthKeyAttributes(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new AuthKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                derivedKey,
+            return new AuthKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ derivedKey,
                 authKeyId,
                 _unrecognizedExtensionsList
             );
@@ -9713,8 +9721,8 @@ export function _decode_PKCS15Token(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_PKCS15Token,
                 undefined
             );
-            return new PKCS15Token /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new PKCS15Token(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 keyManagementInfo,
                 pkcs15Objects
             );
@@ -9856,8 +9864,8 @@ export function _decode_DDO(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new DDO /* SEQUENCE_CONSTRUCTOR_CALL */(
-                oid,
+            return new DDO(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ oid,
                 odfPath,
                 tokenInfoPath,
                 unusedPath,
@@ -10000,8 +10008,8 @@ export function _decode_DIRRecord(el: asn1.ASN1Element) {
                         _root_component_type_list_2_spec_for_DIRRecord,
                         undefined
                     );
-                    return new DIRRecord /* SEQUENCE_CONSTRUCTOR_CALL */(
-                        aid,
+                    return new DIRRecord(
+                        /* SEQUENCE_CONSTRUCTOR_CALL */ aid,
                         label,
                         path,
                         ddo
@@ -10145,8 +10153,8 @@ export function _decode_UnusedSpace(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new UnusedSpace /* SEQUENCE_CONSTRUCTOR_CALL */(
-                path,
+            return new UnusedSpace(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ path,
                 authId,
                 accessControlRules,
                 _unrecognizedExtensionsList

@@ -298,8 +298,8 @@ export function _decode_DomainParameters(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_DomainParameters,
                 undefined
             );
-            return new DomainParameters /* SEQUENCE_CONSTRUCTOR_CALL */(
-                p,
+            return new DomainParameters(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ p,
                 g,
                 q,
                 j,
@@ -412,8 +412,8 @@ export function _decode_AlgorithmIdentifier(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_AlgorithmIdentifier,
                 undefined
             );
-            return new AlgorithmIdentifier /* SEQUENCE_CONSTRUCTOR_CALL */(
-                algorithm,
+            return new AlgorithmIdentifier(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ algorithm,
                 parameters
             );
         };
@@ -644,8 +644,8 @@ export function _decode_SchemeIdentifier(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_SchemeIdentifier,
                 undefined
             );
-            return new SchemeIdentifier /* SEQUENCE_CONSTRUCTOR_CALL */(
-                scheme,
+            return new SchemeIdentifier(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ scheme,
                 parameters
             );
         };
@@ -915,8 +915,8 @@ export function _decode_OtherInfo(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_OtherInfo,
                 undefined
             );
-            return new OtherInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                keyInfo,
+            return new OtherInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ keyInfo,
                 partyUInfo,
                 partyVInfo,
                 suppPubInfo,
@@ -1011,9 +1011,9 @@ let _cached_decoder_for_TripleDES: __utils.ASN1Decoder<TripleDES> | null = null;
 let _cached_encoder_for_TripleDES: __utils.ASN1Encoder<TripleDES> | null = null;
 export function _decode_TripleDES(el: asn1.ASN1Element) {
     if (!_cached_decoder_for_TripleDES) {
-        _cached_decoder_for_TripleDES = __utils._decodeSequenceOf<asn1.OCTET_STRING>(
-            () => __utils._decodeBigInt
-        );
+        _cached_decoder_for_TripleDES = __utils._decodeSequenceOf<
+            asn1.OCTET_STRING
+        >(() => __utils._decodeBigInt);
     }
     return _cached_decoder_for_TripleDES(el);
 }
@@ -1022,10 +1022,9 @@ export function _encode_TripleDES(
     elGetter: __utils.ASN1Encoder<TripleDES>
 ) {
     if (!_cached_encoder_for_TripleDES) {
-        _cached_encoder_for_TripleDES = __utils._encodeSequenceOf<asn1.OCTET_STRING>(
-            () => __utils._encodeBigInt,
-            __utils.BER
-        );
+        _cached_encoder_for_TripleDES = __utils._encodeSequenceOf<
+            asn1.OCTET_STRING
+        >(() => __utils._encodeBigInt, __utils.BER);
     }
     return _cached_encoder_for_TripleDES(value, elGetter);
 }

@@ -9,6 +9,11 @@
 */
 import * as asn1 from "asn1-ts";
 import {
+    AttributeCertificate,
+    _decode_AttributeCertificate,
+    _encode_AttributeCertificate,
+} from "x500-ts/dist/node/AttributeCertificateDefinitions";
+import {
     AlgorithmIdentifier,
     Certificate,
     CertificateList,
@@ -23,11 +28,10 @@ import {
     _encode_CertificateSerialNumber,
 } from "x500-ts/dist/node/AuthenticationFramework";
 import {
-    AttributeCertificate,
-    _decode_AttributeCertificate,
-    _encode_AttributeCertificate,
-} from "x500-ts/dist/node/AttributeCertificateDefinitions";
-import { Name, _decode_Name, _encode_Name } from "x500-ts/dist/node/InformationFramework";
+    Name,
+    _decode_Name,
+    _encode_Name,
+} from "x500-ts/dist/node/InformationFramework";
 import * as __utils from "./__utils";
 
 export class ContentInfo {
@@ -285,8 +289,8 @@ export function _decode_EncapsulatedContentInfo(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_EncapsulatedContentInfo,
                 undefined
             );
-            return new EncapsulatedContentInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                eContentType,
+            return new EncapsulatedContentInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ eContentType,
                 eContent
             );
         };
@@ -1199,8 +1203,8 @@ export function _decode_SignerInfo(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_SignerInfo,
                 undefined
             );
-            return new SignerInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new SignerInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 sid,
                 digestAlgorithm,
                 signedAttrs,
@@ -1408,8 +1412,8 @@ export function _decode_SignedData(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_SignedData,
                 undefined
             );
-            return new SignedData /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new SignedData(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 digestAlgorithms,
                 encapContentInfo,
                 certificates,
@@ -1538,8 +1542,8 @@ export function _decode_OriginatorInfo(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_OriginatorInfo,
                 undefined
             );
-            return new OriginatorInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                certs,
+            return new OriginatorInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ certs,
                 crls
             );
         };
@@ -2042,8 +2046,8 @@ export function _decode_OtherKeyAttribute(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_OtherKeyAttribute,
                 undefined
             );
-            return new OtherKeyAttribute /* SEQUENCE_CONSTRUCTOR_CALL */(
-                keyAttributeIdentifier,
+            return new OtherKeyAttribute(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ keyAttributeIdentifier,
                 keyAttribute
             );
         };
@@ -2152,8 +2156,8 @@ export function _decode_RecipientKeyIdentifier(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_RecipientKeyIdentifier,
                 undefined
             );
-            return new RecipientKeyIdentifier /* SEQUENCE_CONSTRUCTOR_CALL */(
-                subjectKeyIdentifier,
+            return new RecipientKeyIdentifier(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ subjectKeyIdentifier,
                 date,
                 other
             );
@@ -2466,8 +2470,8 @@ export function _decode_KeyAgreeRecipientInfo(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_KeyAgreeRecipientInfo,
                 undefined
             );
-            return new KeyAgreeRecipientInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new KeyAgreeRecipientInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 originator,
                 ukm,
                 keyEncryptionAlgorithm,
@@ -2595,8 +2599,8 @@ export function _decode_KEKIdentifier(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_KEKIdentifier,
                 undefined
             );
-            return new KEKIdentifier /* SEQUENCE_CONSTRUCTOR_CALL */(
-                keyIdentifier,
+            return new KEKIdentifier(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ keyIdentifier,
                 date,
                 other
             );
@@ -2979,8 +2983,8 @@ export function _decode_EncryptedContentInfo(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_EncryptedContentInfo,
                 undefined
             );
-            return new EncryptedContentInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                contentType,
+            return new EncryptedContentInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ contentType,
                 contentEncryptionAlgorithm,
                 encryptedContent
             );
@@ -3151,8 +3155,8 @@ export function _decode_EnvelopedData(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_EnvelopedData,
                 undefined
             );
-            return new EnvelopedData /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new EnvelopedData(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 originatorInfo,
                 recipientInfos,
                 encryptedContentInfo,
@@ -3425,8 +3429,8 @@ export function _decode_EncryptedData(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_EncryptedData,
                 undefined
             );
-            return new EncryptedData /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new EncryptedData(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 encryptedContentInfo,
                 unprotectedAttrs
             );
@@ -3705,8 +3709,8 @@ export function _decode_AuthenticatedData(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_AuthenticatedData,
                 undefined
             );
-            return new AuthenticatedData /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new AuthenticatedData(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 originatorInfo,
                 recipientInfos,
                 macAlgorithm,

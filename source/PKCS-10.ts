@@ -8,7 +8,11 @@
     Produced by Jonathan M. Wilbur's <jonathan@wilbur.space> ASN.1 Compiler.
 */
 import * as asn1 from "asn1-ts";
-import { Name, _decode_Name, _encode_Name } from "x500-ts/dist/node/InformationFramework";
+import {
+    Name,
+    _decode_Name,
+    _encode_Name,
+} from "x500-ts/dist/node/InformationFramework";
 import * as __utils from "./__utils";
 export {
     authenticationFramework,
@@ -105,8 +109,8 @@ export function _decode_AlgorithmIdentifier(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_AlgorithmIdentifier,
                 undefined
             );
-            return new AlgorithmIdentifier /* SEQUENCE_CONSTRUCTOR_CALL */(
-                algorithm,
+            return new AlgorithmIdentifier(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ algorithm,
                 parameters
             );
         };

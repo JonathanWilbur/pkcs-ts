@@ -41,11 +41,7 @@ export {
     _encode_EncryptedPrivateKeyInfo,
     _encode_PrivateKeyInfo,
 } from "./PKCS-8";
-export {
-    certTypes,
-    crlTypes,
-    pkcs_9,
-} from "./PKCS-9";
+export { certTypes, crlTypes, pkcs_9 } from "./PKCS-9";
 
 export const rsadsi: asn1.OBJECT_IDENTIFIER = new asn1.ObjectIdentifier([
     /* iso */ 1,
@@ -195,8 +191,8 @@ export function _decode_MacData(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_MacData,
                 undefined
             );
-            return new MacData /* SEQUENCE_CONSTRUCTOR_CALL */(
-                mac,
+            return new MacData(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ mac,
                 macSalt,
                 iterations
             );
@@ -308,8 +304,8 @@ export function _decode_PFX(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_PFX,
                 undefined
             );
-            return new PFX /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new PFX(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 authSafe,
                 macData
             );
@@ -531,8 +527,8 @@ export function _decode_SafeBag(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_SafeBag,
                 undefined
             );
-            return new SafeBag /* SEQUENCE_CONSTRUCTOR_CALL */(
-                bagId,
+            return new SafeBag(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ bagId,
                 bagValue,
                 bagAttributes
             );

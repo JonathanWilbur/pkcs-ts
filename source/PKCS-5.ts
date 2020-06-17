@@ -111,8 +111,8 @@ export function _decode_AlgorithmIdentifier(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_AlgorithmIdentifier,
                 undefined
             );
-            return new AlgorithmIdentifier /* SEQUENCE_CONSTRUCTOR_CALL */(
-                algorithm,
+            return new AlgorithmIdentifier(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ algorithm,
                 parameters
             );
         };
@@ -151,13 +151,13 @@ export function _encode_AlgorithmIdentifier(
 
 export const algid_hmacWithSHA1: AlgorithmIdentifier = new AlgorithmIdentifier(
     // id_hmacWithSHA1, // Not defined anywhere
-    new asn1.ObjectIdentifier([ 1,2,840,113549,2,7 ]),
+    new asn1.ObjectIdentifier([1, 2, 840, 113549, 2, 7]),
     new asn1.DERElement(
         asn1.ASN1TagClass.universal,
         asn1.ASN1Construction.primitive,
         asn1.ASN1UniversalType.nill,
-        null,
-    ),
+        null
+    )
 );
 
 /* END_MODULE PKCS5v2-1 */

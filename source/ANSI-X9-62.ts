@@ -777,7 +777,7 @@ export function _decode_Curve(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_Curve,
                 undefined
             );
-            return new Curve /* SEQUENCE_CONSTRUCTOR_CALL */(a, b, seed);
+            return new Curve(/* SEQUENCE_CONSTRUCTOR_CALL */ a, b, seed);
         };
     }
     return _cached_decoder_for_Curve(el);
@@ -944,8 +944,8 @@ export function _decode_ECParameters(el: asn1.ASN1Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new ECParameters /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new ECParameters(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 fieldID,
                 curve,
                 base,
