@@ -989,7 +989,15 @@ export function _encode_RSAES_OAEP_params(
     return _cached_encoder_for_RSAES_OAEP_params(value, elGetter);
 }
 
-// TODO: DefinedType SequenceValue rSAES-OAEP-Default-Identifier
+export const rSAES_OAEP_Default_Identifier: RSAES_AlgorithmIdentifier = new AlgorithmIdentifier(
+    id_RSAES_OAEP,
+    _encode_RSAES_OAEP_params(new RSAES_OAEP_params(
+        sha1,
+        mgf1SHA1,
+        pSpecifiedEmpty,
+    ), __utils.DER),
+);
+
 
 export type RSASSA_AlgorithmIdentifier = AlgorithmIdentifier; // DefinedType
 let _cached_decoder_for_RSASSA_AlgorithmIdentifier: __utils.ASN1Decoder<
@@ -1229,7 +1237,15 @@ export function _encode_RSASSA_PSS_params(
     return _cached_encoder_for_RSASSA_PSS_params(value, elGetter);
 }
 
-// TODO: DefinedType SequenceValue rSASSA-PSS-Default-Identifier
+export const rSASSA_PSS_Default_Identifier: RSASSA_AlgorithmIdentifier = new AlgorithmIdentifier(
+    id_RSASSA_PSS,
+    _encode_RSASSA_PSS_params(new RSASSA_PSS_params(
+        sha1,
+        mgf1SHA1,
+        20,
+        TrailerField_trailerFieldBC,
+    ), __utils.DER),
+);
 
 export type DigestAlgorithm = AlgorithmIdentifier; // DefinedType
 let _cached_decoder_for_DigestAlgorithm: __utils.ASN1Decoder<
