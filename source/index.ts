@@ -7,7 +7,7 @@ export * as PKCS12 from "./PKCS-12";
 export * as PKCS15 from "./PKCS-15";
 export * as PKCS3 from "./PKCS-3";
 export * as PKCS5 from "./PKCS-5";
-export * as PKCS7 from "./PKCS-7";
+export * as PKCS7 from "cms-ts/dist/node/CryptographicMessageSyntax-2010";
 export * as PKCS8 from "./PKCS-8";
 export * as PKCS9 from "./PKCS-9";
 export * as PKIXCMP_2009 from "./PKIXCMP-2009";
