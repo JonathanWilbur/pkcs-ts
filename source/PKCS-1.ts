@@ -733,14 +733,14 @@ export function _encode_SHA1Parameters(
     return _cached_encoder_for_SHA1Parameters(value, elGetter);
 }
 
-const sha1: HashAlgorithm = new AlgorithmIdentifier(
+export const sha1: HashAlgorithm = new AlgorithmIdentifier(
     id_sha1,
     new asn1.DERElement(
         asn1.ASN1TagClass.universal,
         asn1.ASN1Construction.primitive,
         asn1.ASN1UniversalType.nill,
         null
-    )
+    ),
 );
 
 export type MaskGenAlgorithm = AlgorithmIdentifier; // DefinedType
@@ -771,7 +771,7 @@ export const id_mgf1: asn1.OBJECT_IDENTIFIER = new asn1.ObjectIdentifier(
     pkcs_1
 );
 
-const mgf1SHA1: MaskGenAlgorithm = new AlgorithmIdentifier(
+export const mgf1SHA1: MaskGenAlgorithm = new AlgorithmIdentifier(
     id_mgf1,
     _encode_AlgorithmIdentifier(sha1, __utils.DER)
 );
@@ -829,7 +829,7 @@ export function _encode_EncodingParameters(
 
 export const emptyString: EncodingParameters = new Uint8Array(0);
 
-const pSpecifiedEmpty: PSourceAlgorithm = new AlgorithmIdentifier(
+export const pSpecifiedEmpty: PSourceAlgorithm = new AlgorithmIdentifier(
     id_pSpecified,
     __utils._encodeOctetString(new Uint8Array(0), __utils.DER)
 );
