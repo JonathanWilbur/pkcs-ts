@@ -196,6 +196,13 @@ export function _encode_DigestAlgorithmIdentifiers(
     return _cached_encoder_for_DigestAlgorithmIdentifiers(value, elGetter);
 }
 
+/**
+ * NOTE: There is a very important disparity between the X.420 and IETF RFC
+ * versions of `ContentInfo` in that `pkcs7-content` is explicitly tagged in
+ * the authoritative RFC version, and implicitly in the X.420 version. Though
+ * this module was based on the X.420 version, the encoding and decoding of
+ * `pkcs7-content` has been corrected to use the authoritative encoding below.
+ */
 export class ContentInfo {
     constructor(
         readonly content_type: asn1.OBJECT_IDENTIFIER,
@@ -245,9 +252,7 @@ export function _decode_ContentInfo(el: asn1.ASN1Element) {
             let content_type!: asn1.OBJECT_IDENTIFIER;
             let pkcs7_content!: asn1.ASN1Element;
             content_type = __utils._decodeObjectIdentifier(sequence[0]);
-            pkcs7_content = __utils._decode_implicit<asn1.ASN1Element>(
-                () => __utils._decodeAny
-            )(sequence[1]);
+            pkcs7_content = __utils._decode_explicit<asn1.ASN1Element>(() => __utils._decodeAny)(sequence[1]);
             // TODO: Validate values.
             return new ContentInfo(content_type, pkcs7_content);
         };
@@ -270,7 +275,7 @@ export function _encode_ContentInfo(
                             value.content_type,
                             __utils.DER
                         ),
-                        /* REQUIRED   */ __utils._encode_implicit(
+                        /* REQUIRED   */ __utils._encode_explicit(
                             asn1.ASN1TagClass.context,
                             0,
                             () => __utils._encodeAny,
