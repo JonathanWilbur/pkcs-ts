@@ -1112,7 +1112,7 @@ export type ReferencedValue<Type> =
     | { url: URL } /* CHOICE_ALT_ROOT */;
 export function _get_decoder_for_ReferencedValue<Type>(
     _decode_Type: __utils.ASN1Decoder<Type>
-) {
+): __utils.ASN1Decoder<ReferencedValue<Type>> {
     return __utils._decode_inextensible_choice<ReferencedValue<Type>>({
         "UNIVERSAL 16": ["path", _decode_Path],
         "UNIVERSAL 19": ["url", _decode_URL],
@@ -1121,7 +1121,7 @@ export function _get_decoder_for_ReferencedValue<Type>(
 }
 export function _get_encoder_for_ReferencedValue<Type>(
     _encode_Type: __utils.ASN1Encoder<Type>
-) {
+): __utils.ASN1Encoder<ReferencedValue<Type>> {
     return __utils._encode_choice<ReferencedValue<Type>>(
         {
             path: _encode_Path,
