@@ -12,3 +12,4 @@ export * as PKCS8 from "./PKCS-8";
 export * as PKCS9 from "./PKCS-9";
 export * as PKIXCMP_2009 from "./PKIXCMP-2009";
 export * as PKIXCRMF_2009 from "./PKIXCRMF-2009";
+export { default as generatePKCS12Key } from "./generatePKCS12Key";
