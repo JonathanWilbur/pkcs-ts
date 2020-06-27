@@ -17,7 +17,6 @@ import {
     AlgorithmIdentifier,
     Certificate,
     CertificateList,
-    CertificateSerialNumber,
     _decode_AlgorithmIdentifier,
     _decode_Certificate,
     _decode_CertificateList,
@@ -28,11 +27,31 @@ import {
     _encode_CertificateSerialNumber,
 } from "x500-ts/dist/node/AuthenticationFramework";
 import {
+    _decode_Name,
+    _encode_Name,
+    Attribute,
+    _decode_Attribute,
+    _encode_Attribute,
+} from "x500-ts/dist/node/InformationFramework";
+export {
     Name,
     _decode_Name,
     _encode_Name,
+    Attribute,
+    _decode_Attribute,
+    _encode_Attribute,
 } from "x500-ts/dist/node/InformationFramework";
 import * as __utils from "./__utils";
+import {
+    IssuerAndSerialNumber,
+    _encode_IssuerAndSerialNumber,
+    _decode_IssuerAndSerialNumber,
+} from "x500-ts/dist/node/EnhancedSecurity";
+export {
+    IssuerAndSerialNumber,
+    _encode_IssuerAndSerialNumber,
+    _decode_IssuerAndSerialNumber,
+} from "x500-ts/dist/node/EnhancedSecurity";
 
 export class ContentInfo {
     constructor(
@@ -353,91 +372,6 @@ export function _encode_AttributeValue(
         _cached_encoder_for_AttributeValue = __utils._encodeAny;
     }
     return _cached_encoder_for_AttributeValue(value, elGetter);
-}
-
-export class Attribute {
-    constructor(
-        readonly attrType: asn1.OBJECT_IDENTIFIER,
-        readonly attrValues: AttributeValue[]
-    ) {}
-}
-export const _root_component_type_list_1_spec_for_Attribute: __utils.ComponentSpec[] = [
-    new __utils.ComponentSpec(
-        "attrType",
-        false,
-        __utils.hasTag(asn1.ASN1TagClass.universal, 6),
-        undefined,
-        undefined
-    ),
-    new __utils.ComponentSpec(
-        "attrValues",
-        false,
-        __utils.hasTag(asn1.ASN1TagClass.universal, 17),
-        undefined,
-        undefined
-    ),
-];
-export const _root_component_type_list_2_spec_for_Attribute: __utils.ComponentSpec[] = [];
-export const _extension_additions_list_spec_for_Attribute: __utils.ComponentSpec[] = [];
-let _cached_decoder_for_Attribute: __utils.ASN1Decoder<Attribute> | null = null;
-let _cached_encoder_for_Attribute: __utils.ASN1Encoder<Attribute> | null = null;
-export function _decode_Attribute(el: asn1.ASN1Element) {
-    if (!_cached_decoder_for_Attribute) {
-        _cached_decoder_for_Attribute = function (
-            el: asn1.ASN1Element
-        ): Attribute {
-            const sequence: asn1.ASN1Element[] = el.sequence;
-            if (sequence.length < 2) {
-                throw new asn1.ASN1ConstructionError(
-                    "Attribute contained only " +
-                        sequence.length.toString() +
-                        " elements."
-                );
-            }
-            // TODO: Validate tags.
-            sequence[0].name = "attrType";
-            sequence[1].name = "attrValues";
-            let attrType!: asn1.OBJECT_IDENTIFIER;
-            let attrValues!: AttributeValue[];
-            attrType = __utils._decodeObjectIdentifier(sequence[0]);
-            attrValues = __utils._decodeSetOf<AttributeValue>(
-                () => _decode_AttributeValue
-            )(sequence[1]);
-            // TODO: Validate values.
-            return new Attribute(attrType, attrValues);
-        };
-    }
-    return _cached_decoder_for_Attribute(el);
-}
-export function _encode_Attribute(
-    value: Attribute,
-    elGetter: __utils.ASN1Encoder<Attribute>
-) {
-    if (!_cached_encoder_for_Attribute) {
-        _cached_encoder_for_Attribute = function (
-            value: Attribute,
-            elGetter: __utils.ASN1Encoder<Attribute>
-        ): asn1.ASN1Element {
-            return __utils._encodeSequence(
-                ([] as (asn1.ASN1Element | undefined)[])
-                    .concat([
-                        /* REQUIRED   */ __utils._encodeObjectIdentifier(
-                            value.attrType,
-                            __utils.BER
-                        ),
-                        /* REQUIRED   */ __utils._encodeSetOf<AttributeValue>(
-                            () => _encode_AttributeValue,
-                            __utils.BER
-                        )(value.attrValues, __utils.BER),
-                    ])
-                    .filter(
-                        (c: asn1.ASN1Element | undefined): boolean => !!c
-                    ) as asn1.ASN1Element[],
-                __utils.BER
-            );
-        };
-    }
-    return _cached_encoder_for_Attribute(value, elGetter);
 }
 
 export type UnauthAttributes = Attribute[]; // SetOfType
@@ -839,93 +773,6 @@ export function _encode_CertificateRevocationLists(
         >(() => _encode_CertificateList, __utils.BER);
     }
     return _cached_encoder_for_CertificateRevocationLists(value, elGetter);
-}
-
-export class IssuerAndSerialNumber {
-    constructor(
-        readonly issuer: Name,
-        readonly serialNumber: CertificateSerialNumber
-    ) {}
-}
-export const _root_component_type_list_1_spec_for_IssuerAndSerialNumber: __utils.ComponentSpec[] = [
-    new __utils.ComponentSpec(
-        "issuer",
-        false,
-        __utils.hasAnyTag,
-        undefined,
-        undefined
-    ),
-    new __utils.ComponentSpec(
-        "serialNumber",
-        false,
-        __utils.hasTag(asn1.ASN1TagClass.universal, 2),
-        undefined,
-        undefined
-    ),
-];
-export const _root_component_type_list_2_spec_for_IssuerAndSerialNumber: __utils.ComponentSpec[] = [];
-export const _extension_additions_list_spec_for_IssuerAndSerialNumber: __utils.ComponentSpec[] = [];
-let _cached_decoder_for_IssuerAndSerialNumber: __utils.ASN1Decoder<
-    IssuerAndSerialNumber
-> | null = null;
-let _cached_encoder_for_IssuerAndSerialNumber: __utils.ASN1Encoder<
-    IssuerAndSerialNumber
-> | null = null;
-export function _decode_IssuerAndSerialNumber(el: asn1.ASN1Element) {
-    if (!_cached_decoder_for_IssuerAndSerialNumber) {
-        _cached_decoder_for_IssuerAndSerialNumber = function (
-            el: asn1.ASN1Element
-        ): IssuerAndSerialNumber {
-            const sequence: asn1.ASN1Element[] = el.sequence;
-            if (sequence.length < 2) {
-                throw new asn1.ASN1ConstructionError(
-                    "IssuerAndSerialNumber contained only " +
-                        sequence.length.toString() +
-                        " elements."
-                );
-            }
-            // TODO: Validate tags.
-            sequence[0].name = "issuer";
-            sequence[1].name = "serialNumber";
-            let issuer!: Name;
-            let serialNumber!: CertificateSerialNumber;
-            issuer = _decode_Name(sequence[0]);
-            serialNumber = _decode_CertificateSerialNumber(sequence[1]);
-            // TODO: Validate values.
-            return new IssuerAndSerialNumber(issuer, serialNumber);
-        };
-    }
-    return _cached_decoder_for_IssuerAndSerialNumber(el);
-}
-export function _encode_IssuerAndSerialNumber(
-    value: IssuerAndSerialNumber,
-    elGetter: __utils.ASN1Encoder<IssuerAndSerialNumber>
-) {
-    if (!_cached_encoder_for_IssuerAndSerialNumber) {
-        _cached_encoder_for_IssuerAndSerialNumber = function (
-            value: IssuerAndSerialNumber,
-            elGetter: __utils.ASN1Encoder<IssuerAndSerialNumber>
-        ): asn1.ASN1Element {
-            return __utils._encodeSequence(
-                ([] as (asn1.ASN1Element | undefined)[])
-                    .concat([
-                        /* REQUIRED   */ _encode_Name(
-                            value.issuer,
-                            __utils.BER
-                        ),
-                        /* REQUIRED   */ _encode_CertificateSerialNumber(
-                            value.serialNumber,
-                            __utils.BER
-                        ),
-                    ])
-                    .filter(
-                        (c: asn1.ASN1Element | undefined): boolean => !!c
-                    ) as asn1.ASN1Element[],
-                __utils.BER
-            );
-        };
-    }
-    return _cached_encoder_for_IssuerAndSerialNumber(value, elGetter);
 }
 
 export type SubjectKeyIdentifier = asn1.OCTET_STRING; // OctetStringType

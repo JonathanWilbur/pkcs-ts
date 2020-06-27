@@ -12,12 +12,39 @@ import {
     Name,
     _decode_Name,
     _encode_Name,
+    Attribute,
+    _encode_Attribute,
+    _decode_Attribute,
+} from "x500-ts/dist/node/InformationFramework";
+export {
+    Name,
+    _decode_Name,
+    _encode_Name,
+    Attribute,
+    _encode_Attribute,
+    _decode_Attribute,
 } from "x500-ts/dist/node/InformationFramework";
 import * as __utils from "./__utils";
 export {
     authenticationFramework,
     informationFramework,
 } from "x500-ts/dist/node/UsefulDefinitions";
+import {
+    AlgorithmIdentifier,
+    _encode_AlgorithmIdentifier,
+    _decode_AlgorithmIdentifier,
+    SubjectPublicKeyInfo,
+    _encode_SubjectPublicKeyInfo,
+    _decode_SubjectPublicKeyInfo,
+} from "x500-ts/dist/node/AuthenticationFramework";
+export {
+    AlgorithmIdentifier,
+    _encode_AlgorithmIdentifier,
+    _decode_AlgorithmIdentifier,
+    SubjectPublicKeyInfo,
+    _encode_SubjectPublicKeyInfo,
+    _decode_SubjectPublicKeyInfo,
+} from "x500-ts/dist/node/AuthenticationFramework";
 
 // TODO: ObjectSetAssignment: PKInfoAlgorithms
 
@@ -50,273 +77,6 @@ export function _encode_CertificationRequestInfo_version(
         value,
         elGetter
     );
-}
-
-export class AlgorithmIdentifier {
-    constructor(
-        readonly algorithm: asn1.OBJECT_IDENTIFIER,
-        readonly parameters: asn1.OPTIONAL<asn1.ASN1Element>
-    ) {}
-}
-export const _root_component_type_list_1_spec_for_AlgorithmIdentifier: __utils.ComponentSpec[] = [
-    new __utils.ComponentSpec(
-        "algorithm",
-        false,
-        __utils.hasTag(asn1.ASN1TagClass.universal, 6),
-        undefined,
-        undefined
-    ),
-    new __utils.ComponentSpec(
-        "parameters",
-        true,
-        __utils.hasAnyTag,
-        undefined,
-        undefined
-    ),
-];
-export const _root_component_type_list_2_spec_for_AlgorithmIdentifier: __utils.ComponentSpec[] = [];
-export const _extension_additions_list_spec_for_AlgorithmIdentifier: __utils.ComponentSpec[] = [];
-let _cached_decoder_for_AlgorithmIdentifier: __utils.ASN1Decoder<
-    AlgorithmIdentifier
-> | null = null;
-let _cached_encoder_for_AlgorithmIdentifier: __utils.ASN1Encoder<
-    AlgorithmIdentifier
-> | null = null;
-export function _decode_AlgorithmIdentifier(el: asn1.ASN1Element) {
-    if (!_cached_decoder_for_AlgorithmIdentifier) {
-        _cached_decoder_for_AlgorithmIdentifier = function (
-            el: asn1.ASN1Element
-        ): AlgorithmIdentifier {
-            /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-            let algorithm!: asn1.OBJECT_IDENTIFIER;
-            let parameters: asn1.OPTIONAL<asn1.ASN1Element>;
-            /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-            /* START_OF_CALLBACKS_MAP */
-            const callbacks: __utils.DecodingMap = {
-                algorithm: (_el: asn1.ASN1Element): void => {
-                    algorithm = __utils._decodeObjectIdentifier(_el);
-                },
-                parameters: (_el: asn1.ASN1Element): void => {
-                    parameters = __utils._decodeAny(_el);
-                },
-            };
-            /* END_OF_CALLBACKS_MAP */
-            __utils._parse_sequence(
-                el,
-                callbacks,
-                _root_component_type_list_1_spec_for_AlgorithmIdentifier,
-                _extension_additions_list_spec_for_AlgorithmIdentifier,
-                _root_component_type_list_2_spec_for_AlgorithmIdentifier,
-                undefined
-            );
-            return new AlgorithmIdentifier(
-                /* SEQUENCE_CONSTRUCTOR_CALL */ algorithm,
-                parameters
-            );
-        };
-    }
-    return _cached_decoder_for_AlgorithmIdentifier(el);
-}
-export function _encode_AlgorithmIdentifier(
-    value: AlgorithmIdentifier,
-    elGetter: __utils.ASN1Encoder<AlgorithmIdentifier>
-) {
-    if (!_cached_encoder_for_AlgorithmIdentifier) {
-        _cached_encoder_for_AlgorithmIdentifier = function (
-            value: AlgorithmIdentifier,
-            elGetter: __utils.ASN1Encoder<AlgorithmIdentifier>
-        ): asn1.ASN1Element {
-            return __utils._encodeSequence(
-                ([] as (asn1.ASN1Element | undefined)[])
-                    .concat([
-                        /* REQUIRED   */ __utils._encodeObjectIdentifier(
-                            value.algorithm,
-                            __utils.BER
-                        ),
-                        /* IF_ABSENT  */ value.parameters === undefined
-                            ? undefined
-                            : __utils._encodeAny(value.parameters, __utils.BER),
-                    ])
-                    .filter(
-                        (c: asn1.ASN1Element | undefined): boolean => !!c
-                    ) as asn1.ASN1Element[],
-                __utils.BER
-            );
-        };
-    }
-    return _cached_encoder_for_AlgorithmIdentifier(value, elGetter);
-}
-
-export class SubjectPublicKeyInfo {
-    constructor(
-        readonly algorithm: AlgorithmIdentifier,
-        readonly subjectPublicKey: asn1.BIT_STRING
-    ) {}
-}
-export const _root_component_type_list_1_spec_for_SubjectPublicKeyInfo: __utils.ComponentSpec[] = [
-    new __utils.ComponentSpec(
-        "algorithm",
-        false,
-        __utils.hasTag(asn1.ASN1TagClass.universal, 16),
-        undefined,
-        undefined
-    ),
-    new __utils.ComponentSpec(
-        "subjectPublicKey",
-        false,
-        __utils.hasTag(asn1.ASN1TagClass.universal, 3),
-        undefined,
-        undefined
-    ),
-];
-export const _root_component_type_list_2_spec_for_SubjectPublicKeyInfo: __utils.ComponentSpec[] = [];
-export const _extension_additions_list_spec_for_SubjectPublicKeyInfo: __utils.ComponentSpec[] = [];
-let _cached_decoder_for_SubjectPublicKeyInfo: __utils.ASN1Decoder<
-    SubjectPublicKeyInfo
-> | null = null;
-let _cached_encoder_for_SubjectPublicKeyInfo: __utils.ASN1Encoder<
-    SubjectPublicKeyInfo
-> | null = null;
-export function _decode_SubjectPublicKeyInfo(el: asn1.ASN1Element) {
-    if (!_cached_decoder_for_SubjectPublicKeyInfo) {
-        _cached_decoder_for_SubjectPublicKeyInfo = function (
-            el: asn1.ASN1Element
-        ): SubjectPublicKeyInfo {
-            const sequence: asn1.ASN1Element[] = el.sequence;
-            if (sequence.length < 2) {
-                throw new asn1.ASN1ConstructionError(
-                    "SubjectPublicKeyInfo contained only " +
-                        sequence.length.toString() +
-                        " elements."
-                );
-            }
-            // TODO: Validate tags.
-            sequence[0].name = "algorithm";
-            sequence[1].name = "subjectPublicKey";
-            let algorithm!: AlgorithmIdentifier;
-            let subjectPublicKey!: asn1.BIT_STRING;
-            algorithm = _decode_AlgorithmIdentifier(sequence[0]);
-            subjectPublicKey = __utils._decodeBitString(sequence[1]);
-            // TODO: Validate values.
-            return new SubjectPublicKeyInfo(algorithm, subjectPublicKey);
-        };
-    }
-    return _cached_decoder_for_SubjectPublicKeyInfo(el);
-}
-export function _encode_SubjectPublicKeyInfo(
-    value: SubjectPublicKeyInfo,
-    elGetter: __utils.ASN1Encoder<SubjectPublicKeyInfo>
-) {
-    if (!_cached_encoder_for_SubjectPublicKeyInfo) {
-        _cached_encoder_for_SubjectPublicKeyInfo = function (
-            value: SubjectPublicKeyInfo,
-            elGetter: __utils.ASN1Encoder<SubjectPublicKeyInfo>
-        ): asn1.ASN1Element {
-            return __utils._encodeSequence(
-                ([] as (asn1.ASN1Element | undefined)[])
-                    .concat([
-                        /* REQUIRED   */ _encode_AlgorithmIdentifier(
-                            value.algorithm,
-                            __utils.BER
-                        ),
-                        /* REQUIRED   */ __utils._encodeBitString(
-                            value.subjectPublicKey,
-                            __utils.BER
-                        ),
-                    ])
-                    .filter(
-                        (c: asn1.ASN1Element | undefined): boolean => !!c
-                    ) as asn1.ASN1Element[],
-                __utils.BER
-            );
-        };
-    }
-    return _cached_encoder_for_SubjectPublicKeyInfo(value, elGetter);
-}
-
-export class Attribute {
-    constructor(
-        readonly type_: asn1.OBJECT_IDENTIFIER,
-        readonly values: asn1.ASN1Element[]
-    ) {}
-}
-export const _root_component_type_list_1_spec_for_Attribute: __utils.ComponentSpec[] = [
-    new __utils.ComponentSpec(
-        "type",
-        false,
-        __utils.hasTag(asn1.ASN1TagClass.universal, 6),
-        undefined,
-        undefined
-    ),
-    new __utils.ComponentSpec(
-        "values",
-        false,
-        __utils.hasTag(asn1.ASN1TagClass.universal, 17),
-        undefined,
-        undefined
-    ),
-];
-export const _root_component_type_list_2_spec_for_Attribute: __utils.ComponentSpec[] = [];
-export const _extension_additions_list_spec_for_Attribute: __utils.ComponentSpec[] = [];
-let _cached_decoder_for_Attribute: __utils.ASN1Decoder<Attribute> | null = null;
-let _cached_encoder_for_Attribute: __utils.ASN1Encoder<Attribute> | null = null;
-export function _decode_Attribute(el: asn1.ASN1Element) {
-    if (!_cached_decoder_for_Attribute) {
-        _cached_decoder_for_Attribute = function (
-            el: asn1.ASN1Element
-        ): Attribute {
-            const sequence: asn1.ASN1Element[] = el.sequence;
-            if (sequence.length < 2) {
-                throw new asn1.ASN1ConstructionError(
-                    "Attribute contained only " +
-                        sequence.length.toString() +
-                        " elements."
-                );
-            }
-            // TODO: Validate tags.
-            sequence[0].name = "type";
-            sequence[1].name = "values";
-            let type_!: asn1.OBJECT_IDENTIFIER;
-            let values!: asn1.ASN1Element[];
-            type_ = __utils._decodeObjectIdentifier(sequence[0]);
-            values = __utils._decodeSetOf<asn1.ASN1Element>(
-                () => __utils._decodeAny
-            )(sequence[1]);
-            // TODO: Validate values.
-            return new Attribute(type_, values);
-        };
-    }
-    return _cached_decoder_for_Attribute(el);
-}
-export function _encode_Attribute(
-    value: Attribute,
-    elGetter: __utils.ASN1Encoder<Attribute>
-) {
-    if (!_cached_encoder_for_Attribute) {
-        _cached_encoder_for_Attribute = function (
-            value: Attribute,
-            elGetter: __utils.ASN1Encoder<Attribute>
-        ): asn1.ASN1Element {
-            return __utils._encodeSequence(
-                ([] as (asn1.ASN1Element | undefined)[])
-                    .concat([
-                        /* REQUIRED   */ __utils._encodeObjectIdentifier(
-                            value.type_,
-                            __utils.BER
-                        ),
-                        /* REQUIRED   */ __utils._encodeSetOf<asn1.ASN1Element>(
-                            () => __utils._encodeAny,
-                            __utils.BER
-                        )(value.values, __utils.BER),
-                    ])
-                    .filter(
-                        (c: asn1.ASN1Element | undefined): boolean => !!c
-                    ) as asn1.ASN1Element[],
-                __utils.BER
-            );
-        };
-    }
-    return _cached_encoder_for_Attribute(value, elGetter);
 }
 
 export type Attributes = Attribute[]; // SetOfType

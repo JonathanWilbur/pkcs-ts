@@ -9,6 +9,20 @@
 */
 import * as asn1 from "asn1-ts";
 import * as __utils from "./__utils";
+import {
+    _encode_AlgorithmIdentifier,
+    _decode_AlgorithmIdentifier,
+    _encode_SubjectPublicKeyInfo,
+    _decode_SubjectPublicKeyInfo,
+} from "x500-ts/dist/node/AuthenticationFramework";
+export {
+    AlgorithmIdentifier,
+    _encode_AlgorithmIdentifier,
+    _decode_AlgorithmIdentifier,
+    SubjectPublicKeyInfo,
+    _encode_SubjectPublicKeyInfo,
+    _decode_SubjectPublicKeyInfo,
+} from "x500-ts/dist/node/AuthenticationFramework";
 
 export const ansi_X9_62: asn1.OBJECT_IDENTIFIER = new asn1.ObjectIdentifier([
     /* iso */ 1,
@@ -395,180 +409,6 @@ export const ecdsa_with_SHA1: asn1.OBJECT_IDENTIFIER = new asn1.ObjectIdentifier
 );
 
 // TODO: ObjectClassAssignment: ALGORITHM
-
-export class Algorithmldentifier {
-    constructor(
-        readonly algorithm: asn1.OBJECT_IDENTIFIER,
-        readonly parameters: asn1.ASN1Element
-    ) {}
-}
-export const _root_component_type_list_1_spec_for_Algorithmldentifier: __utils.ComponentSpec[] = [
-    new __utils.ComponentSpec(
-        "algorithm",
-        false,
-        __utils.hasTag(asn1.ASN1TagClass.universal, 6),
-        undefined,
-        undefined
-    ),
-    new __utils.ComponentSpec(
-        "parameters",
-        false,
-        __utils.hasAnyTag,
-        undefined,
-        undefined
-    ),
-];
-export const _root_component_type_list_2_spec_for_Algorithmldentifier: __utils.ComponentSpec[] = [];
-export const _extension_additions_list_spec_for_Algorithmldentifier: __utils.ComponentSpec[] = [];
-let _cached_decoder_for_Algorithmldentifier: __utils.ASN1Decoder<
-    Algorithmldentifier
-> | null = null;
-let _cached_encoder_for_Algorithmldentifier: __utils.ASN1Encoder<
-    Algorithmldentifier
-> | null = null;
-export function _decode_Algorithmldentifier(el: asn1.ASN1Element) {
-    if (!_cached_decoder_for_Algorithmldentifier) {
-        _cached_decoder_for_Algorithmldentifier = function (
-            el: asn1.ASN1Element
-        ): Algorithmldentifier {
-            const sequence: asn1.ASN1Element[] = el.sequence;
-            if (sequence.length < 2) {
-                throw new asn1.ASN1ConstructionError(
-                    "Algorithmldentifier contained only " +
-                        sequence.length.toString() +
-                        " elements."
-                );
-            }
-            // TODO: Validate tags.
-            sequence[0].name = "algorithm";
-            sequence[1].name = "parameters";
-            let algorithm!: asn1.OBJECT_IDENTIFIER;
-            let parameters!: asn1.ASN1Element;
-            algorithm = __utils._decodeObjectIdentifier(sequence[0]);
-            parameters = __utils._decodeAny(sequence[1]);
-            // TODO: Validate values.
-            return new Algorithmldentifier(algorithm, parameters);
-        };
-    }
-    return _cached_decoder_for_Algorithmldentifier(el);
-}
-export function _encode_Algorithmldentifier(
-    value: Algorithmldentifier,
-    elGetter: __utils.ASN1Encoder<Algorithmldentifier>
-) {
-    if (!_cached_encoder_for_Algorithmldentifier) {
-        _cached_encoder_for_Algorithmldentifier = function (
-            value: Algorithmldentifier,
-            elGetter: __utils.ASN1Encoder<Algorithmldentifier>
-        ): asn1.ASN1Element {
-            return __utils._encodeSequence(
-                ([] as (asn1.ASN1Element | undefined)[])
-                    .concat([
-                        /* REQUIRED   */ __utils._encodeObjectIdentifier(
-                            value.algorithm,
-                            __utils.BER
-                        ),
-                        /* REQUIRED   */ __utils._encodeAny(
-                            value.parameters,
-                            __utils.BER
-                        ),
-                    ])
-                    .filter(
-                        (c: asn1.ASN1Element | undefined): boolean => !!c
-                    ) as asn1.ASN1Element[],
-                __utils.BER
-            );
-        };
-    }
-    return _cached_encoder_for_Algorithmldentifier(value, elGetter);
-}
-
-export class SubjectPublicKeylnfo {
-    constructor(
-        readonly algorithm: Algorithmldentifier,
-        readonly subjectPublicKey: asn1.BIT_STRING
-    ) {}
-}
-export const _root_component_type_list_1_spec_for_SubjectPublicKeylnfo: __utils.ComponentSpec[] = [
-    new __utils.ComponentSpec(
-        "algorithm",
-        false,
-        __utils.hasTag(asn1.ASN1TagClass.universal, 16),
-        undefined,
-        undefined
-    ),
-    new __utils.ComponentSpec(
-        "subjectPublicKey",
-        false,
-        __utils.hasTag(asn1.ASN1TagClass.universal, 3),
-        undefined,
-        undefined
-    ),
-];
-export const _root_component_type_list_2_spec_for_SubjectPublicKeylnfo: __utils.ComponentSpec[] = [];
-export const _extension_additions_list_spec_for_SubjectPublicKeylnfo: __utils.ComponentSpec[] = [];
-let _cached_decoder_for_SubjectPublicKeylnfo: __utils.ASN1Decoder<
-    SubjectPublicKeylnfo
-> | null = null;
-let _cached_encoder_for_SubjectPublicKeylnfo: __utils.ASN1Encoder<
-    SubjectPublicKeylnfo
-> | null = null;
-export function _decode_SubjectPublicKeylnfo(el: asn1.ASN1Element) {
-    if (!_cached_decoder_for_SubjectPublicKeylnfo) {
-        _cached_decoder_for_SubjectPublicKeylnfo = function (
-            el: asn1.ASN1Element
-        ): SubjectPublicKeylnfo {
-            const sequence: asn1.ASN1Element[] = el.sequence;
-            if (sequence.length < 2) {
-                throw new asn1.ASN1ConstructionError(
-                    "SubjectPublicKeylnfo contained only " +
-                        sequence.length.toString() +
-                        " elements."
-                );
-            }
-            // TODO: Validate tags.
-            sequence[0].name = "algorithm";
-            sequence[1].name = "subjectPublicKey";
-            let algorithm!: Algorithmldentifier;
-            let subjectPublicKey!: asn1.BIT_STRING;
-            algorithm = _decode_Algorithmldentifier(sequence[0]);
-            subjectPublicKey = __utils._decodeBitString(sequence[1]);
-            // TODO: Validate values.
-            return new SubjectPublicKeylnfo(algorithm, subjectPublicKey);
-        };
-    }
-    return _cached_decoder_for_SubjectPublicKeylnfo(el);
-}
-export function _encode_SubjectPublicKeylnfo(
-    value: SubjectPublicKeylnfo,
-    elGetter: __utils.ASN1Encoder<SubjectPublicKeylnfo>
-) {
-    if (!_cached_encoder_for_SubjectPublicKeylnfo) {
-        _cached_encoder_for_SubjectPublicKeylnfo = function (
-            value: SubjectPublicKeylnfo,
-            elGetter: __utils.ASN1Encoder<SubjectPublicKeylnfo>
-        ): asn1.ASN1Element {
-            return __utils._encodeSequence(
-                ([] as (asn1.ASN1Element | undefined)[])
-                    .concat([
-                        /* REQUIRED   */ _encode_Algorithmldentifier(
-                            value.algorithm,
-                            __utils.BER
-                        ),
-                        /* REQUIRED   */ __utils._encodeBitString(
-                            value.subjectPublicKey,
-                            __utils.BER
-                        ),
-                    ])
-                    .filter(
-                        (c: asn1.ASN1Element | undefined): boolean => !!c
-                    ) as asn1.ASN1Element[],
-                __utils.BER
-            );
-        };
-    }
-    return _cached_encoder_for_SubjectPublicKeylnfo(value, elGetter);
-}
 
 // TODO: ObjectSetAssignment: ECPKAlgorithms
 
