@@ -8,6 +8,19 @@
     Produced by Jonathan M. Wilbur's <jonathan@wilbur.space> ASN.1 Compiler.
 */
 import * as asn1 from "asn1-ts";
+/**
+ * These symbols are imported to override incorrect or obsolete definitions
+ * provided in the ITU X.420 specification of PKCS #7. For example, `Digest`
+ * has a more complicated type defined within ITU X.420, but in the
+ * authoritative IETF RFC definition, `Digest` is simply an `OCTET STRING`.
+ * This overriding is important, because OpenSSL will fail to read PKCS #7
+ * structures that use the X.420-based `Digest` definition, for example.
+ */
+import {
+    Digest,
+    _decode_Digest,
+    _encode_Digest,
+} from "cms-ts/dist/node/CryptographicMessageSyntax-2010";
 import {
     AttributeCertificate,
     _decode_AttributeCertificate,
@@ -41,20 +54,8 @@ import {
     _encode_Attribute,
     _encode_Name,
 } from "x500-ts/dist/node/InformationFramework";
-
-/**
- * These symbols are imported to override incorrect or obsolete definitions
- * provided in the ITU X.420 specification of PKCS #7. For example, `Digest`
- * has a more complicated type defined within ITU X.420, but in the
- * authoritative IETF RFC definition, `Digest` is simply an `OCTET STRING`.
- * This overriding is important, because OpenSSL will fail to read PKCS #7
- * structures that use the X.420-based `Digest` definition, for example.
- */
-import {
-    Digest,
-    _encode_Digest,
-    _decode_Digest,
-} from "cms-ts/dist/node/CryptographicMessageSyntax-2010";
+import * as __utils from "./__utils";
+import { iso } from "./__utils";
 
 /**
  * These symbols are exported because they are not in conflict with any
@@ -62,6 +63,7 @@ import {
  */
 export {
     Attribute,
+    Digest,
     EncapsulatedContentInfo,
     EncryptedContentInfoType,
     KEKIdentifier,
@@ -72,21 +74,9 @@ export {
     OtherRecipientInfo,
     OtherRevocationInfoFormat,
     PasswordRecipientInfo,
-    Digest,
     SignedAttributes,
-    _encode_Attribute,
-    _encode_EncapsulatedContentInfo,
-    _encode_KEKIdentifier,
-    _encode_KEKRecipientInfo,
-    _encode_KeyAgreeRecipientInfo,
-    _encode_KeyTransRecipientInfo,
-    _encode_OtherCertificateFormat,
-    _encode_OtherRecipientInfo,
-    _encode_OtherRevocationInfoFormat,
-    _encode_PasswordRecipientInfo,
-    _encode_Digest,
-    _encode_SignedAttributes,
     _decode_Attribute,
+    _decode_Digest,
     _decode_EncapsulatedContentInfo,
     _decode_KEKIdentifier,
     _decode_KEKRecipientInfo,
@@ -96,12 +86,20 @@ export {
     _decode_OtherRecipientInfo,
     _decode_OtherRevocationInfoFormat,
     _decode_PasswordRecipientInfo,
-    _decode_Digest,
     _decode_SignedAttributes,
+    _encode_Attribute,
+    _encode_Digest,
+    _encode_EncapsulatedContentInfo,
+    _encode_KEKIdentifier,
+    _encode_KEKRecipientInfo,
+    _encode_KeyAgreeRecipientInfo,
+    _encode_KeyTransRecipientInfo,
+    _encode_OtherCertificateFormat,
+    _encode_OtherRecipientInfo,
+    _encode_OtherRevocationInfoFormat,
+    _encode_PasswordRecipientInfo,
+    _encode_SignedAttributes,
 } from "cms-ts/dist/node/CryptographicMessageSyntax-2010";
-
-import * as __utils from "./__utils";
-import { iso } from "./__utils";
 
 // TODO: ObjectSetAssignment: PKCS7ContentTable
 
@@ -252,7 +250,9 @@ export function _decode_ContentInfo(el: asn1.ASN1Element) {
             let content_type!: asn1.OBJECT_IDENTIFIER;
             let pkcs7_content!: asn1.ASN1Element;
             content_type = __utils._decodeObjectIdentifier(sequence[0]);
-            pkcs7_content = __utils._decode_explicit<asn1.ASN1Element>(() => __utils._decodeAny)(sequence[1]);
+            pkcs7_content = __utils._decode_explicit<asn1.ASN1Element>(
+                () => __utils._decodeAny
+            )(sequence[1]);
             // TODO: Validate values.
             return new ContentInfo(content_type, pkcs7_content);
         };
@@ -791,11 +791,17 @@ export type DigestHashContent =
  * OpenSSL expects the RFC definition.
  */
 export type X420Digest = HASH<DigestHashContent>; // DefinedType
-let _cached_decoder_for_X420Digest: __utils.ASN1Decoder<X420Digest> | null = null;
-let _cached_encoder_for_X420Digest: __utils.ASN1Encoder<X420Digest> | null = null;
+let _cached_decoder_for_X420Digest: __utils.ASN1Decoder<
+    X420Digest
+> | null = null;
+let _cached_encoder_for_X420Digest: __utils.ASN1Encoder<
+    X420Digest
+> | null = null;
 export function _decode_X420Digest(el: asn1.ASN1Element) {
     if (!_cached_decoder_for_X420Digest) {
-        _cached_decoder_for_X420Digest = _get_decoder_for_HASH<DigestHashContent>(
+        _cached_decoder_for_X420Digest = _get_decoder_for_HASH<
+            DigestHashContent
+        >(
             __utils._decode_inextensible_choice<DigestHashContent>({
                 "CONTEXT 1": [
                     "content",
@@ -819,7 +825,9 @@ export function _encode_X420Digest(
     elGetter: __utils.ASN1Encoder<X420Digest>
 ) {
     if (!_cached_encoder_for_X420Digest) {
-        _cached_encoder_for_X420Digest = _get_encoder_for_HASH<DigestHashContent>(
+        _cached_encoder_for_X420Digest = _get_encoder_for_HASH<
+            DigestHashContent
+        >(
             __utils._encode_choice<DigestHashContent>(
                 {
                     content: __utils._encode_implicit(

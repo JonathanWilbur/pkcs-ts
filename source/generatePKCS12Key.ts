@@ -1,5 +1,5 @@
-import * as crypto from "crypto";
 import * as asn1 from "asn1-ts";
+import * as crypto from "crypto";
 
 /**
  * Generate a PKCS12 key from a password, based on the algorithm defined in
@@ -19,15 +19,15 @@ import * as asn1 from "asn1-ts";
  * @param digestLength The number of bytes in the resulting digest, based on the `hashAlgorithm`.
  */
 export default // eslint-disable-next-line
-function generatePKCS12Key (
+function generatePKCS12Key(
     password: string,
     salt: Uint8Array,
-    id: (1 | 2 | 3),
+    id: 1 | 2 | 3,
     iter: number,
     n: number,
     hashAlgorithm: string,
     blockLength: number,
-    digestLength: number,
+    digestLength: number
 ): Uint8Array {
     let j, l;
     const u = digestLength;
@@ -37,7 +37,7 @@ function generatePKCS12Key (
     /* Convert password to Unicode byte buffer + trailing 0-byte. */
     const passBuf: Uint8Array = (() => {
         const el = new asn1.DERElement();
-        el.bmpString = (password + "\0");
+        el.bmpString = password + "\0";
         return el.value;
     })();
 
@@ -53,12 +53,11 @@ function generatePKCS12Key (
             v * ceil(s / v) bytes (the final copy of the salt may be trunacted
             to create S).
             Note that if the salt is the empty string, then so is S. */
-    const Slen = (v * Math.ceil(s / v));
+    const Slen = v * Math.ceil(s / v);
     let S = new Uint8Array(Slen);
     for (l = 0; l < Slen; l++) {
-        S[l] = salt[(l % s)];
+        S[l] = salt[l % s];
     }
-
 
     /* 3. Concatenate copies of the password together to create a string P of
             length v * ceil(p / v) bytes (the final copy of the password may be
@@ -67,11 +66,11 @@ function generatePKCS12Key (
     const Plen = v * Math.ceil(p / v);
     let P = new Uint8Array(Plen);
     for (l = 0; l < Plen; l++) {
-        P[l] = passBuf[(l % p)];
+        P[l] = passBuf[l % p];
     }
 
     /* 4. Set I=S||P to be the concatenation of S and P. */
-    S = Buffer.concat([ S, P ]);
+    S = Buffer.concat([S, P]);
     let I = S;
     P = new Uint8Array(0);
 
@@ -81,7 +80,7 @@ function generatePKCS12Key (
     /* 6. For i=1, 2, ..., c, do the following: */
     for (let i = 1; i <= c; i++) {
         /* a) Set Ai=H^r(D||I). (l.e. the rth hash of D||I, H(H(H(...H(D||I)))) */
-        let buf = Buffer.concat([ D, I ]);
+        let buf = Buffer.concat([D, I]);
         for (let round = 0; round < iter; round++) {
             const hasher = crypto.createHash(hashAlgorithm);
             hasher.update(buf);
@@ -92,7 +91,7 @@ function generatePKCS12Key (
             final copy of Ai may be truncated to create B). */
         const B = new Uint8Array(v);
         for (l = 0; l < v; l++) {
-            B[l] = buf[(l % u)];
+            B[l] = buf[l % u];
         }
 
         /* c) Treating I as a concatenation I0, I1, ..., Ik-1 of v-byte blocks,
@@ -103,24 +102,18 @@ function generatePKCS12Key (
         for (j = 0; j < k; j++) {
             const chunk = I.slice(0, v);
             I = I.slice(v);
-            let x = 0x1FF;
+            let x = 0x1ff;
             for (l = B.length - 1; l >= 0; l--) {
                 x = x >> 8;
                 x += B[l] + chunk[l];
-                chunk[l] = (x & 0xFF);
+                chunk[l] = x & 0xff;
             }
-            Inew = Buffer.concat([
-                Inew,
-                chunk,
-            ]);
+            Inew = Buffer.concat([Inew, chunk]);
         }
         I = Inew;
 
         /* Add Ai to A. */
-        result = Buffer.concat([
-            result,
-            buf,
-        ]);
+        result = Buffer.concat([result, buf]);
     }
 
     return result.slice(0, n);

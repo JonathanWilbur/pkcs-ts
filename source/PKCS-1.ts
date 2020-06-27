@@ -740,7 +740,7 @@ export const sha1: HashAlgorithm = new AlgorithmIdentifier(
         asn1.ASN1Construction.primitive,
         asn1.ASN1UniversalType.nill,
         null
-    ),
+    )
 );
 
 export type MaskGenAlgorithm = AlgorithmIdentifier; // DefinedType

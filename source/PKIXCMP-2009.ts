@@ -89,8 +89,8 @@ export function _decode_OOBCertHash(el: asn1.ASN1Element) {
                 _root_component_type_list_2_spec_for_OOBCertHash,
                 undefined
             );
-            return new OOBCertHash /* SEQUENCE_CONSTRUCTOR_CALL */(
-                hashAlg,
+            return new OOBCertHash(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ hashAlg,
                 certId,
                 hashVal
             );
