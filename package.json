@@ -9,7 +9,7 @@
             "url": "https://github.com/JonathanWilbur"
         }
     ],
-    "description": "PKCS #1 through #15 - Private and Public Keys, Certificates, and More",
+    "description": "PKCS #1 through #15 (Except #11) - Private and Public Keys, Certificates, and More",
     "devDependencies": {
         "@babel/core": "^7.12.10",
         "@babel/preset-env": "^7.12.11",
