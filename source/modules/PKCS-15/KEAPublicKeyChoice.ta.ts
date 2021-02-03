@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { ASN1Element as _Element, INTEGER } from "asn1-ts";
+import { ASN1Element as _Element, OCTET_STRING } from "asn1-ts";
 import * as $ from "asn1-ts/dist/node/functional";
 import {
     SubjectPublicKeyInfo,
@@ -23,7 +23,7 @@ import {
  * ```
  */
 export type KEAPublicKeyChoice =
-    | { raw: INTEGER } /* CHOICE_ALT_ROOT */
+    | { raw: OCTET_STRING } /* CHOICE_ALT_ROOT */
     | { spki: SubjectPublicKeyInfo } /* CHOICE_ALT_ROOT */
     | _Element /* CHOICE_ALT_UNRECOGNIZED_EXT */;
 /* END_OF_SYMBOL_DEFINITION KEAPublicKeyChoice */
@@ -43,7 +43,7 @@ export function _decode_KEAPublicKeyChoice(el: _Element) {
     if (!_cached_decoder_for_KEAPublicKeyChoice) {
         _cached_decoder_for_KEAPublicKeyChoice = $._decode_extensible_choice<KEAPublicKeyChoice>(
             {
-                "UNIVERSAL 2": ["raw", $._decodeInteger],
+                "UNIVERSAL 2": ["raw", $._decodeBigInt],
                 "UNIVERSAL 16": ["spki", _decode_SubjectPublicKeyInfo],
             }
         );
@@ -71,7 +71,7 @@ export function _encode_KEAPublicKeyChoice(
     if (!_cached_encoder_for_KEAPublicKeyChoice) {
         _cached_encoder_for_KEAPublicKeyChoice = $._encode_choice<KEAPublicKeyChoice>(
             {
-                raw: $._encodeInteger,
+                raw: $._encodeBigInt,
                 spki: _encode_SubjectPublicKeyInfo,
             },
             $.BER

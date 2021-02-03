@@ -2,7 +2,7 @@
 import {
     ASN1Element as _Element,
     ASN1TagClass as _TagClass,
-    INTEGER,
+    OCTET_STRING,
     OPTIONAL,
 } from "asn1-ts";
 import * as $ from "asn1-ts/dist/node/functional";
@@ -68,49 +68,49 @@ export class RSAPrivateKey {
          * @public
          * @readonly
          */
-        readonly modulus: INTEGER,
+        readonly modulus: OCTET_STRING,
         /**
          * @summary `publicExponent`.
          * @public
          * @readonly
          */
-        readonly publicExponent: INTEGER,
+        readonly publicExponent: OCTET_STRING,
         /**
          * @summary `privateExponent`.
          * @public
          * @readonly
          */
-        readonly privateExponent: INTEGER,
+        readonly privateExponent: OCTET_STRING,
         /**
          * @summary `prime1`.
          * @public
          * @readonly
          */
-        readonly prime1: INTEGER,
+        readonly prime1: OCTET_STRING,
         /**
          * @summary `prime2`.
          * @public
          * @readonly
          */
-        readonly prime2: INTEGER,
+        readonly prime2: OCTET_STRING,
         /**
          * @summary `exponent1`.
          * @public
          * @readonly
          */
-        readonly exponent1: INTEGER,
+        readonly exponent1: OCTET_STRING,
         /**
          * @summary `exponent2`.
          * @public
          * @readonly
          */
-        readonly exponent2: INTEGER,
+        readonly exponent2: OCTET_STRING,
         /**
          * @summary `coefficient`.
          * @public
          * @readonly
          */
-        readonly coefficient: INTEGER,
+        readonly coefficient: OCTET_STRING,
         /**
          * @summary `otherPrimeInfos`.
          * @public
@@ -275,14 +275,14 @@ export function _decode_RSAPrivateKey(el: _Element) {
         ): RSAPrivateKey {
             /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
             let version!: Version;
-            let modulus!: INTEGER;
-            let publicExponent!: INTEGER;
-            let privateExponent!: INTEGER;
-            let prime1!: INTEGER;
-            let prime2!: INTEGER;
-            let exponent1!: INTEGER;
-            let exponent2!: INTEGER;
-            let coefficient!: INTEGER;
+            let modulus!: OCTET_STRING;
+            let publicExponent!: OCTET_STRING;
+            let privateExponent!: OCTET_STRING;
+            let prime1!: OCTET_STRING;
+            let prime2!: OCTET_STRING;
+            let exponent1!: OCTET_STRING;
+            let exponent2!: OCTET_STRING;
+            let coefficient!: OCTET_STRING;
             let otherPrimeInfos: OPTIONAL<OtherPrimeInfos>;
             /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
             /* START_OF_CALLBACKS_MAP */
@@ -291,28 +291,28 @@ export function _decode_RSAPrivateKey(el: _Element) {
                     version = _decode_Version(_el);
                 },
                 modulus: (_el: _Element): void => {
-                    modulus = $._decodeInteger(_el);
+                    modulus = $._decodeBigInt(_el);
                 },
                 publicExponent: (_el: _Element): void => {
-                    publicExponent = $._decodeInteger(_el);
+                    publicExponent = $._decodeBigInt(_el);
                 },
                 privateExponent: (_el: _Element): void => {
-                    privateExponent = $._decodeInteger(_el);
+                    privateExponent = $._decodeBigInt(_el);
                 },
                 prime1: (_el: _Element): void => {
-                    prime1 = $._decodeInteger(_el);
+                    prime1 = $._decodeBigInt(_el);
                 },
                 prime2: (_el: _Element): void => {
-                    prime2 = $._decodeInteger(_el);
+                    prime2 = $._decodeBigInt(_el);
                 },
                 exponent1: (_el: _Element): void => {
-                    exponent1 = $._decodeInteger(_el);
+                    exponent1 = $._decodeBigInt(_el);
                 },
                 exponent2: (_el: _Element): void => {
-                    exponent2 = $._decodeInteger(_el);
+                    exponent2 = $._decodeBigInt(_el);
                 },
                 coefficient: (_el: _Element): void => {
-                    coefficient = $._decodeInteger(_el);
+                    coefficient = $._decodeBigInt(_el);
                 },
                 otherPrimeInfos: (_el: _Element): void => {
                     otherPrimeInfos = _decode_OtherPrimeInfos(_el);
@@ -370,26 +370,26 @@ export function _encode_RSAPrivateKey(
                 ([] as (_Element | undefined)[])
                     .concat([
                         /* REQUIRED   */ _encode_Version(value.version, $.BER),
-                        /* REQUIRED   */ $._encodeInteger(value.modulus, $.BER),
-                        /* REQUIRED   */ $._encodeInteger(
+                        /* REQUIRED   */ $._encodeBigInt(value.modulus, $.BER),
+                        /* REQUIRED   */ $._encodeBigInt(
                             value.publicExponent,
                             $.BER
                         ),
-                        /* REQUIRED   */ $._encodeInteger(
+                        /* REQUIRED   */ $._encodeBigInt(
                             value.privateExponent,
                             $.BER
                         ),
-                        /* REQUIRED   */ $._encodeInteger(value.prime1, $.BER),
-                        /* REQUIRED   */ $._encodeInteger(value.prime2, $.BER),
-                        /* REQUIRED   */ $._encodeInteger(
+                        /* REQUIRED   */ $._encodeBigInt(value.prime1, $.BER),
+                        /* REQUIRED   */ $._encodeBigInt(value.prime2, $.BER),
+                        /* REQUIRED   */ $._encodeBigInt(
                             value.exponent1,
                             $.BER
                         ),
-                        /* REQUIRED   */ $._encodeInteger(
+                        /* REQUIRED   */ $._encodeBigInt(
                             value.exponent2,
                             $.BER
                         ),
-                        /* REQUIRED   */ $._encodeInteger(
+                        /* REQUIRED   */ $._encodeBigInt(
                             value.coefficient,
                             $.BER
                         ),

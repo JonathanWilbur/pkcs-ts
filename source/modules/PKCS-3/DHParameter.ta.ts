@@ -3,6 +3,7 @@ import {
     ASN1Element as _Element,
     ASN1TagClass as _TagClass,
     INTEGER,
+    OCTET_STRING,
     OPTIONAL,
 } from "asn1-ts";
 import * as $ from "asn1-ts/dist/node/functional";
@@ -31,13 +32,13 @@ export class DHParameter {
          * @public
          * @readonly
          */
-        readonly prime: INTEGER,
+        readonly prime: OCTET_STRING,
         /**
          * @summary `base`.
          * @public
          * @readonly
          */
-        readonly base: INTEGER,
+        readonly base: OCTET_STRING,
         /**
          * @summary `privateValueLength`.
          * @public
@@ -139,17 +140,17 @@ export function _decode_DHParameter(el: _Element) {
     if (!_cached_decoder_for_DHParameter) {
         _cached_decoder_for_DHParameter = function (el: _Element): DHParameter {
             /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
-            let prime!: INTEGER;
-            let base!: INTEGER;
+            let prime!: OCTET_STRING;
+            let base!: OCTET_STRING;
             let privateValueLength: OPTIONAL<INTEGER>;
             /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
             /* START_OF_CALLBACKS_MAP */
             const callbacks: $.DecodingMap = {
                 prime: (_el: _Element): void => {
-                    prime = $._decodeInteger(_el);
+                    prime = $._decodeBigInt(_el);
                 },
                 base: (_el: _Element): void => {
-                    base = $._decodeInteger(_el);
+                    base = $._decodeBigInt(_el);
                 },
                 privateValueLength: (_el: _Element): void => {
                     privateValueLength = $._decodeInteger(_el);
@@ -199,8 +200,8 @@ export function _encode_DHParameter(
             return $._encodeSequence(
                 ([] as (_Element | undefined)[])
                     .concat([
-                        /* REQUIRED   */ $._encodeInteger(value.prime, $.BER),
-                        /* REQUIRED   */ $._encodeInteger(value.base, $.BER),
+                        /* REQUIRED   */ $._encodeBigInt(value.prime, $.BER),
+                        /* REQUIRED   */ $._encodeBigInt(value.base, $.BER),
                         /* IF_ABSENT  */ value.privateValueLength === undefined
                             ? undefined
                             : $._encodeInteger(value.privateValueLength, $.BER),

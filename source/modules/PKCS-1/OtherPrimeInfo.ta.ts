@@ -3,7 +3,7 @@ import {
     ASN1ConstructionError as _ConstructionError,
     ASN1Element as _Element,
     ASN1TagClass as _TagClass,
-    INTEGER,
+    OCTET_STRING,
 } from "asn1-ts";
 import * as $ from "asn1-ts/dist/node/functional";
 
@@ -31,19 +31,19 @@ export class OtherPrimeInfo {
          * @public
          * @readonly
          */
-        readonly prime: INTEGER,
+        readonly prime: OCTET_STRING,
         /**
          * @summary `exponent`.
          * @public
          * @readonly
          */
-        readonly exponent: INTEGER,
+        readonly exponent: OCTET_STRING,
         /**
          * @summary `coefficient`.
          * @public
          * @readonly
          */
-        readonly coefficient: INTEGER
+        readonly coefficient: OCTET_STRING
     ) {}
 
     /**
@@ -151,12 +151,12 @@ export function _decode_OtherPrimeInfo(el: _Element) {
             sequence[0].name = "prime";
             sequence[1].name = "exponent";
             sequence[2].name = "coefficient";
-            let prime!: INTEGER;
-            let exponent!: INTEGER;
-            let coefficient!: INTEGER;
-            prime = $._decodeInteger(sequence[0]);
-            exponent = $._decodeInteger(sequence[1]);
-            coefficient = $._decodeInteger(sequence[2]);
+            let prime!: OCTET_STRING;
+            let exponent!: OCTET_STRING;
+            let coefficient!: OCTET_STRING;
+            prime = $._decodeBigInt(sequence[0]);
+            exponent = $._decodeBigInt(sequence[1]);
+            coefficient = $._decodeBigInt(sequence[2]);
             return new OtherPrimeInfo(prime, exponent, coefficient);
         };
     }
@@ -188,12 +188,12 @@ export function _encode_OtherPrimeInfo(
             return $._encodeSequence(
                 ([] as (_Element | undefined)[])
                     .concat([
-                        /* REQUIRED   */ $._encodeInteger(value.prime, $.BER),
-                        /* REQUIRED   */ $._encodeInteger(
+                        /* REQUIRED   */ $._encodeBigInt(value.prime, $.BER),
+                        /* REQUIRED   */ $._encodeBigInt(
                             value.exponent,
                             $.BER
                         ),
-                        /* REQUIRED   */ $._encodeInteger(
+                        /* REQUIRED   */ $._encodeBigInt(
                             value.coefficient,
                             $.BER
                         ),
