@@ -218,8 +218,8 @@ export function _decode_PublicRSAKeyAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PublicRSAKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new PublicRSAKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 modulusLength,
                 keyInfo,
                 _unrecognizedExtensionsList

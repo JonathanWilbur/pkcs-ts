@@ -249,8 +249,8 @@ export function _decode_OneAsymmetricKey(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new OneAsymmetricKey /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new OneAsymmetricKey(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 privateKeyAlgorithm,
                 privateKey,
                 attributes,

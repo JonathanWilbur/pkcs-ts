@@ -190,8 +190,8 @@ export function _decode_RecipientKeyIdentifier(el: _Element) {
                 _root_component_type_list_2_spec_for_RecipientKeyIdentifier,
                 undefined
             );
-            return new RecipientKeyIdentifier /* SEQUENCE_CONSTRUCTOR_CALL */(
-                subjectKeyIdentifier,
+            return new RecipientKeyIdentifier(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ subjectKeyIdentifier,
                 date,
                 other
             );

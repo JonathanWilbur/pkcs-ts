@@ -171,8 +171,8 @@ export function _decode_OriginatorInfo(el: _Element) {
                 _root_component_type_list_2_spec_for_OriginatorInfo,
                 undefined
             );
-            return new OriginatorInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                certificates,
+            return new OriginatorInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ certificates,
                 crls
             );
         };

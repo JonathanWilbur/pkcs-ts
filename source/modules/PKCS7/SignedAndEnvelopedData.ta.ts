@@ -325,8 +325,8 @@ export function _decode_SignedAndEnvelopedData(el: _Element) {
                 _root_component_type_list_2_spec_for_SignedAndEnvelopedData,
                 undefined
             );
-            return new SignedAndEnvelopedData /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new SignedAndEnvelopedData(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 recipientInfos,
                 digestAlgorithms,
                 encryptedContentInfo,

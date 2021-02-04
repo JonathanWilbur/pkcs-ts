@@ -258,8 +258,8 @@ export function _decode_RecordInfo(el: _Element) {
                 _root_component_type_list_2_spec_for_RecordInfo,
                 undefined
             );
-            return new RecordInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                oDFRecordLength,
+            return new RecordInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ oDFRecordLength,
                 prKDFRecordLength,
                 puKDFRecordLength,
                 sKDFRecordLength,

@@ -439,8 +439,8 @@ export function _decode_TokenInfo(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new TokenInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new TokenInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 serialNumber,
                 manufacturerID,
                 label,

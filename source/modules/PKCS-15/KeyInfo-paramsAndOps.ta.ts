@@ -140,8 +140,8 @@ export function _get_decoder_for_KeyInfo_paramsAndOps<
             _root_component_type_list_2_spec_for_KeyInfo_paramsAndOps,
             undefined
         );
-        return new KeyInfo_paramsAndOps /* SEQUENCE_CONSTRUCTOR_CALL */(
-            parameters,
+        return new KeyInfo_paramsAndOps(
+            /* SEQUENCE_CONSTRUCTOR_CALL */ parameters,
             supportedOperations
         );
     };

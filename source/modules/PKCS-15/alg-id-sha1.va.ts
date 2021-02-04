@@ -1,10 +1,8 @@
 /* eslint-disable */
 import * as asn1 from "asn1-ts";
+import { AlgorithmIdentifier } from "x500-ts/dist/node/modules/AuthenticationFramework/AlgorithmIdentifier.ta";
 import { sha_1 } from "../CryptographicMessageSyntax/sha-1.va";
 export { sha_1 } from "../CryptographicMessageSyntax/sha-1.va";
-import {
-    AlgorithmIdentifier,
-} from "x500-ts/dist/node/modules/AuthenticationFramework/AlgorithmIdentifier.ta";
 
 /* START_OF_SYMBOL_DEFINITION alg_id_sha1 */
 /**
@@ -26,9 +24,9 @@ export const alg_id_sha1: AlgorithmIdentifier = AlgorithmIdentifier._from_object
             asn1.ASN1TagClass.universal,
             asn1.ASN1Construction.primitive,
             asn1.ASN1UniversalType.nill,
-            null,
+            null
         ),
-    },
+    }
 );
 /* END_OF_SYMBOL_DEFINITION alg_id_sha1 */
 

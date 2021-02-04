@@ -17,7 +17,6 @@ import {
     _encode_CertId,
 } from "../PKIXCRMF-2009/CertId.ta";
 
-
 /* START_OF_SYMBOL_DEFINITION OOBCertHash */
 /**
  * @summary OOBCertHash
@@ -182,8 +181,8 @@ export function _decode_OOBCertHash(el: _Element) {
                 _root_component_type_list_2_spec_for_OOBCertHash,
                 undefined
             );
-            return new OOBCertHash /* SEQUENCE_CONSTRUCTOR_CALL */(
-                hashAlg,
+            return new OOBCertHash(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ hashAlg,
                 certId,
                 hashVal
             );

@@ -183,8 +183,8 @@ export function _decode_KeyEncryptionKeyIdentifier(el: _Element) {
                 _root_component_type_list_2_spec_for_KeyEncryptionKeyIdentifier,
                 undefined
             );
-            return new KeyEncryptionKeyIdentifier /* SEQUENCE_CONSTRUCTOR_CALL */(
-                keyIdentifier,
+            return new KeyEncryptionKeyIdentifier(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ keyIdentifier,
                 date,
                 otherKeyAttribute
             );

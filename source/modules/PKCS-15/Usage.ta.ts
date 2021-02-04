@@ -151,8 +151,8 @@ export function _decode_Usage(el: _Element) {
                 _root_component_type_list_2_spec_for_Usage,
                 undefined
             );
-            return new Usage /* SEQUENCE_CONSTRUCTOR_CALL */(
-                keyUsage,
+            return new Usage(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ keyUsage,
                 extKeyUsage
             );
         };

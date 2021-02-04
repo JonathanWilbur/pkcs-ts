@@ -250,8 +250,8 @@ export function _decode_KeyAgreementRecipientInfo(el: _Element) {
                 _root_component_type_list_2_spec_for_KeyAgreementRecipientInfo,
                 undefined
             );
-            return new KeyAgreementRecipientInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new KeyAgreementRecipientInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 originator,
                 userKeyingMaterial,
                 keyEncryptionAlgorithm,

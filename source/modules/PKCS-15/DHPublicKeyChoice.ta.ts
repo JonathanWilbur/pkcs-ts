@@ -1,11 +1,11 @@
 /* eslint-disable */
-import { ASN1Element as _Element } from "asn1-ts";
-import * as $ from "asn1-ts/dist/node/functional";
 import {
     DiffieHellmanPublicNumber,
     _decode_DiffieHellmanPublicNumber,
     _encode_DiffieHellmanPublicNumber,
 } from "ansi-x9-42/dist/node/modules/ANSI-X9-42/DiffieHellmanPublicNumber.ta";
+import { ASN1Element as _Element } from "asn1-ts";
+import * as $ from "asn1-ts/dist/node/functional";
 import {
     SubjectPublicKeyInfo,
     _decode_SubjectPublicKeyInfo,

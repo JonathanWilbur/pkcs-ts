@@ -5,8 +5,8 @@ import type { ATTRIBUTE } from "x500-ts/dist/node/modules/InformationFramework/A
 import {
     userApplications /* IMPORTED_SHORT_ENUMERATION_ITEM */,
 } from "x500-ts/dist/node/modules/InformationFramework/AttributeUsage.ta";
-import { pkcs_9_at_localKeyId } from "../PKCS-9/pkcs-9-at-localKeyId.va";
 import { octetStringMatch } from "x500-ts/dist/node/modules/SelectedAttributeTypes/octetStringMatch.oa";
+import { pkcs_9_at_localKeyId } from "../PKCS-9/pkcs-9-at-localKeyId.va";
 
 /* START_OF_SYMBOL_DEFINITION localKeyId */
 /**

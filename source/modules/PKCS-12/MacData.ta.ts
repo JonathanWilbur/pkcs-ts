@@ -183,8 +183,8 @@ export function _decode_MacData(el: _Element) {
                 _root_component_type_list_2_spec_for_MacData,
                 undefined
             );
-            return new MacData /* SEQUENCE_CONSTRUCTOR_CALL */(
-                mac,
+            return new MacData(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ mac,
                 macSalt,
                 iterations
             );

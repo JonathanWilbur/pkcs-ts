@@ -323,8 +323,8 @@ export function _decode_SignerInfo(el: _Element) {
                 _root_component_type_list_2_spec_for_SignerInfo,
                 undefined
             );
-            return new SignerInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new SignerInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 sid,
                 digestAlgorithm,
                 signedAttrs,

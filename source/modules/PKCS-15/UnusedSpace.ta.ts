@@ -203,8 +203,8 @@ export function _decode_UnusedSpace(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new UnusedSpace /* SEQUENCE_CONSTRUCTOR_CALL */(
-                path,
+            return new UnusedSpace(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ path,
                 authId,
                 accessControlRules,
                 _unrecognizedExtensionsList

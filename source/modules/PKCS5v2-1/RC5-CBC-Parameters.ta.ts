@@ -202,8 +202,8 @@ export function _decode_RC5_CBC_Parameters(el: _Element) {
                 _root_component_type_list_2_spec_for_RC5_CBC_Parameters,
                 undefined
             );
-            return new RC5_CBC_Parameters /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new RC5_CBC_Parameters(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 rounds,
                 blockSizeInBits,
                 iv

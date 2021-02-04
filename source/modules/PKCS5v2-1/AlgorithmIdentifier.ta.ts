@@ -143,8 +143,8 @@ export function _decode_AlgorithmIdentifier(el: _Element) {
                 _root_component_type_list_2_spec_for_AlgorithmIdentifier,
                 undefined
             );
-            return new AlgorithmIdentifier /* SEQUENCE_CONSTRUCTOR_CALL */(
-                algorithm,
+            return new AlgorithmIdentifier(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ algorithm,
                 parameters
             );
         };

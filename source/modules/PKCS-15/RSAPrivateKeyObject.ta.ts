@@ -282,8 +282,8 @@ export function _decode_RSAPrivateKeyObject(el: _Element) {
                 _root_component_type_list_2_spec_for_RSAPrivateKeyObject,
                 undefined
             );
-            return new RSAPrivateKeyObject /* SEQUENCE_CONSTRUCTOR_CALL */(
-                modulus,
+            return new RSAPrivateKeyObject(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ modulus,
                 publicExponent,
                 privateExponent,
                 prime1,

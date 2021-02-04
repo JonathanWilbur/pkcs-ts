@@ -165,8 +165,8 @@ export function _decode_DHParameter(el: _Element) {
                 _root_component_type_list_2_spec_for_DHParameter,
                 undefined
             );
-            return new DHParameter /* SEQUENCE_CONSTRUCTOR_CALL */(
-                prime,
+            return new DHParameter(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ prime,
                 base,
                 privateValueLength
             );

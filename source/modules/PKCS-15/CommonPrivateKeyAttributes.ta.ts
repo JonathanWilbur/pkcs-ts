@@ -172,8 +172,8 @@ export function _decode_CommonPrivateKeyAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new CommonPrivateKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                subjectName,
+            return new CommonPrivateKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ subjectName,
                 keyIdentifiers,
                 _unrecognizedExtensionsList
             );

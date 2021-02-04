@@ -242,8 +242,8 @@ export function _decode_RSAES_OAEP_params(el: _Element) {
                 _root_component_type_list_2_spec_for_RSAES_OAEP_params,
                 undefined
             );
-            return new RSAES_OAEP_params /* SEQUENCE_CONSTRUCTOR_CALL */(
-                hashAlgorithm,
+            return new RSAES_OAEP_params(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ hashAlgorithm,
                 maskGenAlgorithm,
                 pSourceAlgorithm
             );

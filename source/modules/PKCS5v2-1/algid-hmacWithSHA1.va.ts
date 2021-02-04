@@ -30,9 +30,9 @@ export const algid_hmacWithSHA1: AlgorithmIdentifier = AlgorithmIdentifier._from
             asn1.ASN1TagClass.universal,
             asn1.ASN1Construction.primitive,
             asn1.ASN1UniversalType.nill,
-            null,
+            null
         ),
-    },
+    }
 );
 /* END_OF_SYMBOL_DEFINITION algid_hmacWithSHA1 */
 

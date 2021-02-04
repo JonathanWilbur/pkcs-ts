@@ -298,8 +298,8 @@ export function _decode_SignedData(el: _Element) {
                 _root_component_type_list_2_spec_for_SignedData,
                 undefined
             );
-            return new SignedData /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new SignedData(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 digestAlgorithms,
                 encapContentInfo,
                 certificates,

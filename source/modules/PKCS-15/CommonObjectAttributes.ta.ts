@@ -239,8 +239,8 @@ export function _decode_CommonObjectAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new CommonObjectAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                label,
+            return new CommonObjectAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ label,
                 flags,
                 authId,
                 userConsent,

@@ -1,9 +1,7 @@
 /* eslint-disable */
+import { AlgorithmIdentifier } from "x500-ts/dist/node/modules/AuthenticationFramework/AlgorithmIdentifier.ta";
 import { id_RSASSA_PSS } from "../PKCS-1/id-RSASSA-PSS.va";
 import type { RSASSA_AlgorithmIdentifier } from "../PKCS-1/RSASSA-AlgorithmIdentifier.ta";
-import {
-    AlgorithmIdentifier,
-} from "x500-ts/dist/node/modules/AuthenticationFramework/AlgorithmIdentifier.ta";
 
 /* START_OF_SYMBOL_DEFINITION rSASSA_PSS_Default_Identifier */
 /**

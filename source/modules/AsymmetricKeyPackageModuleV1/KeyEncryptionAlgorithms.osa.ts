@@ -1,7 +1,5 @@
 /* eslint-disable */
-import type {
-    ALGORITHM,
-} from "x500-ts/dist/node/modules/AuthenticationFramework/ALGORITHM.oca";
+import type { ALGORITHM } from "x500-ts/dist/node/modules/AuthenticationFramework/ALGORITHM.oca";
 
 /* START_OF_SYMBOL_DEFINITION KeyEncryptionAlgorithms */
 /**

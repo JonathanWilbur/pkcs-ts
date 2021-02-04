@@ -3,13 +3,13 @@ import type { ATTRIBUTE } from "x500-ts/dist/node/modules/InformationFramework/A
 import {
     userApplications /* IMPORTED_SHORT_ENUMERATION_ITEM */,
 } from "x500-ts/dist/node/modules/InformationFramework/AttributeUsage.ta";
+import { octetStringMatch } from "x500-ts/dist/node/modules/SelectedAttributeTypes/octetStringMatch.oa";
 import {
     MessageDigest,
     _decode_MessageDigest,
     _encode_MessageDigest,
 } from "../PKCS-9/MessageDigest.ta";
 import { pkcs_9_at_messageDigest } from "../PKCS-9/pkcs-9-at-messageDigest.va";
-import { octetStringMatch } from "x500-ts/dist/node/modules/SelectedAttributeTypes/octetStringMatch.oa";
 
 /* START_OF_SYMBOL_DEFINITION messageDigest */
 /**

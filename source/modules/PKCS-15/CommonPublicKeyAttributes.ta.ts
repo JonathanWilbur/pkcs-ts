@@ -166,8 +166,8 @@ export function _decode_CommonPublicKeyAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new CommonPublicKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                subjectName,
+            return new CommonPublicKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ subjectName,
                 trustedUsage,
                 _unrecognizedExtensionsList
             );

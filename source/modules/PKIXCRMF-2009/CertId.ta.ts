@@ -1,10 +1,10 @@
 import * as asn1 from "asn1-ts";
+import * as $ from "asn1-ts/dist/node/functional";
 import {
     GeneralName,
     _decode_GeneralName,
     _encode_GeneralName,
 } from "x500-ts/dist/node/modules/CertificateExtensions/GeneralName.ta";
-import * as $ from "asn1-ts/dist/node/functional";
 
 // CertId ::= SEQUENCE {
 //     issuer           GeneralName,
@@ -17,13 +17,7 @@ export class CertId {
     ) {}
 }
 export const _root_component_type_list_1_spec_for_CertId: $.ComponentSpec[] = [
-    new $.ComponentSpec(
-        "issuer",
-        false,
-        $.hasAnyTag,
-        undefined,
-        undefined
-    ),
+    new $.ComponentSpec("issuer", false, $.hasAnyTag, undefined, undefined),
     new $.ComponentSpec(
         "serialNumber",
         false,
@@ -48,7 +42,7 @@ export const _encode_CertId = function (
             .filter(
                 (c: asn1.ASN1Element | undefined): boolean => !!c
             ) as asn1.ASN1Element[],
-            $.BER
+        $.BER
     );
 };
 export const _decode_CertId = function (el: asn1.ASN1Element): CertId {
@@ -56,9 +50,9 @@ export const _decode_CertId = function (el: asn1.ASN1Element): CertId {
     let serialNumber!: asn1.OCTET_STRING;
     const callbacks: $.DecodingMap = {
         issuer: (_el: asn1.ASN1Element): void => {
-            issuer = $._decode_implicit<GeneralName>(
-                () => _decode_GeneralName
-            )(_el);
+            issuer = $._decode_implicit<GeneralName>(() => _decode_GeneralName)(
+                _el
+            );
         },
         serialNumber: (_el: asn1.ASN1Element): void => {
             serialNumber = $._decode_implicit<asn1.OCTET_STRING>(

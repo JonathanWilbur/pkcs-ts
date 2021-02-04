@@ -1,10 +1,8 @@
 /* eslint-disable */
 import * as asn1 from "asn1-ts";
+import { AlgorithmIdentifier } from "x500-ts/dist/node/modules/AuthenticationFramework/AlgorithmIdentifier.ta";
 import { HashAlgorithm } from "../PKCS-1/HashAlgorithm.ta";
 import { id_sha1 } from "../PKCS-1/id-sha1.va";
-import {
-    AlgorithmIdentifier,
-} from "x500-ts/dist/node/modules/AuthenticationFramework/AlgorithmIdentifier.ta";
 
 /* START_OF_SYMBOL_DEFINITION sha1 */
 /**
@@ -29,7 +27,7 @@ export const sha1: HashAlgorithm = AlgorithmIdentifier._from_object({
         asn1.ASN1TagClass.universal,
         asn1.ASN1Construction.primitive,
         asn1.ASN1UniversalType.nill,
-        null,
+        null
     ),
 });
 /* END_OF_SYMBOL_DEFINITION sha1 */

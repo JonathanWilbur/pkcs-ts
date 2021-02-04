@@ -234,8 +234,8 @@ export function _decode_AlgorithmInfo(el: _Element) {
                 _root_component_type_list_2_spec_for_AlgorithmInfo,
                 undefined
             );
-            return new AlgorithmInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                reference,
+            return new AlgorithmInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ reference,
                 algorithm,
                 parameters,
                 supportedOperations,

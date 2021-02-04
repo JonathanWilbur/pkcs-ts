@@ -189,10 +189,7 @@ export function _encode_OtherPrimeInfo(
                 ([] as (_Element | undefined)[])
                     .concat([
                         /* REQUIRED   */ $._encodeBigInt(value.prime, $.BER),
-                        /* REQUIRED   */ $._encodeBigInt(
-                            value.exponent,
-                            $.BER
-                        ),
+                        /* REQUIRED   */ $._encodeBigInt(value.exponent, $.BER),
                         /* REQUIRED   */ $._encodeBigInt(
                             value.coefficient,
                             $.BER

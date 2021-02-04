@@ -1,11 +1,11 @@
 /* eslint-disable */
-import { ASN1Element as _Element, OPTIONAL } from "asn1-ts";
-import * as $ from "asn1-ts/dist/node/functional";
 import {
     Parameters,
     _decode_Parameters,
     _encode_Parameters,
 } from "ansi-x9-62/dist/node/modules/ANSI-X9-62/Parameters.ta";
+import { ASN1Element as _Element, OPTIONAL } from "asn1-ts";
+import * as $ from "asn1-ts/dist/node/functional";
 import {
     ECPrivateKey,
     _decode_ECPrivateKey,
@@ -178,8 +178,8 @@ export function _decode_PrivateECKeyAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PrivateECKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new PrivateECKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 keyInfo,
                 _unrecognizedExtensionsList
             );

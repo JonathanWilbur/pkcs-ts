@@ -177,8 +177,8 @@ export function _get_decoder_for_EncryptedContentInfo<Type>(
             _root_component_type_list_2_spec_for_EncryptedContentInfo,
             undefined
         );
-        return new EncryptedContentInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-            contentType,
+        return new EncryptedContentInfo(
+            /* SEQUENCE_CONSTRUCTOR_CALL */ contentType,
             contentEncryptionAlgorithm,
             encryptedContent
         );

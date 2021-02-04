@@ -302,8 +302,8 @@ export function _decode_CommonCertificateAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new CommonCertificateAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                iD,
+            return new CommonCertificateAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ iD,
                 authority,
                 identifier,
                 certHash,

@@ -211,8 +211,8 @@ export function _get_decoder_for_PKCS15Object<
             _root_component_type_list_2_spec_for_PKCS15Object,
             undefined
         );
-        return new PKCS15Object /* SEQUENCE_CONSTRUCTOR_CALL */(
-            commonObjectAttributes,
+        return new PKCS15Object(
+            /* SEQUENCE_CONSTRUCTOR_CALL */ commonObjectAttributes,
             classAttributes,
             subClassAttributes,
             typeAttributes

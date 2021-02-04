@@ -165,8 +165,8 @@ export function _decode_Path(el: _Element) {
                 _root_component_type_list_2_spec_for_Path,
                 undefined
             );
-            return new Path /* SEQUENCE_CONSTRUCTOR_CALL */(
-                path,
+            return new Path(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ path,
                 index,
                 length
             );

@@ -149,8 +149,8 @@ export function _decode_RC2_CBC_Parameter(el: _Element) {
                 _root_component_type_list_2_spec_for_RC2_CBC_Parameter,
                 undefined
             );
-            return new RC2_CBC_Parameter /* SEQUENCE_CONSTRUCTOR_CALL */(
-                rc2ParameterVersion,
+            return new RC2_CBC_Parameter(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ rc2ParameterVersion,
                 iv
             );
         };

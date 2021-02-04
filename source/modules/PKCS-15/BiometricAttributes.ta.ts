@@ -290,8 +290,8 @@ export function _decode_BiometricAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new BiometricAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                bioFlags,
+            return new BiometricAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ bioFlags,
                 templateId,
                 bioType,
                 bioReference,

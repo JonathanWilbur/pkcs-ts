@@ -3,13 +3,13 @@ import type { ATTRIBUTE } from "x500-ts/dist/node/modules/InformationFramework/A
 import {
     userApplications /* IMPORTED_SHORT_ENUMERATION_ITEM */,
 } from "x500-ts/dist/node/modules/InformationFramework/AttributeUsage.ta";
+import { octetStringMatch } from "x500-ts/dist/node/modules/SelectedAttributeTypes/octetStringMatch.oa";
 import { pkcs_9_at_randomNonce } from "../PKCS-9/pkcs-9-at-randomNonce.va";
 import {
     RandomNonce,
     _decode_RandomNonce,
     _encode_RandomNonce,
 } from "../PKCS-9/RandomNonce.ta";
-import { octetStringMatch } from "x500-ts/dist/node/modules/SelectedAttributeTypes/octetStringMatch.oa";
 
 /* START_OF_SYMBOL_DEFINITION randomNonce */
 /**

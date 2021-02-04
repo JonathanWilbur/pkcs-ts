@@ -203,8 +203,8 @@ export function _decode_PKCS15Token(el: _Element) {
                 _root_component_type_list_2_spec_for_PKCS15Token,
                 undefined
             );
-            return new PKCS15Token /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new PKCS15Token(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 keyManagementInfo,
                 pkcs15Objects
             );

@@ -193,8 +193,8 @@ export function _decode_EncryptedData(el: _Element) {
                 _root_component_type_list_2_spec_for_EncryptedData,
                 undefined
             );
-            return new EncryptedData /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new EncryptedData(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 encryptedContentInfo,
                 unprotectedAttributes
             );

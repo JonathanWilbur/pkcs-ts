@@ -1,11 +1,11 @@
 /* eslint-disable */
-import { ASN1Element as _Element } from "asn1-ts";
-import * as $ from "asn1-ts/dist/node/functional";
 import {
     ECPoint,
     _decode_ECPoint,
     _encode_ECPoint,
 } from "ansi-x9-62/dist/node/modules/ANSI-X9-62/ECPoint.ta";
+import { ASN1Element as _Element } from "asn1-ts";
+import * as $ from "asn1-ts/dist/node/functional";
 import {
     SubjectPublicKeyInfo,
     _decode_SubjectPublicKeyInfo,

@@ -155,8 +155,8 @@ export function _decode_OtherKeyAttribute(el: _Element) {
                 _root_component_type_list_2_spec_for_OtherKeyAttribute,
                 undefined
             );
-            return new OtherKeyAttribute /* SEQUENCE_CONSTRUCTOR_CALL */(
-                keyAttributeIdentifier,
+            return new OtherKeyAttribute(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ keyAttributeIdentifier,
                 keyAttribute
             );
         };

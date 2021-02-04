@@ -180,8 +180,8 @@ export function _decode_SafeBag(el: _Element) {
                 _root_component_type_list_2_spec_for_SafeBag,
                 undefined
             );
-            return new SafeBag /* SEQUENCE_CONSTRUCTOR_CALL */(
-                bagId,
+            return new SafeBag(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ bagId,
                 bagValue,
                 bagAttributes
             );

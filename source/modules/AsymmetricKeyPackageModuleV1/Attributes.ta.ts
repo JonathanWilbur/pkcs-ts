@@ -7,7 +7,6 @@ import {
     _encode_Attribute,
 } from "x500-ts/dist/node/modules/InformationFramework/Attribute.ta";
 
-
 /* START_OF_SYMBOL_DEFINITION Attributes */
 /**
  * @summary Attributes

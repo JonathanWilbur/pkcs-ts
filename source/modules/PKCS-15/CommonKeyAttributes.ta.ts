@@ -341,8 +341,8 @@ export function _decode_CommonKeyAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new CommonKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                iD,
+            return new CommonKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ iD,
                 usage,
                 native,
                 accessFlags,

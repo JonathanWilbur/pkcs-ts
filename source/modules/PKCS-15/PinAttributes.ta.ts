@@ -385,8 +385,8 @@ export function _decode_PinAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PinAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                pinFlags,
+            return new PinAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ pinFlags,
                 pinType,
                 minLength,
                 storedLength,

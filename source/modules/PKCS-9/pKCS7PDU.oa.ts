@@ -1,13 +1,13 @@
 /* eslint-disable */
+import type { ATTRIBUTE } from "x500-ts/dist/node/modules/InformationFramework/ATTRIBUTE.oca";
+import {
+    userApplications /* IMPORTED_SHORT_ENUMERATION_ITEM */,
+} from "x500-ts/dist/node/modules/InformationFramework/AttributeUsage.ta";
 import {
     ContentInfo,
     _decode_ContentInfo,
     _encode_ContentInfo,
 } from "../CryptographicMessageSyntax/ContentInfo.ta";
-import type { ATTRIBUTE } from "x500-ts/dist/node/modules/InformationFramework/ATTRIBUTE.oca";
-import {
-    userApplications /* IMPORTED_SHORT_ENUMERATION_ITEM */,
-} from "x500-ts/dist/node/modules/InformationFramework/AttributeUsage.ta";
 import { pkcs_9_at_pkcs7PDU } from "../PKCS-9/pkcs-9-at-pkcs7PDU.va";
 
 /* START_OF_SYMBOL_DEFINITION pKCS7PDU */

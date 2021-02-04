@@ -166,8 +166,8 @@ export function _decode_CommonDataObjectAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new CommonDataObjectAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                applicationName,
+            return new CommonDataObjectAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ applicationName,
                 applicationOID,
                 _unrecognizedExtensionsList
             );

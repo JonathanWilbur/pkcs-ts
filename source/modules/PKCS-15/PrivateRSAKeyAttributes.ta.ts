@@ -220,8 +220,8 @@ export function _decode_PrivateRSAKeyAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PrivateRSAKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new PrivateRSAKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 modulusLength,
                 keyInfo,
                 _unrecognizedExtensionsList

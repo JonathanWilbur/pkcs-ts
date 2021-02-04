@@ -17,15 +17,15 @@ import {
     _encode_CertificateSerialNumber,
 } from "x500-ts/dist/node/modules/AuthenticationFramework/CertificateSerialNumber.ta";
 import {
-    ObjectValue,
-    _get_decoder_for_ObjectValue,
-    _get_encoder_for_ObjectValue,
-} from "../PKCS-15/ObjectValue.ta";
-import {
     GeneralNames,
     _decode_GeneralNames,
     _encode_GeneralNames,
 } from "x500-ts/dist/node/modules/CertificateExtensions/GeneralNames.ta";
+import {
+    ObjectValue,
+    _get_decoder_for_ObjectValue,
+    _get_encoder_for_ObjectValue,
+} from "../PKCS-15/ObjectValue.ta";
 
 /* START_OF_SYMBOL_DEFINITION X509AttributeCertificateAttributes */
 /**
@@ -222,8 +222,8 @@ export function _decode_X509AttributeCertificateAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new X509AttributeCertificateAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new X509AttributeCertificateAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 issuer,
                 serialNumber,
                 attrTypes,

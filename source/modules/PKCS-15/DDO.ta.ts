@@ -202,8 +202,8 @@ export function _decode_DDO(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new DDO /* SEQUENCE_CONSTRUCTOR_CALL */(
-                oid,
+            return new DDO(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ oid,
                 odfPath,
                 tokenInfoPath,
                 unusedPath,

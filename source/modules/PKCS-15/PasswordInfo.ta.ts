@@ -5,13 +5,13 @@ import {
     OPTIONAL,
 } from "asn1-ts";
 import * as $ from "asn1-ts/dist/node/functional";
-import { Label, _decode_Label, _encode_Label } from "../PKCS-15/Label.ta";
-export { Label, _decode_Label, _encode_Label } from "../PKCS-15/Label.ta";
 import {
     AlgorithmIdentifier,
     _decode_AlgorithmIdentifier,
     _encode_AlgorithmIdentifier,
 } from "x500-ts/dist/node/modules/AuthenticationFramework/AlgorithmIdentifier.ta";
+import { Label, _decode_Label, _encode_Label } from "../PKCS-15/Label.ta";
+export { Label, _decode_Label, _encode_Label } from "../PKCS-15/Label.ta";
 
 /* START_OF_SYMBOL_DEFINITION PasswordInfo */
 /**
@@ -162,8 +162,8 @@ export function _decode_PasswordInfo(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PasswordInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                hint,
+            return new PasswordInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ hint,
                 algId,
                 _unrecognizedExtensionsList
             );

@@ -176,8 +176,8 @@ export function _decode_PFX(el: _Element) {
                 _root_component_type_list_2_spec_for_PFX,
                 undefined
             );
-            return new PFX /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new PFX(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 authSafe,
                 macData
             );

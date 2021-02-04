@@ -211,8 +211,8 @@ export function _decode_X509CertificateAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new X509CertificateAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new X509CertificateAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 subject,
                 issuer,
                 serialNumber,

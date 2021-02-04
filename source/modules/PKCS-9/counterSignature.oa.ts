@@ -1,13 +1,13 @@
 /* eslint-disable */
+import type { ATTRIBUTE } from "x500-ts/dist/node/modules/InformationFramework/ATTRIBUTE.oca";
+import {
+    userApplications /* IMPORTED_SHORT_ENUMERATION_ITEM */,
+} from "x500-ts/dist/node/modules/InformationFramework/AttributeUsage.ta";
 import {
     SignerInfo,
     _decode_SignerInfo,
     _encode_SignerInfo,
 } from "../CryptographicMessageSyntax/SignerInfo.ta";
-import type { ATTRIBUTE } from "x500-ts/dist/node/modules/InformationFramework/ATTRIBUTE.oca";
-import {
-    userApplications /* IMPORTED_SHORT_ENUMERATION_ITEM */,
-} from "x500-ts/dist/node/modules/InformationFramework/AttributeUsage.ta";
 import { pkcs_9_at_counterSignature } from "../PKCS-9/pkcs-9-at-counterSignature.va";
 
 /* START_OF_SYMBOL_DEFINITION counterSignature */

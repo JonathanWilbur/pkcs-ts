@@ -183,8 +183,8 @@ export function _decode_AuthKeyAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new AuthKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                derivedKey,
+            return new AuthKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ derivedKey,
                 authKeyId,
                 _unrecognizedExtensionsList
             );

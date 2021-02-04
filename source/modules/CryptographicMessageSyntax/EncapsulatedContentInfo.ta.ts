@@ -162,8 +162,8 @@ export function _decode_EncapsulatedContentInfo(el: _Element) {
                 _root_component_type_list_2_spec_for_EncapsulatedContentInfo,
                 undefined
             );
-            return new EncapsulatedContentInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
-                eContentType,
+            return new EncapsulatedContentInfo(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ eContentType,
                 eContent
             );
         };

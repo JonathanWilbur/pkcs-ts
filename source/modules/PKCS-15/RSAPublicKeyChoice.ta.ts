@@ -12,7 +12,6 @@ import {
     _encode_RSAPublicKey,
 } from "../PKCS-1/RSAPublicKey.ta";
 
-
 /* START_OF_SYMBOL_DEFINITION RSAPublicKeyChoice */
 /**
  * @summary RSAPublicKeyChoice

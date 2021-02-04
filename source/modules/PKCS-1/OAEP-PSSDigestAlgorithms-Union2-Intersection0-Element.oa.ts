@@ -1,9 +1,9 @@
 /* eslint-disable */
 import { NULL } from "asn1-ts";
 import * as $ from "asn1-ts/dist/node/functional";
+import { id_sha256 } from "../NIST-SHA2/id-sha256.va";
 import { ALGORITHM_IDENTIFIER } from "../PKCS-1/ALGORITHM-IDENTIFIER.oca";
 export { ALGORITHM_IDENTIFIER } from "../PKCS-1/ALGORITHM-IDENTIFIER.oca";
-import { id_sha256 } from "../NIST-SHA2/id-sha256.va";
 
 /* START_OF_SYMBOL_DEFINITION OAEP_PSSDigestAlgorithms_Union2_Intersection0_Element */
 /**

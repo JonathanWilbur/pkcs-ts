@@ -1,12 +1,12 @@
 /* eslint-disable */
 import * as $ from "asn1-ts/dist/node/functional";
-import { id_mgf1 } from "../PKCS-1/id-mgf1.va";
-import { MaskGenAlgorithm } from "../PKCS-1/MaskGenAlgorithm.ta";
-import { sha1 } from "../PKCS-1/sha1.va";
 import {
     AlgorithmIdentifier,
     _encode_AlgorithmIdentifier,
 } from "x500-ts/dist/node/modules/AuthenticationFramework/AlgorithmIdentifier.ta";
+import { id_mgf1 } from "../PKCS-1/id-mgf1.va";
+import { MaskGenAlgorithm } from "../PKCS-1/MaskGenAlgorithm.ta";
+import { sha1 } from "../PKCS-1/sha1.va";
 
 /* START_OF_SYMBOL_DEFINITION mgf1SHA1 */
 /**

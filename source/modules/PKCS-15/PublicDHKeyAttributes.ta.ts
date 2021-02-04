@@ -1,11 +1,11 @@
 /* eslint-disable */
-import { ASN1Element as _Element, OPTIONAL } from "asn1-ts";
-import * as $ from "asn1-ts/dist/node/functional";
 import {
     DomainParameters,
     _decode_DomainParameters,
     _encode_DomainParameters,
 } from "ansi-x9-42/dist/node/modules/ANSI-X9-42/DomainParameters.ta";
+import { ASN1Element as _Element, OPTIONAL } from "asn1-ts";
+import * as $ from "asn1-ts/dist/node/functional";
 import {
     DHPublicKeyChoice,
     _decode_DHPublicKeyChoice,
@@ -182,8 +182,8 @@ export function _decode_PublicDHKeyAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new PublicDHKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                value,
+            return new PublicDHKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ value,
                 keyInfo,
                 _unrecognizedExtensionsList
             );

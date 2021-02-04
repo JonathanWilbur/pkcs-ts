@@ -6,6 +6,11 @@ import {
 } from "asn1-ts";
 import * as $ from "asn1-ts/dist/node/functional";
 import {
+    Attribute,
+    _decode_Attribute,
+    _encode_Attribute,
+} from "x500-ts/dist/node/modules/InformationFramework/Attribute.ta";
+import {
     OriginatorInfo,
     _decode_OriginatorInfo,
     _encode_OriginatorInfo,
@@ -15,11 +20,6 @@ import {
     _decode_RecipientInfos,
     _encode_RecipientInfos,
 } from "../CryptographicMessageSyntax/RecipientInfos.ta";
-import {
-    Attribute,
-    _decode_Attribute,
-    _encode_Attribute,
-} from "x500-ts/dist/node/modules/InformationFramework/Attribute.ta";
 import {
     EncryptedContentInfo,
     _get_decoder_for_EncryptedContentInfo,
@@ -235,8 +235,8 @@ export function _get_decoder_for_EnvelopedData<Type>(
             _root_component_type_list_2_spec_for_EnvelopedData,
             undefined
         );
-        return new EnvelopedData /* SEQUENCE_CONSTRUCTOR_CALL */(
-            version,
+        return new EnvelopedData(
+            /* SEQUENCE_CONSTRUCTOR_CALL */ version,
             originatorInfo,
             recipientInfos,
             encryptedContentInfo,

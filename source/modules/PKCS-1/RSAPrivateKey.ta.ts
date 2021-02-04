@@ -327,8 +327,8 @@ export function _decode_RSAPrivateKey(el: _Element) {
                 _root_component_type_list_2_spec_for_RSAPrivateKey,
                 undefined
             );
-            return new RSAPrivateKey /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new RSAPrivateKey(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 modulus,
                 publicExponent,
                 privateExponent,

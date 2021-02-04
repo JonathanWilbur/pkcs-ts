@@ -275,8 +275,8 @@ export function _decode_RSASSA_PSS_params(el: _Element) {
                 _root_component_type_list_2_spec_for_RSASSA_PSS_params,
                 undefined
             );
-            return new RSASSA_PSS_params /* SEQUENCE_CONSTRUCTOR_CALL */(
-                hashAlgorithm,
+            return new RSASSA_PSS_params(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ hashAlgorithm,
                 maskGenAlgorithm,
                 saltLength,
                 trailerField

@@ -6,12 +6,12 @@ import {
     OPTIONAL,
 } from "asn1-ts";
 import * as $ from "asn1-ts/dist/node/functional";
-import { alg_id_sha1 } from "../PKCS-15/alg-id-sha1.va";
 import {
     AlgorithmIdentifier,
     _decode_AlgorithmIdentifier,
     _encode_AlgorithmIdentifier,
 } from "x500-ts/dist/node/modules/AuthenticationFramework/AlgorithmIdentifier.ta";
+import { alg_id_sha1 } from "../PKCS-15/alg-id-sha1.va";
 
 /* START_OF_SYMBOL_DEFINITION DigestInfoWithDefault */
 /**
@@ -159,8 +159,8 @@ export function _decode_DigestInfoWithDefault(el: _Element) {
                 _root_component_type_list_2_spec_for_DigestInfoWithDefault,
                 undefined
             );
-            return new DigestInfoWithDefault /* SEQUENCE_CONSTRUCTOR_CALL */(
-                digestAlg,
+            return new DigestInfoWithDefault(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ digestAlg,
                 digest
             );
         };

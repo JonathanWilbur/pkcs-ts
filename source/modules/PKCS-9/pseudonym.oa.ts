@@ -3,13 +3,13 @@ import type { ATTRIBUTE } from "x500-ts/dist/node/modules/InformationFramework/A
 import {
     userApplications /* IMPORTED_SHORT_ENUMERATION_ITEM */,
 } from "x500-ts/dist/node/modules/InformationFramework/AttributeUsage.ta";
-import { id_at_pseudonym } from "../PKCS-9/id-at-pseudonym.va";
 import { caseExactMatch } from "x500-ts/dist/node/modules/SelectedAttributeTypes/caseExactMatch.oa";
 import {
     DirectoryString,
     _decode_DirectoryString,
     _encode_DirectoryString,
 } from "x500-ts/dist/node/modules/SelectedAttributeTypes/DirectoryString.ta";
+import { id_at_pseudonym } from "../PKCS-9/id-at-pseudonym.va";
 
 /* START_OF_SYMBOL_DEFINITION pseudonym */
 /**

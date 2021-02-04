@@ -220,8 +220,8 @@ export function _decode_PBKDF2_params(el: _Element) {
                 _root_component_type_list_2_spec_for_PBKDF2_params,
                 undefined
             );
-            return new PBKDF2_params /* SEQUENCE_CONSTRUCTOR_CALL */(
-                salt,
+            return new PBKDF2_params(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ salt,
                 iterationCount,
                 keyLength,
                 prf

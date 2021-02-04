@@ -253,8 +253,8 @@ export function _decode_EnvelopedData(el: _Element) {
                 _root_component_type_list_2_spec_for_EnvelopedData,
                 undefined
             );
-            return new EnvelopedData /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new EnvelopedData(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 originatorInfo,
                 recipientInfos,
                 encryptedContentInfo,

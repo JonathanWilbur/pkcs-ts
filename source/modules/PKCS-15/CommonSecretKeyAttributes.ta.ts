@@ -145,8 +145,8 @@ export function _decode_CommonSecretKeyAttributes(el: _Element) {
                     _unrecognizedExtensionsList.push(ext);
                 }
             );
-            return new CommonSecretKeyAttributes /* SEQUENCE_CONSTRUCTOR_CALL */(
-                keyLen,
+            return new CommonSecretKeyAttributes(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ keyLen,
                 _unrecognizedExtensionsList
             );
         };

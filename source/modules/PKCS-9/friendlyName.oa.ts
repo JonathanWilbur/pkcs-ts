@@ -5,8 +5,8 @@ import type { ATTRIBUTE } from "x500-ts/dist/node/modules/InformationFramework/A
 import {
     userApplications /* IMPORTED_SHORT_ENUMERATION_ITEM */,
 } from "x500-ts/dist/node/modules/InformationFramework/AttributeUsage.ta";
-import { pkcs_9_at_friendlyName } from "../PKCS-9/pkcs-9-at-friendlyName.va";
 import { caseIgnoreMatch } from "x500-ts/dist/node/modules/SelectedAttributeTypes/caseIgnoreMatch.oa";
+import { pkcs_9_at_friendlyName } from "../PKCS-9/pkcs-9-at-friendlyName.va";
 
 /* START_OF_SYMBOL_DEFINITION friendlyName */
 /**

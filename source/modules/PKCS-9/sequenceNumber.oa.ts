@@ -3,13 +3,13 @@ import type { ATTRIBUTE } from "x500-ts/dist/node/modules/InformationFramework/A
 import {
     userApplications /* IMPORTED_SHORT_ENUMERATION_ITEM */,
 } from "x500-ts/dist/node/modules/InformationFramework/AttributeUsage.ta";
+import { integerMatch } from "x500-ts/dist/node/modules/SelectedAttributeTypes/integerMatch.oa";
 import { pkcs_9_at_sequenceNumber } from "../PKCS-9/pkcs-9-at-sequenceNumber.va";
 import {
     SequenceNumber,
     _decode_SequenceNumber,
     _encode_SequenceNumber,
 } from "../PKCS-9/SequenceNumber.ta";
-import { integerMatch } from "x500-ts/dist/node/modules/SelectedAttributeTypes/integerMatch.oa";
 
 /* START_OF_SYMBOL_DEFINITION sequenceNumber */
 /**

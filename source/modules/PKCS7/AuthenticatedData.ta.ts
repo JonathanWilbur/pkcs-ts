@@ -367,8 +367,8 @@ export function _decode_AuthenticatedData(el: _Element) {
                 _root_component_type_list_2_spec_for_AuthenticatedData,
                 undefined
             );
-            return new AuthenticatedData /* SEQUENCE_CONSTRUCTOR_CALL */(
-                version,
+            return new AuthenticatedData(
+                /* SEQUENCE_CONSTRUCTOR_CALL */ version,
                 originatorInfo,
                 recipientInfos,
                 macAlgorithm,
