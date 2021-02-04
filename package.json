@@ -15,7 +15,7 @@
         "@babel/preset-env": "^7.12.13",
         "@babel/preset-typescript": "^7.12.13",
         "@types/benchmark": "^2.1.0",
-        "@types/node": "^14.14.24",
+        "@types/node": "^14.14.25",
         "@types/node-forge": "^0.9.7",
         "@typescript-eslint/eslint-plugin": "^4.14.2",
         "@typescript-eslint/parser": "^4.14.2",
@@ -62,7 +62,7 @@
         "test": "npx jest --ci --reporters=default --reporters=jest-junit --coverage"
     },
     "types": "./dist/node/index.d.ts",
-    "version": "4.0.0",
+    "version": "5.0.0",
     "dependencies": {
         "ansi-x9-42": "^1.0.2",
         "ansi-x9-62": "^1.0.3",

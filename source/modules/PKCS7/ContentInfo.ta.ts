@@ -1,9 +1,9 @@
 /* eslint-disable */
 import {
-    ASN1ConstructionError as _ConstructionError,
     ASN1Element as _Element,
     ASN1TagClass as _TagClass,
     OBJECT_IDENTIFIER,
+    OPTIONAL,
 } from "asn1-ts";
 import * as $ from "asn1-ts/dist/node/functional";
 export { PKCS7_CONTENT_TYPE } from "../PKCS7/PKCS7-CONTENT-TYPE.oca";
@@ -14,12 +14,17 @@ export { PKCS7ContentTable } from "../PKCS7/PKCS7ContentTable.osa";
  * @summary ContentInfo
  * @description
  *
+ * NOTE: This was modified from the original definition in ITU X.420 to make
+ * `pkcs7-content` explicitly encoded, because the ITU X.420 definition uses
+ * implicit encoding, which conflicts with the authoritative IETF RFC version.
+ * `pkcs7-content` was also made optional.
+ *
  * ### ASN.1 Definition:
  *
  * ```asn1
  * ContentInfo ::= SEQUENCE {
  *     content-type   PKCS7-CONTENT-TYPE.&id({PKCS7ContentTable}),
- *     pkcs7-content  [0]  PKCS7-CONTENT-TYPE.&Type({PKCS7ContentTable})
+ *     pkcs7-content  [0] EXPLICIT PKCS7-CONTENT-TYPE.&Type({PKCS7ContentTable}) OPTIONAL
  * }
  * ```
  *
@@ -38,7 +43,7 @@ export class ContentInfo {
          * @public
          * @readonly
          */
-        readonly pkcs7_content: _Element
+        readonly pkcs7_content: OPTIONAL<_Element>
     ) {}
 
     /**
@@ -80,7 +85,7 @@ export const _root_component_type_list_1_spec_for_ContentInfo: $.ComponentSpec[]
     ),
     new $.ComponentSpec(
         "pkcs7-content",
-        false,
+        true,
         $.hasTag(_TagClass.context, 0),
         undefined,
         undefined
@@ -126,23 +131,34 @@ let _cached_decoder_for_ContentInfo: $.ASN1Decoder<ContentInfo> | null = null;
 export function _decode_ContentInfo(el: _Element) {
     if (!_cached_decoder_for_ContentInfo) {
         _cached_decoder_for_ContentInfo = function (el: _Element): ContentInfo {
-            const sequence: _Element[] = el.sequence;
-            if (sequence.length < 2) {
-                throw new _ConstructionError(
-                    "ContentInfo contained only " +
-                        sequence.length.toString() +
-                        " elements."
-                );
-            }
-            sequence[0].name = "content-type";
-            sequence[1].name = "pkcs7-content";
+            /* START_OF_SEQUENCE_COMPONENT_DECLARATIONS */
             let content_type!: OBJECT_IDENTIFIER;
-            let pkcs7_content!: _Element;
-            content_type = $._decodeObjectIdentifier(sequence[0]);
-            pkcs7_content = $._decode_implicit<_Element>(() => $._decodeAny)(
-                sequence[1]
+            let pkcs7_content: OPTIONAL<_Element>;
+            /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
+            /* START_OF_CALLBACKS_MAP */
+            const callbacks: $.DecodingMap = {
+                "content-type": (_el: _Element): void => {
+                    content_type = $._decodeObjectIdentifier(_el);
+                },
+                "pkcs7-content": (_el: _Element): void => {
+                    pkcs7_content = $._decode_explicit<_Element>(
+                        () => $._decodeAny
+                    )(_el);
+                },
+            };
+            /* END_OF_CALLBACKS_MAP */
+            $._parse_sequence(
+                el,
+                callbacks,
+                _root_component_type_list_1_spec_for_ContentInfo,
+                _extension_additions_list_spec_for_ContentInfo,
+                _root_component_type_list_2_spec_for_ContentInfo,
+                undefined
             );
-            return new ContentInfo(content_type, pkcs7_content);
+            return new ContentInfo /* SEQUENCE_CONSTRUCTOR_CALL */(
+                content_type,
+                pkcs7_content
+            );
         };
     }
     return _cached_decoder_for_ContentInfo(el);
@@ -177,12 +193,14 @@ export function _encode_ContentInfo(
                             value.content_type,
                             $.BER
                         ),
-                        /* REQUIRED   */ $._encode_implicit(
-                            _TagClass.context,
-                            0,
-                            () => $._encodeAny,
-                            $.BER
-                        )(value.pkcs7_content, $.BER),
+                        /* IF_ABSENT  */ value.pkcs7_content === undefined
+                            ? undefined
+                            : $._encode_explicit(
+                                  _TagClass.context,
+                                  0,
+                                  () => $._encodeAny,
+                                  $.BER
+                              )(value.pkcs7_content, $.BER),
                     ])
                     .filter((c: _Element | undefined): c is _Element => !!c),
                 $.BER
