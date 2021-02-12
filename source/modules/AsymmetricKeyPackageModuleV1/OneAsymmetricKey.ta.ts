@@ -25,30 +25,11 @@ import {
     _decode_Version,
     _encode_Version,
 } from "../AsymmetricKeyPackageModuleV1/Version.ta";
-export {
-    Attributes,
-    _decode_Attributes,
-    _encode_Attributes,
-} from "../AsymmetricKeyPackageModuleV1/Attributes.ta";
-export {
-    PrivateKey,
-    _decode_PrivateKey,
-    _encode_PrivateKey,
-} from "../AsymmetricKeyPackageModuleV1/PrivateKey.ta";
-export {
-    PrivateKeyAlgorithmIdentifier,
-    _decode_PrivateKeyAlgorithmIdentifier,
-    _encode_PrivateKeyAlgorithmIdentifier,
-} from "../AsymmetricKeyPackageModuleV1/PrivateKeyAlgorithmIdentifier.ta";
-export {
-    v1 /* IMPORTED_SHORT_NAMED_INTEGER */,
-    v2 /* IMPORTED_SHORT_NAMED_INTEGER */,
-    Version,
-    Version_v1 /* IMPORTED_LONG_NAMED_INTEGER */,
-    Version_v2 /* IMPORTED_LONG_NAMED_INTEGER */,
-    _decode_Version,
-    _encode_Version,
-} from "../AsymmetricKeyPackageModuleV1/Version.ta";
+import {
+    PublicKey,
+    _decode_PublicKey,
+    _encode_PublicKey,
+} from "../AsymmetricKeyPackageModuleV1/PublicKey.ta";
 
 /* START_OF_SYMBOL_DEFINITION OneAsymmetricKey */
 /**
@@ -98,6 +79,12 @@ export class OneAsymmetricKey {
          */
         readonly attributes: OPTIONAL<Attributes>,
         /**
+         * @summary `publicKey`.
+         * @public
+         * @readonly
+         */
+        readonly publicKey: OPTIONAL<PublicKey>,
+        /**
          * @summary Extensions that are not recognized.
          * @public
          * @readonly
@@ -125,6 +112,7 @@ export class OneAsymmetricKey {
             _o.privateKeyAlgorithm,
             _o.privateKey,
             _o.attributes,
+            _o.publicKey,
             _o._unrecognizedExtensionsList
         );
     }
@@ -193,7 +181,15 @@ export const _root_component_type_list_2_spec_for_OneAsymmetricKey: $.ComponentS
  *
  * @constant
  */
-export const _extension_additions_list_spec_for_OneAsymmetricKey: $.ComponentSpec[] = [];
+export const _extension_additions_list_spec_for_OneAsymmetricKey: $.ComponentSpec[] = [
+    new $.ComponentSpec(
+        "publicKey",
+        true,
+        $.hasTag(_TagClass.context, 1),
+        0,
+        2
+    ),
+];
 /* END_OF_SYMBOL_DEFINITION _extension_additions_list_spec_for_OneAsymmetricKey */
 
 /* START_OF_SYMBOL_DEFINITION _cached_decoder_for_OneAsymmetricKey */
@@ -217,6 +213,7 @@ export function _decode_OneAsymmetricKey(el: _Element) {
             let privateKeyAlgorithm!: PrivateKeyAlgorithmIdentifier;
             let privateKey!: PrivateKey;
             let attributes: OPTIONAL<Attributes>;
+            let publicKey: OPTIONAL<PublicKey>;
             let _unrecognizedExtensionsList: _Element[] = [];
             /* END_OF_SEQUENCE_COMPONENT_DECLARATIONS */
             /* START_OF_CALLBACKS_MAP */
@@ -237,6 +234,11 @@ export function _decode_OneAsymmetricKey(el: _Element) {
                         () => _decode_Attributes
                     )(_el);
                 },
+                publicKey: (_el: _Element): void => {
+                    publicKey = $._decode_implicit<PublicKey>(
+                        () => _decode_PublicKey
+                    )(_el);
+                },
             };
             /* END_OF_CALLBACKS_MAP */
             $._parse_sequence(
@@ -254,6 +256,7 @@ export function _decode_OneAsymmetricKey(el: _Element) {
                 privateKeyAlgorithm,
                 privateKey,
                 attributes,
+                publicKey,
                 _unrecognizedExtensionsList
             );
         };
@@ -307,6 +310,16 @@ export function _encode_OneAsymmetricKey(
                                       () => _encode_Attributes,
                                       $.BER
                                   )(value.attributes, $.BER),
+                        ],
+                        [
+                            /* IF_ABSENT  */ value.publicKey === undefined
+                            ? undefined
+                            : $._encode_implicit(
+                                  _TagClass.context,
+                                  1,
+                                  () => _encode_PublicKey,
+                                  $.BER
+                              )(value.publicKey, $.BER),
                         ],
                         value._unrecognizedExtensionsList
                             ? value._unrecognizedExtensionsList

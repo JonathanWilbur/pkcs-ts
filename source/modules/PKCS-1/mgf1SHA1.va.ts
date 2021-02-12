@@ -27,6 +27,7 @@ import { sha1 } from "../PKCS-1/sha1.va";
 export const mgf1SHA1: MaskGenAlgorithm = AlgorithmIdentifier._from_object({
     algorithm: id_mgf1,
     parameters: _encode_AlgorithmIdentifier(sha1, $.DER),
+    _unrecognizedExtensionsList: undefined,
 });
 /* END_OF_SYMBOL_DEFINITION mgf1SHA1 */
 

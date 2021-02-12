@@ -25,6 +25,7 @@ export const pSpecifiedEmpty: PSourceAlgorithm = AlgorithmIdentifier._from_objec
     {
         algorithm: id_pSpecified,
         parameters: $._encodeOctetString(emptyString, $.DER),
+        _unrecognizedExtensionsList: undefined,
     }
 );
 /* END_OF_SYMBOL_DEFINITION pSpecifiedEmpty */

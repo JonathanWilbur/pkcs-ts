@@ -85,8 +85,14 @@ export class DigestInfoWithDefault {
  * @constant
  */
 export const _root_component_type_list_1_spec_for_DigestInfoWithDefault: $.ComponentSpec[] = [
-    ,
-    /* FIXME: digestAlg COULD_NOT_RESOLVE_TYPE_DEF */ new $.ComponentSpec(
+    new $.ComponentSpec(
+        "digestAlg",
+        true,
+        $.hasTag(_TagClass.universal, 16),
+        undefined,
+        undefined
+    ),
+    new $.ComponentSpec(
         "digest",
         false,
         $.hasTag(_TagClass.universal, 4),

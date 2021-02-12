@@ -1,7 +1,12 @@
 /* eslint-disable */
+import * as $ from "asn1-ts/dist/node/functional";
 import { AlgorithmIdentifier } from "x500-ts/dist/node/modules/AuthenticationFramework/AlgorithmIdentifier.ta";
 import { id_RSASSA_PSS } from "../PKCS-1/id-RSASSA-PSS.va";
 import type { RSASSA_AlgorithmIdentifier } from "../PKCS-1/RSASSA-AlgorithmIdentifier.ta";
+import { RSASSA_PSS_params, _encode_RSASSA_PSS_params } from "./RSASSA-PSS-params.ta";
+import { sha1 } from "./sha1.va";
+import { mgf1SHA1 } from "./mgf1SHA1.va";
+import { trailerFieldBC } from "./TrailerField.ta";
 
 /* START_OF_SYMBOL_DEFINITION rSASSA_PSS_Default_Identifier */
 /**
@@ -26,7 +31,14 @@ import type { RSASSA_AlgorithmIdentifier } from "../PKCS-1/RSASSA-AlgorithmIdent
  */
 export const rSASSA_PSS_Default_Identifier: RSASSA_AlgorithmIdentifier = AlgorithmIdentifier._from_object(
     {
-        algorithm: id_RSASSA_PSS /* FIXME: COULD_NOT_COMPILE_SEQUENCE_OR_SET_VALUE parameters */,
+        algorithm: id_RSASSA_PSS,
+        parameters: _encode_RSASSA_PSS_params(new RSASSA_PSS_params(
+            sha1,
+            mgf1SHA1,
+            20,
+            trailerFieldBC,
+        ), $.DER),
+        _unrecognizedExtensionsList: undefined,
     }
 );
 /* END_OF_SYMBOL_DEFINITION rSASSA_PSS_Default_Identifier */

@@ -26,6 +26,7 @@ export const alg_id_sha1: AlgorithmIdentifier = AlgorithmIdentifier._from_object
             asn1.ASN1UniversalType.nill,
             null
         ),
+        _unrecognizedExtensionsList: undefined,
     }
 );
 /* END_OF_SYMBOL_DEFINITION alg_id_sha1 */

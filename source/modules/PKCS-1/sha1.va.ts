@@ -29,6 +29,7 @@ export const sha1: HashAlgorithm = AlgorithmIdentifier._from_object({
         asn1.ASN1UniversalType.nill,
         null
     ),
+    _unrecognizedExtensionsList: undefined,
 });
 /* END_OF_SYMBOL_DEFINITION sha1 */
 

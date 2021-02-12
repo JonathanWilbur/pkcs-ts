@@ -13,7 +13,6 @@ export {
 } from "../PKCS-15/Identifier.ta";
 
 /* START_OF_SYMBOL_DEFINITION SecurityCondition */
-// TODO: CHECK_RECURSIVE_DEFINITION
 /**
  * @summary SecurityCondition
  * @description

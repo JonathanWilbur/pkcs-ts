@@ -42,6 +42,7 @@ export const rSAES_OAEP_Default_Identifier: RSAES_AlgorithmIdentifier = Algorith
             }),
             $.DER
         ),
+        _unrecognizedExtensionsList: undefined,
     }
 );
 /* END_OF_SYMBOL_DEFINITION rSAES_OAEP_Default_Identifier */
